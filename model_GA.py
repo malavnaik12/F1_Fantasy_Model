@@ -173,21 +173,8 @@ class ModelGA:
             team['curr_week_fp_pos'] = int(fp_pos/2)
             print(f"Updated Teams: {team}")
 
-    # function to calculate fitness score of a team
-    # def calculate_fitness(self,drivers, constructors, budget):
-        # driver_qualifying_avg = sum(driver['qualifying_position'] for driver in drivers) / len(drivers)
-        # driver_race_avg = sum(driver['race_position'] for driver in drivers) / len(drivers)
-        # constructor_qualifying_avg = sum(constructor['qualifying_position'] for constructor in constructors) / len(constructors)
-        # constructor_race_avg = sum(constructor['race_position'] for constructor in constructors) / len(constructors)
-        # team_cost = sum(driver['price'] for driver in drivers) + sum(constructor['price'] for constructor in constructors)
-        
-        # if team_cost > budget:
-        #     return 0  # team is too expensive, return fitness score of 0
-        
-        # return (driver_qualifying_avg + driver_race_avg + constructor_qualifying_avg + constructor_race_avg) * team_cost
-    
     def fitness_function(self, team):
-        # Calculate average qualifying and race positions for the team
+        # Calculate average qualifying, race positions, and free practice positions for the team
         
         drivers_indx = [self.driver_names.index(driver) for driver in team['drivers']]
         constructors_indx = [self.constructor_names.index(constructor) for constructor in team['constructors']]
@@ -214,12 +201,8 @@ class ModelGA:
         # print(fitness_score)
         # input()
         
-        # # Add the contribution of the free practice positions to the fitness score
-        # fitness_score += (avg_driver_fp + avg_constructor_fp) * team['price'] * 0.5
-        
         return 1 / fitness_score
 
-    # function to perform one-point crossover
     def one_point_crossover(self,parent1, parent2):
         # choose a random index to split the parents
         split_index = random.randint(1, len(parent1) - 1)
@@ -229,17 +212,6 @@ class ModelGA:
         
         return child
 
-    # function to perform selection
-    def selection(self,population, num_parents):
-        # sort population by fitness score in descending order
-        sorted_population = sorted(population, key=lambda x: x['fitness'], reverse=True)
-        
-        # select the top num_parents as parents for reproduction
-        parents = sorted_population[:num_parents]
-        
-        return parents
-
-    # function to perform mutation
     def mutation(self,individual, mutation_rate):
         for i in range(len(individual)):
             if random.random() < mutation_rate:
@@ -345,3 +317,24 @@ class ModelGA:
 if __name__ == '__main__':
     GA = ModelGA()
     GA.genetic_algorithm()
+
+
+    # def calculate_fitness(self,drivers, constructors, budget):
+    #     driver_qualifying_avg = sum(driver['qualifying_position'] for driver in drivers) / len(drivers)
+    #     driver_race_avg = sum(driver['race_position'] for driver in drivers) / len(drivers)
+    #     constructor_qualifying_avg = sum(constructor['qualifying_position'] for constructor in constructors) / len(constructors)
+    #     constructor_race_avg = sum(constructor['race_position'] for constructor in constructors) / len(constructors)
+    #     team_cost = sum(driver['price'] for driver in drivers) + sum(constructor['price'] for constructor in constructors)
+        
+    #     if team_cost > budget:
+    #         return 0  # team is too expensive, return fitness score of 0
+        
+    #     return (driver_qualifying_avg + driver_race_avg + constructor_qualifying_avg + constructor_race_avg) * team_cost
+    # def selection(self,population, num_parents):
+    # #     # sort population by fitness score in descending order
+    #     sorted_population = sorted(population, key=lambda x: x['fitness'], reverse=True)
+        
+    #     # select the top num_parents as parents for reproduction
+    #     parents = sorted_population[:num_parents]
+        
+    #     return parents
