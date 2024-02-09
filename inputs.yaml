@@ -1,0 +1,41 @@
+max_gens: 10
+pop_size: 2
+crossover: 0.8
+mutation: 0.05
+budget: 100
+tournament_size: 1
+completed_races: 0
+race_week_num: 1
+data:
+  current_week:
+    redbull:
+      verstappen: 1
+      perez: 2
+    ferrari:
+      leclerc: 3
+      sainz: 4
+    aston_martin:
+      alonzo: 5
+      stroll: 6
+    mclaren:
+      norris: 7
+      piastri: 8
+    alpine:
+      ocon: 9
+      gasly: 10
+    mercedes:
+      hamilton: 11
+      russell: 12
+    alfa:
+      bottas: 13
+      zhou: 14
+    haas:
+      hulkenburg: 15
+      magnussen: 16
+    williams:
+      albon: 17
+      sargenat: 18
+    alphatauri:
+      riccardo: 19
+      tsunoda: 20
+    

@@ -1,8 +1,19 @@
 import numpy as np
 import random
+import yaml
+import matplotlib.pyplot as plt
 
 class ModelGA:
     def __init__(self):
+
+        with open("inputs.yaml", "r") as file:
+            inputs = yaml.safe_load(file)
+            self.budget = inputs["budget"]
+            self.max_generations = inputs["max_gens"]
+            self.population_size = inputs["pop_size"]
+            self.tournament_size = inputs["tournament_size"]
+            self.crossover_prob = inputs["crossover"]
+            self.mutation_prob = inputs["mutation"]
 
         self.drivers = [
             {'team':'Red Bull','name': 'Max Verstappen',
@@ -172,6 +183,50 @@ class ModelGA:
             team['curr_week_fp_pos'] = int(fp_pos/2)
             # print(f"Updated Teams: {team}")
 
+    def initialize_population(self):
+        """
+        Initialize a population of teams for the genetic algorithm.
+
+        Args:
+        - num_teams (int): the size of the population
+        - drivers (dict): a dictionary containing information about the drivers
+        - constructors (dict): a dictionary containing information about the constructors
+        - budget (float): the maximum budget for a team
+
+        Returns:
+        - population (list): a list of teams, where each team is a dictionary containing
+                            information about the drivers, constructors, and total cost
+        """
+        self.population = []
+
+        while len(self.population) < self.population_size:
+            drivers_selected = []
+            constructors_selected = []
+            # randomly select 5 unique drivers
+            while len(drivers_selected) < 5:
+                driver = random.choice(self.driver_names)
+                if driver not in drivers_selected:
+                    drivers_selected.append(driver)
+
+            # randomly select 2 unique constructors
+            while len(constructors_selected) < 2:
+                constructor = random.choice(self.constructor_names)
+                if constructor not in constructors_selected:
+                    constructors_selected.append(constructor)
+            # print(drivers_selected,constructors_selected)
+            drivers_indx = [self.driver_names.index(driver) for driver in drivers_selected]
+            constructors_indx = [self.constructor_names.index(constructor) for constructor in constructors_selected]
+            # calculate the total cost of the team
+            total_cost = sum([self.drivers[index_d]['price'] for index_d in drivers_indx] +
+                            [self.constructors[index_c]['price'] for index_c in constructors_indx])
+
+            # if the team is within the budget, add it to the population
+            if total_cost <= self.budget:
+                team = {'drivers': drivers_selected,
+                        'constructors': constructors_selected,
+                        'total_cost': total_cost}
+                self.population.append(team)
+
     def fitness_function(self, team):
         # Calculate average qualifying, race positions, and free practice positions for the team
         
@@ -201,6 +256,16 @@ class ModelGA:
         # input()
         
         return fitness_score
+
+    def tournament_selection(self,fitness_vals):
+        # Randomly select individuals from the population to participate in the tournament
+        participants = random.sample(range(len(self.population)), self.tournament_size)
+        # Determine the fitness values of the participants
+        participant_fitness = [fitness_vals[i] for i in participants]
+        # Find the index of the participant with the best fitness value
+        best_index = participants[participant_fitness.index(max(participant_fitness))]
+        # Return the best individual from the tournament
+        return self.population[best_index]
 
     def one_point_crossover(self):
         # choose a random index to split the parents
@@ -265,82 +330,22 @@ class ModelGA:
                     child['total_cost'] = total_cost
         return child
 
-    def initialize_population(self):
-        """
-        Initialize a population of teams for the genetic algorithm.
-
-        Args:
-        - num_teams (int): the size of the population
-        - drivers (dict): a dictionary containing information about the drivers
-        - constructors (dict): a dictionary containing information about the constructors
-        - budget (float): the maximum budget for a team
-
-        Returns:
-        - population (list): a list of teams, where each team is a dictionary containing
-                            information about the drivers, constructors, and total cost
-        """
-        self.population = []
-
-        while len(self.population) < self.population_size:
-            drivers_selected = []
-            constructors_selected = []
-            # randomly select 5 unique drivers
-            while len(drivers_selected) < 5:
-                driver = random.choice(self.driver_names)
-                if driver not in drivers_selected:
-                    drivers_selected.append(driver)
-
-            # randomly select 2 unique constructors
-            while len(constructors_selected) < 2:
-                constructor = random.choice(self.constructor_names)
-                if constructor not in constructors_selected:
-                    constructors_selected.append(constructor)
-            # print(drivers_selected,constructors_selected)
-            drivers_indx = [self.driver_names.index(driver) for driver in drivers_selected]
-            constructors_indx = [self.constructor_names.index(constructor) for constructor in constructors_selected]
-            # calculate the total cost of the team
-            total_cost = sum([self.drivers[index_d]['price'] for index_d in drivers_indx] +
-                            [self.constructors[index_c]['price'] for index_c in constructors_indx])
-
-            # if the team is within the budget, add it to the population
-            if total_cost <= self.budget:
-                team = {'drivers': drivers_selected,
-                        'constructors': constructors_selected,
-                        'total_cost': total_cost}
-                self.population.append(team)
-    
-    def tournament_selection(self):
-        # Randomly select individuals from the population to participate in the tournament
-        participants = random.sample(range(len(self.population)), self.tournament_size)
-        # Determine the fitness values of the participants
-        participant_fitness = [self.fitnesses[i] for i in participants]
-        # Find the index of the participant with the best fitness value
-        best_index = participants[participant_fitness.index(max(participant_fitness))]
-        # Return the best individual from the tournament
-        return self.population[best_index]
-
     # main genetic algorithm function
     def genetic_algorithm(self):
         self.driver_names = [self.drivers[ii]['name'] for ii in range(0,len(self.drivers))]
         self.constructor_names = [self.constructors[ii]['name'] for ii in range(0,len(self.constructors))]
         self.num_drivers = len(self.driver_names)
         self.num_constructors = len(self.constructor_names)
-        self.budget = 100.7
-        self.max_generations = 10
-        self.population_size = 1000
-        self.tournament_size = 200
-        self.crossover_prob = 0.8
-        self.mutation_prob = 0.05
         self.initialize_population()
-        self.fitnesses = [self.fitness_function(individual) for individual in self.population]
-        best_individual = self.population[self.fitnesses.index(min(self.fitnesses))]
-        best_team_attr = {}
+        fitnesses = [self.fitness_function(individual) for individual in self.population]
+        best_individual = self.population[fitnesses.index(min(fitnesses))]
+        self.best_team_attr = {}
         for generation in range(self.max_generations):
             print(f"Generation: {generation}")
             next_population = []
             for i in range(self.population_size):
-                self.parent1 = self.tournament_selection()
-                self.parent2 = self.tournament_selection()
+                self.parent1 = self.tournament_selection(fitnesses)
+                self.parent2 = self.tournament_selection(fitnesses)
                 if random.random() < self.crossover_prob:
                     self.one_point_crossover()
                 else:
@@ -350,34 +355,18 @@ class ModelGA:
                 next_population.append(child1)
                 next_population.append(child2)
             population = next_population
-            fitnesses = [self.fitness_function(individual) for individual in population]
-            best_fitness = min(fitnesses)
-            best_individual = population[fitnesses.index(best_fitness)]
-            best_team_attr[best_fitness] = best_individual
-        # print(list(best_team_attr.keys()))
-        print(best_team_attr[min(best_team_attr.keys())])
+            self.fitnesses = [self.fitness_function(individual) for individual in population]
+            best_fitness = min(self.fitnesses)
+            best_individual = population[self.fitnesses.index(best_fitness)]
+            self.best_team_attr[best_fitness] = best_individual
+        # print(self.best_team_attr[min(self.best_team_attr.keys())])
+        self.plot_fitness()
+
+    def plot_fitness(self):
+        plt.figure(1)
+        plt.plot(list(self.best_team_attr.keys()))
+        plt.show()
 
 if __name__ == '__main__':
     GA = ModelGA()
     GA.genetic_algorithm()
-
-
-    # def calculate_fitness(self,drivers, constructors, budget):
-    #     driver_qualifying_avg = sum(driver['qualifying_position'] for driver in drivers) / len(drivers)
-    #     driver_race_avg = sum(driver['race_position'] for driver in drivers) / len(drivers)
-    #     constructor_qualifying_avg = sum(constructor['qualifying_position'] for constructor in constructors) / len(constructors)
-    #     constructor_race_avg = sum(constructor['race_position'] for constructor in constructors) / len(constructors)
-    #     team_cost = sum(driver['price'] for driver in drivers) + sum(constructor['price'] for constructor in constructors)
-        
-    #     if team_cost > budget:
-    #         return 0  # team is too expensive, return fitness score of 0
-        
-    #     return (driver_qualifying_avg + driver_race_avg + constructor_qualifying_avg + constructor_race_avg) * team_cost
-    # def selection(self,population, num_parents):
-    # #     # sort population by fitness score in descending order
-    #     sorted_population = sorted(population, key=lambda x: x['fitness'], reverse=True)
-        
-    #     # select the top num_parents as parents for reproduction
-    #     parents = sorted_population[:num_parents]
-        
-    #     return parents
