@@ -1,0 +1,222 @@
+{
+  "redbull": {
+    "quali_hist": [],
+    "race_hist": [],
+    "fp": [],
+    "price": [],
+    "verstappen": {
+      "quali_hist": [
+        1
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    },
+    "perez": {
+      "quali_hist": [
+        2
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    }
+  },
+  "ferrari": {
+    "quali_hist": [],
+    "race_hist": [],
+    "fp": [],
+    "price": [],
+    "leclerc": {
+      "quali_hist": [
+        3
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    },
+    "sainz": {
+      "quali_hist": [
+        4
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    }
+  },
+  "aston_martin": {
+    "quali_hist": [],
+    "race_hist": [],
+    "fp": [],
+    "price": [],
+    "alonzo": {
+      "quali_hist": [
+        5
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    },
+    "stroll": {
+      "quali_hist": [
+        6
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    }
+  },
+  "mclaren": {
+    "quali_hist": [],
+    "race_hist": [],
+    "fp": [],
+    "price": [],
+    "norris": {
+      "quali_hist": [
+        7
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    },
+    "piastri": {
+      "quali_hist": [
+        8
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    }
+  },
+  "alpine": {
+    "quali_hist": [],
+    "race_hist": [],
+    "fp": [],
+    "price": [],
+    "ocon": {
+      "quali_hist": [
+        9
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    },
+    "gasly": {
+      "quali_hist": [
+        10
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    }
+  },
+  "mercedes": {
+    "quali_hist": [],
+    "race_hist": [],
+    "fp": [],
+    "price": [],
+    "hamilton": {
+      "quali_hist": [
+        11
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    },
+    "russell": {
+      "quali_hist": [
+        12
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    }
+  },
+  "alfa": {
+    "quali_hist": [],
+    "race_hist": [],
+    "fp": [],
+    "price": [],
+    "bottas": {
+      "quali_hist": [
+        13
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    },
+    "zhou": {
+      "quali_hist": [
+        14
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    }
+  },
+  "haas": {
+    "quali_hist": [],
+    "race_hist": [],
+    "fp": [],
+    "price": [],
+    "hulkenburg": {
+      "quali_hist": [
+        15
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    },
+    "magnussen": {
+      "quali_hist": [
+        16
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    }
+  },
+  "williams": {
+    "quali_hist": [],
+    "race_hist": [],
+    "fp": [],
+    "price": [],
+    "albon": {
+      "quali_hist": [
+        17
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    },
+    "sargenat": {
+      "quali_hist": [
+        18
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    }
+  },
+  "vcarb": {
+    "quali_hist": [],
+    "race_hist": [],
+    "fp": [],
+    "price": [],
+    "riccardo": {
+      "quali_hist": [
+        19
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    },
+    "tsunoda": {
+      "quali_hist": [
+        20
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": []
+    }
+  }
+}

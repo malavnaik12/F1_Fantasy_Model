@@ -1,0 +1,36 @@
+attributes:
+  quali_hist: []
+  race_hist: []
+  fp: []
+  price: []
+team_data:
+  redbull:
+    verstappen: {}
+    perez: {}
+  ferrari:
+    leclerc: {} 
+    sainz: {}
+  aston_martin:
+    alonzo: {}
+    stroll: {}
+  mclaren:
+    norris: {}
+    piastri: {}
+  alpine:
+    ocon: {}
+    gasly: {}
+  mercedes:
+    hamilton: {}
+    russell: {}
+  alfa:
+    bottas: {}
+    zhou: {}
+  haas:
+    hulkenburg: {}
+    magnussen: {}
+  williams:
+    albon: {}
+    sargenat: {}
+  vcarb:
+    riccardo: {}
+    tsunoda: {}
