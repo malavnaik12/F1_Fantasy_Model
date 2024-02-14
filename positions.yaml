@@ -1,15 +1,15 @@
 session_info:
-  session_type: 'race'
-  session_num: 1
+  session_type: 'fp'
+  session_num: 3
   fp_override: true
-  quali_override: false
-  race_override: false
+  quali_override: true
+  race_override: true
 current_week:
   redbull:
-    verstappen: 1
-    perez: 2
+    verstappen: 2
+    perez: 3
   ferrari:
-    leclerc: 3 
+    leclerc: 1
     sainz: 4
   aston_martin:
     alonzo: 5

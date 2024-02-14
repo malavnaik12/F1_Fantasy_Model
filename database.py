@@ -87,7 +87,7 @@ class UpdateData:
                     if (session_id == 'fp' and (len(self.teams[team_name][driver_name][session_id]) < session_num)):
                         self.teams[team_name][driver_name][session_id].append(driver_info[driver_name])
                         driver_pos += driver_info[driver_name]
-                    elif (session_id == 'fp' and (len(self.teams[team_name][driver_name][session_id]) == session_num)):
+                    elif (session_id == 'fp' and (len(self.teams[team_name][driver_name][session_id]) == 3)):
                         try:
                             assert(type(self.curr_week_info["session_info"]["fp_override"]) == bool)
                         except:
@@ -96,7 +96,7 @@ class UpdateData:
                             self.teams[team_name][driver_name][session_id][session_num-1] = driver_info[driver_name]
                             driver_pos += driver_info[driver_name]
                         elif (not self.warning_fp):
-                            print(f"\033[1;31mWarning:\033[0m Driver {self.data_session}{session_num} position already populated for this week.\n  Set \33[34mfp_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
+                            print(f"\033[1;31mWarning:\033[0m Driver {self.data_session}{session_num} position already populated for this session.\n  Set \33[34mfp_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
                             self.warning_fp = True
                     else:
                         if (len(self.teams[team_name][driver_name][session_id]) < self.curr_week_num):
@@ -111,10 +111,10 @@ class UpdateData:
                                 self.teams[team_name][driver_name][session_id][self.curr_week_num-1] = driver_info[driver_name]
                                 driver_pos += driver_info[driver_name]
                             elif (not self.warning_quali and session_id == 'quali_hist'):
-                                    print(f"\033[1;31mWarning:\033[0m Driver {self.data_session} position already populated for this week.\n  Set \33[34m{self.data_session}_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
+                                    print(f"\033[1;31mWarning:\033[0m Driver {self.data_session} position already populated for this session.\n  Set \33[34m{self.data_session}_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
                                     self.warning_quali = True
                             elif (not self.warning_race and session_id == 'race_hist'):
-                                    print(f"\033[1;31mWarning:\033[0m Driver {self.data_session} position already populated for this week.\n  Set \33[34m{self.data_session}_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
+                                    print(f"\033[1;31mWarning:\033[0m Driver {self.data_session} position already populated for this session.\n  Set \33[34m{self.data_session}_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
                                     self.warning_race = True
 
                     if (len(self.teams[team_name][driver_name]["price"]) < self.curr_week_num):
@@ -129,28 +129,27 @@ class UpdateData:
                         elif (not self.warning_price_d):
                             print(f"\033[1;31mWarning:\033[0m Driver price already populated for this week.\n  Set \33[34mdriver_override\033[0m to \33[34mtrue\033[0m in \33[3mprices.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
                             self.warning_price_d = True
-
-                    avg_driver_pos = driver_pos/len(list(driver_info.keys()))
-                    if (session_id == 'fp' and (len(self.teams[team_name][session_id]) < session_num)):
+                avg_driver_pos = driver_pos/len(list(driver_info.keys()))
+                if (session_id == 'fp' and (len(self.teams[team_name][session_id]) < session_num)):
+                    self.teams[team_name][session_id].append(avg_driver_pos)
+                elif (session_id == 'fp' and (len(self.teams[team_name][session_id]) == 3)):
+                    if (self.curr_week_info["session_info"]["fp_override"]):
+                        self.teams[team_name][session_id][session_num-1] = avg_driver_pos
+                    # elif (not self.warning_fp):
+                    #     print(f"\033[1;31mWarning:\033[0m Constructor {self.data_session}{session_num} position already populated for this session.\n  Set 'fp_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
+                    #     self.warning_fp = True
+                else:
+                    if (len(self.teams[team_name][session_id]) < self.curr_week_num):
                         self.teams[team_name][session_id].append(avg_driver_pos)
-                    elif (session_id == 'fp' and (len(self.teams[team_name][session_id]) == session_num)):
-                        if (self.curr_week_info["session_info"]["fp_override"]):
-                            self.teams[team_name][session_id][session_num-1] = avg_driver_pos
-                        # elif (not self.warning_fp):
-                        #     print(f"\033[1;31mWarning:\033[0m Constructor {self.data_session}{session_num} position already populated for this week.\n  Set 'fp_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
-                        #     self.warning_fp = True
-                    else:
-                        if (len(self.teams[team_name][session_id]) < self.curr_week_num):
-                            self.teams[team_name][session_id].append(avg_driver_pos)
-                        elif ((session_id == 'quali_hist' or session_id == 'race_hist' ) and (len(self.teams[team_name][session_id]) == self.curr_week_num)):
-                            if (self.curr_week_info["session_info"]["fp_override"]):
-                                self.teams[team_name][session_id][self.curr_week_num-1] = avg_driver_pos
-                            # elif (not self.warning_quali and session_id == 'quali_hist'):
-                            #         print(f"\033[1;31mWarning:\033[0m Constructor {self.data_session} position already populated for this week.\n  Set \33[34m{self.data_session}_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
-                            #         self.warning_quali = True
-                            # elif (not self.warning_race and session_id == 'race_hist'):
-                            #         print(f"\033[1;31mWarning:\033[0m Constructor {self.data_session} position already populated for this week.\n  Set \33[34m{self.data_session}_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
-                            #         self.warning_race = True
+                    elif ((session_id == 'quali_hist' or session_id == 'race_hist' ) and (len(self.teams[team_name][session_id]) == self.curr_week_num)):
+                        if (self.curr_week_info["session_info"][f"{self.data_session}_override"]):
+                            self.teams[team_name][session_id][self.curr_week_num-1] = avg_driver_pos
+                        # elif (not self.warning_quali and session_id == 'quali_hist'):
+                        #         print(f"\033[1;31mWarning:\033[0m Constructor {self.data_session} position already populated for this session.\n  Set \33[34m{self.data_session}_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
+                        #         self.warning_quali = True
+                        # elif (not self.warning_race and session_id == 'race_hist'):
+                        #         print(f"\033[1;31mWarning:\033[0m Constructor {self.data_session} position already populated for this session.\n  Set \33[34m{self.data_session}_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
+                        #         self.warning_race = True
             
             working_dir = os.getcwd()
             database_file = "\\database.json"
