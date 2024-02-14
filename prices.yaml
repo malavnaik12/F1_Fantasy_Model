@@ -1,0 +1,44 @@
+weekly_budget: 100
+constructor_override: true
+driver_override: true
+current_week:
+  redbull:
+    constructor: 30
+    verstappen: 33
+    perez: 18
+  ferrari:
+    constructor: 25
+    leclerc: 22 
+    sainz: 15
+  aston_martin:
+    constructor: 18
+    alonzo: 11
+    stroll: 10
+  mclaren:
+    constructor: 15
+    norris: 14
+    piastri: 10
+  alpine:
+    constructor: 13
+    ocon: 12.5
+    gasly: 10.5
+  mercedes:
+    constructor: 23
+    hamilton: 33
+    russell: 24
+  alfa:
+    constructor: 10
+    bottas: 6.5
+    zhou: 5
+  haas:
+    constructor: 8
+    hulkenburg: 4.5
+    magnussen: 4
+  williams:
+    constructor: 6
+    albon: 5
+    sargenat: 3
+  vcarb:
+    constructor: 5
+    riccardo: 5
+    tsunoda: 4.5

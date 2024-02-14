@@ -1,6 +1,9 @@
 session_info:
-  session_type: 'quali'
+  session_type: 'race'
   session_num: 1
+  fp_override: true
+  quali_override: false
+  race_override: false
 current_week:
   redbull:
     verstappen: 1
