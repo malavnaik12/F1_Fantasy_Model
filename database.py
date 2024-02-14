@@ -161,6 +161,14 @@ class UpdateData:
         except:
             raise Exception(f"There was an issue in\33[3mdatabase.py\033[0m.\n  Ensure your inputs in \33[3minputs.yaml\033[0m, \33[3mprices.yaml\033[0m, and \33[3mpositions.yaml\033[0m are correct")
             # pass
+    def update_data(self):
+        # Move the override code to this function
+        pass
+
+    def delete_data(self):
+        # Include any code to delete data from database.py here
+        pass
+
     def main(self):
         # self.__init__()
         try:
