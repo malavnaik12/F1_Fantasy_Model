@@ -1,11 +1,7 @@
 {
   "redbull": {
-    "quali_hist": [
-      2.5
-    ],
-    "race_hist": [
-      1.5
-    ],
+    "quali_hist": [],
+    "race_hist": [],
     "fp": [
       2.5,
       2.5,
@@ -15,12 +11,8 @@
       30
     ],
     "verstappen": {
-      "quali_hist": [
-        2
-      ],
-      "race_hist": [
-        1
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         2,
         2,
@@ -31,12 +23,8 @@
       ]
     },
     "perez": {
-      "quali_hist": [
-        3
-      ],
-      "race_hist": [
-        2
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         3,
         3,
@@ -48,12 +36,8 @@
     }
   },
   "ferrari": {
-    "quali_hist": [
-      2.5
-    ],
-    "race_hist": [
-      3.5
-    ],
+    "quali_hist": [],
+    "race_hist": [],
     "fp": [
       2.5,
       2.5,
@@ -63,12 +47,8 @@
       25
     ],
     "leclerc": {
-      "quali_hist": [
-        1
-      ],
-      "race_hist": [
-        3
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         1,
         1,
@@ -79,12 +59,8 @@
       ]
     },
     "sainz": {
-      "quali_hist": [
-        4
-      ],
-      "race_hist": [
-        4
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         4,
         4,
@@ -96,12 +72,8 @@
     }
   },
   "aston_martin": {
-    "quali_hist": [
-      5.5
-    ],
-    "race_hist": [
-      5.5
-    ],
+    "quali_hist": [],
+    "race_hist": [],
     "fp": [
       5.5,
       5.5,
@@ -111,12 +83,8 @@
       18
     ],
     "alonzo": {
-      "quali_hist": [
-        5
-      ],
-      "race_hist": [
-        5
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         5,
         5,
@@ -127,12 +95,8 @@
       ]
     },
     "stroll": {
-      "quali_hist": [
-        6
-      ],
-      "race_hist": [
-        6
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         6,
         6,
@@ -144,12 +108,8 @@
     }
   },
   "mclaren": {
-    "quali_hist": [
-      7.5
-    ],
-    "race_hist": [
-      7.5
-    ],
+    "quali_hist": [],
+    "race_hist": [],
     "fp": [
       7.5,
       7.5,
@@ -159,12 +119,8 @@
       15
     ],
     "norris": {
-      "quali_hist": [
-        7
-      ],
-      "race_hist": [
-        7
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         7,
         7,
@@ -175,12 +131,8 @@
       ]
     },
     "piastri": {
-      "quali_hist": [
-        8
-      ],
-      "race_hist": [
-        8
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         8,
         8,
@@ -192,12 +144,8 @@
     }
   },
   "alpine": {
-    "quali_hist": [
-      9.5
-    ],
-    "race_hist": [
-      9.5
-    ],
+    "quali_hist": [],
+    "race_hist": [],
     "fp": [
       9.5,
       9.5,
@@ -207,12 +155,8 @@
       13
     ],
     "ocon": {
-      "quali_hist": [
-        9
-      ],
-      "race_hist": [
-        9
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         9,
         9,
@@ -223,12 +167,8 @@
       ]
     },
     "gasly": {
-      "quali_hist": [
-        10
-      ],
-      "race_hist": [
-        10
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         10,
         10,
@@ -240,12 +180,8 @@
     }
   },
   "mercedes": {
-    "quali_hist": [
-      11.5
-    ],
-    "race_hist": [
-      11.5
-    ],
+    "quali_hist": [],
+    "race_hist": [],
     "fp": [
       11.5,
       11.5,
@@ -255,12 +191,8 @@
       23
     ],
     "hamilton": {
-      "quali_hist": [
-        11
-      ],
-      "race_hist": [
-        11
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         11,
         11,
@@ -271,12 +203,8 @@
       ]
     },
     "russell": {
-      "quali_hist": [
-        12
-      ],
-      "race_hist": [
-        12
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         12,
         12,
@@ -288,12 +216,8 @@
     }
   },
   "alfa": {
-    "quali_hist": [
-      13.5
-    ],
-    "race_hist": [
-      13.5
-    ],
+    "quali_hist": [],
+    "race_hist": [],
     "fp": [
       13.5,
       13.5,
@@ -303,12 +227,8 @@
       10
     ],
     "bottas": {
-      "quali_hist": [
-        13
-      ],
-      "race_hist": [
-        13
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         13,
         13,
@@ -319,12 +239,8 @@
       ]
     },
     "zhou": {
-      "quali_hist": [
-        14
-      ],
-      "race_hist": [
-        14
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         14,
         14,
@@ -336,12 +252,8 @@
     }
   },
   "haas": {
-    "quali_hist": [
-      15.5
-    ],
-    "race_hist": [
-      15.5
-    ],
+    "quali_hist": [],
+    "race_hist": [],
     "fp": [
       15.5,
       15.5,
@@ -351,12 +263,8 @@
       8
     ],
     "hulkenburg": {
-      "quali_hist": [
-        15
-      ],
-      "race_hist": [
-        15
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         15,
         15,
@@ -367,12 +275,8 @@
       ]
     },
     "magnussen": {
-      "quali_hist": [
-        16
-      ],
-      "race_hist": [
-        16
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         16,
         16,
@@ -384,12 +288,8 @@
     }
   },
   "williams": {
-    "quali_hist": [
-      17.5
-    ],
-    "race_hist": [
-      17.5
-    ],
+    "quali_hist": [],
+    "race_hist": [],
     "fp": [
       17.5,
       17.5,
@@ -399,12 +299,8 @@
       6
     ],
     "albon": {
-      "quali_hist": [
-        17
-      ],
-      "race_hist": [
-        17
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         17,
         17,
@@ -415,12 +311,8 @@
       ]
     },
     "sargenat": {
-      "quali_hist": [
-        18
-      ],
-      "race_hist": [
-        18
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         18,
         18,
@@ -432,12 +324,8 @@
     }
   },
   "vcarb": {
-    "quali_hist": [
-      19.5
-    ],
-    "race_hist": [
-      19.5
-    ],
+    "quali_hist": [],
+    "race_hist": [],
     "fp": [
       19.5,
       19.5,
@@ -447,12 +335,8 @@
       5
     ],
     "riccardo": {
-      "quali_hist": [
-        19
-      ],
-      "race_hist": [
-        19
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         19,
         19,
@@ -463,12 +347,8 @@
       ]
     },
     "tsunoda": {
-      "quali_hist": [
-        20
-      ],
-      "race_hist": [
-        20
-      ],
+      "quali_hist": [],
+      "race_hist": [],
       "fp": [
         20,
         20,

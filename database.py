@@ -2,6 +2,7 @@ import yaml
 import json
 import os
 import shutil
+import time
 
 class UpdateData:
     def __init__(self):
@@ -171,6 +172,7 @@ class UpdateData:
 
     def main(self):
         # self.__init__()
+        # starttime = time.time()
         try:
             self.get_data()
             self.post_data()
@@ -178,7 +180,8 @@ class UpdateData:
         except AttributeError:
             print(f"Message from \33[3mdatabase.py\033[0m.\n The database file, \33[3mdatabase.json\033[0m, is created. Re-run the \33[3mdatabase.py\033[0m to start populating \33[3mdatabase.json\033[0m file.")
             # pass
-
+        # currtime = time.time()
+        # print(currtime-starttime)
 if __name__ == '__main__':
     db_gen = UpdateData()
     db_gen.main()
