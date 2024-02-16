@@ -46,14 +46,14 @@ class PreprocessGA:
                     self.driver_names[key] = team
 
         while len(self.population) < self.population_size:
-            drivers_selected = []; temp = []
+            drivers_selected = []; #temp = []
             constructors_selected = []; total_cost = 0
             # randomly select 5 unique drivers
             while len(drivers_selected) < self.max_drivers_num:
                 driver = random.choice(list(self.driver_names.keys()))
-                if driver not in temp:
-                    drivers_selected.append((driver, self.driver_names[driver]))
-                    temp.append(driver)
+                if driver not in drivers_selected:
+                    drivers_selected.append(driver)
+                    # temp.append(driver)
                     total_cost += np.nanmean(self.db_data[self.driver_names[driver]][driver]["price"])
 
             # randomly select 2 unique constructors
@@ -80,11 +80,10 @@ class PreprocessGA:
         driver_quali_hist = 0; driver_race_hist = 0
         constructor_quali_hist = 0; constructor_race_hist = 0
         driver_fp_hist = 0; constructor_fp_hist = 0 
-        for driver_info in team_drivers:
-            driver = driver_info[0]; team = driver_info[1]
-            driver_quali_hist += np.nanmean(self.db_data[team][driver]['quali_hist'])
-            driver_race_hist += np.nanmean(self.db_data[team][driver]['race_hist'])
-            driver_fp_hist += np.nanmean(self.db_data[team][driver]['fp'])
+        for driver in team_drivers:
+            driver_quali_hist += np.nanmean(self.db_data[self.driver_names[driver]][driver]['quali_hist'])
+            driver_race_hist += np.nanmean(self.db_data[self.driver_names[driver]][driver]['race_hist'])
+            driver_fp_hist += np.nanmean(self.db_data[self.driver_names[driver]][driver]['fp'])
         
         for constructor in team_constructors:
             constructor_quali_hist += np.nanmean(self.db_data[constructor]['quali_hist'])
@@ -126,14 +125,14 @@ class PreprocessGA:
         child2 = parent2[:split_index] + parent1[split_index:]
         
         total_cost1 = 0
-        for (driver, team) in child1[:self.max_drivers_num]:
-            total_cost1 += np.nanmean(self.db_data[team][driver]["price"])
+        for driver in child1[:self.max_drivers_num]:
+            total_cost1 += np.nanmean(self.db_data[self.driver_names[driver]][driver]["price"])
         for team in child1[self.max_drivers_num:]:
             total_cost1 += np.nanmean(self.db_data[team]["price"])
         
         total_cost2 = 0
-        for (driver, team) in child2[:self.max_drivers_num]:
-            total_cost2 += np.nanmean(self.db_data[team][driver]["price"])
+        for driver in child2[:self.max_drivers_num]:
+            total_cost2 += np.nanmean(self.db_data[self.driver_names[driver]][driver]["price"])
         for team in child2[self.max_drivers_num:]:
             total_cost2 += np.nanmean(self.db_data[team]["price"])
 
@@ -154,13 +153,13 @@ class PreprocessGA:
             if random.random() < mut_rate:
                 if random.random() < mut_rate:
                     popped = child['drivers'].pop(random.randint(0,4))
-                    temp.append(popped[0])
-                    for (driver, _) in child['drivers']:
+                    temp.append(popped)
+                    for driver in child['drivers']:
                         temp.append(driver)
                     while len(child['drivers']) < self.max_drivers_num:
                         driver = random.choice(list(self.driver_names.keys()))
                         if driver not in temp:
-                            child['drivers'].append((driver, self.driver_names[driver]))
+                            child['drivers'].append(driver)
                             temp.append(driver)
                 else:
                     popped = child['constructors'].pop(random.randint(0,1))
@@ -169,7 +168,7 @@ class PreprocessGA:
                         if constructor not in (child['constructors'] or popped):
                             child['constructors'].append(constructor)
                  
-                total_cost = sum([np.nanmean(self.db_data[self.driver_names[driver]][driver]["price"]) for (driver, team) in child['drivers']])
+                total_cost = sum([np.nanmean(self.db_data[self.driver_names[driver]][driver]["price"]) for driver in child['drivers']])
                 total_cost += sum([np.nanmean(self.db_data[team]["price"]) for team in child['constructors']])
                 if(total_cost > self.budget):
                     child_gen = False
@@ -203,7 +202,7 @@ class PreprocessGA:
             best_fitness = min(self.fitnesses)
             best_individual = population[self.fitnesses.index(best_fitness)]
             self.best_team_attr[best_fitness] = best_individual
-        # print(self.best_team_attr[min(self.best_team_attr.keys())])
+        print(self.best_team_attr[min(self.best_team_attr.keys())])
         self.plot_fitness()
 
     def plot_fitness(self):
