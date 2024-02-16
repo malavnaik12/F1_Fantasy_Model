@@ -6,3 +6,5 @@ budget: 100
 tournament_size: 1
 completed_races: 0
 race_week_num: 1
+max_drivers: 5
+max_constructors: 2

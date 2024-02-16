@@ -5,9 +5,8 @@ import matplotlib.pyplot as plt
 import json
 import os,sys
 
-class ModelGA:
+class PreprocessGA:
     def __init__(self):
-
         with open("inputs.yaml", "r") as file:
             inputs = yaml.safe_load(file)
             self.budget = inputs["budget"]
@@ -16,6 +15,8 @@ class ModelGA:
             self.tournament_size = inputs["tournament_size"]
             self.crossover_prob = inputs["crossover"]
             self.mutation_prob = inputs["mutation"]
+            self.max_drivers_num = inputs["max_drivers"]
+            self.max_constructors_num = inputs["max_constructors"]
             file.close()
         
         with open("database.json","r") as db:
@@ -36,9 +37,7 @@ class ModelGA:
         - population (list): a list of teams, where each team is a dictionary containing
                             information about the drivers, constructors, and total cost
         """
-        self.population = []
-        self.constructor_names = []
-        self.driver_names = {}
+        self.population = []; self.constructor_names = []; self.driver_names = {}
         for team in list(self.db_data.keys()):
             team_info = self.db_data[team]
             self.constructor_names.append(team)
@@ -47,29 +46,22 @@ class ModelGA:
                     self.driver_names[key] = team
 
         while len(self.population) < self.population_size:
-            drivers_selected = []
-            constructors_selected = []
-            total_cost = 0
+            drivers_selected = []; temp = []
+            constructors_selected = []; total_cost = 0
             # randomly select 5 unique drivers
-            while len(drivers_selected) < 5:
+            while len(drivers_selected) < self.max_drivers_num:
                 driver = random.choice(list(self.driver_names.keys()))
-                if driver not in drivers_selected:
-                    drivers_selected.append(driver)
+                if driver not in temp:
+                    drivers_selected.append((driver, self.driver_names[driver]))
+                    temp.append(driver)
                     total_cost += np.nanmean(self.db_data[self.driver_names[driver]][driver]["price"])
 
             # randomly select 2 unique constructors
-            while len(constructors_selected) < 2:
+            while len(constructors_selected) < self.max_constructors_num:
                 constructor = random.choice(self.constructor_names)
                 if constructor not in constructors_selected:
                     constructors_selected.append(constructor)
                     total_cost += np.nanmean(self.db_data[constructor]["price"])
-            # print(drivers_selected,constructors_selected,total_cost)
-
-            # drivers_indx = [self.driver_names.index(driver) for driver in drivers_selected]
-            # constructors_indx = [self.constructor_names.index(constructor) for constructor in constructors_selected]
-            # # calculate the total cost of the team
-            # total_cost = sum([self.drivers[index_d]['price'] for index_d in drivers_indx] +
-            #                 [self.constructors[index_c]['price'] for index_c in constructors_indx])
 
             # if the team is within the budget, add it to the population
             if total_cost <= self.budget:
@@ -77,31 +69,40 @@ class ModelGA:
                         'constructors': constructors_selected,
                         'total_cost': total_cost}
                 self.population.append(team)
+                # print(team)
 
     def fitness_function(self, team):
+        team_drivers = team["drivers"]
+        team_constructors = team['constructors']
+        team_cost = team['total_cost']
 
         # Calculate average qualifying, race positions, and free practice positions for the team
-        drivers_indx = [self.driver_names.index(driver) for driver in team['drivers']]
-        constructors_indx = [self.constructor_names.index(constructor) for constructor in team['constructors']]
-            
-        driver_qual = [self.drivers[d]['qualifying_position'] for d in drivers_indx]
-        constructor_qual = [self.constructors[c]['qualifying_position'] for c in constructors_indx]
-        driver_race = [self.drivers[d]['race_position'] for d in drivers_indx]
-        constructor_race = [self.constructors[c]['race_position'] for c in constructors_indx]
-        driver_fp = [self.drivers[d]['curr_week_fp_pos'] for d in drivers_indx]
-        constructor_fp = [self.constructors[c]['curr_week_fp_pos'] for c in constructors_indx]
+        driver_quali_hist = 0; driver_race_hist = 0
+        constructor_quali_hist = 0; constructor_race_hist = 0
+        driver_fp_hist = 0; constructor_fp_hist = 0 
+        for driver_info in team_drivers:
+            driver = driver_info[0]; team = driver_info[1]
+            driver_quali_hist += np.nanmean(self.db_data[team][driver]['quali_hist'])
+            driver_race_hist += np.nanmean(self.db_data[team][driver]['race_hist'])
+            driver_fp_hist += np.nanmean(self.db_data[team][driver]['fp'])
+        
+        for constructor in team_constructors:
+            constructor_quali_hist += np.nanmean(self.db_data[constructor]['quali_hist'])
+            constructor_race_hist += np.nanmean(self.db_data[constructor]['race_hist'])
+            constructor_fp_hist += np.nanmean(self.db_data[constructor]['fp'])
         
         # Calculate the average positions for drivers and constructors
-        avg_driver_qual = sum(driver_qual) / len(driver_qual)
-        avg_constructor_qual = sum(constructor_qual) / len(constructor_qual)
-        avg_driver_race = sum(driver_race) / len(driver_race)
-        avg_constructor_race = sum(constructor_race) / len(constructor_race)
-        avg_driver_fp = sum(driver_fp) / len(driver_fp)
-        avg_constructor_fp = sum(constructor_fp) / len(constructor_fp)
+        avg_driver_qual = driver_quali_hist / self.max_drivers_num
+        avg_driver_race = driver_race_hist / self.max_drivers_num
+        avg_driver_fp = driver_fp_hist / self.max_drivers_num
+        avg_constructor_qual = constructor_quali_hist / self.max_constructors_num
+        avg_constructor_race = constructor_race_hist / self.max_constructors_num
+        avg_constructor_fp = constructor_fp_hist / self.max_constructors_num
     
-        # # Calculate the fitness score using the specified formula
-        fitness_score = (avg_driver_qual + avg_constructor_qual + avg_driver_race + avg_constructor_race + avg_driver_fp + avg_constructor_fp) * team['total_cost']
-        
+        # Calculate the fitness score using the specified formula
+        driver_score = avg_driver_qual + avg_driver_race + avg_driver_fp
+        constructor_score = avg_constructor_qual + avg_constructor_race + avg_constructor_fp
+        fitness_score = (driver_score + constructor_score) * team_cost
         return fitness_score
 
     def tournament_selection(self,fitness_vals):
@@ -117,30 +118,26 @@ class ModelGA:
     def one_point_crossover(self):
         # choose a random index to split the parents
         split_index = random.randint(1, len(self.parent1) - 1)
-
         parent1 = self.parent1['drivers'] + self.parent1['constructors']
         parent2 = self.parent2['drivers'] + self.parent2['constructors']
         
         # create child by combining the first half of parent1 and second half of parent2
-
         child1 = parent1[:split_index] + parent2[split_index:]
         child2 = parent2[:split_index] + parent1[split_index:]
+        
+        total_cost1 = 0
+        for (driver, team) in child1[:self.max_drivers_num]:
+            total_cost1 += np.nanmean(self.db_data[team][driver]["price"])
+        for team in child1[self.max_drivers_num:]:
+            total_cost1 += np.nanmean(self.db_data[team]["price"])
+        
+        total_cost2 = 0
+        for (driver, team) in child2[:self.max_drivers_num]:
+            total_cost2 += np.nanmean(self.db_data[team][driver]["price"])
+        for team in child2[self.max_drivers_num:]:
+            total_cost2 += np.nanmean(self.db_data[team]["price"])
 
-        drivers_indx1 = [self.driver_names.index(driver) for driver in child1[0:5]]
-        constructors_indx1 = [self.constructor_names.index(constructor) for constructor in child1[5:]]
-        
-        drivers_indx2 = [self.driver_names.index(driver) for driver in child2[0:5]]
-        constructors_indx2 = [self.constructor_names.index(constructor) for constructor in child2[5:]]
-
-        # calculate the total cost of the team
-        total_cost1 = sum([self.drivers[index_d]['price'] for index_d in drivers_indx1] +
-                        [self.constructors[index_c]['price'] for index_c in constructors_indx1])
-        
-        
-        total_cost2 = sum([self.drivers[index_d]['price'] for index_d in drivers_indx2] +
-                        [self.constructors[index_c]['price'] for index_c in constructors_indx2])
-        
-        if ((total_cost1 or total_cost2) >= self.budget):
+        if ((total_cost1 or total_cost2) > self.budget):
             self.child1 = self.parent1
             self.child2 = self.parent2
         else:
@@ -152,24 +149,28 @@ class ModelGA:
     
     def mutation(self,child,mut_rate):
         child_gen = False
+        temp = []
         while (child_gen == False):
             if random.random() < mut_rate:
-                if random.random() < 0.8:
+                if random.random() < mut_rate:
                     popped = child['drivers'].pop(random.randint(0,4))
-                    while len(child['drivers']) < 5:
-                        driver = random.choice(self.driver_names)
-                        if driver not in (child['drivers'] or popped):
-                            child['drivers'].append(driver)
+                    temp.append(popped[0])
+                    for (driver, _) in child['drivers']:
+                        temp.append(driver)
+                    while len(child['drivers']) < self.max_drivers_num:
+                        driver = random.choice(list(self.driver_names.keys()))
+                        if driver not in temp:
+                            child['drivers'].append((driver, self.driver_names[driver]))
+                            temp.append(driver)
                 else:
                     popped = child['constructors'].pop(random.randint(0,1))
-                    while len(child['constructors']) < 2:
+                    while len(child['constructors']) < self.max_constructors_num:
                         constructor = random.choice(self.constructor_names)
                         if constructor not in (child['constructors'] or popped):
                             child['constructors'].append(constructor)
-                drivers_indx1 = [self.driver_names.index(driver) for driver in child['drivers']]
-                constructors_indx1 = [self.constructor_names.index(constructor) for constructor in child['constructors']]
-                total_cost = sum([self.drivers[index_d]['price'] for index_d in drivers_indx1] +
-                            [self.constructors[index_c]['price'] for index_c in constructors_indx1])
+                 
+                total_cost = sum([np.nanmean(self.db_data[self.driver_names[driver]][driver]["price"]) for (driver, team) in child['drivers']])
+                total_cost += sum([np.nanmean(self.db_data[team]["price"]) for team in child['constructors']])
                 if(total_cost > self.budget):
                     child_gen = False
                 else:
@@ -180,14 +181,8 @@ class ModelGA:
     # main genetic algorithm function
     def genetic_algorithm(self):
         self.initialize_population()
-        # self.driver_names = [self.drivers[ii]['name'] for ii in range(0,len(self.drivers))]
-        # self.constructor_names = [self.constructors[ii]['name'] for ii in range(0,len(self.constructors))]
-        # self.num_drivers = len(self.driver_names)
-        # self.num_constructors = len(self.constructor_names)
         fitnesses = [self.fitness_function(individual) for individual in self.population]
         best_individual = self.population[fitnesses.index(min(fitnesses))]
-        print(fitnesses,best_individual)
-        sys.exit()
         self.best_team_attr = {}
         for generation in range(self.max_generations):
             print(f"Generation: {generation}")
@@ -217,5 +212,5 @@ class ModelGA:
         plt.show()
 
 if __name__ == '__main__':
-    GA = ModelGA()
+    GA = PreprocessGA()
     GA.genetic_algorithm()
