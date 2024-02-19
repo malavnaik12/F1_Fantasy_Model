@@ -22,6 +22,15 @@ class PreprocessGA:
         with open("database.json","r") as db:
             self.db_data = json.load(db)
             db.close()
+    
+    def get_db_info(self):
+        self.constructor_names = []; self.driver_names = {}
+        for team in list(self.db_data.keys()):
+            team_info = self.db_data[team]
+            self.constructor_names.append(team)
+            for key in team_info.keys():
+                if key not in ['quali_hist', 'race_hist', 'fp', 'price']:
+                    self.driver_names[key] = team
 
     def initialize_population(self):
         """
@@ -37,13 +46,6 @@ class PreprocessGA:
         - population (list): a list of teams, where each team is a dictionary containing
                             information about the drivers, constructors, and total cost
         """
-        self.population = []; self.constructor_names = []; self.driver_names = {}
-        for team in list(self.db_data.keys()):
-            team_info = self.db_data[team]
-            self.constructor_names.append(team)
-            for key in team_info.keys():
-                if key not in ['quali_hist', 'race_hist', 'fp', 'price']:
-                    self.driver_names[key] = team
 
         while len(self.population) < self.population_size:
             drivers_selected = []; #temp = []
@@ -101,7 +103,8 @@ class PreprocessGA:
         # Calculate the fitness score using the specified formula
         driver_score = avg_driver_qual + avg_driver_race + avg_driver_fp
         constructor_score = avg_constructor_qual + avg_constructor_race + avg_constructor_fp
-        fitness_score = (driver_score + constructor_score) * team_cost
+        fitness_score = -(driver_score + constructor_score) * team_cost
+        team['fitness_val'] = fitness_score
         return fitness_score
 
     def tournament_selection(self,fitness_vals):
@@ -115,6 +118,9 @@ class PreprocessGA:
         return self.population[best_index]
 
     def one_point_crossover(self):
+
+        cross_flag = False
+        # while not cross_flag:
         # choose a random index to split the parents
         split_index = random.randint(1, len(self.parent1) - 1)
         parent1 = self.parent1['drivers'] + self.parent1['constructors']
@@ -140,15 +146,21 @@ class PreprocessGA:
             self.child1 = self.parent1
             self.child2 = self.parent2
         else:
-            self.child1 = {'drivers':child1[0:5],'constructors':child1[5:],'total_cost':total_cost1}
-            self.child2 = {'drivers':child2[0:5],'constructors':child2[5:],'total_cost':total_cost2}
-            if ((len(set(self.child1['drivers'])) or len(set(self.child2['drivers'])) != 5)) or (len(set(self.child1['constructors'])) or len(set(self.child2['constructors'])) != 2):
+            if (((total_cost1 or total_cost2) > self.parent1['total_cost']) and ((total_cost1 or total_cost2) > self.parent2['total_cost'])):
+                self.child1 = {'drivers':child1[0:5],'constructors':child1[5:],'total_cost':total_cost1}
+                self.child2 = {'drivers':child2[0:5],'constructors':child2[5:],'total_cost':total_cost2}
+            else:
                 self.child1 = self.parent1
                 self.child2 = self.parent2
+                # cross_flag = True
+                # elif ((len(set(self.child1['drivers'])) or len(set(self.child2['drivers'])) != 5)) or (len(set(self.child1['constructors'])) or len(set(self.child2['constructors'])) != 2):
+                #     self.child1 = self.parent1
+                #     self.child2 = self.parent2
     
     def mutation(self,child,mut_rate):
         child_gen = False
         temp = []
+        count = 0
         while (child_gen == False):
             if random.random() < mut_rate:
                 if random.random() < mut_rate:
@@ -167,11 +179,15 @@ class PreprocessGA:
                         constructor = random.choice(self.constructor_names)
                         if constructor not in (child['constructors'] or popped):
                             child['constructors'].append(constructor)
-                 
+                
                 total_cost = sum([np.nanmean(self.db_data[self.driver_names[driver]][driver]["price"]) for driver in child['drivers']])
                 total_cost += sum([np.nanmean(self.db_data[team]["price"]) for team in child['constructors']])
-                if(total_cost > self.budget):
+                # count+=1
+                # print(child['total_cost'], total_cost,count)
+                if (total_cost > self.budget):
                     child_gen = False
+                # elif (total_cost <= child['total_cost']):
+                #     child_gen = False
                 else:
                     child_gen = True
                     child['total_cost'] = total_cost
@@ -179,36 +195,79 @@ class PreprocessGA:
 
     # main genetic algorithm function
     def genetic_algorithm(self):
-        self.initialize_population()
-        fitnesses = [self.fitness_function(individual) for individual in self.population]
-        best_individual = self.population[fitnesses.index(min(fitnesses))]
+        self.get_db_info()
         self.best_team_attr = {}
+        self.med_team_attr = []
+        self.max_team_attr = {}
         for generation in range(self.max_generations):
-            print(f"Generation: {generation}")
-            next_population = []
+            self.population = []
+            if generation > 0:
+                self.population.append(self.best_individual)
+            self.initialize_population()
+            before_fitnesses = [self.fitness_function(individual) for individual in self.population]
+            print(f"Generation: {generation+1}, Population Size: {len(self.population)}")
+            processed_population = []
             for i in range(self.population_size):
-                self.parent1 = self.tournament_selection(fitnesses)
-                self.parent2 = self.tournament_selection(fitnesses)
                 if random.random() < self.crossover_prob:
+                    self.parent1 = self.tournament_selection(before_fitnesses)
+                    self.parent2 = self.tournament_selection(before_fitnesses)
                     self.one_point_crossover()
+                    if random.random() <= 0.5:
+                        self.child = self.child1
+                    else:
+                        self.child = self.child2
                 else:
-                    self.child1, self.child2 = self.parent1, self.parent2
-                child1 = self.mutation(self.child1, self.mutation_prob)
-                child2 = self.mutation(self.child2, self.mutation_prob)
-                next_population.append(child1)
-                next_population.append(child2)
-            population = next_population
-            self.fitnesses = [self.fitness_function(individual) for individual in population]
-            best_fitness = min(self.fitnesses)
-            best_individual = population[self.fitnesses.index(best_fitness)]
-            self.best_team_attr[best_fitness] = best_individual
-        print(self.best_team_attr[min(self.best_team_attr.keys())])
+                    self.child = self.population[i]
+                # else:
+                #     self.child1, self.child2 = self.parent1, self.parent2
+                child = self.mutation(self.child, self.mutation_prob)
+                # child2 = self.mutation(self.child2, self.mutation_prob)
+                processed_population.append(child)
+                # processed_population.append(child2)
+            after_fitnesses = [self.fitness_function(individual) for individual in processed_population]
+
+            # Population Set Attributes
+            worst_fitness = max(after_fitnesses)
+            worst_individual = processed_population[after_fitnesses.index(worst_fitness)]
+            self.max_team_attr[generation] = worst_individual # Must do: Make this dict update operation based on generation ID, not fitness value
+            self.med_team_attr.append(np.nanmedian(after_fitnesses))
+            self.best_fitness = min(after_fitnesses)
+            self.best_individual = processed_population[after_fitnesses.index(self.best_fitness)]
+            
+            self.best_team_attr[generation] = self.best_individual # Must do: Make this dict update operation based on generation ID, not fitness value
+            
+            self.curr_gen_info(after_fitnesses,curr_gen=generation+1)
+        # for gen in self.max_team_attr.keys():
+        #     fitness = self.max_team_attr[gen]['fitness_value']
+        self.worst_fitness = [self.max_team_attr[gen]['fitness_val'] for gen in self.max_team_attr.keys()]
+        self.best_fitness = [self.best_team_attr[gen]['fitness_val'] for gen in self.best_team_attr.keys()]
+        # print("Worst:", self.max_team_attr[max(self.max_team_attr.keys())])
+        # print("Best:", self.best_team_attr[min(self.best_team_attr.keys())])
         self.plot_fitness()
 
+    def curr_gen_info(self,curr_gen_fitness_vals,curr_gen):
+        if curr_gen%5 == 0:
+            fig, ax = plt.subplots(1,2,figsize=(10, 6))
+            fig.suptitle(f"Current Generation: {curr_gen}")
+            ax[0].plot(curr_gen_fitness_vals)
+            ax[0].plot(curr_gen_fitness_vals.index(self.best_fitness),self.best_fitness,'*')
+
+            ax[1].set_axis_off()
+            ax[1].text(0,0.5,f"Best Team Info:\nDrivers: {[driver for driver in self.best_individual['drivers']]}\nConstructors: {self.best_individual['constructors']}\nTotal Cost: {self.best_individual['total_cost']}")
+            fig.savefig(f"./Plots/individual_plots/fitness_{curr_gen}.png")
+            plt.close(fig)
+
     def plot_fitness(self):
-        plt.figure(1)
-        plt.plot(list(self.best_team_attr.keys()))
-        plt.show()
+        print(len(self.worst_fitness),len(list(self.med_team_attr)),len(self.best_fitness))
+        plt.figure(2)
+        plt.title("Fitness Function Trends per Generation")
+        plt.plot(range(1,self.max_generations+1),self.worst_fitness,color='red',label='Worst')
+        plt.plot(range(1,self.max_generations+1),list(self.med_team_attr),color='blue',label='Median')
+        plt.plot(range(1,self.max_generations+1),self.best_fitness,color='green',label='Best')
+        plt.legend()
+        plt.savefig(f"./Plots/fitness_trends_{self.max_generations}g_{self.population_size}p.png")
+        plt.close()
+        # plt.show()
 
 if __name__ == '__main__':
     GA = PreprocessGA()

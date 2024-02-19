@@ -1,1 +1,3 @@
 venv/*
+Plots/*
+main_GA.py
