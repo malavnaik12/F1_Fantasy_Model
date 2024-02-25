@@ -1,0 +1,155 @@
+
+Generation: 1
+
+	Drivers: ['tsunoda', 'verstappen', 'zhou', 'albon', 'ocon']
+
+	Constructors: ['vcarb', 'redbull']
+
+	Team Cost: 95.6
+
+	Fitness: -6711.12
+
+            
+Generation: 2
+
+	Drivers: ['ocon', 'albon', 'zhou', 'piastri', 'russell']
+
+	Constructors: ['vcarb', 'redbull']
+
+	Team Cost: 95.4
+
+	Fitness: -6582.6
+
+            
+Generation: 3
+
+	Drivers: ['norris', 'zhou', 'hamilton', 'russell', 'tsunoda']
+
+	Constructors: ['vcarb', 'alpine']
+
+	Team Cost: 92.4
+
+	Fitness: -7567.560000000001
+
+            
+Generation: 4
+
+	Drivers: ['verstappen', 'piastri', 'perez', 'riccardo', 'tsunoda']
+
+	Constructors: ['alfa', 'williams']
+
+	Team Cost: 99.69999999999999
+
+	Fitness: -7746.69
+
+            
+Generation: 5
+
+	Drivers: ['sargenat', 'zhou', 'verstappen', 'russell', 'albon']
+
+	Constructors: ['williams', 'vcarb']
+
+	Team Cost: 82.5
+
+	Fitness: -7697.25
+
+            
+Generation: 6
+
+	Drivers: ['alonzo', 'magnussen', 'hamilton', 'hulkenburg', 'tsunoda']
+
+	Constructors: ['vcarb', 'redbull']
+
+	Team Cost: 87.3
+
+	Fitness: -6390.36
+
+            
+Generation: 7
+
+	Drivers: ['sargenat', 'magnussen', 'bottas', 'alonzo', 'verstappen']
+
+	Constructors: ['vcarb', 'williams']
+
+	Team Cost: 74.1
+
+	Fitness: -6513.39
+
+            
+Generation: 8
+
+	Drivers: ['tsunoda', 'perez', 'russell', 'riccardo', 'bottas']
+
+	Constructors: ['aston_martin', 'vcarb']
+
+	Team Cost: 85.30000000000001
+
+	Fitness: -6627.810000000001
+
+            
+Generation: 9
+
+	Drivers: ['albon', 'hamilton', 'magnussen', 'perez', 'tsunoda']
+
+	Constructors: ['williams', 'mclaren']
+
+	Team Cost: 90.8
+
+	Fitness: -7055.16
+
+            
+Generation: 10
+
+	Drivers: ['albon', 'magnussen', 'hamilton', 'stroll', 'tsunoda']
+
+	Constructors: ['vcarb', 'mercedes']
+
+	Team Cost: 79.1
+
+	Fitness: -7000.349999999999
+
+            
+Generation: 11
+
+	Drivers: ['alonzo', 'tsunoda', 'verstappen', 'albon', 'piastri']
+
+	Constructors: ['aston_martin', 'vcarb']
+
+	Team Cost: 97.1
+
+	Fitness: -6670.7699999999995
+
+            
+Generation: 12
+
+	Drivers: ['tsunoda', 'hamilton', 'russell', 'sargenat', 'leclerc']
+
+	Constructors: ['vcarb', 'mercedes']
+
+	Team Cost: 99.30000000000001
+
+	Fitness: -8311.410000000002
+
+            
+Generation: 13
+
+	Drivers: ['riccardo', 'russell', 'leclerc', 'hulkenburg', 'norris']
+
+	Constructors: ['haas', 'vcarb']
+
+	Team Cost: 91.10000000000001
+
+	Fitness: -7734.390000000001
+
+            
+Generation: 14
+
+	Drivers: ['stroll', 'russell', 'tsunoda', 'hamilton', 'sargenat']
+
+	Constructors: ['vcarb', 'redbull']
+
+	Team Cost: 98.0
+
+	Fitness: -7173.6
+
+            

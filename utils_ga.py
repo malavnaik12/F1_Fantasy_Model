@@ -7,7 +7,20 @@ import os
 
 class PreprocessGA:
     def __init__(self):
-        with open("inputs.yaml", "r") as file:
+        pass
+    
+    def initalize(self):
+        """
+        Initialize various inputs from the inputs.yaml, load the database into memory, and create the output plots folder.
+
+        Args:
+            None
+        
+        Returns: Loads data into class constructor
+        - db_data (dict): The main source of the drivers and constructors information
+        - The inputs from the inputs.yaml (float or int) 
+        """
+        with open("./input_files/inputs.yaml", "r") as file:
             inputs = yaml.safe_load(file)
             self.budget = inputs["budget"]
             self.max_generations = inputs["max_gens"]
@@ -20,7 +33,7 @@ class PreprocessGA:
             self.max_constructors_num = inputs["max_constructors"]
             file.close()
         
-        with open("database.json","r") as db:
+        with open("./database_files/database.json","r") as db:
             self.db_data = json.load(db)
             db.close()
         
@@ -30,9 +43,11 @@ class PreprocessGA:
         self.max_team_attr = {}
 
         # Output Plots Folder Initialization
-        self.ind_plot_folder = "./Plots/individual_plots/"
+        self.ind_folder = "individual_files"
         os.makedirs("./Plots/",exist_ok=True)
-        os.makedirs(self.ind_plot_folder,exist_ok=True)
+        os.makedirs(f"./Plots/{self.ind_folder}/",exist_ok=True)
+        os.makedirs("./history_files/",exist_ok=True)
+        os.makedirs(f"./history_files/{self.ind_folder}/",exist_ok=True)
     
     def get_db_info(self, db_data, constructors = [], drivers = {}):
         """
@@ -44,7 +59,6 @@ class PreprocessGA:
         - constructors (list): An empty list containing information about the constructor names
 
         Returns:
-
         - drivers (dict): A populated dictionary housing driver names and corresponding team that the driver belongs to
         - constructors (list): A populated list containing the constructor names
         """
@@ -269,48 +283,8 @@ class PreprocessGA:
                     team['total_cost'] = total_cost
         return team
 
-    # main genetic algorithm function
-    def genetic_algorithm(self):
-        self.constructor_names, self.driver_names = self.get_db_info(db_data=self.db_data)
-        for generation in range(self.max_generations):
-            population = []
-            if random.random() < self.elitism_prob*(generation/self.max_generations):
-                if generation > 0:
-                    population.append(self.best_team_attr[generation-1])
-                    processing_indx = 1
-            else:
-                processing_indx = 0
-            population = self.initialize_population(population, db_data=self.db_data)
-            before_fitnesses = [self.fitness_function(individual,db_data=self.db_data) for individual in population]
-            processed_population = []
-            if processing_indx == 1:
-                processed_population.append(population[0])
-            print(f"Generation: {generation+1}, Population Size: {len(population)}")
-            for i in range(processing_indx, self.population_size):
-                if random.random() < self.crossover_prob:
-                    parent1_index = self.tournament_selection(before_fitnesses)
-                    parent2_index = self.tournament_selection(before_fitnesses)
-                    parent1 = population[parent1_index]
-                    parent2 = population[parent2_index]
-                    child = self.one_point_crossover(team1 = parent1, team2 = parent2, db_data=self.db_data)
-                else:
-                    child = population[i]
-                mutated_child = self.mutation(child, self.mutation_prob, db_data=self.db_data)
-                processed_population.append(mutated_child)
-            after_fitnesses = [self.fitness_function(individual, db_data=self.db_data) for individual in processed_population]
-
-            # Population Set Attributes
-            self.max_team_attr[generation] = processed_population[after_fitnesses.index(max(after_fitnesses))]
-            self.med_team_attr.append(np.nanmedian(after_fitnesses))            
-            self.best_team_attr[generation] = processed_population[after_fitnesses.index(min(after_fitnesses))]
-            self.curr_gen_info(after_fitnesses,curr_gen=generation)
-            
-        self.worst_fitness = [self.max_team_attr[gen]['fitness_val'] for gen in self.max_team_attr.keys()]
-        self.best_fitness = [self.best_team_attr[gen]['fitness_val'] for gen in self.best_team_attr.keys()]
-        self.plot_fitness()
-
     def curr_gen_info(self,curr_gen_fitness_vals,curr_gen):
-        save_folder = f"{self.ind_plot_folder}{self.max_generations}g_{self.population_size}p/"
+        save_folder = f"./Plots/{self.ind_folder}/{self.max_generations}g_{self.population_size}p/"
         os.makedirs(save_folder,exist_ok=True)
         if (curr_gen+1)%5 == 0:
             fig, ax = plt.subplots(1,2,figsize=(10, 6))
@@ -337,6 +311,66 @@ class PreprocessGA:
         plt.legend()
         plt.savefig(f"./Plots/fitness_trends_{self.max_generations}g_{self.population_size}p.png")
         plt.close()
+
+    # main genetic algorithm function
+    def genetic_algorithm(self):
+        """
+        The main function carrying out all Genetic Algorithm operations
+
+        Args:
+            None
+        
+        Returns:
+            None        
+        """
+        self.initalize()
+        best_team_file = open(f"./history_files/best_team.txt","w")
+        self.constructor_names, self.driver_names = self.get_db_info(db_data=self.db_data)
+        for generation in range(self.max_generations):
+            population = []
+            if random.random() < self.elitism_prob*(generation/self.max_generations):
+                if generation > 0:
+                    population.append(self.best_team_attr[generation-1])
+                    processing_indx = 1
+            else:
+                processing_indx = 0
+            population = self.initialize_population(population, db_data=self.db_data)
+            before_fitnesses = [self.fitness_function(individual,db_data=self.db_data) for individual in population]
+            processed_population = []
+            if processing_indx == 1:
+                processed_population.append(population[0])
+            print(f"Generation: {generation+1}, Population Size: {len(population)}")
+            for i in range(processing_indx, self.population_size):
+                if random.random() < self.crossover_prob:
+                    parent1_index = self.tournament_selection(before_fitnesses)
+                    parent2_index = self.tournament_selection(before_fitnesses)
+                    parent1 = population[parent1_index]
+                    parent2 = population[parent2_index]
+                    child = self.one_point_crossover(team1 = parent1, team2 = parent2, db_data=self.db_data)
+                else:
+                    child = population[i]
+                mutated_child = self.mutation(child, self.mutation_prob/(generation+1), db_data=self.db_data)
+                processed_population.append(mutated_child)
+            after_fitnesses = [self.fitness_function(individual, db_data=self.db_data) for individual in processed_population]
+
+            # Population Set Attributes
+            self.max_team_attr[generation] = processed_population[after_fitnesses.index(max(after_fitnesses))]
+            self.med_team_attr.append(np.nanmedian(after_fitnesses))            
+            self.best_team_attr[generation] = processed_population[after_fitnesses.index(min(after_fitnesses))]
+            self.curr_gen_info(after_fitnesses,curr_gen=generation)
+            best_team_file.write(f"""
+Generation: {generation+1}\n
+\tDrivers: {self.best_team_attr[generation]['drivers']}\n
+\tConstructors: {self.best_team_attr[generation]['constructors']}\n
+\tTeam Cost: {self.best_team_attr[generation]['total_cost']}\n
+\tFitness: {self.best_team_attr[generation]['fitness_val']}\n
+            """)
+            # input()
+            
+        self.worst_fitness = [self.max_team_attr[gen]['fitness_val'] for gen in self.max_team_attr.keys()]
+        self.best_fitness = [self.best_team_attr[gen]['fitness_val'] for gen in self.best_team_attr.keys()]
+        self.plot_fitness()
+        best_team_file.close()
 
 if __name__ == '__main__':
     GA = PreprocessGA()

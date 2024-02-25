@@ -2,7 +2,6 @@ import yaml
 import json
 import os
 import shutil
-import time
 
 class UpdateData:
     def __init__(self):
@@ -11,9 +10,9 @@ class UpdateData:
         self.warning_fp = False
         self.warning_quali = False
         self.warning_race = False
-        self.dir_files = os.listdir(os.getcwd())
+        self.dir_files = os.listdir(os.getcwd()+"\\database_files\\")
         if "database.json" not in self.dir_files:    
-            with open("data_structure.yaml", "r") as file:
+            with open("./input_files/data_structure.yaml", "r") as file:
                 inputs = yaml.safe_load(file)
                 data_attrs = inputs["attributes"]
                 team_info = inputs["team_data"]
@@ -27,26 +26,27 @@ class UpdateData:
                         drivers[driver] = data_attrs
                         teams[team][driver] = data_attrs
             
-            with open("database.json","w") as db_file:
+            with open("./database_files/database.json","w") as db_file:
                 json.dump(teams, db_file, indent=2)
         else:
-            with open("database.json") as db_file:
+            with open("./database_files/database.json") as db_file:
                 try:
                     self.teams = json.load(db_file)
                     db_file.close()
                 except Exception:
                     print(f"\nPotential Empty \33[3mdatabase.json\033[0m file detected.\n  Delete the \33[3mdatabase.json\033[0m file from the folder and re-execute the \33[3mdatabase.py\033[0m")
                     # pass
+    
     def get_data(self):
-        with open("positions.yaml", "r") as data_file:
+        with open("./input_files/positions.yaml", "r") as data_file:
             self.curr_week_info = yaml.safe_load(data_file)
             self.data_session = self.curr_week_info["session_info"]["session_type"]
             self.curr_week_positions = self.curr_week_info["current_week"]
             data_file.close()
-        with open("inputs.yaml","r") as inputs_file:
+        with open("./input_files/inputs.yaml","r") as inputs_file:
             self.curr_week_num = yaml.safe_load(inputs_file)["race_week_num"]
             inputs_file.close()
-        with open("prices.yaml","r") as price_file:
+        with open("./input_files/prices.yaml","r") as price_file:
             self.prices_info = yaml.safe_load(price_file)
             self.budget = self.prices_info["weekly_budget"]
             self.prices = self.prices_info["current_week"]
@@ -153,15 +153,16 @@ class UpdateData:
                         #         self.warning_race = True
             
             working_dir = os.getcwd()
-            database_file = "\\database.json"
-            shutil.move(working_dir+database_file,working_dir+'\\database_old.json')
-            with open("database_update.json","w") as db_file:
+            database_file = "\\database_files\\database.json"
+            shutil.move(working_dir+database_file,working_dir+'\\database_files\\database_old.json')
+            with open("./database_files/database_update.json","w") as db_file:
                 json.dump(self.teams, db_file, indent=2)
-            shutil.move(working_dir+"\\database_update.json",working_dir+database_file)
+            shutil.move(working_dir+"\\database_files\\database_update.json",working_dir+database_file)
             
         except:
             raise Exception(f"There was an issue in\33[3mdatabase.py\033[0m.\n  Ensure your inputs in \33[3minputs.yaml\033[0m, \33[3mprices.yaml\033[0m, and \33[3mpositions.yaml\033[0m are correct")
             # pass
+    
     def update_data(self):
         # Move the override code to this function
         pass
@@ -171,17 +172,12 @@ class UpdateData:
         pass
 
     def main(self):
-        # self.__init__()
-        # starttime = time.time()
         try:
             self.get_data()
             self.post_data()
-        #     pass
         except AttributeError:
             print(f"Message from \33[3mdatabase.py\033[0m.\n The database file, \33[3mdatabase.json\033[0m, is created. Re-run the \33[3mdatabase.py\033[0m to start populating \33[3mdatabase.json\033[0m file.")
-            # pass
-        # currtime = time.time()
-        # print(currtime-starttime)
+
 if __name__ == '__main__':
     db_gen = UpdateData()
     db_gen.main()

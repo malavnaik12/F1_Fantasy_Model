@@ -1,7 +1,7 @@
 max_gens: 150
 pop_size: 50
 crossover: 0.8
-mutation: 0.05
+mutation: 1
 elitism: 1
 budget: 100
 tournament_size: 45
