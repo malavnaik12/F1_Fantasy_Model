@@ -1,9 +1,10 @@
-max_gens: 100
-pop_size: 20
+max_gens: 150
+pop_size: 50
 crossover: 0.8
 mutation: 0.05
+elitism: 1
 budget: 100
-tournament_size: 15
+tournament_size: 45
 completed_races: 0
 race_week_num: 1
 max_drivers: 5

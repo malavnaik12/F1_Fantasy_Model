@@ -15,6 +15,7 @@ class PreprocessGA:
             self.tournament_size = inputs["tournament_size"]
             self.crossover_prob = inputs["crossover"]
             self.mutation_prob = inputs["mutation"]
+            self.elitism_prob = inputs["elitism"]
             self.max_drivers_num = inputs["max_drivers"]
             self.max_constructors_num = inputs["max_constructors"]
             file.close()
@@ -168,18 +169,19 @@ class PreprocessGA:
         
         return best_index # Return the best individual from the tournament
 
-    def one_point_crossover(self, team1, team2):
+    def one_point_crossover(self, team1, team2, db_data):
         """
         If invoked, create children teams based on the two parent teams supplied in function input.
         The goal here is to create two children teams that may better tend towards the desired team budget while also yielding better fitness than the parents.
 
         Args:
         - db_data (dict): A dictionary containing raw data from database.json
-        - team (dict): A dict containing the driver, constructor, and cost information for a given population individual
-
+        - team1 (dict): One of the parent teams, selected from tournament_selection, a dict containing the driver, constructor, and cost information for a given population individual
+        - team2 (dict): The other parent team, selected from tournament_selection, a dict containing the driver, constructor, and cost information for a given population individual
+        
         Returns:
-        - fitness_score (float): The fitness score of a supplied team. 
-                                - The value of the fitness_score is multiplied by -1, the lower the value, the better the quality of the team.
+        - child (dict): The resulting child team created based on crossover using the supplied two parents
+                        - A dict containing the driver, constructor, and cost information for a given population individual
         """
 
         # choose a random index to split the parents
@@ -193,102 +195,116 @@ class PreprocessGA:
         
         total_cost1 = 0
         for driver in child1[:self.max_drivers_num]:
-            total_cost1 += np.nanmean(self.db_data[self.driver_names[driver]][driver]["price"])
+            total_cost1 += np.nanmean(db_data[self.driver_names[driver]][driver]["price"])
         for team in child1[self.max_drivers_num:]:
-            total_cost1 += np.nanmean(self.db_data[team]["price"])
+            total_cost1 += np.nanmean(db_data[team]["price"])
         
         total_cost2 = 0
         for driver in child2[:self.max_drivers_num]:
-            total_cost2 += np.nanmean(self.db_data[self.driver_names[driver]][driver]["price"])
+            total_cost2 += np.nanmean(db_data[self.driver_names[driver]][driver]["price"])
         for team in child2[self.max_drivers_num:]:
-            total_cost2 += np.nanmean(self.db_data[team]["price"])
-
+            total_cost2 += np.nanmean(db_data[team]["price"])
+        
         if ((total_cost1 or total_cost2) > self.budget):
             out_child1 = team1
             out_child2 = team2
         else:
-            if (((total_cost1 or total_cost2) > team1['total_cost']) and ((total_cost1 or total_cost2) > team2['total_cost'])):
-                out_child1 = {'drivers':child1[0:5],'constructors':child1[5:],'total_cost':total_cost1}
-                out_child2 = {'drivers':child2[0:5],'constructors':child2[5:],'total_cost':total_cost2}
-            else:
+            out_child1 = {'drivers':child1[0:5],'constructors':child1[5:],'total_cost':total_cost1}
+            out_child2 = {'drivers':child2[0:5],'constructors':child2[5:],'total_cost':total_cost2}
+            self.fitness_function(out_child1, db_data=db_data)
+            self.fitness_function(out_child2, db_data=db_data)
+            if (((out_child1['fitness_val'] or out_child2['fitness_val']) >= team1['fitness_val']) and ((out_child1['fitness_val'] or out_child2['fitness_val']) >= team2['fitness_val'])):
                 out_child1 = team1
                 out_child2 = team2
-        return out_child1, out_child2
+        if out_child1['fitness_val'] <= out_child2['fitness_val']:
+            child = out_child1
+        else:
+            child = out_child2
+        return child
     
-    def mutation(self,child,mut_rate):
-        child_gen = False
+    def mutation(self,team,mut_rate,db_data):
+        """
+        If invoked, mutate supplied team.
+        The goal here is to randomly mutate the drivers or constructors and create a mutated team that has a better fitness value than the supplied team.
+
+        Args:
+        - db_data (dict): A dictionary containing raw data from database.json
+        - mut_rate (float): A float value, to be used to assess if supplied team should undergo any mutation
+        - team (dict): A dict containing the driver, constructor, and cost information for a given population individual to be mutated
+
+        Returns:
+        - team (dict): The mutated team, a dict containing the driver, constructor, and cost information for a given population individual to be mutated
+        """
+
+        team_gen = False
         temp = []
-        count = 0
-        while (child_gen == False):
+        old_team_fitness = team['fitness_val']
+        while (team_gen == False):
             if random.random() < mut_rate:
                 if random.random() < mut_rate:
-                    popped = child['drivers'].pop(random.randint(0,4))
+                    popped = team['drivers'].pop(random.randint(0,4))
                     temp.append(popped)
-                    for driver in child['drivers']:
+                    for driver in team['drivers']:
                         temp.append(driver)
-                    while len(child['drivers']) < self.max_drivers_num:
+                    while len(team['drivers']) < self.max_drivers_num:
                         driver = random.choice(list(self.driver_names.keys()))
                         if driver not in temp:
-                            child['drivers'].append(driver)
+                            team['drivers'].append(driver)
                             temp.append(driver)
                 else:
-                    popped = child['constructors'].pop(random.randint(0,1))
-                    while len(child['constructors']) < self.max_constructors_num:
+                    popped = team['constructors'].pop(random.randint(0,1))
+                    while len(team['constructors']) < self.max_constructors_num:
                         constructor = random.choice(self.constructor_names)
-                        if constructor not in (child['constructors'] or popped):
-                            child['constructors'].append(constructor)
-                total_cost = sum([np.nanmean(self.db_data[self.driver_names[driver]][driver]["price"]) for driver in child['drivers']])
-                total_cost += sum([np.nanmean(self.db_data[team]["price"]) for team in child['constructors']])
-                
+                        if constructor not in (team['constructors'] or popped):
+                            team['constructors'].append(constructor)
+                total_cost = sum([np.nanmean(db_data[self.driver_names[driver]][driver]["price"]) for driver in team['drivers']])
+                total_cost += sum([np.nanmean(db_data[team]["price"]) for team in team['constructors']])
+
                 if (total_cost > self.budget):
-                    child_gen = False
+                    team_gen = False
+                elif (team['fitness_val'] < old_team_fitness):
+                    team_gen = True
                 else:
-                    child_gen = True
-                    child['total_cost'] = total_cost
-        return child
+                    team_gen = True
+                    team['total_cost'] = total_cost
+        return team
 
     # main genetic algorithm function
     def genetic_algorithm(self):
         self.constructor_names, self.driver_names = self.get_db_info(db_data=self.db_data)
         for generation in range(self.max_generations):
             population = []
-            if generation > 0:
-                population.append(self.best_individual)
-                processing_indx = 1
+            if random.random() < self.elitism_prob*(generation/self.max_generations):
+                if generation > 0:
+                    population.append(self.best_team_attr[generation-1])
+                    processing_indx = 1
             else:
                 processing_indx = 0
             population = self.initialize_population(population, db_data=self.db_data)
             before_fitnesses = [self.fitness_function(individual,db_data=self.db_data) for individual in population]
-            print(f"Generation: {generation+1}, Population Size: {len(population)}")
             processed_population = []
+            if processing_indx == 1:
+                processed_population.append(population[0])
+            print(f"Generation: {generation+1}, Population Size: {len(population)}")
             for i in range(processing_indx, self.population_size):
                 if random.random() < self.crossover_prob:
                     parent1_index = self.tournament_selection(before_fitnesses)
                     parent2_index = self.tournament_selection(before_fitnesses)
-                    self.parent1 = population[parent1_index]
-                    self.parent2 = population[parent2_index]
-                    child1, child2 = self.one_point_crossover(team1 = self.parent1, team2 = self.parent2)
-                    if child1['total_cost'] >= child2['total_cost']:
-                        child = child1
-                    else:
-                        child = child2
+                    parent1 = population[parent1_index]
+                    parent2 = population[parent2_index]
+                    child = self.one_point_crossover(team1 = parent1, team2 = parent2, db_data=self.db_data)
                 else:
                     child = population[i]
-                mutated_child = self.mutation(child, self.mutation_prob)
+                mutated_child = self.mutation(child, self.mutation_prob, db_data=self.db_data)
                 processed_population.append(mutated_child)
             after_fitnesses = [self.fitness_function(individual, db_data=self.db_data) for individual in processed_population]
 
             # Population Set Attributes
-            worst_fitness = max(after_fitnesses)
-            worst_individual = processed_population[after_fitnesses.index(worst_fitness)]
-            self.max_team_attr[generation] = worst_individual
-            self.med_team_attr.append(np.nanmedian(after_fitnesses))
-            self.best_fitness = min(after_fitnesses)
-            self.best_individual = processed_population[after_fitnesses.index(self.best_fitness)]
+            self.max_team_attr[generation] = processed_population[after_fitnesses.index(max(after_fitnesses))]
+            self.med_team_attr.append(np.nanmedian(after_fitnesses))            
+            self.best_team_attr[generation] = processed_population[after_fitnesses.index(min(after_fitnesses))]
+            self.curr_gen_info(after_fitnesses,curr_gen=generation)
             
-            self.best_team_attr[generation] = self.best_individual
-            
-            self.curr_gen_info(after_fitnesses,curr_gen=generation+1)
         self.worst_fitness = [self.max_team_attr[gen]['fitness_val'] for gen in self.max_team_attr.keys()]
         self.best_fitness = [self.best_team_attr[gen]['fitness_val'] for gen in self.best_team_attr.keys()]
         self.plot_fitness()
@@ -296,15 +312,20 @@ class PreprocessGA:
     def curr_gen_info(self,curr_gen_fitness_vals,curr_gen):
         save_folder = f"{self.ind_plot_folder}{self.max_generations}g_{self.population_size}p/"
         os.makedirs(save_folder,exist_ok=True)
-        if curr_gen%5 == 0:
+        if (curr_gen+1)%5 == 0:
             fig, ax = plt.subplots(1,2,figsize=(10, 6))
-            fig.suptitle(f"Current Generation: {curr_gen}")
-            ax[0].plot(curr_gen_fitness_vals)
-            ax[0].plot(curr_gen_fitness_vals.index(self.best_fitness),self.best_fitness,'*')
+            fig.suptitle(f"Current Generation: {curr_gen+1}")
+            ax[0].plot(range(1,self.population_size+1),curr_gen_fitness_vals)
+            ax[0].plot(curr_gen_fitness_vals.index(min(curr_gen_fitness_vals))+1,min(curr_gen_fitness_vals),'*')
 
             ax[1].set_axis_off()
-            ax[1].text(0,0.5,f"Best Team Info:\nDrivers: {[driver for driver in self.best_individual['drivers']]}\nConstructors: {self.best_individual['constructors']}\nTotal Cost: {self.best_individual['total_cost']}")
-            fig.savefig(f"{save_folder}fitness_{curr_gen}.png")
+            ax[1].text(-0.5,0.5,f"""
+                                Best Team Info:\n
+                                Drivers: {self.best_team_attr[curr_gen]['drivers']}\n
+                                Constructors: {self.best_team_attr[curr_gen]['constructors']}\n
+                                Total Cost: {self.best_team_attr[curr_gen]['total_cost']}
+                                """)
+            fig.savefig(f"{save_folder}fitness_{curr_gen+1}.png")
             plt.close(fig)
 
     def plot_fitness(self):
