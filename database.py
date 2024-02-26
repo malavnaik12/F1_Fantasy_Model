@@ -2,6 +2,7 @@ import yaml
 import json
 import os
 import shutil
+import database_files.create_database as create_db_file
 
 class UpdateData:
     def __init__(self):
@@ -11,32 +12,15 @@ class UpdateData:
         self.warning_quali = False
         self.warning_race = False
         self.dir_files = os.listdir(os.getcwd()+"\\database_files\\")
-        if "database.json" not in self.dir_files:    
-            with open("./input_files/data_structure.yaml", "r") as file:
-                inputs = yaml.safe_load(file)
-                data_attrs = inputs["attributes"]
-                team_info = inputs["team_data"]
-                team_names = list(team_info.keys())
-                teams = {key: {} for key in team_names}
-                for team in list(teams.keys()):
-                    for attribute in list(data_attrs.keys()):
-                        teams[team][attribute] = []
-                    drivers = team_info[team]
-                    for driver in list(drivers.keys()):
-                        drivers[driver] = data_attrs
-                        teams[team][driver] = data_attrs
-            
-            with open("./database_files/database.json","w") as db_file:
-                json.dump(teams, db_file, indent=2)
-        else:
-            with open("./database_files/database.json") as db_file:
-                try:
-                    self.teams = json.load(db_file)
-                    db_file.close()
-                except Exception:
-                    print(f"\nPotential Empty \33[3mdatabase.json\033[0m file detected.\n  Delete the \33[3mdatabase.json\033[0m file from the folder and re-execute the \33[3mdatabase.py\033[0m")
-                    # pass
-    
+        if "database.json" not in self.dir_files:
+            create_db_file.main()
+        with open("./database_files/database.json") as db_file:
+            try:
+                self.teams = json.load(db_file)
+                db_file.close()
+            except Exception:
+                print(f"\nPotential Empty \33[3mdatabase.json\033[0m file detected.\n  Delete the \33[3mdatabase.json\033[0m file from the folder and re-execute the \33[3mdatabase.py\033[0m")
+        
     def get_data(self):
         with open("./input_files/positions.yaml", "r") as data_file:
             self.curr_week_info = yaml.safe_load(data_file)
@@ -160,7 +144,7 @@ class UpdateData:
             shutil.move(working_dir+"\\database_files\\database_update.json",working_dir+database_file)
             
         except:
-            raise Exception(f"There was an issue in\33[3mdatabase.py\033[0m.\n  Ensure your inputs in \33[3minputs.yaml\033[0m, \33[3mprices.yaml\033[0m, and \33[3mpositions.yaml\033[0m are correct")
+            raise Exception(f"There was an issue in \33[3mdatabase.py\033[0m.\n  Ensure your inputs in \33[3minputs.yaml\033[0m, \33[3mprices.yaml\033[0m, and \33[3mpositions.yaml\033[0m are correct")
             # pass
     
     def update_data(self):

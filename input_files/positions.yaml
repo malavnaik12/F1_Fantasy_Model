@@ -1,5 +1,5 @@
 session_info:
-  session_type: 'quali'
+  session_type: 'fp'
   session_num: 3
   fp_override: true
   quali_override: true
@@ -23,7 +23,7 @@ current_week:
   mercedes:
     hamilton: 11
     russell: 12
-  alfa:
+  sauber:
     bottas: 13
     zhou: 14
   haas:
@@ -32,6 +32,6 @@ current_week:
   williams:
     albon: 17
     sargenat: 18
-  vcarb:
+  rb:
     riccardo: 19
     tsunoda: 20

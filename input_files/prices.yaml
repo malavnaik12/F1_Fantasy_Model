@@ -26,7 +26,7 @@ current_week:
     constructor: 20.1
     hamilton: 19.3
     russell: 18.8
-  alfa:
+  sauber:
     constructor: 6.6
     bottas: 6.6
     zhou: 6.4
@@ -38,7 +38,7 @@ current_week:
     constructor: 6.3
     albon: 7
     sargenat: 5.5
-  vcarb:
+  rb:
     constructor: 8.5
     riccardo: 9
     tsunoda: 8

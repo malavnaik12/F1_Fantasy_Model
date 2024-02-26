@@ -22,7 +22,7 @@ team_data:
   mercedes:
     hamilton: {}
     russell: {}
-  alfa:
+  sauber:
     bottas: {}
     zhou: {}
   haas:
@@ -31,6 +31,6 @@ team_data:
   williams:
     albon: {}
     sargenat: {}
-  vcarb:
+  rb:
     riccardo: {}
     tsunoda: {}

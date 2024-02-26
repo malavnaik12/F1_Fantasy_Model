@@ -3,12 +3,8 @@
     "quali_hist": [
       2.5
     ],
-    "race_hist": [
-      2.5
-    ],
+    "race_hist": [],
     "fp": [
-      2.5,
-      2.5,
       2.5
     ],
     "price": [
@@ -18,12 +14,8 @@
       "quali_hist": [
         2
       ],
-      "race_hist": [
-        2
-      ],
+      "race_hist": [],
       "fp": [
-        2,
-        2,
         2
       ],
       "price": [
@@ -34,12 +26,8 @@
       "quali_hist": [
         3
       ],
-      "race_hist": [
-        3
-      ],
+      "race_hist": [],
       "fp": [
-        3,
-        3,
         3
       ],
       "price": [
@@ -51,12 +39,8 @@
     "quali_hist": [
       2.5
     ],
-    "race_hist": [
-      2.5
-    ],
+    "race_hist": [],
     "fp": [
-      2.5,
-      2.5,
       2.5
     ],
     "price": [
@@ -66,12 +50,8 @@
       "quali_hist": [
         1
       ],
-      "race_hist": [
-        1
-      ],
+      "race_hist": [],
       "fp": [
-        1,
-        1,
         1
       ],
       "price": [
@@ -82,12 +62,8 @@
       "quali_hist": [
         4
       ],
-      "race_hist": [
-        4
-      ],
+      "race_hist": [],
       "fp": [
-        4,
-        4,
         4
       ],
       "price": [
@@ -99,12 +75,8 @@
     "quali_hist": [
       5.5
     ],
-    "race_hist": [
-      5.5
-    ],
+    "race_hist": [],
     "fp": [
-      5.5,
-      5.5,
       5.5
     ],
     "price": [
@@ -114,12 +86,8 @@
       "quali_hist": [
         5
       ],
-      "race_hist": [
-        5
-      ],
+      "race_hist": [],
       "fp": [
-        5,
-        5,
         5
       ],
       "price": [
@@ -130,12 +98,8 @@
       "quali_hist": [
         6
       ],
-      "race_hist": [
-        6
-      ],
+      "race_hist": [],
       "fp": [
-        6,
-        6,
         6
       ],
       "price": [
@@ -147,12 +111,8 @@
     "quali_hist": [
       7.5
     ],
-    "race_hist": [
-      7.5
-    ],
+    "race_hist": [],
     "fp": [
-      7.5,
-      7.5,
       7.5
     ],
     "price": [
@@ -162,12 +122,8 @@
       "quali_hist": [
         7
       ],
-      "race_hist": [
-        7
-      ],
+      "race_hist": [],
       "fp": [
-        7,
-        7,
         7
       ],
       "price": [
@@ -178,12 +134,8 @@
       "quali_hist": [
         8
       ],
-      "race_hist": [
-        8
-      ],
+      "race_hist": [],
       "fp": [
-        8,
-        8,
         8
       ],
       "price": [
@@ -195,12 +147,8 @@
     "quali_hist": [
       9.5
     ],
-    "race_hist": [
-      9.5
-    ],
+    "race_hist": [],
     "fp": [
-      9.5,
-      9.5,
       9.5
     ],
     "price": [
@@ -210,12 +158,8 @@
       "quali_hist": [
         9
       ],
-      "race_hist": [
-        9
-      ],
+      "race_hist": [],
       "fp": [
-        9,
-        9,
         9
       ],
       "price": [
@@ -226,12 +170,8 @@
       "quali_hist": [
         10
       ],
-      "race_hist": [
-        10
-      ],
+      "race_hist": [],
       "fp": [
-        10,
-        10,
         10
       ],
       "price": [
@@ -243,12 +183,8 @@
     "quali_hist": [
       11.5
     ],
-    "race_hist": [
-      11.5
-    ],
+    "race_hist": [],
     "fp": [
-      11.5,
-      11.5,
       11.5
     ],
     "price": [
@@ -258,12 +194,8 @@
       "quali_hist": [
         11
       ],
-      "race_hist": [
-        11
-      ],
+      "race_hist": [],
       "fp": [
-        11,
-        11,
         11
       ],
       "price": [
@@ -274,12 +206,8 @@
       "quali_hist": [
         12
       ],
-      "race_hist": [
-        12
-      ],
+      "race_hist": [],
       "fp": [
-        12,
-        12,
         12
       ],
       "price": [
@@ -287,16 +215,12 @@
       ]
     }
   },
-  "alfa": {
+  "sauber": {
     "quali_hist": [
       13.5
     ],
-    "race_hist": [
-      13.5
-    ],
+    "race_hist": [],
     "fp": [
-      13.5,
-      13.5,
       13.5
     ],
     "price": [
@@ -306,12 +230,8 @@
       "quali_hist": [
         13
       ],
-      "race_hist": [
-        13
-      ],
+      "race_hist": [],
       "fp": [
-        13,
-        13,
         13
       ],
       "price": [
@@ -322,12 +242,8 @@
       "quali_hist": [
         14
       ],
-      "race_hist": [
-        14
-      ],
+      "race_hist": [],
       "fp": [
-        14,
-        14,
         14
       ],
       "price": [
@@ -339,12 +255,8 @@
     "quali_hist": [
       15.5
     ],
-    "race_hist": [
-      15.5
-    ],
+    "race_hist": [],
     "fp": [
-      15.5,
-      15.5,
       15.5
     ],
     "price": [
@@ -354,12 +266,8 @@
       "quali_hist": [
         15
       ],
-      "race_hist": [
-        15
-      ],
+      "race_hist": [],
       "fp": [
-        15,
-        15,
         15
       ],
       "price": [
@@ -370,12 +278,8 @@
       "quali_hist": [
         16
       ],
-      "race_hist": [
-        16
-      ],
+      "race_hist": [],
       "fp": [
-        16,
-        16,
         16
       ],
       "price": [
@@ -387,12 +291,8 @@
     "quali_hist": [
       17.5
     ],
-    "race_hist": [
-      17.5
-    ],
+    "race_hist": [],
     "fp": [
-      17.5,
-      17.5,
       17.5
     ],
     "price": [
@@ -402,12 +302,8 @@
       "quali_hist": [
         17
       ],
-      "race_hist": [
-        17
-      ],
+      "race_hist": [],
       "fp": [
-        17,
-        17,
         17
       ],
       "price": [
@@ -418,12 +314,8 @@
       "quali_hist": [
         18
       ],
-      "race_hist": [
-        18
-      ],
+      "race_hist": [],
       "fp": [
-        18,
-        18,
         18
       ],
       "price": [
@@ -431,16 +323,12 @@
       ]
     }
   },
-  "vcarb": {
+  "rb": {
     "quali_hist": [
       19.5
     ],
-    "race_hist": [
-      19.5
-    ],
+    "race_hist": [],
     "fp": [
-      19.5,
-      19.5,
       19.5
     ],
     "price": [
@@ -450,12 +338,8 @@
       "quali_hist": [
         19
       ],
-      "race_hist": [
-        19
-      ],
+      "race_hist": [],
       "fp": [
-        19,
-        19,
         19
       ],
       "price": [
@@ -466,12 +350,8 @@
       "quali_hist": [
         20
       ],
-      "race_hist": [
-        20
-      ],
+      "race_hist": [],
       "fp": [
-        20,
-        20,
         20
       ],
       "price": [

@@ -365,7 +365,6 @@ Generation: {generation+1}\n
 \tTeam Cost: {self.best_team_attr[generation]['total_cost']}\n
 \tFitness: {self.best_team_attr[generation]['fitness_val']}\n
             """)
-            # input()
             
         self.worst_fitness = [self.max_team_attr[gen]['fitness_val'] for gen in self.max_team_attr.keys()]
         self.best_fitness = [self.best_team_attr[gen]['fitness_val'] for gen in self.best_team_attr.keys()]
