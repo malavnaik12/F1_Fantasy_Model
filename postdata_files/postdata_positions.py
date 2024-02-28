@@ -2,7 +2,7 @@ import yaml
 
 class generate_positions_yaml:
     def __init__(self):
-        self.out_dict = {}
+        pass
     
     def initialize_yaml_file(self):
         self.out_dict = {}
@@ -18,11 +18,16 @@ class generate_positions_yaml:
             data_struct_file.close()
         self.team_names = list(self.data_struct["team_data"].keys())
         self.team_out = [team.capitalize() for team in self.team_names]
+        self.team_info = {}
         for team in self.team_names:
             self.out_dict["current_week"][team] = {}
             drivers = list(self.data_struct["team_data"][team].keys())
+            driver_list = []
             for driver in drivers:
+                driver_list.append(driver.capitalize())
                 self.out_dict["current_week"][team][driver] = int()
+            self.team_info[team] = driver_list
+        return self.team_info,self.out_dict
 
     def post_data(self,session,session_id):
         self.out_dict["session_info"]["session_type"] = session
