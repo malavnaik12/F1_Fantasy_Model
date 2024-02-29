@@ -1,5 +1,5 @@
 session_info:
-  session_type: 'fp'
+  session_type: race
   session_num: 3
   fp_override: true
   quali_override: true
