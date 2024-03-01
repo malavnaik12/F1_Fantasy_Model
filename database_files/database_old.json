@@ -1,24 +1,26 @@
 {
   "redbull": {
     "quali_hist": [
-      2.5
+      0.0
     ],
     "race_hist": [],
     "fp": [
-      2.5,
-      2.5
+      9.0,
+      8.0,
+      0.0
     ],
     "price": [
       27.9
     ],
     "verstappen": {
       "quali_hist": [
-        2
+        0
       ],
       "race_hist": [],
       "fp": [
-        2,
-        2
+        6,
+        6,
+        0
       ],
       "price": [
         30
@@ -26,12 +28,13 @@
     },
     "perez": {
       "quali_hist": [
-        3
+        0
       ],
       "race_hist": [],
       "fp": [
-        3,
-        3
+        12,
+        10,
+        0
       ],
       "price": [
         20.8
@@ -40,24 +43,26 @@
   },
   "ferrari": {
     "quali_hist": [
-      2.5
+      0.0
     ],
     "race_hist": [],
     "fp": [
-      2.5,
-      2.5
+      9.5,
+      6.5,
+      0.0
     ],
     "price": [
       19.3
     ],
     "leclerc": {
       "quali_hist": [
-        1
+        0
       ],
       "race_hist": [],
       "fp": [
-        1,
-        1
+        8,
+        9,
+        0
       ],
       "price": [
         19.1
@@ -65,12 +70,13 @@
     },
     "sainz": {
       "quali_hist": [
-        4
+        0
       ],
       "race_hist": [],
       "fp": [
+        11,
         4,
-        4
+        0
       ],
       "price": [
         18.5
@@ -79,24 +85,26 @@
   },
   "aston_martin": {
     "quali_hist": [
-      5.5
+      0.0
     ],
     "race_hist": [],
     "fp": [
+      9.5,
       5.5,
-      5.5
+      0.0
     ],
     "price": [
       13.6
     ],
     "alonzo": {
       "quali_hist": [
-        5
+        0
       ],
       "race_hist": [],
       "fp": [
         5,
-        5
+        3,
+        0
       ],
       "price": [
         11
@@ -104,12 +112,13 @@
     },
     "stroll": {
       "quali_hist": [
-        6
+        0
       ],
       "race_hist": [],
       "fp": [
-        6,
-        6
+        14,
+        8,
+        0
       ],
       "price": [
         10
@@ -118,24 +127,26 @@
   },
   "mclaren": {
     "quali_hist": [
-      7.5
+      0.0
     ],
     "race_hist": [],
     "fp": [
-      7.5,
-      7.5
+      2.5,
+      12.5,
+      0.0
     ],
     "price": [
       23.2
     ],
     "norris": {
       "quali_hist": [
-        7
+        0
       ],
       "race_hist": [],
       "fp": [
-        7,
-        7
+        2,
+        20,
+        0
       ],
       "price": [
         23
@@ -143,12 +154,13 @@
     },
     "piastri": {
       "quali_hist": [
-        8
+        0
       ],
       "race_hist": [],
       "fp": [
-        8,
-        8
+        3,
+        5,
+        0
       ],
       "price": [
         19
@@ -157,24 +169,26 @@
   },
   "alpine": {
     "quali_hist": [
-      9.5
+      0.0
     ],
     "race_hist": [],
     "fp": [
-      9.5,
-      9.5
+      17.5,
+      17.0,
+      0.0
     ],
     "price": [
       8.4
     ],
     "ocon": {
       "quali_hist": [
-        9
+        0
       ],
       "race_hist": [],
       "fp": [
-        9,
-        9
+        17,
+        18,
+        0
       ],
       "price": [
         7.8
@@ -182,12 +196,13 @@
     },
     "gasly": {
       "quali_hist": [
-        10
+        0
       ],
       "race_hist": [],
       "fp": [
-        10,
-        10
+        18,
+        16,
+        0
       ],
       "price": [
         7.8
@@ -196,24 +211,26 @@
   },
   "mercedes": {
     "quali_hist": [
-      11.5
+      0.0
     ],
     "race_hist": [],
     "fp": [
-      11.5,
-      11.5
+      8.0,
+      1.5,
+      0.0
     ],
     "price": [
       20.1
     ],
     "hamilton": {
       "quali_hist": [
-        11
+        0
       ],
       "race_hist": [],
       "fp": [
-        11,
-        11
+        9,
+        1,
+        0
       ],
       "price": [
         19.3
@@ -221,12 +238,13 @@
     },
     "russell": {
       "quali_hist": [
-        12
+        0
       ],
       "race_hist": [],
       "fp": [
-        12,
-        12
+        7,
+        2,
+        0
       ],
       "price": [
         18.8
@@ -235,24 +253,26 @@
   },
   "sauber": {
     "quali_hist": [
-      13.5
+      0.0
     ],
     "race_hist": [],
     "fp": [
-      13.5,
-      13.5
+      12.5,
+      18.0,
+      0.0
     ],
     "price": [
       6.6
     ],
     "bottas": {
       "quali_hist": [
-        13
+        0
       ],
       "race_hist": [],
       "fp": [
-        13,
-        13
+        10,
+        17,
+        0
       ],
       "price": [
         6.6
@@ -260,12 +280,13 @@
     },
     "zhou": {
       "quali_hist": [
-        14
+        0
       ],
       "race_hist": [],
       "fp": [
-        14,
-        14
+        15,
+        19,
+        0
       ],
       "price": [
         6.4
@@ -274,24 +295,26 @@
   },
   "haas": {
     "quali_hist": [
-      15.5
+      0.0
     ],
     "race_hist": [],
     "fp": [
-      15.5,
-      15.5
+      19.5,
+      10.5,
+      0.0
     ],
     "price": [
       6.3
     ],
     "hulkenburg": {
       "quali_hist": [
-        15
+        0
       ],
       "race_hist": [],
       "fp": [
-        15,
-        15
+        20,
+        7,
+        0
       ],
       "price": [
         6.4
@@ -299,12 +322,13 @@
     },
     "magnussen": {
       "quali_hist": [
-        16
+        0
       ],
       "race_hist": [],
       "fp": [
-        16,
-        16
+        19,
+        14,
+        0
       ],
       "price": [
         6.2
@@ -313,24 +337,26 @@
   },
   "williams": {
     "quali_hist": [
-      17.5
+      0.0
     ],
     "race_hist": [],
     "fp": [
-      17.5,
-      17.5
+      14.5,
+      12.0,
+      0.0
     ],
     "price": [
       6.3
     ],
     "albon": {
       "quali_hist": [
-        17
+        0
       ],
       "race_hist": [],
       "fp": [
-        17,
-        17
+        13,
+        11,
+        0
       ],
       "price": [
         7
@@ -338,12 +364,13 @@
     },
     "sargenat": {
       "quali_hist": [
-        18
+        0
       ],
       "race_hist": [],
       "fp": [
-        18,
-        18
+        16,
+        13,
+        0
       ],
       "price": [
         5.5
@@ -352,24 +379,26 @@
   },
   "rb": {
     "quali_hist": [
-      19.5
+      0.0
     ],
     "race_hist": [],
     "fp": [
-      19.5,
-      19.5
+      2.5,
+      13.5,
+      0.0
     ],
     "price": [
       8.5
     ],
     "riccardo": {
       "quali_hist": [
-        19
+        0
       ],
       "race_hist": [],
       "fp": [
-        19,
-        19
+        1,
+        12,
+        0
       ],
       "price": [
         9
@@ -377,12 +406,13 @@
     },
     "tsunoda": {
       "quali_hist": [
-        20
+        0
       ],
       "race_hist": [],
       "fp": [
-        20,
-        20
+        4,
+        15,
+        0
       ],
       "price": [
         8

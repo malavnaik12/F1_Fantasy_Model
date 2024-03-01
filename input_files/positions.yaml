@@ -6,32 +6,32 @@ session_info:
   race_override: true
 current_week:
   redbull:
-    verstappen: 2
-    perez: 3
+    verstappen: 0
+    perez: 0
   ferrari:
-    leclerc: 1
-    sainz: 4
+    leclerc: 0
+    sainz: 0
   aston_martin:
-    alonzo: 5
-    stroll: 6
+    alonzo: 0
+    stroll: 0
   mclaren:
-    norris: 7
-    piastri: 8
+    norris: 0
+    piastri: 0
   alpine:
-    ocon: 9
-    gasly: 10
+    ocon: 0
+    gasly: 0
   mercedes:
-    hamilton: 11
-    russell: 12
+    hamilton: 0
+    russell: 0
   sauber:
-    bottas: 13
-    zhou: 14
+    bottas: 0
+    zhou: 0
   haas:
-    hulkenburg: 15
-    magnussen: 16
+    hulkenburg: 0
+    magnussen: 0
   williams:
-    albon: 17
-    sargenat: 18
+    albon: 0
+    sargenat: 0
   rb:
-    riccardo: 19
-    tsunoda: 20
+    riccardo: 0
+    tsunoda: 0

@@ -324,8 +324,10 @@ class PreprocessGA:
             None        
         """
         self.initalize()
-        best_team_file = open(f"./history_files/best_team.txt","w")
+        best_team_file = open(f"./history_files/best_team_per_gen.txt","w")
+        final_summary_file = open(f"./history_files/best_team.txt","w")
         self.constructor_names, self.driver_names = self.get_db_info(db_data=self.db_data)
+        best_fitness_val = []
         for generation in range(self.max_generations):
             population = []
             if random.random() < self.elitism_prob*(generation/self.max_generations):
@@ -354,6 +356,7 @@ class PreprocessGA:
             after_fitnesses = [self.fitness_function(individual, db_data=self.db_data) for individual in processed_population]
 
             # Population Set Attributes
+            best_fitness_val.append(min(after_fitnesses))
             self.max_team_attr[generation] = processed_population[after_fitnesses.index(max(after_fitnesses))]
             self.med_team_attr.append(np.nanmedian(after_fitnesses))            
             self.best_team_attr[generation] = processed_population[after_fitnesses.index(min(after_fitnesses))]
@@ -365,10 +368,27 @@ Generation: {generation+1}\n
 \tTeam Cost: {self.best_team_attr[generation]['total_cost']}\n
 \tFitness: {self.best_team_attr[generation]['fitness_val']}\n
             """)
-            
+
+        best_overall_team_index = best_fitness_val.index(min(best_fitness_val))
+        final_summary_file.write(f"""
+Generation: {best_overall_team_index+1}\n
+\tDrivers: {self.best_team_attr[best_overall_team_index]['drivers']}\n
+\tConstructors: {self.best_team_attr[best_overall_team_index]['constructors']}\n
+\tTeam Cost: {self.best_team_attr[best_overall_team_index]['total_cost']}\n
+\tFitness: {self.best_team_attr[best_overall_team_index]['fitness_val']}\n
+            """)
+        final_summary_file.write(f"""
+Generation: {generation+1}\n
+\tDrivers: {self.best_team_attr[generation]['drivers']}\n
+\tConstructors: {self.best_team_attr[generation]['constructors']}\n
+\tTeam Cost: {self.best_team_attr[generation]['total_cost']}\n
+\tFitness: {self.best_team_attr[generation]['fitness_val']}\n
+            """)
+        
         self.worst_fitness = [self.max_team_attr[gen]['fitness_val'] for gen in self.max_team_attr.keys()]
         self.best_fitness = [self.best_team_attr[gen]['fitness_val'] for gen in self.best_team_attr.keys()]
         self.plot_fitness()
+        final_summary_file.close()
         best_team_file.close()
 
 if __name__ == '__main__':
