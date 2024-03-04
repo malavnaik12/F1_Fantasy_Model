@@ -1,23 +1,23 @@
 
-Generation: 95
+Generation: 120
 
-	Drivers: ['verstappen', 'ocon', 'perez', 'zhou', 'leclerc']
+	Drivers: ['gasly', 'perez', 'ocon', 'norris', 'hamilton']
 
 	Constructors: ['alpine', 'sauber']
 
-	Team Cost: 99.1
+	Team Cost: 93.7
 
-	Fitness: -1866.3833333333332
+	Fitness: -5529.861666666667
 
             
 Generation: 150
 
-	Drivers: ['albon', 'sargenat', 'hulkenburg', 'perez', 'norris']
+	Drivers: ['norris', 'magnussen', 'perez', 'gasly', 'bottas']
 
-	Constructors: ['alpine', 'redbull']
+	Constructors: ['mclaren', 'alpine']
 
-	Team Cost: 99.0
+	Team Cost: 96.0
 
-	Fitness: -1668.15
+	Fitness: -4977.599999999999
 
             

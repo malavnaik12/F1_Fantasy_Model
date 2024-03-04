@@ -236,7 +236,7 @@ class PreprocessGA:
             child = out_child2
         return child
     
-    def mutation(self,team,mut_rate,db_data):
+    def mutation(self, team, mut_rate, db_data):
         """
         If invoked, mutate supplied team.
         The goal here is to randomly mutate the drivers or constructors and create a mutated team that has a better fitness value than the supplied team.
@@ -283,7 +283,7 @@ class PreprocessGA:
                     team['total_cost'] = total_cost
         return team
 
-    def curr_gen_info(self,curr_gen_fitness_vals,curr_gen):
+    def curr_gen_info(self, curr_gen_fitness_vals, curr_gen):
         save_folder = f"./Plots/{self.ind_folder}/{self.max_generations}g_{self.population_size}p/"
         os.makedirs(save_folder,exist_ok=True)
         if (curr_gen+1)%5 == 0:
@@ -343,7 +343,7 @@ class PreprocessGA:
                 processed_population.append(population[0])
             print(f"Generation: {generation+1}, Population Size: {len(population)}")
             for i in range(processing_indx, self.population_size):
-                if random.random() < self.crossover_prob:
+                if random.random() < (self.crossover_prob/(generation+100)):
                     parent1_index = self.tournament_selection(before_fitnesses)
                     parent2_index = self.tournament_selection(before_fitnesses)
                     parent1 = population[parent1_index]
@@ -351,7 +351,7 @@ class PreprocessGA:
                     child = self.one_point_crossover(team1 = parent1, team2 = parent2, db_data=self.db_data)
                 else:
                     child = population[i]
-                mutated_child = self.mutation(child, self.mutation_prob/(generation+1), db_data=self.db_data)
+                mutated_child = self.mutation(child, self.mutation_prob/(generation+100), db_data=self.db_data)
                 processed_population.append(mutated_child)
             after_fitnesses = [self.fitness_function(individual, db_data=self.db_data) for individual in processed_population]
 

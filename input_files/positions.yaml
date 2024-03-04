@@ -1,37 +1,37 @@
 session_info:
-  session_type: race
+  session_type: quali
   session_num: 3
   fp_override: true
   quali_override: true
   race_override: true
 current_week:
   redbull:
-    verstappen: 0
-    perez: 0
+    verstappen: 1
+    perez: 5
   ferrari:
-    leclerc: 0
-    sainz: 0
+    leclerc: 2
+    sainz: 4
   aston_martin:
-    alonzo: 0
-    stroll: 0
+    alonzo: 6
+    stroll: 12
   mclaren:
-    norris: 0
-    piastri: 0
+    norris: 7
+    piastri: 8
   alpine:
-    ocon: 0
-    gasly: 0
+    ocon: 19
+    gasly: 20
   mercedes:
-    hamilton: 0
-    russell: 0
+    hamilton: 9
+    russell: 3
   sauber:
-    bottas: 0
-    zhou: 0
+    bottas: 16
+    zhou: 17
   haas:
-    hulkenburg: 0
-    magnussen: 0
+    hulkenburg: 10
+    magnussen: 15
   williams:
-    albon: 0
-    sargenat: 0
+    albon: 13
+    sargenat: 18
   rb:
-    riccardo: 0
-    tsunoda: 0
+    riccardo: 14
+    tsunoda: 11
