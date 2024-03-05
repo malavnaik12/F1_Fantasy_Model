@@ -106,17 +106,16 @@ class postdata_gui:
         try:
             driver1_indx = self.listbox2.get(0, END).index(self.drivers[0])
             driver2_indx = self.listbox2.get(0, END).index(self.drivers[1])
-            print(driver1_indx,driver2_indx)
             self.listbox2.delete(driver1_indx); self.listbox3.delete(driver1_indx)
             self.listbox2.delete(driver2_indx); self.listbox3.delete(driver2_indx)
-            self.driver_count -= 1
+            self.listbox2.delete(END); self.listbox3.delete(END)
         except:
             pass
-        self.listbox2.insert(self.driver_count,self.drivers[0].capitalize())
-        self.listbox3.insert(self.driver_count,f"{pos1}")
-        self.driver_count+=1
-        self.listbox2.insert(self.driver_count,self.drivers[1].capitalize())
-        self.listbox3.insert(self.driver_count,f"{pos2}")
+
+        self.listbox2.insert(END,self.drivers[0].capitalize())
+        self.listbox3.insert(END,f"{pos1}")
+        self.listbox2.insert(END,self.drivers[1].capitalize())
+        self.listbox3.insert(END,f"{pos2}")
 
         try:
             pos_num1 = int(pos1)
@@ -130,7 +129,7 @@ class postdata_gui:
         if self.driver_count>=1:
             self.create_pos_yaml_file = Button(self.positions_sframe1,text="Create Inputs",command=self.create_positions_yaml)
             self.create_pos_yaml_file.grid(row=9,column=2,sticky='e')
-    
+
     def create_positions_yaml(self):
         with open('test.yaml',"w") as file:
             yaml.dump(self.out_dict, file, indent=2)
@@ -161,7 +160,6 @@ class postdata_gui:
         self.price_label3_val.grid(row=9,column=2,sticky='w')
         self.enter_driver_pos = Button(self.prices_mframe,text="Enter",command=self.set_price_info)
         self.enter_driver_pos.grid(row=9,column=2,sticky='e')
-        # print(self.out_dict_prices['current_week'][price_team])
     
     def set_price_info(self):
         try:
@@ -214,6 +212,8 @@ class postdata_gui:
         self.notes.add(self.positions_mframe, text='Positions')
         self.positions_mframe.grid_rowconfigure(0, weight=1)
         self.positions_mframe.grid_rowconfigure(1, weight=1)
+        self.positions_mframe.grid_rowconfigure(10, weight=1)
+        self.positions_mframe.grid_rowconfigure(11, weight=1)
         self.positions_mframe.grid_columnconfigure(0, weight=1)
         self.positions_mframe.grid_columnconfigure(1, weight=1)
         lbl_1 = Label(self.positions_mframe,image=img)
@@ -272,19 +272,27 @@ class postdata_gui:
         self.listbox1.grid(row=2,column=0,sticky='nsew')
         self.listbox2_title = Label(self.positions_sframe2, text=f"Drivers",anchor='center',font=("Helvetica 8"))
         self.listbox2_title.grid(row=1,column=1,sticky='nsew')
-        self.listbox2 = Listbox(self.positions_sframe2,width=8)
+        self.listbox2 = Listbox(self.positions_sframe2,width=8,selectmode=EXTENDED)
         self.listbox2.grid(row=2,column=1,sticky='nsew')
         self.listbox3_title = Label(self.positions_sframe2, text=f"Pos",anchor='center',font=("Helvetica 8"))
         self.listbox3_title.grid(row=1,column=2,sticky='nsew')
-        self.listbox3 = Listbox(self.positions_sframe2,width=2)
+        self.listbox3 = Listbox(self.positions_sframe2,width=2,selectmode=NONE)
         self.listbox3.grid(row=2,column=2,sticky='nsew')
         
         self.prices_mframe = ttk.Frame(self.notes,borderwidth=2,relief='sunken')
         self.notes.add(self.prices_mframe, text='Prices')
+        self.prices_mframe.grid_rowconfigure(0, weight=1)
+        self.prices_mframe.grid_rowconfigure(1, weight=1)
+        self.prices_mframe.grid_columnconfigure(0, weight=1)
+        self.prices_mframe.grid_columnconfigure(1, weight=1)
         lbl_2 = Label(self.prices_mframe,image=img)
-        lbl_2.grid(row=0,column=0,columnspan=4,sticky='nsew')
+        lbl_2.grid(row=0,column=0,columnspan=2,sticky='nsew')
         self.prices_label1 = Label(self.prices_mframe, text='Current Week Prices\nDrivers and Constructors',anchor='center',font=("Helvetica 12"))
-        self.prices_label1.grid(row=1,column=0,columnspan=4,sticky='nsew')
+        self.prices_label1.grid(row=1,column=0,columnspan=2,sticky='nsew')
+        self.gui_title2 = Label(self.prices_mframe, text=f"GA-Powered F1 Fantasy",anchor='center',font=("Helvetica 12"))
+        self.gui_title2.grid(row=11,column=0,columnspan=4,sticky='nsew')
+        self.footer2 = Label(self.prices_mframe, text=f"Made by Malav Naik 2024",anchor='center',font=("Helvetica 6"))
+        self.footer2.grid(row=12,column=0,columnspan=4,sticky='nsew')
         self.line3 = ttk.Separator(self.prices_mframe).grid(row=2,column=0,columnspan=4,sticky='nsew')
         self.line4 = ttk.Separator(self.prices_mframe).grid(row=2,column=1,rowspan=5,sticky='nsew')
         self.prices_mframe.grid_rowconfigure(0, weight=1)
@@ -327,10 +335,6 @@ class postdata_gui:
         self.constructors_price_menu.grid(row=6,column=2,sticky='w')
         self.create_price_yaml_file = Button(self.prices_mframe,text="Create Inputs",command=self.create_prices_yaml)
         self.create_price_yaml_file.grid(row=10,column=2,sticky='w')
-        self.gui_title2 = Label(self.prices_mframe, text=f"GA-Powered F1 Fantasy",anchor='center',font=("Helvetica 12"))
-        self.gui_title2.grid(row=11,column=0,columnspan=4,sticky='nsew')
-        self.footer2 = Label(self.prices_mframe, text=f"Made by Malav Naik 2024",anchor='center',font=("Helvetica 6"))
-        self.footer2.grid(row=12,column=0,columnspan=4,sticky='nsew')
 
         self.ga_mframe = ttk.Frame(self.notes,borderwidth=2,relief='sunken')
         self.notes.add(self.ga_mframe, text='GA Inputs')
