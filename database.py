@@ -87,7 +87,7 @@ class UpdateData:
                         if (len(self.teams[team_name][driver_name][session_id]) < self.curr_week_num):
                             self.teams[team_name][driver_name][session_id].append(driver_info[driver_name])
                             driver_pos += driver_info[driver_name]
-                        elif ((session_id == 'quali_hist' or session_id == 'race_hist' ) and (len(self.teams[team_name][driver_name][session_id]) == self.curr_week_num)):
+                        elif ((session_id == 'quali_hist' or session_id == 'race_hist' )):# and (len(self.teams[team_name][driver_name][session_id]) <= self.curr_week_num)):
                             try:
                                 assert(type(self.curr_week_info["session_info"][f"{self.data_session}_override"]) == bool)
                             except:
@@ -126,7 +126,7 @@ class UpdateData:
                 else:
                     if (len(self.teams[team_name][session_id]) < self.curr_week_num):
                         self.teams[team_name][session_id].append(avg_driver_pos)
-                    elif ((session_id == 'quali_hist' or session_id == 'race_hist' ) and (len(self.teams[team_name][session_id]) == self.curr_week_num)):
+                    elif ((session_id == 'quali_hist' or session_id == 'race_hist' )):# and (len(self.teams[team_name][session_id]) <= self.curr_week_num)):
                         if (self.curr_week_info["session_info"][f"{self.data_session}_override"]):
                             self.teams[team_name][session_id][self.curr_week_num-1] = avg_driver_pos
                         # elif (not self.warning_quali and session_id == 'quali_hist'):

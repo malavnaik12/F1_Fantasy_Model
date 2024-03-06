@@ -5,7 +5,7 @@ mutation: 1
 elitism: 1
 budget: 100
 tournament_size: 45
-completed_races: 0
-race_week_num: 1
+completed_races: 1
+race_week_num: 2
 max_drivers: 5
 max_constructors: 2
