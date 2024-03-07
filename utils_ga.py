@@ -22,16 +22,18 @@ class PreprocessGA:
         """
         with open("./input_files/inputs.yaml", "r") as file:
             inputs = yaml.safe_load(file)
-            self.budget = inputs["budget"]
             self.max_generations = inputs["max_gens"]
             self.population_size = inputs["pop_size"]
-            self.tournament_size = inputs["tournament_size"]
+            self.tournament_size_prop = inputs["tournament_size_prop"]
             self.crossover_prob = inputs["crossover"]
             self.mutation_prob = inputs["mutation"]
             self.elitism_prob = inputs["elitism"]
             self.max_drivers_num = inputs["max_drivers"]
             self.max_constructors_num = inputs["max_constructors"]
-            file.close()
+            
+        with open("./input_files/prices.yaml") as prices_file:
+            prices = yaml.safe_load(prices_file)
+            self.budget = prices["weekly_budget"]
         
         with open("./database_files/database.json","r") as db:
             self.db_data = json.load(db)
@@ -166,14 +168,14 @@ class PreprocessGA:
 
         Args:
         - fitness_vals (list): A list containing fitness values for each of the individuals in the populations set.
-        - self.tournament_size (int): The number of individuals using which a subset of the population set is created
+        - self.tournament_size_prop (int): The number of individuals using which a subset of the population set is created
                                         - Must be less than or equal to self.population_size
 
         Returns:
-        - best_index (int): The index of the population individual with the best fitness score within the population subset generated via self.tournament_size 
+        - best_index (int): The index of the population individual with the best fitness score within the population subset generated via self.tournament_size_prop 
         """
         # Randomly select individuals from the population to participate in the tournament
-        participants = random.sample(range(len(fitness_vals)), self.tournament_size)
+        participants = random.sample(range(len(fitness_vals)), int(self.tournament_size_prop*self.population_size))
 
         # Determine the fitness values of the participants
         participant_fitness = [fitness_vals[i] for i in participants]

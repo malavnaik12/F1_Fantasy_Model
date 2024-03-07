@@ -45,10 +45,6 @@ class generate_positions_yaml:
         self.session_types = ['Free Practice','Qualifying','Race']
         self.fp_sessions_nums = ['1','2','3']
         self.overrides = ['fp_override','quali_override','race_override']
-        # self.post_data(session=self.session_types[0],session_id=self.fp_sessions_nums[0])
-
-        # with open('test.yaml',"w") as file:
-        #     yaml.dump(self.out_dict, file, indent=2)
         return self.session_types, self.team_out
 if __name__ == '__main__':
     gpy = generate_positions_yaml()
