@@ -1,6 +1,7 @@
+delete_data: false
 session_info:
-  session_type: race
-  session_num: 3
+  session_type: fp
+  session_num: 1
   fp_override: true
   quali_override: true
   race_override: true
