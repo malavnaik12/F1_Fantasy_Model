@@ -21,20 +21,23 @@ class UpdateData:
             except ImportError:
                 print(f"\nPotential Empty \33[3mdatabase.json\033[0m file detected.\n  Delete the \33[3mdatabase.json\033[0m file from the folder and re-execute the \33[3mdatabase.py\033[0m")
         
+        with open("./input_files/data_structure.yaml", "r") as data_struct_file:
+            data_struct = yaml.safe_load(data_struct_file)
+            self.attributes = data_struct['attributes']
+
         with open("./input_files/positions.yaml", "r") as data_file:
             self.curr_week_info = yaml.safe_load(data_file)
             self.data_session = self.curr_week_info["session_info"]["session_type"]
             self.curr_week_positions = self.curr_week_info["current_week"]
             self.delete_data_flag = self.curr_week_info["delete_data"]
-            data_file.close()
+
         with open("./input_files/inputs.yaml","r") as inputs_file:
             self.curr_week_num = yaml.safe_load(inputs_file)["race_week_num"]
-            inputs_file.close()
+
         with open("./input_files/prices.yaml","r") as price_file:
             self.prices_info = yaml.safe_load(price_file)
             self.budget = self.prices_info["weekly_budget"]
             self.prices = self.prices_info["current_week"]
-            price_file.close()
 
     def get_session_id(self):
         if self.data_session == 'race':
@@ -54,6 +57,7 @@ class UpdateData:
             raise TypeError(f"TypeError in \33[3mdatabase.py\033[0m.\n  Incorrect session_type specified in \33[3mpositions.yaml\033[0m.\n  Correct Options:\n  \33[33mfp\033[0m (and corresponding fp session number via \33[34msession_num\033[0m)\n  \33[33mquali\033[0m\n  \33[33mrace\033[0m")
    
     def post_data(self):
+        input("Need something to track availability of driver per session\nMight be fine to just have an availability attribute for each driver")
         try:
             self.get_session_id()
             for team_name in self.curr_week_positions.keys():
@@ -71,7 +75,12 @@ class UpdateData:
                         print(f"\033[1;31mWarning:\033[0m Constructor price already populated for this week.\n  Set \33[34mconstructor_override\033[0m to \33[34mtrue\033[0m in \33[3mprices.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
                         self.warning_price_c = True
                 driver_pos = 0
-                for driver_name in driver_info.keys():
+                for driver_name in  driver_info.keys():
+                    try:
+                        len(self.teams[team_name][driver_name][self.session_id])
+                    except:
+                        self.teams[team_name][driver_name] = self.attributes
+                        
                     if (self.session_id == 'fp' and (len(self.teams[team_name][driver_name][self.session_id]) < self.session_num)):
                         self.teams[team_name][driver_name][self.session_id].append(driver_info[driver_name])
                         driver_pos += driver_info[driver_name]

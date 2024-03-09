@@ -10,6 +10,7 @@ current_week:
     constructor: 19.3
     leclerc: 19.1
     sainz: 18.5
+    bearman: 14
   aston_martin:
     constructor: 13.6
     alonzo: 11

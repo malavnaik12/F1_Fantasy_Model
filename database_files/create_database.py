@@ -16,14 +16,11 @@ def main():
         inputs = yaml.safe_load(file)
         data_attrs = inputs["attributes"]
         team_info = inputs["team_data"]
-        team_names = list(team_info.keys())
-        teams = {key: {} for key in team_names}
+        teams = {key: {} for key in list(team_info.keys())}
         for team in list(teams.keys()):
             for attribute in list(data_attrs.keys()):
                 teams[team][attribute] = []
-            drivers = team_info[team]
-            for driver in list(drivers.keys()):
-                drivers[driver] = data_attrs
+            for driver in list(team_info[team].keys()):
                 teams[team][driver] = data_attrs
     
     with open("./database_files/database.json","w") as db_file:

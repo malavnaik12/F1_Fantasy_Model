@@ -1,7 +1,7 @@
 delete_data: false
 session_info:
-  session_type: fp
-  session_num: 1
+  session_type: quali
+  session_num: 3
   fp_override: true
   quali_override: true
   race_override: true
@@ -11,7 +11,7 @@ current_week:
     perez: 1
   ferrari:
     leclerc: 4
-    sainz: 3
+    bearman: 3
   aston_martin:
     alonzo: 9
     stroll: 10
