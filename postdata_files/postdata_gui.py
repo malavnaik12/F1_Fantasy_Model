@@ -29,6 +29,9 @@ class postdata_gui:
             self.fp_session_override.grid_remove()
             self.other_session_label.grid_remove()
             self.other_session_override.grid_remove()
+            self.listbox1.delete(0,END)
+            self.listbox2.delete(0,END)
+            self.listbox3.delete(0,END)
         except:
             pass
         self.session_type = event
@@ -49,6 +52,12 @@ class postdata_gui:
         self.out_dict["session_info"]["session_type"] = self.session_types[self.session_type]
     
     def get_fp_session(self, fp_session):
+        try:
+            self.listbox1.delete(0,END)
+            self.listbox2.delete(0,END)
+            self.listbox3.delete(0,END)
+        except:
+            pass
         self.out_dict["session_info"]["session_num"] = fp_session
         self.fp_session_override_label = Label(self.positions_sframe1, text=f'Override Pose. Data for FP{fp_session}?',font=("Helvetica 9"))
         self.fp_session_override_label.grid(row=5,column=0,sticky='w')
@@ -84,6 +93,7 @@ class postdata_gui:
             self.driver_label2.grid_remove()
             self.driver_val2.grid_remove()
             self.enter_driver_pos.grid_remove()
+            self.positions_ssframe1.grid_remove()
         except:
             pass
         self.curr_team = team
@@ -98,25 +108,66 @@ class postdata_gui:
         self.driver_val2.grid(row=8,column=2,sticky='w')
         self.enter_driver_pos = Button(self.positions_sframe1,text="Enter",command=self.set_driver_pos_info)
         self.enter_driver_pos.grid(row=8,column=2,sticky='e')
-    
+        self.reserve_driver_entry_label = Label(self.positions_sframe1, text=f'Are there any driver replacements?',font=("Helvetica 9"))
+        self.reserve_driver_entry_label.grid(row=9,column=0,sticky='w')
+        self.reserve_driver_entry = IntVar()
+        self.reserve_driver_entry.set(0)
+        self.enter_reserve = Checkbutton(self.positions_sframe1, text="Yes", onvalue=1, offvalue=0, variable=self.reserve_driver_entry, command=self.enter_reserve_driver)
+        self.enter_reserve.grid(row=9,column=2,sticky='w')
+
+    def enter_reserve_driver(self):
+        self.positions_ssframe1 = ttk.Frame(self.positions_sframe1,borderwidth=2,relief='sunken')
+        self.positions_ssframe1.grid(row=10,column=0,columnspan=3,sticky='nsew')
+        self.positions_ssframe1.grid_rowconfigure(0, weight=1)
+        self.positions_ssframe1.grid_rowconfigure(1, weight=1)
+        self.positions_ssframe1.grid_rowconfigure(2, weight=1)
+        self.positions_ssframe1.grid_columnconfigure(0, weight=1)
+        self.positions_ssframe1.grid_columnconfigure(1, weight=1)
+        self.positions_ssframe1.grid_columnconfigure(2, weight=1)
+        self.reserve_driver_title = Label(self.positions_ssframe1, text=f"Replacement Driver Entries and Info",anchor='center',font=("Helvetica 9"))
+        self.reserve_driver_title.grid(row=0,column=0,columnspan=3,sticky='nsew')
+        self.reserve_driver_name_label = Label(self.positions_ssframe1, text=f'Enter Name of Replacement Driver',font=("Helvetica 9"))
+        self.reserve_driver_name_label.grid(row=1,column=0,sticky='w')
+        self.reserve_driver_name = Entry(self.positions_ssframe1, width=10)
+        self.reserve_driver_name.grid(row=1,column=2,sticky='w')
+        self.reserve_driver_pos_label = Label(self.positions_ssframe1, text=f'Enter Pos of Replacement Driver',font=("Helvetica 9"))
+        self.reserve_driver_pos_label.grid(row=2,column=0,sticky='w')
+        self.reserve_driver_pos = Entry(self.positions_ssframe1, width=10)
+        self.reserve_driver_pos.grid(row=2,column=2,sticky='w')
+
     def set_driver_pos_info(self):
         pos1 = self.driver_val1.get()
         pos2 = self.driver_val2.get()
+        driver1 = self.drivers[0]
+        driver2 = self.drivers[1]
+        if pos1 == '':
+            try:
+                self.out_dict['current_week'][self.curr_team.lower()].pop(driver1.lower())
+            except:
+                pass
+            pos1 = self.reserve_driver_pos.get()
+            driver1 = self.reserve_driver_name.get().capitalize()
+            self.out_dict['current_week'][self.curr_team.lower()][driver1.lower()] = int()
+        elif pos2 == '':
+            try:
+                self.out_dict['current_week'][self.curr_team.lower()].pop(driver2.lower())
+            except:
+                pass
+            pos2 = self.reserve_driver_pos.get()
+            driver2 = self.reserve_driver_name.get().capitalize()
+            self.out_dict['current_week'][self.curr_team.lower()][driver2.lower()] = int()
+        if (pos1 == '' or pos2 == ''):
+            raise ValueError("Position Incorrectly Entered\nEnsure if Reserve Driver is needed and leave position blank for driver being replaced.")
         try:
             constructor_indx = self.listbox1.get(0, END).index(self.curr_team)
             self.listbox1.delete(constructor_indx); self.listbox1.delete(END)
-            driver1_indx = self.listbox2.get(0, END).index(self.drivers[0])
-            driver2_indx = self.listbox2.get(0, END).index(self.drivers[1])
+            driver1_indx = self.listbox2.get(0, END).index(driver1)
+            driver2_indx = self.listbox2.get(0, END).index(driver2)
             self.listbox2.delete(driver1_indx); self.listbox3.delete(driver1_indx)
             self.listbox2.delete(driver2_indx); self.listbox3.delete(driver2_indx)
             self.listbox2.delete(END); self.listbox3.delete(END)
         except:
             pass
-        self.listbox1.insert(END,self.curr_team)
-        self.listbox2.insert(END,self.drivers[0])
-        self.listbox3.insert(END,pos1)
-        self.listbox2.insert(END,self.drivers[1])
-        self.listbox3.insert(END,pos2)
         try:
             pos_num1 = int(pos1)
             pos_num2 = int(pos2)
@@ -124,10 +175,16 @@ class postdata_gui:
             assert(20 >= pos_num2 > 0 )
         except: 
             raise ValueError("Enter a number between 1 and 20.")
-        self.out_dict['current_week'][self.curr_team.lower()][self.drivers[0].lower()] = pos_num1
-        self.out_dict['current_week'][self.curr_team.lower()][self.drivers[1].lower()] = pos_num2
+        self.listbox1.insert(END,self.curr_team)
+        self.listbox2.insert(END,driver1)
+        self.listbox3.insert(END,pos1)
+        self.listbox2.insert(END,driver2)
+        self.listbox3.insert(END,pos2)
+
+        self.out_dict['current_week'][self.curr_team.lower()][driver1.lower()] = pos_num1
+        self.out_dict['current_week'][self.curr_team.lower()][driver2.lower()] = pos_num2
         self.create_pos_yaml_file = Button(self.positions_sframe1,text="Save Inputs",command=self.create_positions_yaml)
-        self.create_pos_yaml_file.grid(row=9,column=2,sticky='w')
+        self.create_pos_yaml_file.grid(row=11,column=2,sticky='e')
 
     def create_positions_yaml(self):
         with open('test.yaml',"w") as file:
@@ -241,9 +298,9 @@ class postdata_gui:
         self.positions_sframe1 = ttk.Frame(self.positions_mframe,borderwidth=2,relief='sunken')
         self.positions_sframe1.grid(row=1,column=0,sticky='nsew')
         self.gui_title1 = Label(self.positions_mframe, text=f"GA-Powered F1 Fantasy",anchor='center',font=("Helvetica 12"))
-        self.gui_title1.grid(row=10,column=0,columnspan=2,sticky='nsew')
+        self.gui_title1.grid(row=12,column=0,columnspan=2,sticky='nsew')
         self.footer1 = Label(self.positions_mframe, text=f"Made by Malav Naik 2024",anchor='center',font=("Helvetica 6"))
-        self.footer1.grid(row=11,column=0,columnspan=2,sticky='nsew')
+        self.footer1.grid(row=13,column=0,columnspan=2,sticky='nsew')
         self.positions_label1 = Label(self.positions_sframe1, text='Current Week Positions\nDrivers and Constructors',anchor='center',font=("Helvetica 12"))
         self.positions_label1.grid(row=0,column=0,columnspan=4,sticky='nsew')
         self.positions_sframe1.grid_rowconfigure(0, weight=1)
@@ -258,6 +315,8 @@ class postdata_gui:
         self.positions_sframe1.grid_rowconfigure(9, weight=1)
         self.positions_sframe1.grid_rowconfigure(10, weight=1)
         self.positions_sframe1.grid_rowconfigure(11, weight=1)
+        self.positions_sframe1.grid_rowconfigure(12, weight=1)
+        self.positions_sframe1.grid_rowconfigure(13, weight=1)
         self.positions_sframe1.grid_columnconfigure(0, weight=1)
         self.positions_sframe1.grid_columnconfigure(1, weight=1)
         self.positions_sframe1.grid_columnconfigure(2, weight=1)
