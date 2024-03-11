@@ -79,6 +79,7 @@ class UpdateData:
                     try:
                         len(self.teams[team_name][driver_name][self.session_id])
                     except:
+                        self.attributes['availability'] = []
                         self.teams[team_name][driver_name] = self.attributes
                         
                     if (self.session_id == 'fp' and (len(self.teams[team_name][driver_name][self.session_id]) < self.session_num)):

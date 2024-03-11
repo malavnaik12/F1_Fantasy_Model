@@ -29,9 +29,6 @@ class postdata_gui:
             self.fp_session_override.grid_remove()
             self.other_session_label.grid_remove()
             self.other_session_override.grid_remove()
-            self.listbox1.delete(0,END)
-            self.listbox2.delete(0,END)
-            self.listbox3.delete(0,END)
         except:
             pass
         self.session_type = event
@@ -108,14 +105,14 @@ class postdata_gui:
         self.driver_val2.grid(row=8,column=2,sticky='w')
         self.enter_driver_pos = Button(self.positions_sframe1,text="Enter",command=self.set_driver_pos_info)
         self.enter_driver_pos.grid(row=8,column=2,sticky='e')
-        self.reserve_driver_entry_label = Label(self.positions_sframe1, text=f'Are there any driver replacements?',font=("Helvetica 9"))
-        self.reserve_driver_entry_label.grid(row=9,column=0,sticky='w')
-        self.reserve_driver_entry = IntVar()
-        self.reserve_driver_entry.set(0)
-        self.enter_reserve = Checkbutton(self.positions_sframe1, text="Yes", onvalue=1, offvalue=0, variable=self.reserve_driver_entry, command=self.enter_reserve_driver)
-        self.enter_reserve.grid(row=9,column=2,sticky='w')
+        self.reserve_driver_entry_label_pos = Label(self.positions_sframe1, text=f'Are there any driver replacements?',font=("Helvetica 9"))
+        self.reserve_driver_entry_label_pos.grid(row=9,column=0,sticky='w')
+        self.reserve_driver_entry_pos = IntVar()
+        self.reserve_driver_entry_pos.set(0)
+        self.enter_reserve_pos = Checkbutton(self.positions_sframe1, text="Yes", onvalue=1, offvalue=0, variable=self.reserve_driver_entry_pos, command=self.enter_reserve_driver_pos)
+        self.enter_reserve_pos.grid(row=9,column=2,sticky='w')
 
-    def enter_reserve_driver(self):
+    def enter_reserve_driver_pos(self):
         self.positions_ssframe1 = ttk.Frame(self.positions_sframe1,borderwidth=2,relief='sunken')
         self.positions_ssframe1.grid(row=10,column=0,columnspan=3,sticky='nsew')
         self.positions_ssframe1.grid_rowconfigure(0, weight=1)
@@ -124,12 +121,12 @@ class postdata_gui:
         self.positions_ssframe1.grid_columnconfigure(0, weight=1)
         self.positions_ssframe1.grid_columnconfigure(1, weight=1)
         self.positions_ssframe1.grid_columnconfigure(2, weight=1)
-        self.reserve_driver_title = Label(self.positions_ssframe1, text=f"Replacement Driver Entries and Info",anchor='center',font=("Helvetica 9"))
-        self.reserve_driver_title.grid(row=0,column=0,columnspan=3,sticky='nsew')
-        self.reserve_driver_name_label = Label(self.positions_ssframe1, text=f'Enter Name of Replacement Driver',font=("Helvetica 9"))
-        self.reserve_driver_name_label.grid(row=1,column=0,sticky='w')
-        self.reserve_driver_name = Entry(self.positions_ssframe1, width=10)
-        self.reserve_driver_name.grid(row=1,column=2,sticky='w')
+        self.reserve_driver_title_pos = Label(self.positions_ssframe1, text=f"Replacement Driver Entries and Info",anchor='center',font=("Helvetica 9"))
+        self.reserve_driver_title_pos.grid(row=0,column=0,columnspan=3,sticky='nsew')
+        self.reserve_driver_name_label_pos = Label(self.positions_ssframe1, text=f'Enter Name of Replacement Driver',font=("Helvetica 9"))
+        self.reserve_driver_name_label_pos.grid(row=1,column=0,sticky='w')
+        self.reserve_driver_name_pos = Entry(self.positions_ssframe1, width=10)
+        self.reserve_driver_name_pos.grid(row=1,column=2,sticky='w')
         self.reserve_driver_pos_label = Label(self.positions_ssframe1, text=f'Enter Pos of Replacement Driver',font=("Helvetica 9"))
         self.reserve_driver_pos_label.grid(row=2,column=0,sticky='w')
         self.reserve_driver_pos = Entry(self.positions_ssframe1, width=10)
@@ -146,7 +143,7 @@ class postdata_gui:
             except:
                 pass
             pos1 = self.reserve_driver_pos.get()
-            driver1 = self.reserve_driver_name.get().capitalize()
+            driver1 = self.reserve_driver_name_pos.get().capitalize()
             self.out_dict['current_week'][self.curr_team.lower()][driver1.lower()] = int()
         elif pos2 == '':
             try:
@@ -154,7 +151,7 @@ class postdata_gui:
             except:
                 pass
             pos2 = self.reserve_driver_pos.get()
-            driver2 = self.reserve_driver_name.get().capitalize()
+            driver2 = self.reserve_driver_name_pos.get().capitalize()
             self.out_dict['current_week'][self.curr_team.lower()][driver2.lower()] = int()
         if (pos1 == '' or pos2 == ''):
             raise ValueError("Position Incorrectly Entered\nEnsure if Reserve Driver is needed and leave position blank for driver being replaced.")
@@ -214,8 +211,35 @@ class postdata_gui:
         self.price_label3.grid(row=9,column=0,sticky='w')
         self.price_label3_val = Entry(self.prices_sframe1, width=5)
         self.price_label3_val.grid(row=9,column=2,sticky='w')
-        self.enter_driver_pos = Button(self.prices_sframe1,text="Enter",command=self.set_price_info)
-        self.enter_driver_pos.grid(row=9,column=2,sticky='e')
+        self.enter_driver_price = Button(self.prices_sframe1,text="Enter",command=self.set_price_info)
+        self.enter_driver_price.grid(row=9,column=2,sticky='e')
+        
+        self.reserve_driver_entry_label_price = Label(self.prices_sframe1, text=f'Are there any driver replacements?',font=("Helvetica 9"))
+        self.reserve_driver_entry_label_price.grid(row=10,column=0,sticky='w')
+        self.reserve_driver_entry_price = IntVar()
+        self.reserve_driver_entry_price.set(0)
+        self.enter_reserve_price = Checkbutton(self.prices_sframe1, text="Yes", onvalue=1, offvalue=0, variable=self.reserve_driver_entry_price, command=self.enter_reserve_driver_price)
+        self.enter_reserve_price.grid(row=10,column=2,sticky='w')
+
+    def enter_reserve_driver_price(self):
+        self.prices_ssframe1 = ttk.Frame(self.prices_sframe1,borderwidth=2,relief='sunken')
+        self.prices_ssframe1.grid(row=11,column=0,columnspan=3,sticky='nsew')
+        self.prices_ssframe1.grid_rowconfigure(0, weight=1)
+        self.prices_ssframe1.grid_rowconfigure(1, weight=1)
+        self.prices_ssframe1.grid_rowconfigure(2, weight=1)
+        self.prices_ssframe1.grid_columnconfigure(0, weight=1)
+        self.prices_ssframe1.grid_columnconfigure(1, weight=1)
+        self.prices_ssframe1.grid_columnconfigure(2, weight=1)
+        self.reserve_driver_title_price = Label(self.prices_ssframe1, text=f"Replacement Driver Entries and Info",anchor='center',font=("Helvetica 9"))
+        self.reserve_driver_title_price.grid(row=0,column=0,columnspan=3,sticky='nsew')
+        self.reserve_driver_name_label_price = Label(self.prices_ssframe1, text=f'Enter Name of Replacement Driver',font=("Helvetica 9"))
+        self.reserve_driver_name_label_price.grid(row=1,column=0,sticky='w')
+        self.reserve_driver_name_price = Entry(self.prices_ssframe1, width=10)
+        self.reserve_driver_name_price.grid(row=1,column=2,sticky='w')
+        self.reserve_driver_price_label = Label(self.prices_ssframe1, text=f'Enter Price of Replacement Driver',font=("Helvetica 9"))
+        self.reserve_driver_price_label.grid(row=2,column=0,sticky='w')
+        self.reserve_driver_price = Entry(self.prices_ssframe1, width=10)
+        self.reserve_driver_price.grid(row=2,column=2,sticky='w')
   
     def set_price_info(self):
         try:
@@ -253,7 +277,7 @@ class postdata_gui:
         self.out_dict_prices['current_week'][self.price_team.lower()][self.price_keys[1].lower()] = price2
         self.out_dict_prices['current_week'][self.price_team.lower()][self.price_keys[2].lower()] = price3
         self.create_price_yaml_file = Button(self.prices_sframe1,text="Save Inputs",command=self.create_prices_yaml)
-        self.create_price_yaml_file.grid(row=10,column=2,sticky='w')
+        self.create_price_yaml_file.grid(row=12,column=2,sticky='w')
 
     def create_prices_yaml(self):
         constructor_override = bool(self.constructor_price_override.get())
@@ -371,9 +395,9 @@ class postdata_gui:
         self.prices_label1 = Label(self.prices_sframe1, text='Current Week Prices\nDrivers and Constructors',anchor='center',font=("Helvetica 12"))
         self.prices_label1.grid(row=1,column=0,columnspan=4,sticky='nsew')
         self.gui_title2 = Label(self.prices_mframe, text=f"GA-Powered F1 Fantasy",anchor='center',font=("Helvetica 12"))
-        self.gui_title2.grid(row=11,column=0,columnspan=2,sticky='nsew')
+        self.gui_title2.grid(row=13,column=0,columnspan=2,sticky='nsew')
         self.footer2 = Label(self.prices_mframe, text=f"Made by Malav Naik 2024",anchor='center',font=("Helvetica 6"))
-        self.footer2.grid(row=12,column=0,columnspan=2,sticky='nsew')
+        self.footer2.grid(row=14,column=0,columnspan=2,sticky='nsew')
         self.line3 = ttk.Separator(self.prices_sframe1).grid(row=2,column=0,columnspan=3,sticky='nsew')
         self.line4 = ttk.Separator(self.prices_sframe1).grid(row=2,column=1,rowspan=13,sticky='nsew')
         self.prices_sframe1.grid_rowconfigure(0, weight=1)
@@ -389,6 +413,8 @@ class postdata_gui:
         self.prices_sframe1.grid_rowconfigure(10, weight=1)
         self.prices_sframe1.grid_rowconfigure(11, weight=1)
         self.prices_sframe1.grid_rowconfigure(12, weight=1)
+        self.prices_sframe1.grid_rowconfigure(13, weight=1)
+        self.prices_sframe1.grid_rowconfigure(14, weight=1)
         self.prices_sframe1.grid_columnconfigure(0, weight=1)
         self.prices_sframe1.grid_columnconfigure(1, weight=1)
         self.prices_sframe1.grid_columnconfigure(2, weight=1)
