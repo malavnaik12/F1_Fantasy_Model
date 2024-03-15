@@ -57,7 +57,7 @@ class UpdateData:
             raise TypeError(f"TypeError in \33[3mdatabase.py\033[0m.\n  Incorrect session_type specified in \33[3mpositions.yaml\033[0m.\n  Correct Options:\n  \33[33mfp\033[0m (and corresponding fp session number via \33[34msession_num\033[0m)\n  \33[33mquali\033[0m\n  \33[33mrace\033[0m")
    
     def post_data(self):
-        input("Need something to track availability of driver per session\nMight be fine to just have an availability attribute for each driver")
+        # input("Need something to track availability of driver per session\nMight be fine to just have an availability attribute for each driver")
         try:
             self.get_session_id()
             for team_name in self.curr_week_positions.keys():
@@ -79,12 +79,14 @@ class UpdateData:
                     try:
                         len(self.teams[team_name][driver_name][self.session_id])
                     except:
-                        self.attributes['availability'] = []
+                        # self.attributes['availability'] = []
                         self.teams[team_name][driver_name] = self.attributes
                         
                     if (self.session_id == 'fp' and (len(self.teams[team_name][driver_name][self.session_id]) < self.session_num)):
                         self.teams[team_name][driver_name][self.session_id].append(driver_info[driver_name])
                         driver_pos += driver_info[driver_name]
+                        
+                        # self.teams[team_name][driver_name]['availability'].append(1)
                     elif (self.session_id == 'fp' and (len(self.teams[team_name][driver_name][self.session_id]) == 3)):
                         try:
                             assert(type(self.curr_week_info["session_info"]["fp_override"]) == bool)
@@ -93,6 +95,7 @@ class UpdateData:
                         if (self.curr_week_info["session_info"]["fp_override"]):
                             self.teams[team_name][driver_name][self.session_id][self.session_num-1] = driver_info[driver_name]
                             driver_pos += driver_info[driver_name]
+                            # self.teams[team_name][driver_name]['availability'].append(1)
                         elif (not self.warning_fp):
                             print(f"\033[1;31mWarning:\033[0m Driver {self.data_session}{self.session_num} position already populated for this session.\n  Set \33[34mfp_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
                             self.warning_fp = True
@@ -100,6 +103,7 @@ class UpdateData:
                         if (len(self.teams[team_name][driver_name][self.session_id]) < self.curr_week_num):
                             self.teams[team_name][driver_name][self.session_id].append(driver_info[driver_name])
                             driver_pos += driver_info[driver_name]
+                            # self.teams[team_name][driver_name]['availability'].append(1)
                         elif ((self.session_id == 'quali_hist' or self.session_id == 'race_hist' )):# and (len(self.teams[team_name][driver_name][self.session_id]) <= self.curr_week_num)):
                             try:
                                 assert(type(self.curr_week_info["session_info"][f"{self.data_session}_override"]) == bool)
@@ -108,6 +112,7 @@ class UpdateData:
                             if (self.curr_week_info["session_info"][f"{self.data_session}_override"]):
                                 self.teams[team_name][driver_name][self.session_id][self.curr_week_num-1] = driver_info[driver_name]
                                 driver_pos += driver_info[driver_name]
+                                # self.teams[team_name][driver_name]['availability'].append(1)
                             elif (not self.warning_quali and self.session_id == 'quali_hist'):
                                     print(f"\033[1;31mWarning:\033[0m Driver {self.data_session} position already populated for this session.\n  Set \33[34m{self.data_session}_override\033[0m to \33[34mtrue\033[0m in \33[3mpositions.yaml\033[0m to overide value and re-run \33[3mdatabase.py\033[0m.")
                                     self.warning_quali = True

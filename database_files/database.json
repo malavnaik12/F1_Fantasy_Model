@@ -1,211 +1,308 @@
 {
   "redbull": {
-    "quali_hist": [],
+    "quali_hist": [
+      1.5
+    ],
     "race_hist": [],
     "fp": [],
-    "price": [],
+    "price": [
+      27.8
+    ],
     "verstappen": {
-      "quali_hist": [],
+      "quali_hist": [
+        2
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        30
+      ]
     },
     "perez": {
-      "quali_hist": [],
+      "quali_hist": [
+        1
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        20.8
+      ]
     }
   },
   "ferrari": {
-    "quali_hist": [],
+    "quali_hist": [
+      3.5
+    ],
     "race_hist": [],
     "fp": [],
-    "price": [],
-    "availability": [],
+    "price": [
+      19.3
+    ],
     "leclerc": {
-      "quali_hist": [],
+      "quali_hist": [
+        4
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        19.1
+      ]
     },
     "sainz": {
+      "quali_hist": [
+        3
+      ],
+      "race_hist": [],
+      "fp": [],
+      "price": [
+        18.5
+      ]
+    },
+    "bearman": {
       "quali_hist": [],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": []
     }
   },
   "aston_martin": {
-    "quali_hist": [],
+    "quali_hist": [
+      9.5
+    ],
     "race_hist": [],
     "fp": [],
-    "price": [],
-    "availability": [],
+    "price": [
+      13.6
+    ],
     "alonzo": {
-      "quali_hist": [],
+      "quali_hist": [
+        9
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        11
+      ]
     },
     "stroll": {
-      "quali_hist": [],
+      "quali_hist": [
+        10
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        10
+      ]
     }
   },
   "mclaren": {
-    "quali_hist": [],
+    "quali_hist": [
+      7.0
+    ],
     "race_hist": [],
     "fp": [],
-    "price": [],
-    "availability": [],
+    "price": [
+      23.2
+    ],
     "norris": {
-      "quali_hist": [],
+      "quali_hist": [
+        6
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        23
+      ]
     },
     "piastri": {
-      "quali_hist": [],
+      "quali_hist": [
+        8
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        19
+      ]
     }
   },
   "alpine": {
-    "quali_hist": [],
+    "quali_hist": [
+      22.5
+    ],
     "race_hist": [],
     "fp": [],
-    "price": [],
-    "availability": [],
+    "price": [
+      8.4
+    ],
     "ocon": {
-      "quali_hist": [],
+      "quali_hist": [
+        17
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        7.8
+      ]
     },
     "gasly": {
-      "quali_hist": [],
+      "quali_hist": [
+        28
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        7.8
+      ]
     }
   },
   "mercedes": {
-    "quali_hist": [],
+    "quali_hist": [
+      6.0
+    ],
     "race_hist": [],
     "fp": [],
-    "price": [],
-    "availability": [],
+    "price": [
+      20.1
+    ],
     "hamilton": {
-      "quali_hist": [],
+      "quali_hist": [
+        7
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        19.3
+      ]
     },
     "russell": {
-      "quali_hist": [],
+      "quali_hist": [
+        5
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        18.8
+      ]
     }
   },
   "sauber": {
-    "quali_hist": [],
+    "quali_hist": [
+      15.0
+    ],
     "race_hist": [],
     "fp": [],
-    "price": [],
-    "availability": [],
+    "price": [
+      6.6
+    ],
     "bottas": {
-      "quali_hist": [],
+      "quali_hist": [
+        19
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        6.6
+      ]
     },
     "zhou": {
-      "quali_hist": [],
+      "quali_hist": [
+        11
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        6.4
+      ]
     }
   },
   "haas": {
-    "quali_hist": [],
+    "quali_hist": [
+      14.0
+    ],
     "race_hist": [],
     "fp": [],
-    "price": [],
-    "availability": [],
+    "price": [
+      6.3
+    ],
     "hulkenburg": {
-      "quali_hist": [],
+      "quali_hist": [
+        16
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        6.4
+      ]
     },
     "magnussen": {
-      "quali_hist": [],
+      "quali_hist": [
+        12
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        6.2
+      ]
     }
   },
   "williams": {
-    "quali_hist": [],
+    "quali_hist": [
+      17.5
+    ],
     "race_hist": [],
     "fp": [],
-    "price": [],
-    "availability": [],
+    "price": [
+      6.3
+    ],
     "albon": {
-      "quali_hist": [],
+      "quali_hist": [
+        15
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        7
+      ]
     },
     "sargenat": {
-      "quali_hist": [],
+      "quali_hist": [
+        20
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        5.5
+      ]
     }
   },
   "rb": {
-    "quali_hist": [],
+    "quali_hist": [
+      13.5
+    ],
     "race_hist": [],
     "fp": [],
-    "price": [],
-    "availability": [],
+    "price": [
+      8.5
+    ],
     "riccardo": {
-      "quali_hist": [],
+      "quali_hist": [
+        13
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        9
+      ]
     },
     "tsunoda": {
-      "quali_hist": [],
+      "quali_hist": [
+        14
+      ],
       "race_hist": [],
       "fp": [],
-      "price": [],
-      "availability": []
+      "price": [
+        8
+      ]
     }
   }
 }

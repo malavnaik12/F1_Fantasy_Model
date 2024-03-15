@@ -21,7 +21,7 @@ def main():
             for attribute in list(data_attrs.keys()):
                 teams[team][attribute] = []
             for driver in list(team_info[team].keys()):
-                data_attrs['availability'] = []
+                # data_attrs['availability'] = []
                 teams[team][driver] = data_attrs
     
     with open("./database_files/database.json","w") as db_file:
