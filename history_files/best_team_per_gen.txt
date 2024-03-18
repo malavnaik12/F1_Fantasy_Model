@@ -1,1651 +1,1651 @@
 
 Generation: 1
 
-	Drivers: ['perez', 'ocon', 'verstappen', 'sainz', 'magnussen']
+	Drivers: ['sargenat', 'leclerc', 'ocon', 'zhou', 'bottas']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['aston_martin', 'rb']
 
-	Team Cost: 98.0
+	Team Cost: 67.5
 
-	Fitness: -7833.466666666667
+	Fitness: nan
 
             
 Generation: 2
 
-	Drivers: ['tsunoda', 'hamilton', 'riccardo', 'piastri', 'verstappen']
+	Drivers: ['sainz', 'piastri', 'zhou', 'norris', 'ocon']
 
-	Constructors: ['sauber', 'williams']
+	Constructors: ['aston_martin', 'rb']
 
-	Team Cost: 98.19999999999999
+	Team Cost: 96.80000000000001
 
-	Fitness: -7040.939999999998
+	Fitness: nan
 
             
 Generation: 3
 
-	Drivers: ['albon', 'verstappen', 'norris', 'tsunoda', 'gasly']
+	Drivers: ['magnussen', 'leclerc', 'hamilton', 'sargenat', 'perez']
 
-	Constructors: ['alpine', 'haas']
+	Constructors: ['sauber', 'mercedes']
 
-	Team Cost: 90.5
+	Team Cost: 97.60000000000001
 
-	Fitness: -7636.691666666666
+	Fitness: nan
 
             
 Generation: 4
 
-	Drivers: ['perez', 'magnussen', 'riccardo', 'verstappen', 'gasly']
+	Drivers: ['sargenat', 'russell', 'riccardo', 'albon', 'tsunoda']
 
-	Constructors: ['aston_martin', 'alpine']
+	Constructors: ['mclaren', 'alpine']
 
-	Team Cost: 95.8
+	Team Cost: 79.9
 
-	Fitness: -7274.413333333334
+	Fitness: nan
 
             
 Generation: 5
 
-	Drivers: ['verstappen', 'hamilton', 'norris', 'sargenat', 'magnussen']
+	Drivers: ['piastri', 'stroll', 'sargenat', 'hulkenburg', 'sainz']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['redbull', 'haas']
 
-	Team Cost: 99.0
+	Team Cost: 93.5
 
-	Fitness: -8243.4
+	Fitness: nan
 
             
 Generation: 6
 
-	Drivers: ['albon', 'verstappen', 'bottas', 'hamilton', 'leclerc']
+	Drivers: ['magnussen', 'sargenat', 'riccardo', 'gasly', 'zhou']
 
-	Constructors: ['williams', 'sauber']
+	Constructors: ['ferrari', 'alpine']
 
-	Team Cost: 94.9
+	Team Cost: 62.6
 
-	Fitness: -7019.436666666667
+	Fitness: nan
 
             
 Generation: 7
 
-	Drivers: ['tsunoda', 'magnussen', 'verstappen', 'hamilton', 'gasly']
+	Drivers: ['sargenat', 'stroll', 'alonzo', 'gasly', 'norris']
 
-	Constructors: ['alpine', 'haas']
+	Constructors: ['aston_martin', 'mercedes']
 
-	Team Cost: 86.0
+	Team Cost: 91.0
 
-	Fitness: -7308.566666666666
+	Fitness: nan
 
             
 Generation: 8
 
-	Drivers: ['albon', 'piastri', 'perez', 'gasly', 'stroll']
+	Drivers: ['tsunoda', 'bottas', 'norris', 'albon', 'sainz']
 
-	Constructors: ['mclaren', 'alpine']
+	Constructors: ['ferrari', 'williams']
 
-	Team Cost: 96.19999999999999
+	Team Cost: 88.7
 
-	Fitness: -7307.993333333333
+	Fitness: nan
 
             
 Generation: 9
 
-	Drivers: ['verstappen', 'leclerc', 'sainz', 'gasly', 'albon']
+	Drivers: ['hulkenburg', 'zhou', 'norris', 'alonzo', 'bearman']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['mclaren', 'alpine']
 
-	Team Cost: 97.1
+	Team Cost: nan
 
-	Fitness: -7900.703333333334
+	Fitness: nan
 
             
 Generation: 10
 
-	Drivers: ['gasly', 'norris', 'bottas', 'stroll', 'piastri']
+	Drivers: ['tsunoda', 'bottas', 'ocon', 'gasly', 'stroll']
 
-	Constructors: ['alpine', 'mclaren']
+	Constructors: ['mercedes', 'alpine']
 
-	Team Cost: 98.0
+	Team Cost: 68.7
 
-	Fitness: -7735.466666666667
+	Fitness: nan
 
             
 Generation: 11
 
-	Drivers: ['alonzo', 'ocon', 'verstappen', 'albon', 'hamilton']
+	Drivers: ['bottas', 'gasly', 'riccardo', 'sainz', 'hulkenburg']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['rb', 'alpine']
 
-	Team Cost: 90.1
+	Team Cost: 65.19999999999999
 
-	Fitness: -7400.213333333332
+	Fitness: nan
 
             
 Generation: 12
 
-	Drivers: ['norris', 'russell', 'stroll', 'gasly', 'perez']
+	Drivers: ['zhou', 'sainz', 'albon', 'perez', 'verstappen']
 
-	Constructors: ['haas', 'sauber']
+	Constructors: ['alpine', 'haas']
 
-	Team Cost: 93.29999999999998
+	Team Cost: 97.4
 
-	Fitness: -6871.544999999999
+	Fitness: nan
 
             
 Generation: 13
 
-	Drivers: ['albon', 'alonzo', 'norris', 'stroll', 'perez']
+	Drivers: ['zhou', 'piastri', 'perez', 'bottas', 'hamilton']
 
 	Constructors: ['williams', 'alpine']
 
-	Team Cost: 86.5
+	Team Cost: 86.80000000000001
 
-	Fitness: -6888.283333333333
+	Fitness: nan
 
             
 Generation: 14
 
-	Drivers: ['sainz', 'bottas', 'riccardo', 'hamilton', 'verstappen']
+	Drivers: ['albon', 'hamilton', 'riccardo', 'tsunoda', 'russell']
 
-	Constructors: ['alpine', 'haas']
+	Constructors: ['redbull', 'sauber']
 
-	Team Cost: 98.10000000000001
+	Team Cost: 96.5
 
-	Fitness: -7408.185
+	Fitness: nan
 
             
 Generation: 15
 
-	Drivers: ['ocon', 'verstappen', 'gasly', 'hamilton', 'stroll']
+	Drivers: ['piastri', 'albon', 'tsunoda', 'leclerc', 'bottas']
 
-	Constructors: ['alpine', 'rb']
+	Constructors: ['alpine', 'redbull']
 
-	Team Cost: 91.79999999999998
+	Team Cost: 95.9
 
-	Fitness: -7718.8499999999985
+	Fitness: nan
 
             
 Generation: 16
 
-	Drivers: ['russell', 'hulkenburg', 'perez', 'ocon', 'verstappen']
+	Drivers: ['alonzo', 'hamilton', 'gasly', 'albon', 'bottas']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['sauber', 'rb']
 
-	Team Cost: 98.8
+	Team Cost: 66.8
 
-	Fitness: -7801.906666666667
+	Fitness: nan
 
             
 Generation: 17
 
-	Drivers: ['sainz', 'verstappen', 'piastri', 'gasly', 'bottas']
+	Drivers: ['hulkenburg', 'verstappen', 'sargenat', 'ocon', 'norris']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['alpine', 'sauber']
 
-	Team Cost: 96.89999999999999
+	Team Cost: 87.69999999999999
 
-	Fitness: -8204.199999999999
+	Fitness: nan
 
             
 Generation: 18
 
-	Drivers: ['stroll', 'russell', 'zhou', 'gasly', 'perez']
+	Drivers: ['bottas', 'verstappen', 'hulkenburg', 'zhou', 'norris']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'alpine']
 
-	Team Cost: 78.8
+	Team Cost: 87.10000000000001
 
-	Fitness: -6929.1466666666665
+	Fitness: nan
 
             
 Generation: 19
 
-	Drivers: ['gasly', 'leclerc', 'verstappen', 'magnussen', 'piastri']
+	Drivers: ['albon', 'magnussen', 'leclerc', 'hamilton', 'bottas']
 
-	Constructors: ['haas', 'williams']
+	Constructors: ['williams', 'alpine']
 
-	Team Cost: 94.7
+	Team Cost: 72.89999999999999
 
-	Fitness: -6977.811666666667
+	Fitness: nan
 
             
 Generation: 20
 
-	Drivers: ['norris', 'magnussen', 'russell', 'leclerc', 'bottas']
+	Drivers: ['stroll', 'leclerc', 'tsunoda', 'sargenat', 'ocon']
 
-	Constructors: ['haas', 'alpine']
+	Constructors: ['ferrari', 'mclaren']
 
-	Team Cost: 88.39999999999999
+	Team Cost: 92.9
 
-	Fitness: -6896.673333333331
+	Fitness: nan
 
             
 Generation: 21
 
-	Drivers: ['bottas', 'verstappen', 'piastri', 'gasly', 'russell']
+	Drivers: ['sainz', 'tsunoda', 'gasly', 'stroll', 'bottas']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['redbull', 'williams']
 
-	Team Cost: 97.2
+	Team Cost: 85.0
 
-	Fitness: -8242.56
+	Fitness: nan
 
             
 Generation: 22
 
-	Drivers: ['magnussen', 'gasly', 'piastri', 'ocon', 'perez']
+	Drivers: ['russell', 'sargenat', 'hulkenburg', 'alonzo', 'zhou']
 
-	Constructors: ['mclaren', 'williams']
+	Constructors: ['williams', 'alpine']
 
-	Team Cost: 91.1
+	Team Cost: 62.8
 
-	Fitness: -6771.766666666667
+	Fitness: nan
 
             
 Generation: 23
 
-	Drivers: ['sargenat', 'norris', 'verstappen', 'gasly', 'piastri']
+	Drivers: ['hulkenburg', 'sainz', 'piastri', 'riccardo', 'zhou']
 
-	Constructors: ['haas', 'alpine']
+	Constructors: ['williams', 'sauber']
 
-	Team Cost: 100.0
+	Team Cost: 72.19999999999999
 
-	Fitness: -8405.0
+	Fitness: nan
 
             
 Generation: 24
 
-	Drivers: ['magnussen', 'gasly', 'sainz', 'perez', 'norris']
+	Drivers: ['hulkenburg', 'piastri', 'sargenat', 'ocon', 'bottas']
 
-	Constructors: ['alpine', 'haas']
+	Constructors: ['redbull', 'haas']
 
-	Team Cost: 91.0
+	Team Cost: 79.4
 
-	Fitness: -7448.349999999999
+	Fitness: nan
 
             
 Generation: 25
 
-	Drivers: ['verstappen', 'sargenat', 'stroll', 'tsunoda', 'norris']
+	Drivers: ['albon', 'zhou', 'magnussen', 'bottas', 'russell']
 
-	Constructors: ['williams', 'sauber']
+	Constructors: ['sauber', 'redbull']
 
-	Team Cost: 89.4
+	Team Cost: 79.4
 
-	Fitness: -6934.46
+	Fitness: nan
 
             
 Generation: 26
 
-	Drivers: ['gasly', 'magnussen', 'ocon', 'verstappen', 'sargenat']
+	Drivers: ['alonzo', 'leclerc', 'albon', 'norris', 'magnussen']
 
-	Constructors: ['mclaren', 'alpine']
+	Constructors: ['sauber', 'williams']
 
-	Team Cost: 88.9
+	Team Cost: 79.19999999999999
 
-	Fitness: -7583.169999999999
+	Fitness: nan
 
             
 Generation: 27
 
-	Drivers: ['gasly', 'magnussen', 'ocon', 'verstappen', 'sargenat']
+	Drivers: ['piastri', 'sargenat', 'tsunoda', 'russell', 'gasly']
 
-	Constructors: ['mclaren', 'alpine']
+	Constructors: ['aston_martin', 'sauber']
 
-	Team Cost: 88.9
+	Team Cost: 79.3
 
-	Fitness: -7583.169999999999
+	Fitness: nan
 
             
 Generation: 28
 
-	Drivers: ['leclerc', 'hamilton', 'norris', 'albon', 'bottas']
+	Drivers: ['piastri', 'sargenat', 'tsunoda', 'russell', 'gasly']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['aston_martin', 'sauber']
 
-	Team Cost: 90.0
+	Team Cost: 79.3
 
-	Fitness: -7485.0
+	Fitness: nan
 
             
 Generation: 29
 
-	Drivers: ['hamilton', 'sargenat', 'verstappen', 'ocon', 'stroll']
+	Drivers: ['bottas', 'norris', 'hulkenburg', 'zhou', 'albon']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['alpine', 'sauber']
 
-	Team Cost: 87.3
+	Team Cost: 64.4
 
-	Fitness: -7662.029999999999
+	Fitness: nan
 
             
 Generation: 30
 
-	Drivers: ['stroll', 'norris', 'perez', 'leclerc', 'albon']
+	Drivers: ['sainz', 'hulkenburg', 'leclerc', 'riccardo', 'albon']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['sauber', 'alpine']
 
-	Team Cost: 94.9
+	Team Cost: 75.0
 
-	Fitness: -7427.506666666667
+	Fitness: nan
 
             
 Generation: 31
 
-	Drivers: ['gasly', 'verstappen', 'ocon', 'zhou', 'bottas']
+	Drivers: ['gasly', 'zhou', 'bottas', 'sargenat', 'hamilton']
 
-	Constructors: ['redbull', 'alpine']
+	Constructors: ['mercedes', 'aston_martin']
 
-	Team Cost: 94.89999999999999
+	Team Cost: 79.3
 
-	Fitness: -7568.275
+	Fitness: nan
 
             
 Generation: 32
 
-	Drivers: ['perez', 'bottas', 'piastri', 'tsunoda', 'norris']
+	Drivers: ['gasly', 'zhou', 'bottas', 'sargenat', 'hamilton']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['mercedes', 'aston_martin']
 
-	Team Cost: 92.4
+	Team Cost: 79.3
 
-	Fitness: -7607.600000000001
+	Fitness: nan
 
             
 Generation: 33
 
-	Drivers: ['tsunoda', 'verstappen', 'norris', 'ocon', 'albon']
+	Drivers: ['perez', 'zhou', 'tsunoda', 'albon', 'norris']
 
-	Constructors: ['alpine', 'rb']
+	Constructors: ['rb', 'sauber']
 
-	Team Cost: 92.69999999999999
+	Team Cost: 80.3
 
-	Fitness: -7361.924999999998
+	Fitness: nan
 
             
 Generation: 34
 
-	Drivers: ['alonzo', 'perez', 'norris', 'albon', 'sainz']
+	Drivers: ['perez', 'zhou', 'tsunoda', 'albon', 'norris']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['rb', 'sauber']
 
-	Team Cost: 95.0
+	Team Cost: 80.3
 
-	Fitness: -7178.833333333333
+	Fitness: nan
 
             
 Generation: 35
 
-	Drivers: ['piastri', 'russell', 'gasly', 'norris', 'ocon']
+	Drivers: ['perez', 'zhou', 'tsunoda', 'albon', 'norris']
 
-	Constructors: ['sauber', 'williams']
+	Constructors: ['rb', 'sauber']
 
-	Team Cost: 89.29999999999998
+	Team Cost: 80.3
 
-	Fitness: -7364.273333333332
+	Fitness: nan
 
             
 Generation: 36
 
-	Drivers: ['albon', 'perez', 'bottas', 'hamilton', 'zhou']
+	Drivers: ['albon', 'hamilton', 'tsunoda', 'sainz', 'riccardo']
 
-	Constructors: ['mclaren', 'alpine']
+	Constructors: ['haas', 'mclaren']
 
-	Team Cost: 91.7
+	Team Cost: 91.3
 
-	Fitness: -6929.463333333333
+	Fitness: nan
 
             
 Generation: 37
 
-	Drivers: ['stroll', 'alonzo', 'norris', 'gasly', 'hamilton']
+	Drivers: ['albon', 'hamilton', 'tsunoda', 'sainz', 'riccardo']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['haas', 'mclaren']
 
-	Team Cost: 85.8
+	Team Cost: 91.3
 
-	Fitness: -7390.239999999999
+	Fitness: nan
 
             
 Generation: 38
 
-	Drivers: ['tsunoda', 'verstappen', 'riccardo', 'norris', 'gasly']
+	Drivers: ['sargenat', 'hamilton', 'bottas', 'sainz', 'tsunoda']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['haas', 'sauber']
 
-	Team Cost: 92.5
+	Team Cost: 70.8
 
-	Fitness: -8025.916666666667
+	Fitness: nan
 
             
 Generation: 39
 
-	Drivers: ['zhou', 'russell', 'riccardo', 'ocon', 'verstappen']
+	Drivers: ['sargenat', 'hamilton', 'bottas', 'sainz', 'tsunoda']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['haas', 'sauber']
 
-	Team Cost: 86.7
+	Team Cost: 70.8
 
-	Fitness: -7308.81
+	Fitness: nan
 
             
 Generation: 40
 
-	Drivers: ['russell', 'gasly', 'norris', 'leclerc', 'sargenat']
+	Drivers: ['piastri', 'zhou', 'hulkenburg', 'ocon', 'hamilton']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['mclaren', 'haas']
 
-	Team Cost: 88.9
+	Team Cost: 88.39999999999999
 
-	Fitness: -7746.153333333333
+	Fitness: nan
 
             
 Generation: 41
 
-	Drivers: ['verstappen', 'sargenat', 'magnussen', 'russell', 'hamilton']
+	Drivers: ['albon', 'alonzo', 'piastri', 'magnussen', 'zhou']
 
-	Constructors: ['rb', 'alpine']
+	Constructors: ['alpine', 'sauber']
 
-	Team Cost: 96.69999999999999
+	Team Cost: 64.6
 
-	Fitness: -7305.684999999999
+	Fitness: nan
 
             
 Generation: 42
 
-	Drivers: ['stroll', 'leclerc', 'gasly', 'perez', 'hamilton']
+	Drivers: ['albon', 'alonzo', 'piastri', 'magnussen', 'zhou']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['alpine', 'sauber']
 
-	Team Cost: 92.0
+	Team Cost: 64.6
 
-	Fitness: -7685.066666666667
+	Fitness: nan
 
             
 Generation: 43
 
-	Drivers: ['hamilton', 'sargenat', 'piastri', 'stroll', 'norris']
+	Drivers: ['piastri', 'riccardo', 'bottas', 'ocon', 'magnussen']
 
-	Constructors: ['aston_martin', 'alpine']
+	Constructors: ['sauber', 'alpine']
 
-	Team Cost: 98.8
+	Team Cost: 63.6
 
-	Fitness: -7238.746666666666
+	Fitness: nan
 
             
 Generation: 44
 
-	Drivers: ['gasly', 'hamilton', 'hulkenburg', 'norris', 'perez']
+	Drivers: ['hamilton', 'zhou', 'piastri', 'gasly', 'hulkenburg']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['aston_martin', 'williams']
 
-	Team Cost: 92.3
+	Team Cost: 78.8
 
-	Fitness: -7987.026666666667
+	Fitness: nan
 
             
 Generation: 45
 
-	Drivers: ['hamilton', 'albon', 'norris', 'tsunoda', 'ocon']
+	Drivers: ['sainz', 'magnussen', 'russell', 'hulkenburg', 'riccardo']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['mclaren', 'sauber']
 
-	Team Cost: 80.1
+	Team Cost: 88.69999999999999
 
-	Fitness: -7099.53
+	Fitness: nan
 
             
 Generation: 46
 
-	Drivers: ['leclerc', 'piastri', 'sargenat', 'verstappen', 'alonzo']
+	Drivers: ['piastri', 'sargenat', 'hamilton', 'sainz', 'riccardo']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['ferrari', 'sauber']
 
-	Team Cost: 99.3
+	Team Cost: 97.19999999999999
 
-	Fitness: -7563.3499999999985
+	Fitness: nan
 
             
 Generation: 47
 
-	Drivers: ['hamilton', 'russell', 'norris', 'stroll', 'riccardo']
+	Drivers: ['tsunoda', 'russell', 'gasly', 'perez', 'piastri']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['haas', 'sauber']
 
-	Team Cost: 94.8
+	Team Cost: 87.30000000000001
 
-	Fitness: -7476.5599999999995
+	Fitness: nan
 
             
 Generation: 48
 
-	Drivers: ['bottas', 'norris', 'sargenat', 'russell', 'gasly']
+	Drivers: ['tsunoda', 'russell', 'gasly', 'perez', 'piastri']
 
-	Constructors: ['alpine', 'haas']
+	Constructors: ['haas', 'sauber']
 
-	Team Cost: 76.4
+	Team Cost: 87.30000000000001
 
-	Fitness: -6953.673333333332
+	Fitness: nan
 
             
 Generation: 49
 
-	Drivers: ['norris', 'verstappen', 'sargenat', 'russell', 'bottas']
+	Drivers: ['tsunoda', 'russell', 'gasly', 'perez', 'piastri']
 
-	Constructors: ['haas', 'alpine']
+	Constructors: ['haas', 'sauber']
 
-	Team Cost: 98.6
+	Team Cost: 87.30000000000001
 
-	Fitness: -7807.4766666666665
+	Fitness: nan
 
             
 Generation: 50
 
-	Drivers: ['norris', 'perez', 'leclerc', 'gasly', 'magnussen']
+	Drivers: ['albon', 'piastri', 'magnussen', 'ocon', 'bottas']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['alpine', 'aston_martin']
 
-	Team Cost: 91.9
+	Team Cost: 68.6
 
-	Fitness: -7836.006666666667
+	Fitness: nan
 
             
 Generation: 51
 
-	Drivers: ['verstappen', 'tsunoda', 'alonzo', 'norris', 'stroll']
+	Drivers: ['albon', 'piastri', 'magnussen', 'ocon', 'bottas']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['alpine', 'aston_martin']
 
-	Team Cost: 96.7
+	Team Cost: 68.6
 
-	Fitness: -7423.336666666667
+	Fitness: nan
 
             
 Generation: 52
 
-	Drivers: ['hamilton', 'gasly', 'riccardo', 'piastri', 'sargenat']
+	Drivers: ['albon', 'piastri', 'magnussen', 'ocon', 'bottas']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['alpine', 'aston_martin']
 
-	Team Cost: 75.6
+	Team Cost: 68.6
 
-	Fitness: -7058.52
+	Fitness: nan
 
             
 Generation: 53
 
-	Drivers: ['sargenat', 'verstappen', 'leclerc', 'bottas', 'alonzo']
+	Drivers: ['alonzo', 'magnussen', 'stroll', 'gasly', 'bottas']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['sauber', 'mclaren']
 
-	Team Cost: 87.2
+	Team Cost: 71.4
 
-	Fitness: -7127.1466666666665
+	Fitness: nan
 
             
 Generation: 54
 
-	Drivers: ['bottas', 'sargenat', 'norris', 'sainz', 'stroll']
+	Drivers: ['alonzo', 'magnussen', 'stroll', 'gasly', 'bottas']
 
-	Constructors: ['alpine', 'redbull']
+	Constructors: ['sauber', 'mclaren']
 
-	Team Cost: 99.9
+	Team Cost: 71.4
 
-	Fitness: -6964.695000000001
+	Fitness: nan
 
             
 Generation: 55
 
-	Drivers: ['albon', 'ocon', 'perez', 'russell', 'stroll']
+	Drivers: ['sainz', 'ocon', 'hamilton', 'leclerc', 'alonzo']
 
-	Constructors: ['alpine', 'mclaren']
+	Constructors: ['alpine', 'rb']
 
-	Team Cost: 96.0
+	Team Cost: 92.6
 
-	Fitness: -6902.400000000001
+	Fitness: nan
 
             
 Generation: 56
 
-	Drivers: ['hulkenburg', 'perez', 'stroll', 'verstappen', 'gasly']
+	Drivers: ['russell', 'perez', 'stroll', 'magnussen', 'zhou']
 
-	Constructors: ['alpine', 'aston_martin']
+	Constructors: ['haas', 'mercedes']
 
-	Team Cost: 97.0
+	Team Cost: 88.60000000000001
 
-	Fitness: -7229.733333333334
+	Fitness: nan
 
             
 Generation: 57
 
-	Drivers: ['gasly', 'magnussen', 'verstappen', 'sainz', 'piastri']
+	Drivers: ['russell', 'perez', 'stroll', 'magnussen', 'zhou']
 
-	Constructors: ['rb', 'alpine']
+	Constructors: ['haas', 'mercedes']
 
-	Team Cost: 98.4
+	Team Cost: 88.60000000000001
 
-	Fitness: -7611.24
+	Fitness: nan
 
             
 Generation: 58
 
-	Drivers: ['gasly', 'magnussen', 'verstappen', 'sainz', 'piastri']
+	Drivers: ['albon', 'perez', 'magnussen', 'tsunoda', 'stroll']
 
-	Constructors: ['rb', 'alpine']
+	Constructors: ['haas', 'rb']
 
-	Team Cost: 98.4
+	Team Cost: 66.8
 
-	Fitness: -7611.24
+	Fitness: nan
 
             
 Generation: 59
 
-	Drivers: ['gasly', 'magnussen', 'verstappen', 'sainz', 'piastri']
+	Drivers: ['albon', 'perez', 'magnussen', 'tsunoda', 'stroll']
 
-	Constructors: ['rb', 'alpine']
+	Constructors: ['haas', 'rb']
 
-	Team Cost: 98.4
+	Team Cost: 66.8
 
-	Fitness: -7611.24
+	Fitness: nan
 
             
 Generation: 60
 
-	Drivers: ['hamilton', 'perez', 'bottas', 'verstappen', 'zhou']
+	Drivers: ['hamilton', 'magnussen', 'alonzo', 'sainz', 'perez']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['rb', 'alpine']
 
-	Team Cost: 98.10000000000001
+	Team Cost: 92.69999999999999
 
-	Fitness: -8001.6900000000005
+	Fitness: nan
 
             
 Generation: 61
 
-	Drivers: ['albon', 'gasly', 'hamilton', 'sainz', 'piastri']
+	Drivers: ['hamilton', 'magnussen', 'alonzo', 'sainz', 'perez']
 
-	Constructors: ['alpine', 'rb']
+	Constructors: ['rb', 'alpine']
 
-	Team Cost: 88.5
+	Team Cost: 92.69999999999999
 
-	Fitness: -7108.025
+	Fitness: nan
 
             
 Generation: 62
 
-	Drivers: ['albon', 'gasly', 'hamilton', 'sainz', 'piastri']
+	Drivers: ['norris', 'tsunoda', 'hulkenburg', 'riccardo', 'alonzo']
 
-	Constructors: ['alpine', 'rb']
+	Constructors: ['haas', 'redbull']
 
-	Team Cost: 88.5
+	Team Cost: 91.5
 
-	Fitness: -7108.025
+	Fitness: nan
 
             
 Generation: 63
 
-	Drivers: ['hamilton', 'piastri', 'verstappen', 'zhou', 'ocon']
+	Drivers: ['hamilton', 'tsunoda', 'leclerc', 'hulkenburg', 'riccardo']
 
-	Constructors: ['williams', 'sauber']
+	Constructors: ['ferrari', 'alpine']
 
-	Team Cost: 95.4
+	Team Cost: 89.5
 
-	Fitness: -7368.06
+	Fitness: nan
 
             
 Generation: 64
 
-	Drivers: ['verstappen', 'sainz', 'bottas', 'perez', 'gasly']
+	Drivers: ['hamilton', 'tsunoda', 'leclerc', 'hulkenburg', 'riccardo']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['ferrari', 'alpine']
 
-	Team Cost: 98.7
+	Team Cost: 89.5
 
-	Fitness: -8254.609999999999
+	Fitness: nan
 
             
 Generation: 65
 
-	Drivers: ['sargenat', 'riccardo', 'verstappen', 'leclerc', 'ocon']
+	Drivers: ['hulkenburg', 'albon', 'verstappen', 'sargenat', 'piastri']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['ferrari', 'alpine']
 
-	Team Cost: 86.4
+	Team Cost: 95.60000000000001
 
-	Fitness: -7418.88
+	Fitness: nan
 
             
 Generation: 66
 
-	Drivers: ['leclerc', 'perez', 'verstappen', 'hulkenburg', 'bottas']
+	Drivers: ['hulkenburg', 'albon', 'verstappen', 'sargenat', 'piastri']
 
-	Constructors: ['alpine', 'haas']
+	Constructors: ['ferrari', 'alpine']
 
-	Team Cost: 97.60000000000001
+	Team Cost: 95.60000000000001
 
-	Fitness: -7282.586666666667
+	Fitness: nan
 
             
 Generation: 67
 
-	Drivers: ['tsunoda', 'norris', 'alonzo', 'gasly', 'verstappen']
+	Drivers: ['zhou', 'alonzo', 'magnussen', 'bottas', 'russell']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['mercedes', 'williams']
 
-	Team Cost: 94.8
+	Team Cost: 75.4
 
-	Fitness: -7893.679999999999
+	Fitness: nan
 
             
 Generation: 68
 
-	Drivers: ['piastri', 'gasly', 'magnussen', 'verstappen', 'perez']
+	Drivers: ['zhou', 'alonzo', 'magnussen', 'bottas', 'russell']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['mercedes', 'williams']
 
-	Team Cost: 98.8
+	Team Cost: 75.4
 
-	Fitness: -8295.906666666666
+	Fitness: nan
 
             
 Generation: 69
 
-	Drivers: ['verstappen', 'tsunoda', 'hulkenburg', 'perez', 'stroll']
+	Drivers: ['zhou', 'alonzo', 'magnussen', 'bottas', 'russell']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['mercedes', 'williams']
 
-	Team Cost: 89.9
+	Team Cost: 75.4
 
-	Fitness: -7144.053333333334
+	Fitness: nan
 
             
 Generation: 70
 
-	Drivers: ['hamilton', 'sargenat', 'norris', 'russell', 'ocon']
+	Drivers: ['ocon', 'sargenat', 'perez', 'albon', 'bottas']
 
-	Constructors: ['rb', 'alpine']
+	Constructors: ['sauber', 'ferrari']
 
-	Team Cost: 91.29999999999998
+	Team Cost: 73.6
 
-	Fitness: -7375.518333333332
+	Fitness: nan
 
             
 Generation: 71
 
-	Drivers: ['perez', 'albon', 'ocon', 'leclerc', 'verstappen']
+	Drivers: ['ocon', 'sargenat', 'perez', 'albon', 'bottas']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['sauber', 'ferrari']
 
-	Team Cost: 99.7
+	Team Cost: 73.6
 
-	Fitness: -7919.503333333334
+	Fitness: nan
 
             
 Generation: 72
 
-	Drivers: ['albon', 'russell', 'perez', 'gasly', 'norris']
+	Drivers: ['perez', 'piastri', 'tsunoda', 'sainz', 'magnussen']
 
-	Constructors: ['alpine', 'haas']
+	Constructors: ['williams', 'sauber']
 
-	Team Cost: 92.10000000000001
+	Team Cost: 85.4
 
-	Fitness: -7519.965
+	Fitness: nan
 
             
 Generation: 73
 
-	Drivers: ['albon', 'russell', 'perez', 'gasly', 'norris']
+	Drivers: ['zhou', 'bottas', 'ocon', 'albon', 'tsunoda']
 
-	Constructors: ['alpine', 'haas']
+	Constructors: ['williams', 'sauber']
 
-	Team Cost: 92.10000000000001
+	Team Cost: 48.699999999999996
 
-	Fitness: -7519.965
+	Fitness: nan
 
             
 Generation: 74
 
-	Drivers: ['bottas', 'russell', 'stroll', 'verstappen', 'sainz']
+	Drivers: ['sargenat', 'perez', 'tsunoda', 'zhou', 'russell']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['ferrari', 'aston_martin']
 
-	Team Cost: 98.60000000000001
+	Team Cost: 92.4
 
-	Fitness: -7549.473333333333
+	Fitness: nan
 
             
 Generation: 75
 
-	Drivers: ['bottas', 'russell', 'stroll', 'verstappen', 'sainz']
+	Drivers: ['ocon', 'bottas', 'hulkenburg', 'sargenat', 'albon']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['haas', 'ferrari']
 
-	Team Cost: 98.60000000000001
+	Team Cost: 58.9
 
-	Fitness: -7549.473333333333
+	Fitness: nan
 
             
 Generation: 76
 
-	Drivers: ['russell', 'hulkenburg', 'ocon', 'piastri', 'hamilton']
+	Drivers: ['tsunoda', 'perez', 'russell', 'bottas', 'stroll']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 86.0
+	Team Cost: 86.30000000000001
 
-	Fitness: -7178.133333333333
+	Fitness: nan
 
             
 Generation: 77
 
-	Drivers: ['magnussen', 'verstappen', 'leclerc', 'riccardo', 'hamilton']
+	Drivers: ['tsunoda', 'perez', 'russell', 'bottas', 'stroll']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 98.30000000000001
+	Team Cost: 86.30000000000001
 
-	Fitness: -7637.91
+	Fitness: nan
 
             
 Generation: 78
 
-	Drivers: ['magnussen', 'verstappen', 'leclerc', 'riccardo', 'hamilton']
+	Drivers: ['tsunoda', 'perez', 'russell', 'bottas', 'stroll']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 98.30000000000001
+	Team Cost: 86.30000000000001
 
-	Fitness: -7637.91
+	Fitness: nan
 
             
 Generation: 79
 
-	Drivers: ['magnussen', 'norris', 'bottas', 'leclerc', 'hamilton']
+	Drivers: ['zhou', 'tsunoda', 'bottas', 'stroll', 'russell']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['mercedes', 'redbull']
 
-	Team Cost: 89.2
+	Team Cost: 97.7
 
-	Fitness: -7448.2
+	Fitness: nan
 
             
 Generation: 80
 
-	Drivers: ['gasly', 'verstappen', 'russell', 'hulkenburg', 'hamilton']
+	Drivers: ['zhou', 'tsunoda', 'bottas', 'stroll', 'russell']
 
-	Constructors: ['rb', 'alpine']
+	Constructors: ['mercedes', 'redbull']
 
-	Team Cost: 99.19999999999999
+	Team Cost: 97.7
 
-	Fitness: -7640.053333333332
+	Fitness: nan
 
             
 Generation: 81
 
-	Drivers: ['bottas', 'norris', 'albon', 'piastri', 'ocon']
+	Drivers: ['perez', 'sargenat', 'magnussen', 'ocon', 'riccardo']
 
-	Constructors: ['alpine', 'mercedes']
+	Constructors: ['ferrari', 'williams']
 
-	Team Cost: 91.9
+	Team Cost: 74.9
 
-	Fitness: -7027.286666666667
+	Fitness: nan
 
             
 Generation: 82
 
-	Drivers: ['piastri', 'zhou', 'verstappen', 'albon', 'gasly']
+	Drivers: ['perez', 'sargenat', 'magnussen', 'ocon', 'riccardo']
 
-	Constructors: ['alpine', 'ferrari']
+	Constructors: ['ferrari', 'williams']
 
-	Team Cost: 97.9
+	Team Cost: 74.9
 
-	Fitness: -7047.168333333332
+	Fitness: nan
 
             
 Generation: 83
 
-	Drivers: ['magnussen', 'verstappen', 'piastri', 'zhou', 'perez']
+	Drivers: ['ocon', 'russell', 'hulkenburg', 'gasly', 'albon']
 
-	Constructors: ['haas', 'alpine']
+	Constructors: ['alpine', 'rb']
 
-	Team Cost: 97.10000000000001
+	Team Cost: 64.69999999999999
 
-	Fitness: -7407.111666666667
+	Fitness: nan
 
             
 Generation: 84
 
-	Drivers: ['magnussen', 'verstappen', 'piastri', 'zhou', 'perez']
+	Drivers: ['riccardo', 'norris', 'stroll', 'ocon', 'magnussen']
 
-	Constructors: ['haas', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 97.10000000000001
+	Team Cost: 82.4
 
-	Fitness: -7407.111666666667
+	Fitness: nan
 
             
 Generation: 85
 
-	Drivers: ['sargenat', 'norris', 'ocon', 'stroll', 'verstappen']
+	Drivers: ['riccardo', 'norris', 'stroll', 'ocon', 'magnussen']
 
-	Constructors: ['rb', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 93.19999999999999
+	Team Cost: 82.4
 
-	Fitness: -7588.033333333332
+	Fitness: nan
 
             
 Generation: 86
 
-	Drivers: ['sargenat', 'norris', 'ocon', 'stroll', 'verstappen']
+	Drivers: ['riccardo', 'norris', 'stroll', 'ocon', 'magnussen']
 
-	Constructors: ['rb', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 93.19999999999999
+	Team Cost: 82.4
 
-	Fitness: -7588.033333333332
+	Fitness: nan
 
             
 Generation: 87
 
-	Drivers: ['sargenat', 'norris', 'ocon', 'stroll', 'verstappen']
+	Drivers: ['riccardo', 'norris', 'stroll', 'ocon', 'magnussen']
 
-	Constructors: ['rb', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 93.19999999999999
+	Team Cost: 82.4
 
-	Fitness: -7588.033333333332
+	Fitness: nan
 
             
 Generation: 88
 
-	Drivers: ['leclerc', 'tsunoda', 'norris', 'russell', 'gasly']
+	Drivers: ['alonzo', 'sargenat', 'stroll', 'piastri', 'perez']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['mclaren', 'alpine']
 
-	Team Cost: 91.4
+	Team Cost: 97.9
 
-	Fitness: -7628.853333333334
+	Fitness: nan
 
             
 Generation: 89
 
-	Drivers: ['leclerc', 'tsunoda', 'norris', 'russell', 'gasly']
+	Drivers: ['alonzo', 'sargenat', 'stroll', 'piastri', 'perez']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['mclaren', 'alpine']
 
-	Team Cost: 91.4
+	Team Cost: 97.9
 
-	Fitness: -7628.853333333334
+	Fitness: nan
 
             
 Generation: 90
 
-	Drivers: ['leclerc', 'tsunoda', 'norris', 'russell', 'gasly']
+	Drivers: ['riccardo', 'magnussen', 'gasly', 'verstappen', 'norris']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 91.4
+	Team Cost: 98.1
 
-	Fitness: -7628.853333333334
+	Fitness: nan
 
             
 Generation: 91
 
-	Drivers: ['bottas', 'magnussen', 'ocon', 'perez', 'norris']
+	Drivers: ['riccardo', 'magnussen', 'gasly', 'verstappen', 'norris']
 
-	Constructors: ['mclaren', 'alpine']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 96.0
+	Team Cost: 98.1
 
-	Fitness: -7433.6
+	Fitness: nan
 
             
 Generation: 92
 
-	Drivers: ['bottas', 'magnussen', 'ocon', 'perez', 'norris']
+	Drivers: ['riccardo', 'magnussen', 'gasly', 'verstappen', 'norris']
 
-	Constructors: ['mclaren', 'alpine']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 96.0
+	Team Cost: 98.1
 
-	Fitness: -7433.6
+	Fitness: nan
 
             
 Generation: 93
 
-	Drivers: ['perez', 'gasly', 'piastri', 'hamilton', 'bottas']
+	Drivers: ['riccardo', 'magnussen', 'gasly', 'verstappen', 'norris']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 88.5
+	Team Cost: 98.1
 
-	Fitness: -7846.999999999999
+	Fitness: nan
 
             
 Generation: 94
 
-	Drivers: ['ocon', 'tsunoda', 'piastri', 'magnussen', 'verstappen']
+	Drivers: ['riccardo', 'magnussen', 'gasly', 'verstappen', 'norris']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 86.0
+	Team Cost: 98.1
 
-	Fitness: -7350.133333333333
+	Fitness: nan
 
             
 Generation: 95
 
-	Drivers: ['ocon', 'tsunoda', 'piastri', 'magnussen', 'verstappen']
+	Drivers: ['riccardo', 'magnussen', 'gasly', 'verstappen', 'norris']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 86.0
+	Team Cost: 98.1
 
-	Fitness: -7350.133333333333
+	Fitness: nan
 
             
 Generation: 96
 
-	Drivers: ['leclerc', 'norris', 'bottas', 'hamilton', 'sargenat']
+	Drivers: ['riccardo', 'magnussen', 'gasly', 'verstappen', 'norris']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 88.5
+	Team Cost: 98.1
 
-	Fitness: -7590.35
+	Fitness: nan
 
             
 Generation: 97
 
-	Drivers: ['hamilton', 'riccardo', 'ocon', 'norris', 'sainz']
+	Drivers: ['riccardo', 'magnussen', 'gasly', 'verstappen', 'norris']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 92.3
+	Team Cost: 98.1
 
-	Fitness: -7654.746666666667
+	Fitness: nan
 
             
 Generation: 98
 
-	Drivers: ['hamilton', 'riccardo', 'ocon', 'norris', 'sainz']
+	Drivers: ['riccardo', 'magnussen', 'gasly', 'verstappen', 'norris']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 92.3
+	Team Cost: 98.1
 
-	Fitness: -7654.746666666667
+	Fitness: nan
 
             
 Generation: 99
 
-	Drivers: ['hamilton', 'riccardo', 'ocon', 'norris', 'sainz']
+	Drivers: ['riccardo', 'magnussen', 'gasly', 'verstappen', 'norris']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 92.3
+	Team Cost: 98.1
 
-	Fitness: -7654.746666666667
+	Fitness: nan
 
             
 Generation: 100
 
-	Drivers: ['norris', 'zhou', 'sainz', 'bottas', 'russell']
+	Drivers: ['riccardo', 'magnussen', 'gasly', 'verstappen', 'norris']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['rb', 'aston_martin']
 
-	Team Cost: 88.0
+	Team Cost: 98.1
 
-	Fitness: -7216.0
+	Fitness: nan
 
             
 Generation: 101
 
-	Drivers: ['ocon', 'tsunoda', 'piastri', 'hamilton', 'verstappen']
+	Drivers: ['stroll', 'hulkenburg', 'bottas', 'alonzo', 'sargenat']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['redbull', 'mercedes']
 
-	Team Cost: 99.1
+	Team Cost: 87.4
 
-	Fitness: -8086.559999999999
+	Fitness: nan
 
             
 Generation: 102
 
-	Drivers: ['ocon', 'tsunoda', 'piastri', 'hamilton', 'verstappen']
+	Drivers: ['zhou', 'ocon', 'piastri', 'stroll', 'gasly']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mclaren']
 
-	Team Cost: 99.1
+	Team Cost: 80.5
 
-	Fitness: -8086.559999999999
+	Fitness: nan
 
             
 Generation: 103
 
-	Drivers: ['ocon', 'tsunoda', 'piastri', 'hamilton', 'verstappen']
+	Drivers: ['alonzo', 'perez', 'magnussen', 'norris', 'bottas']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['sauber', 'rb']
 
-	Team Cost: 99.1
+	Team Cost: 82.69999999999999
 
-	Fitness: -8086.559999999999
+	Fitness: nan
 
             
 Generation: 104
 
-	Drivers: ['ocon', 'tsunoda', 'piastri', 'hamilton', 'verstappen']
+	Drivers: ['alonzo', 'perez', 'magnussen', 'norris', 'bottas']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['sauber', 'rb']
 
-	Team Cost: 99.1
+	Team Cost: 82.69999999999999
 
-	Fitness: -8086.559999999999
+	Fitness: nan
 
             
 Generation: 105
 
-	Drivers: ['ocon', 'tsunoda', 'piastri', 'hamilton', 'verstappen']
+	Drivers: ['hamilton', 'gasly', 'perez', 'stroll', 'zhou']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['rb', 'alpine']
 
-	Team Cost: 99.1
+	Team Cost: 81.20000000000002
 
-	Fitness: -8086.559999999999
+	Fitness: nan
 
             
 Generation: 106
 
-	Drivers: ['ocon', 'tsunoda', 'piastri', 'hamilton', 'verstappen']
+	Drivers: ['hamilton', 'gasly', 'perez', 'stroll', 'zhou']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['rb', 'alpine']
 
-	Team Cost: 99.1
+	Team Cost: 81.20000000000002
 
-	Fitness: -8086.559999999999
+	Fitness: nan
 
             
 Generation: 107
 
-	Drivers: ['perez', 'zhou', 'magnussen', 'verstappen', 'hamilton']
+	Drivers: ['hamilton', 'gasly', 'perez', 'stroll', 'zhou']
 
-	Constructors: ['sauber', 'haas']
+	Constructors: ['rb', 'alpine']
 
-	Team Cost: 95.6
+	Team Cost: 81.20000000000002
 
-	Fitness: -6731.833333333333
+	Fitness: nan
 
             
 Generation: 108
 
-	Drivers: ['piastri', 'sargenat', 'verstappen', 'gasly', 'ocon']
+	Drivers: ['hamilton', 'gasly', 'perez', 'stroll', 'zhou']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['rb', 'alpine']
 
-	Team Cost: 84.8
+	Team Cost: 81.20000000000002
 
-	Fitness: -7968.373333333333
+	Fitness: nan
 
             
 Generation: 109
 
-	Drivers: ['piastri', 'sargenat', 'verstappen', 'gasly', 'ocon']
+	Drivers: ['norris', 'riccardo', 'gasly', 'alonzo', 'magnussen']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['sauber', 'mercedes']
 
-	Team Cost: 84.8
+	Team Cost: 83.7
 
-	Fitness: -7968.373333333333
+	Fitness: nan
 
             
 Generation: 110
 
-	Drivers: ['piastri', 'sargenat', 'verstappen', 'gasly', 'ocon']
+	Drivers: ['norris', 'riccardo', 'gasly', 'alonzo', 'magnussen']
 
-	Constructors: ['williams', 'alpine']
+	Constructors: ['sauber', 'mercedes']
 
-	Team Cost: 84.8
+	Team Cost: 83.7
 
-	Fitness: -7968.373333333333
+	Fitness: nan
 
             
 Generation: 111
 
-	Drivers: ['riccardo', 'norris', 'albon', 'hamilton', 'bottas']
+	Drivers: ['norris', 'riccardo', 'gasly', 'alonzo', 'magnussen']
 
-	Constructors: ['alpine', 'mclaren']
+	Constructors: ['sauber', 'mercedes']
 
-	Team Cost: 96.5
+	Team Cost: 83.7
 
-	Fitness: -7224.633333333334
+	Fitness: nan
 
             
 Generation: 112
 
-	Drivers: ['piastri', 'bottas', 'norris', 'verstappen', 'sargenat']
+	Drivers: ['hulkenburg', 'russell', 'alonzo', 'magnussen', 'piastri']
 
-	Constructors: ['williams', 'sauber']
+	Constructors: ['haas', 'redbull']
 
-	Team Cost: 97.0
+	Team Cost: 95.5
 
-	Fitness: -7569.233333333334
+	Fitness: nan
 
             
 Generation: 113
 
-	Drivers: ['verstappen', 'gasly', 'hulkenburg', 'sargenat', 'albon']
+	Drivers: ['hulkenburg', 'russell', 'alonzo', 'magnussen', 'piastri']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['haas', 'redbull']
 
-	Team Cost: 71.39999999999999
+	Team Cost: 95.5
 
-	Fitness: -6771.0999999999985
+	Fitness: nan
 
             
 Generation: 114
 
-	Drivers: ['verstappen', 'sargenat', 'riccardo', 'perez', 'piastri']
+	Drivers: ['hulkenburg', 'russell', 'alonzo', 'magnussen', 'piastri']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['haas', 'redbull']
 
-	Team Cost: 99.3
+	Team Cost: 95.5
 
-	Fitness: -7947.3099999999995
+	Fitness: nan
 
             
 Generation: 115
 
-	Drivers: ['verstappen', 'sargenat', 'riccardo', 'perez', 'piastri']
+	Drivers: ['hamilton', 'zhou', 'tsunoda', 'albon', 'perez']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['haas', 'redbull']
 
-	Team Cost: 99.3
+	Team Cost: 95.6
 
-	Fitness: -7947.3099999999995
+	Fitness: nan
 
             
 Generation: 116
 
-	Drivers: ['sainz', 'verstappen', 'gasly', 'russell', 'bottas']
+	Drivers: ['hamilton', 'zhou', 'tsunoda', 'albon', 'perez']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['haas', 'redbull']
 
-	Team Cost: 96.69999999999999
+	Team Cost: 95.6
 
-	Fitness: -8032.546666666665
+	Fitness: nan
 
             
 Generation: 117
 
-	Drivers: ['sainz', 'verstappen', 'gasly', 'russell', 'bottas']
+	Drivers: ['perez', 'bottas', 'ocon', 'zhou', 'hamilton']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['mercedes', 'williams']
 
-	Team Cost: 96.69999999999999
+	Team Cost: 87.3
 
-	Fitness: -8032.546666666665
+	Fitness: nan
 
             
 Generation: 118
 
-	Drivers: ['sainz', 'verstappen', 'gasly', 'russell', 'bottas']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 96.69999999999999
+	Team Cost: 85.80000000000001
 
-	Fitness: -8032.546666666665
+	Fitness: nan
 
             
 Generation: 119
 
-	Drivers: ['sainz', 'verstappen', 'gasly', 'russell', 'bottas']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 96.69999999999999
+	Team Cost: 85.80000000000001
 
-	Fitness: -8032.546666666665
+	Fitness: nan
 
             
 Generation: 120
 
-	Drivers: ['hamilton', 'piastri', 'perez', 'bottas', 'sainz']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 98.89999999999999
+	Team Cost: 85.80000000000001
 
-	Fitness: -7724.089999999998
+	Fitness: nan
 
             
 Generation: 121
 
-	Drivers: ['piastri', 'verstappen', 'leclerc', 'gasly', 'magnussen']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 96.8
+	Team Cost: 85.80000000000001
 
-	Fitness: -8076.346666666666
+	Fitness: nan
 
             
 Generation: 122
 
-	Drivers: ['sainz', 'norris', 'hamilton', 'stroll', 'tsunoda']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'haas']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 93.5
+	Team Cost: 85.80000000000001
 
-	Fitness: -7038.991666666667
+	Fitness: nan
 
             
 Generation: 123
 
-	Drivers: ['bottas', 'sargenat', 'ocon', 'hamilton', 'verstappen']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 84.2
+	Team Cost: 85.80000000000001
 
-	Fitness: -7662.2
+	Fitness: nan
 
             
 Generation: 124
 
-	Drivers: ['zhou', 'perez', 'sargenat', 'hamilton', 'piastri']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 86.0
+	Team Cost: 85.80000000000001
 
-	Fitness: -7332.933333333333
+	Fitness: nan
 
             
 Generation: 125
 
-	Drivers: ['gasly', 'hamilton', 'zhou', 'alonzo', 'verstappen']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.2
+	Team Cost: 85.80000000000001
 
-	Fitness: -7626.6
+	Fitness: nan
 
             
 Generation: 126
 
-	Drivers: ['gasly', 'hamilton', 'zhou', 'alonzo', 'verstappen']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.2
+	Team Cost: 85.80000000000001
 
-	Fitness: -7626.6
+	Fitness: nan
 
             
 Generation: 127
 
-	Drivers: ['gasly', 'hamilton', 'zhou', 'alonzo', 'verstappen']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'williams']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.2
+	Team Cost: 85.80000000000001
 
-	Fitness: -7626.6
+	Fitness: nan
 
             
 Generation: 128
 
-	Drivers: ['norris', 'ocon', 'albon', 'magnussen', 'verstappen']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.0
+	Team Cost: 85.80000000000001
 
-	Fitness: -7719.266666666666
+	Fitness: nan
 
             
 Generation: 129
 
-	Drivers: ['piastri', 'sainz', 'bottas', 'verstappen', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'williams']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 94.79999999999998
+	Team Cost: 85.80000000000001
 
-	Fitness: -7441.799999999998
+	Fitness: nan
 
             
 Generation: 130
 
-	Drivers: ['russell', 'piastri', 'bottas', 'verstappen', 'albon']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 96.4
+	Team Cost: 85.80000000000001
 
-	Fitness: -7692.72
+	Fitness: nan
 
             
 Generation: 131
 
-	Drivers: ['russell', 'piastri', 'bottas', 'verstappen', 'albon']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 96.4
+	Team Cost: 85.80000000000001
 
-	Fitness: -7692.72
+	Fitness: nan
 
             
 Generation: 132
 
-	Drivers: ['gasly', 'norris', 'ocon', 'stroll', 'perez']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 84.4
+	Team Cost: 85.80000000000001
 
-	Fitness: -7725.413333333334
+	Fitness: nan
 
             
 Generation: 133
 
-	Drivers: ['piastri', 'sargenat', 'ocon', 'verstappen', 'sainz']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 95.8
+	Team Cost: 85.80000000000001
 
-	Fitness: -7957.786666666666
+	Fitness: nan
 
             
 Generation: 134
 
-	Drivers: ['piastri', 'sargenat', 'ocon', 'verstappen', 'sainz']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 95.8
+	Team Cost: 85.80000000000001
 
-	Fitness: -7957.786666666666
+	Fitness: nan
 
             
 Generation: 135
 
-	Drivers: ['piastri', 'sargenat', 'ocon', 'verstappen', 'sainz']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 95.8
+	Team Cost: 85.80000000000001
 
-	Fitness: -7957.786666666666
+	Fitness: nan
 
             
 Generation: 136
 
-	Drivers: ['piastri', 'sargenat', 'ocon', 'verstappen', 'sainz']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 95.8
+	Team Cost: 85.80000000000001
 
-	Fitness: -7957.786666666666
+	Fitness: nan
 
             
 Generation: 137
 
-	Drivers: ['piastri', 'sargenat', 'ocon', 'verstappen', 'sainz']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 95.8
+	Team Cost: 85.80000000000001
 
-	Fitness: -7957.786666666666
+	Fitness: nan
 
             
 Generation: 138
 
-	Drivers: ['piastri', 'sargenat', 'ocon', 'verstappen', 'sainz']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['alpine', 'sauber']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 95.8
+	Team Cost: 85.80000000000001
 
-	Fitness: -7957.786666666666
+	Fitness: nan
 
             
 Generation: 139
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             
 Generation: 140
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             
 Generation: 141
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             
 Generation: 142
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             
 Generation: 143
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             
 Generation: 144
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             
 Generation: 145
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             
 Generation: 146
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             
 Generation: 147
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             
 Generation: 148
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             
 Generation: 149
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             
 Generation: 150
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             

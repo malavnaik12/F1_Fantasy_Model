@@ -1,23 +1,23 @@
 
-Generation: 23
+Generation: 1
 
-	Drivers: ['sargenat', 'norris', 'verstappen', 'gasly', 'piastri']
+	Drivers: ['sargenat', 'leclerc', 'ocon', 'zhou', 'bottas']
 
-	Constructors: ['haas', 'alpine']
+	Constructors: ['aston_martin', 'rb']
 
-	Team Cost: 100.0
+	Team Cost: 67.5
 
-	Fitness: -8405.0
+	Fitness: nan
 
             
 Generation: 150
 
-	Drivers: ['norris', 'piastri', 'sargenat', 'hamilton', 'gasly']
+	Drivers: ['perez', 'gasly', 'magnussen', 'sargenat', 'leclerc']
 
-	Constructors: ['sauber', 'alpine']
+	Constructors: ['williams', 'mercedes']
 
-	Team Cost: 89.6
+	Team Cost: 85.80000000000001
 
-	Fitness: -8132.693333333333
+	Fitness: nan
 
             

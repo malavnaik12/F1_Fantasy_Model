@@ -1,45 +1,45 @@
-weekly_budget: 100
+weekly_budget: 100.9
 constructor_override: true
 driver_override: true
 current_week:
   redbull:
-    constructor: 27.8
-    verstappen: 30
-    perez: 20.8
+    constructor: 28.0
+    verstappen: 30.2
+    perez: 21.1
   ferrari:
-    constructor: 19.3
-    leclerc: 19.1
+    constructor: 19.6
+    leclerc: 19.4
     sainz: 18.5
     bearman: 14
   aston_martin:
-    constructor: 13.6
-    alonzo: 11
-    stroll: 10
+    constructor: 14.1
+    alonzo: 15.9
+    stroll: 11.2
   mclaren:
-    constructor: 23.2
-    norris: 23
-    piastri: 19
+    constructor: 23.3
+    norris: 23.1
+    piastri: 19.1
   alpine:
-    constructor: 8.4
-    ocon: 7.8
-    gasly: 7.8
+    constructor: 8.3
+    ocon: 8.3
+    gasly: 7.7
   mercedes:
     constructor: 20.1
-    hamilton: 19.3
-    russell: 18.8
+    hamilton: 19.4
+    russell: 19.1
   sauber:
-    constructor: 6.6
-    bottas: 6.6
-    zhou: 6.4
+    constructor: 6.5
+    bottas: 6.2
+    zhou: 7.1
   haas:
-    constructor: 6.3
-    hulkenburg: 6.4
-    magnussen: 6.2
+    constructor: 6.2
+    hulkenburg: 6.2
+    magnussen: 6.7
   williams:
-    constructor: 6.3
-    albon: 7
-    sargenat: 5.5
+    constructor: 6.2
+    albon: 6.8
+    sargenat: 5.4
   rb:
-    constructor: 8.5
-    riccardo: 9
-    tsunoda: 8
+    constructor: 8.4
+    riccardo: 8.9
+    tsunoda: 7.8
