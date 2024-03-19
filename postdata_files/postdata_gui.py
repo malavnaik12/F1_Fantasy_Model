@@ -1,19 +1,17 @@
+import yaml
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
 import postdata_positions as pd_pos
-from PIL import Image, ImageTk
-import yaml
 import postdata_prices as pd_prices
+from PIL import Image, ImageTk
 
 class postdata_gui:
     def __init__(self):
-        self.pos_yaml_gen = pd_pos.generate_positions_yaml()
-        self.full_team_data, self.out_dict = self.pos_yaml_gen.initialize_yaml_file()
-        self.sessions, self.constructor_names = self.pos_yaml_gen.main()
-        self.price_yaml_gen = pd_prices.generate_prices_yaml()
-        self.out_dict_prices = self.price_yaml_gen.initialize_yaml_file()
+        self.out_dict, self.constructor_names = pd_pos.main()
+        self.out_dict_prices = pd_prices.main()
         self.out_dict_ga_inputs = {}
+        self.sessions = ['Free Practice','Qualifying','Race']
         self.fp_sessions_nums = ['1','2','3']
         self.overrides = ['fp_override','quali_override','race_override']
         self.session_types = {'Free Practice':'fp','Qualifying':'quali','Race':'race'}

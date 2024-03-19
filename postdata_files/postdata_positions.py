@@ -1,51 +1,29 @@
 import yaml
 
-class generate_positions_yaml:
-    def __init__(self):
-        pass
-    
-    def initialize_yaml_file(self):
-        self.out_dict = {}
-        self.out_dict["session_info"] = {}
-        self.out_dict["session_info"]["session_type"] = str()
-        self.out_dict["session_info"]["session_num"] = int()
-        self.out_dict["session_info"]["fp_override"] = bool(1)
-        self.out_dict["session_info"]["quali_override"] = bool(1)
-        self.out_dict["session_info"]["race_override"] = bool(1)
-        self.out_dict["current_week"] = {}
-        with open('./input_files/data_structure.yaml') as data_struct_file:
-            self.data_struct = yaml.safe_load(data_struct_file)
-            data_struct_file.close()
-        self.team_names = list(self.data_struct["team_data"].keys())
-        self.team_out = [team.capitalize() for team in self.team_names]
-        self.team_info = {}
-        for team in self.team_names:
-            self.out_dict["current_week"][team] = {}
-            drivers = list(self.data_struct["team_data"][team].keys())
-            driver_list = []
-            for driver in drivers:
-                driver_list.append(driver.capitalize())
-                self.out_dict["current_week"][team][driver] = int()
-            self.team_info[team] = driver_list
-        return self.team_info,self.out_dict
+def main():
+    out_dict = {}
+    out_dict["session_info"] = {}
+    out_dict["session_info"]["session_type"] = str()
+    out_dict["session_info"]["session_num"] = int()
+    out_dict["session_info"]["fp_override"] = bool(1)
+    out_dict["session_info"]["quali_override"] = bool(1)
+    out_dict["session_info"]["race_override"] = bool(1)
+    out_dict["current_week"] = {}
+    with open('./input_files/data_structure.yaml') as data_struct_file:
+        data_struct = yaml.safe_load(data_struct_file)
+        data_struct_file.close()
+    team_names = list(data_struct["team_data"].keys())
+    team_out = [team.capitalize() for team in team_names]
+    for team in team_names:
+        out_dict["current_week"][team] = {}
+        drivers = list(data_struct["team_data"][team].keys())
+        driver_list = []
+        for driver in drivers:
+            driver_list.append(driver.capitalize())
+            out_dict["current_week"][team][driver] = int()
+    return out_dict, team_out
 
-    def post_data(self,session,session_id):
-        self.out_dict["session_info"]["session_type"] = session
-        self.out_dict["session_info"]["session_num"] = session_id
-        print(f"Requesting Data for {session}, {session_id}")
-        for team in self.team_names:
-            self.out_dict["current_week"][team] = {}
-            drivers = list(self.data_struct["team_data"][team].keys())
-            for driver in drivers:
-                pos = input(f"Enter Position for following Driver, {driver} (Team: {team}): ")
-                self.out_dict["current_week"][team][driver] = int(pos)
-
-    def main(self):
-        self.initialize_yaml_file()
-        self.session_types = ['Free Practice','Qualifying','Race']
-        self.fp_sessions_nums = ['1','2','3']
-        self.overrides = ['fp_override','quali_override','race_override']
-        return self.session_types, self.team_out
-if __name__ == '__main__':
-    gpy = generate_positions_yaml()
-    gpy.main()
+if __name__ == '__main__':    
+    print(f"""
+            This file is not meant for standalone execution.\n
+            The contents in the files are used to construct position data objects for the GUI.""")
