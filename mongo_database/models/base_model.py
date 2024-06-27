@@ -1,7 +1,7 @@
-
 from pydantic import BaseModel
 from typing import List
-# Define a Pydantic model
+
+# Define a baseline model for Constructors and Drivers
 class Item(BaseModel):
     name: str
     fp: List[float]

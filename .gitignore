@@ -1,7 +1,8 @@
 venv/*
 Plots/*
 main_GA.py
-*/__pycache__/*
 __pycache__/*
+*/__pycache__/*
+*/*/__pycache__/*
 downlink_files/*
 test*.*
