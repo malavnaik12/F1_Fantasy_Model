@@ -8,3 +8,4 @@ class Item(BaseModel):
     quali_hist: List[float]
     race_hist: List[float]
     price: List[float]
+    version: int

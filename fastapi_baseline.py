@@ -9,24 +9,10 @@ mydb = myclient["mydatabase"]
 col_constructors = mydb["constructors"]
 col_drivers = mydb["drivers"]
 
-# # Define a Pydantic model
-# class Item(BaseModel):
-#     name: str
-#     fp: List[float]
-#     quali_hist: List[float]
-#     race_hist: List[float]
-#     price: List[float]
-
 @app.post("/constructors", response_model=Item)
 def create_item(item: Item):
     col_constructors.insert_one(item.model_dump())
-    # col_drivers.insert_one(item.model_dump())
     return item
-
-@app.get("/constructors", response_model=List[Item])
-def read_items():
-    items = list(col_constructors.find({}, {"_id": 0}))
-    return items
 
 @app.get("/constructors/{name}", response_model=Item)
 def read_item(name: str):
@@ -51,5 +37,4 @@ def delete_item(name: str):
 
 if __name__ == '__main__':
     import uvicorn
-    # app.include_router(prefix='/docs')
-    uvicorn.run(app, host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run(app, host="127.0.0.1", port=8000)
