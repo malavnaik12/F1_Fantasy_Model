@@ -7,12 +7,18 @@ def create_item(main_collection: Collection, item: Item):
     main_collection.insert_one(item.model_dump())
     return item
 
-def read_item(main_collection: Collection, name: str):
-    result = main_collection.find_one({"name": name})
+def read_item(main_collection: Collection, name: str, race: str = None):
+    if name:
+        result = main_collection.find_one({"name": name})
+    else:
+        result = main_collection.find_one({"$or":[{"name": name},{"race_weekend":race}]})
     return result
 
-def update_item(main_collection: Collection, cache_collection: Collection, name: str, item: Item):
-    find_item = main_collection.find_one({"name": name})
+def update_item(main_collection: Collection, cache_collection: Collection, name: str, item: Item, race: str = None):
+    if name:
+        find_item = main_collection.find_one({"name": name})
+    else:
+        find_item = main_collection.find_one({"$or":[{"name": name},{"race_weekend":race}]})
     if find_item:
         try:
             cache_collection.insert_one(find_item)

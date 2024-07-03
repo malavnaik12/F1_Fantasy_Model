@@ -9,16 +9,16 @@ router = fastapi.APIRouter()
 def create_item(item: Item, collection=fastapi.Depends(get_col_Constructors)):
     return base_crud.create_item(collection,item)
 
-@router.get("/constructors/{name}", response_model=Item)
-def read_item(name: str, collection=fastapi.Depends(get_col_Constructors)):
-    item = base_crud.read_item(collection, name)
+@router.get("/constructors/", response_model=Item)
+def read_item(name: str = None, race: str = None, collection=fastapi.Depends(get_col_Constructors)):
+    item = base_crud.read_item(collection, name, race)
     if item is None:
         raise fastapi.HTTPException(status_code=404, detail="Read Item: Item not found")
     return item
 
 @router.put("/constructors/{name}", response_model=Item)
-def update_item(name: str, item: Item, main_collection=fastapi.Depends(get_col_Constructors), cache_collection=fastapi.Depends(get_col_Constructors_cache)):
-    result = base_crud.update_item(main_collection,cache_collection,name,item)
+def update_item(name: str, item: Item, race: str = None, main_collection=fastapi.Depends(get_col_Constructors), cache_collection=fastapi.Depends(get_col_Constructors_cache)):
+    result = base_crud.update_item(main_collection,cache_collection,name,item,race)
     if result.matched_count == 0:
         raise fastapi.HTTPException(status_code=404, detail="Update Item: Item not found")
     return item

@@ -3,6 +3,7 @@ from typing import List
 
 # Define a baseline model for Constructors and Drivers
 class Item(BaseModel):
+    race_weekend: str
     name: str
     fp: List[float]
     quali_hist: List[float]
