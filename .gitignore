@@ -5,4 +5,7 @@ __pycache__/*
 */__pycache__/*
 */*/__pycache__/*
 downlink_files/*
-test*.*
+local_test*.*
+*cache*/*
+*/*cache*/*
+*/*/*cache*/*

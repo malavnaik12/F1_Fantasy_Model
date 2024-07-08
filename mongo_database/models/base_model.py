@@ -2,7 +2,7 @@ from pydantic import BaseModel
 from typing import List
 
 # Define a baseline model for Constructors and Drivers
-class Item(BaseModel):
+class Constructors(BaseModel):
     race_weekend: str
     name: str
     fp: List[float]

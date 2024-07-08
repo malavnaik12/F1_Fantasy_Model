@@ -1,8 +1,8 @@
-from models.base_model import Item
+from models.base_model import Constructors
 from pymongo.collection import Collection
 from pymongo.errors import DuplicateKeyError
 
-def create_item(main_collection: Collection, item: Item):
+def create_item(main_collection: Collection, item: Constructors):
     item.version = 1
     main_collection.insert_one(item.model_dump())
     return item
@@ -14,7 +14,7 @@ def read_item(main_collection: Collection, name: str, race: str = None):
         result = main_collection.find_one({"$or":[{"name": name},{"race_weekend":race}]})
     return result
 
-def update_item(main_collection: Collection, cache_collection: Collection, name: str, item: Item, race: str = None):
+def update_item(main_collection: Collection, cache_collection: Collection, name: str, item: Constructors, race: str = None):
     if name:
         find_item = main_collection.find_one({"name": name})
     else:
