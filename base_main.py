@@ -1,5 +1,5 @@
 import fastapi
-from routes import constructors_routes, drivers_routes
+from mongo_database.routes import constructors_routes, drivers_routes
 
 app = fastapi.FastAPI(title="F1 Fantasy App Database")
 

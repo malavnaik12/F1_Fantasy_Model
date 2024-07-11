@@ -1,7 +1,7 @@
 import fastapi
-from models.constructors_model import Constructors
-from constructors_collection import get_col_Constructors, get_col_Constructors_cache
-from crud import constructors_crud
+from mongo_database.models.constructors_model import Constructors
+from mongo_database.collections.constructors_collection import get_col_Constructors, get_col_Constructors_cache
+from mongo_database.crud import constructors_crud
 
 router = fastapi.APIRouter()
 

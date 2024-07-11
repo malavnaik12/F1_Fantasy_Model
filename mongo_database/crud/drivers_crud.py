@@ -1,4 +1,4 @@
-from models.drivers_model import Drivers
+from mongo_database.models.drivers_model import Drivers
 from pymongo.collection import Collection
 from pymongo.errors import DuplicateKeyError
 

@@ -1,7 +1,7 @@
 import fastapi
-from models.drivers_model import Drivers
-from drivers_collection import get_col_Drivers, get_col_Drivers_cache
-from crud import drivers_crud
+from mongo_database.models.drivers_model import Drivers
+from mongo_database.collections.drivers_collection import get_col_Drivers, get_col_Drivers_cache
+from mongo_database.crud import drivers_crud
 
 router = fastapi.APIRouter()
 
