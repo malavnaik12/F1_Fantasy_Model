@@ -1,4 +1,4 @@
-from models.base_model import Constructors
+from models.constructors_model import Constructors
 from pymongo.collection import Collection
 from pymongo.errors import DuplicateKeyError
 
