@@ -1,4 +1,5 @@
 from mongo_database.models.constructors_model import Constructors
+from mongo_database.models.base_model import Item
 from pymongo.collection import Collection
 from pymongo.errors import DuplicateKeyError
 
