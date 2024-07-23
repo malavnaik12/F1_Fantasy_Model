@@ -6,6 +6,7 @@ class Drivers(BaseModel):
     race_weekend: str
     team_name: str
     name: str
+    number: int
     fp: List[float]
     quali_hist: List[float]
     race_hist: List[float]

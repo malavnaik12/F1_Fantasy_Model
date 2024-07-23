@@ -1,14 +1,8 @@
-version: '3.8'
 services:
   mongodb:
     image: mongo
     restart: always
-    # environment:
-      # MONGO_INITDB_ROOT_USERNAME: admin
-      # MONGO_INITDB_ROOT_PASSWORD: admin
     ports:
       - '27017:27017'
     volumes:
-      - dbdata6:/data/db
-volumes:
-  dbdata6:
+      - "./mongo_data/db/:/data/db"
