@@ -161,13 +161,10 @@ class postdata_gui:
             driver1_indx = self.listbox2.get(0, END).index(driver1)
             driver2_indx = self.listbox2.get(0, END).index(driver2)
             self.listbox1.delete(constructor_indx)
-            self.listbox2.delete(driver1_indx)
-            self.listbox2.delete(driver2_indx)
-            self.listbox3.delete(driver1_indx)
             self.listbox3.delete(driver2_indx)
-            # self.listbox1.delete(END)
-            self.listbox2.delete(END)
-            self.listbox3.delete(END)
+            self.listbox2.delete(driver2_indx)
+            self.listbox2.delete(driver1_indx)
+            self.listbox3.delete(driver1_indx)
         except:
             pass
         try:
@@ -177,12 +174,15 @@ class postdata_gui:
             assert(20 >= pos_num2 > 0 )
         except: 
             raise ValueError("Enter a number between 1 and 20.")
+        
         self.listbox1.insert(END,self.curr_team)
         self.listbox2.insert(END,driver1)
         self.listbox3.insert(END,pos1)
         self.listbox2.insert(END,driver2)
         self.listbox3.insert(END,pos2)
-
+        # self.listbox1.delete(END)
+        # self.listbox2.delete(END)
+        # self.listbox3.delete(END)
         self.out_dict['current_week'][self.curr_team.lower()][driver1.lower()] = pos_num1
         self.out_dict['current_week'][self.curr_team.lower()][driver2.lower()] = pos_num2
         self.create_pos_yaml_file = Button(self.positions_sframe1,text="Save Inputs",command=self.create_positions_yaml)
@@ -266,14 +266,14 @@ class postdata_gui:
             driver2_indx = self.prices_listbox3.get(0, END).index(self.price_keys[2])
             self.prices_listbox1.delete(constructor_indx)
             self.prices_listbox2.delete(constructor_indx)
-            self.prices_listbox3.delete(driver1_indx)
-            self.prices_listbox4.delete(driver1_indx)
             self.prices_listbox3.delete(driver2_indx)
             self.prices_listbox4.delete(driver2_indx)
+            self.prices_listbox3.delete(driver1_indx)
+            self.prices_listbox4.delete(driver1_indx)
             # self.prices_listbox1.delete(END)
-            self.prices_listbox2.delete(END)
-            self.prices_listbox3.delete(END)
-            self.prices_listbox4.delete(END)
+            # self.prices_listbox2.delete(END)
+            # self.prices_listbox3.delete(END)
+            # self.prices_listbox4.delete(END)
         except:
             pass
         self.prices_listbox1.insert(END,self.price_team)
