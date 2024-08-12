@@ -26,12 +26,22 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <footer>
+      All Logo Copyrights belong to
+      <a href="https://www.formula1.com/" target="_blank" rel="noopener"> 2003-2024 Formula One World Championship Limited</a>
+    </footer>
+    <footer>
+      Rest of the Content belongs to Malav Naik 2024
+    </footer>
   </div>
+  <v-divider></v-divider>
+  <!-- <div class="vl"></div>
+  <div class="hl"></div> -->
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'MainUI',
   // props: {
   //   msg: String
   // }
@@ -53,5 +63,19 @@ li {
 }
 a {
   color: #42b983;
+}
+.vl {
+  border-left: 3px solid black;
+  height: 500px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+}
+.hl {
+  border-left: 3px solid black;
+  width: 500px;
+  position: absolute;
+  top: 40%;
+  left: 10%;
 }
 </style>
