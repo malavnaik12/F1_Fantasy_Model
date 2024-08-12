@@ -9,8 +9,5 @@ local_*.*
 *cache*/*
 */*cache*/*
 */*/*cache*/*
-hello-vue-app
 node_modules
-package-lock.json
-package.json
 mongo_data/*

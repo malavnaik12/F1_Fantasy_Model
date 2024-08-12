@@ -34,7 +34,6 @@
       Rest of the Content belongs to Malav Naik 2024
     </footer>
   </div>
-  <v-divider></v-divider>
   <!-- <div class="vl"></div>
   <div class="hl"></div> -->
 </template>
