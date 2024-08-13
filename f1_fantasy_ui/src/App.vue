@@ -1,18 +1,22 @@
 <template>
   <img alt="Vue logo" src="./assets/F1_logo.png">
   <h1>F1 Fantasy Team Builder App</h1>
-  <MainUI> 
+  <!-- <MainUI> 
     
-  </MainUI>
+  </MainUI> -->
+  <RaceLocDD>
+
+  </RaceLocDD>
 </template>
 
 <script>
-import MainUI from './components/MainUI.vue';
+// import MainUI from './components/MainUI.vue';
+import RaceLocDD from './components/RaceLocDD.vue';
 
 export default {
   name: 'App',
   components: {
-    MainUI
+    RaceLocDD
   }
 }
 </script>
@@ -24,6 +28,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
 }
 </style>
