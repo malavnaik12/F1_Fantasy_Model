@@ -8,13 +8,7 @@
         </select>
         <p></p>
         <button @click="submitData">Submit</button>
-        <footer class="footer">
-        All Logo Copyrights belong to
-        <a href="https://www.formula1.com/" target="_blank" rel="noopener"> 2003-2024 Formula One World Championship Limited</a>
-        </footer>
-        <footer class="footer1">
-        Rest of the Content belongs to Malav Naik 2024
-        </footer>
+        <p>Summary: {{ returnedData }}</p>
     </div>
 </template>
 
@@ -25,38 +19,33 @@ export default {
     data() {
         return {
             entities: [], // Array to store entities from text file
-            selectedEntity: null // The selected entity
+            selectedEntity: null, // The selected entity
+            returnedData: ''
         };
     },
     mounted() {
-      // Fetch the text file content when the component is mounted
-        fetch('/inputs_files/gp_list.txt')
-            .then(response => response.text())
-            .then(text => {
-            this.entities = text.split('\n').filter(entity => entity.trim() !== '');
-            });
+        this.getRaceLocs();
     },
     methods: {
         submitData() {
-            this.getRaceLoc();
+            this.postRaceLoc();
         },
-        getRaceLoc() {
-            axios.post('http://localhost:8000/api/submit', 
+        getRaceLocs() {
+            axios.get('http://localhost:8000/api/get_list/')
+            // axios.get('http://10.0.0.159:8000/api/get_list/')
+            .then(response => {this.entities = response.data.entity})
+            .catch((err) => console.log(err));
+        },
+        postRaceLoc() {
+            axios.post('http://localhost:8000/api/submit',
+            // axios.post('http://10.0.0.159:8000/api/submit',
             { raceName: this.selectedEntity })
-            .then(response => {
-                console.log('Response from server:', response.data)});
+            .then(response => {this.returnedData = response.data.entity});
         }
     }
 };
 </script>
 
 <style>
-.footer {
-position:   sticky;
-padding-top: 400px;
-}
-.footer1 {
-    position: sticky;
-    padding-top: 10px;
-}
+
 </style>

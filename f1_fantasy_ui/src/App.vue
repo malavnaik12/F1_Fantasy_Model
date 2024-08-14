@@ -4,6 +4,13 @@
   <RaceLocDD>
 
   </RaceLocDD>
+  <footer class="footer">
+    All Logo Copyrights belong to
+    <a href="https://www.formula1.com/" target="_blank" rel="noopener"> 2003-2024 Formula One World Championship Limited</a>
+    </footer>
+  <footer class="footer1">
+    Rest of the Content belongs to Malav Naik 2024
+  </footer>
 </template>
 
 <script>
@@ -26,5 +33,13 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 0px;
+}
+.footer {
+  position:   sticky;
+  padding-top: 300px;
+}
+.footer1 {
+  position: sticky;
+  padding-top: 10px;
 }
 </style>
