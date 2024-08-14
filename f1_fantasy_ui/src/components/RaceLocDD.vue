@@ -6,6 +6,8 @@
             {{ entity }}
         </option>
         </select>
+        <p></p>
+        <button @click="submitData">Submit</button>
         <footer class="footer">
         All Logo Copyrights belong to
         <a href="https://www.formula1.com/" target="_blank" rel="noopener"> 2003-2024 Formula One World Championship Limited</a>
@@ -17,7 +19,9 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+    name: "RaceLocDD",
     data() {
         return {
             entities: [], // Array to store entities from text file
@@ -31,7 +35,18 @@ export default {
             .then(text => {
             this.entities = text.split('\n').filter(entity => entity.trim() !== '');
             });
+    },
+    methods: {
+        submitData() {
+            this.getRaceLoc();
+        },
+        getRaceLoc() {
+            axios.post('http://localhost:8000/api/submit', 
+            { raceName: this.selectedEntity })
+            .then(response => {
+                console.log('Response from server:', response.data)});
         }
+    }
 };
 </script>
 

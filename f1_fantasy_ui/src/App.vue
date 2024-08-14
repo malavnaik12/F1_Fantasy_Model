@@ -1,9 +1,6 @@
 <template>
   <img alt="Vue logo" src="./assets/F1_logo.png">
   <h1>F1 Fantasy Team Builder App</h1>
-  <!-- <MainUI> 
-    
-  </MainUI> -->
   <RaceLocDD>
 
   </RaceLocDD>
