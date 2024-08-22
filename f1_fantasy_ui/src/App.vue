@@ -1,9 +1,9 @@
 <template>
   <img alt="Vue logo" src="./assets/F1_logo.png">
   <h1>F1 Fantasy Team Builder App</h1>
-  <RaceLocDD>
+  <MainF1UI>
 
-  </RaceLocDD>
+  </MainF1UI>
   <footer class="footer">
     All Logo Copyrights belong to
     <a href="https://www.formula1.com/" target="_blank" rel="noopener"> 2003-2024 Formula One World Championship Limited</a>
@@ -15,12 +15,12 @@
 
 <script>
 // import MainUI from './components/MainUI.vue';
-import RaceLocDD from './components/RaceLocDD.vue';
+import MainF1UI from './components/MainF1UI.vue';
 
 export default {
   name: 'App',
   components: {
-    RaceLocDD
+    MainF1UI
   }
 }
 </script>
