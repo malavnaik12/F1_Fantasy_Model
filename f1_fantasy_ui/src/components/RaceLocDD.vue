@@ -52,20 +52,20 @@ export default {
             this.postRaceLoc();
         },
         getRaceLocs() {
-            axios.get('http://localhost:8000/api/gp_locs/')
-            // axios.get('http://10.0.0.159:8000/api/gp_locs/')
+            //axios.get('http://localhost:8000/api/gp_locs/')
+            axios.get('http://10.0.0.159:8000/api/gp_locs/')
             .then(response => {this.gp_locs = response.data.entity})
             .catch((err) => console.log(err));
         },
         getSessions() {
-            axios.get('http://localhost:8000/api/sessions/')
-            // axios.get('http://10.0.0.159:8000/api/sessions/')
+            // axios.get('http://localhost:8000/api/sessions/')
+            axios.get('http://10.0.0.159:8000/api/sessions/')
             .then(response => {this.sessions = response.data.entity})
             .catch((err) => console.log(err));
         },
         postRaceLoc() {
-            axios.post('http://localhost:8000/api/submit',
-            // axios.post('http://10.0.0.159:8000/api/submit',
+            // axios.post('http://localhost:8000/api/submit',
+            axios.post('http://10.0.0.159:8000/api/submit',
             { raceLoc: this.gp_loc , session: this.session})
             .then(response => {this.returnedData = response.data});
         }

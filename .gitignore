@@ -1,6 +1,5 @@
 venv/*
 Plots/*
-main_GA.py
 __pycache__/*
 */__pycache__/*
 */*/__pycache__/*
@@ -11,3 +10,4 @@ local_*.*
 */*/*cache*/*
 node_modules
 mongo_data/*
+local_*/*
