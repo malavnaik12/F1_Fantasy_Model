@@ -48,8 +48,8 @@ class PreprocessGA:
         self.ind_folder = "individual_files"
         os.makedirs("./Plots/",exist_ok=True)
         os.makedirs(f"./Plots/{self.ind_folder}/",exist_ok=True)
-        os.makedirs("./history_files/",exist_ok=True)
-        os.makedirs(f"./history_files/{self.ind_folder}/",exist_ok=True)
+        os.makedirs("./ga_output_files/",exist_ok=True)
+        os.makedirs(f"./ga_output_files/{self.ind_folder}/",exist_ok=True)
     
     def get_db_info(self, db_data, constructors = [], drivers = {}):
         """
@@ -326,8 +326,8 @@ class PreprocessGA:
             None        
         """
         self.initalize()
-        best_team_file = open(f"./history_files/best_team_per_gen.txt","w")
-        final_summary_file = open(f"./history_files/best_team.txt","w")
+        best_team_file = open(f"./ga_output_files/best_team_per_gen.txt","w")
+        final_summary_file = open(f"./ga_output_files/best_team.txt","w")
         self.constructor_names, self.driver_names = self.get_db_info(db_data=self.db_data)
         best_fitness_val = []
         for generation in range(self.max_generations):

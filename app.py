@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from fastapi.middleware.cors import CORSMiddleware
+from src import team_parse
 
 app = FastAPI()
 
@@ -23,8 +24,8 @@ app.add_middleware(
 class Item(BaseModel):
     raceLoc: str
     session: str
+    constructor: str
     # data_override: bool
-    # constructor: str
     # driver1: str
     # driver2: str
     # driver1_pos: int 
@@ -46,6 +47,14 @@ def send_gp_dropdown():
 def send_session_types():
     return {'entity':utils._parse_list("list_session_types.txt")}
 
+@app.get('/api/constructors/')
+def send_constructors():
+    return {'entity':team_parse.getTeams()}
+
+@app.post('/api/selected_constructor/')
+def get_constructos(item: Item):
+    return {'entity':team_parse.getDrivers(item.entity)}
+
 @app.post('/api/submit/')
 def post_gp_dropdown(item: Item):
     inputs = {}
@@ -55,6 +64,7 @@ def post_gp_dropdown(item: Item):
     return {"status": "success", "entity": inputs}
 
 if __name__ == '__main__':
-    import uvicorn
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    print(team_parse.getDrivers(team='Redbull'))
+    # import uvicorn
+    # uvicorn.run(app, host="127.0.0.1", port=8000)
     # uvicorn.run(app, host="0.0.0.0", port=8000)
