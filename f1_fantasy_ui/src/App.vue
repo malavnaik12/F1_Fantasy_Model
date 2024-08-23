@@ -1,6 +1,7 @@
 <template>
   <img alt="Vue logo" src="./assets/F1_logo.png">
   <h1>F1 Fantasy Team Builder App</h1>
+  <h2>[Under Development]</h2>
   <MainF1UI>
 
   </MainF1UI>
