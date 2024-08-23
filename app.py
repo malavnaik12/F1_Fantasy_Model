@@ -25,11 +25,11 @@ class Item(BaseModel):
     raceLoc: str
     session: str
     constructor: str
+    driver1: str
+    driver2: str
+    driver1_pos: int 
+    driver2_pos: int
     # data_override: bool
-    # driver1: str
-    # driver2: str
-    # driver1_pos: int 
-    # driver2_pos: int
     # substitute_driver: bool
     # substitute_driver_name: str
     # substitute_driver_pos: int
@@ -51,20 +51,27 @@ def send_session_types():
 def send_constructors():
     return {'entity':team_parse.getTeams()}
 
-@app.post('/api/selected_constructor/')
-def get_constructos(item: Item):
-    return {'entity':team_parse.getDrivers(item.entity)}
+# @app.post('/api/selected_constructor/')
+# def get_constructors(item: Item):
+#     print(team_parse.getDrivers(item.constructor))
+#     return {"status": "success", "entity": item}
+    # return {'entity':team_parse.getDrivers(item.constructor)}
 
 @app.post('/api/submit/')
 def post_gp_dropdown(item: Item):
     inputs = {}
+    print(item)
     for entity in list(item):
         inputs[entity[0]] = entity[1]
+        if item.constructor in team_parse.getTeams():
+            drivers = team_parse.getDrivers(item.constructor)
+            inputs['driver1'] = drivers[0]
+            inputs['driver2'] = drivers[1]
     print(f"{inputs}")
     return {"status": "success", "entity": inputs}
 
 if __name__ == '__main__':
-    print(team_parse.getDrivers(team='Redbull'))
-    # import uvicorn
-    # uvicorn.run(app, host="127.0.0.1", port=8000)
+    # print(team_parse.getDrivers(team='Redbull'))
+    import uvicorn
+    uvicorn.run(app, host="127.0.0.1", port=8000)
     # uvicorn.run(app, host="0.0.0.0", port=8000)
