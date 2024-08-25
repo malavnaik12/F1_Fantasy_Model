@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.templating import Jinja2Templates
+# from fastapi.templating import Jinja2Templates
 from src import team_parse
 from starlette.responses import FileResponse
 import os
@@ -17,7 +17,7 @@ origins = [
     "http://0.0.0.0:8080",   # FastAPI server
     "http://localhost:8000",
 ]
-templates = Jinja2Templates(directory="../ui/build")
+# templates = Jinja2Templates(directory="../ui/build")
 # Serve the static files from the 'dist' directory
 app.mount("/static", StaticFiles(directory="./f1_fantasy_ui/dist/"), name="static")
 # @app.get("/")
