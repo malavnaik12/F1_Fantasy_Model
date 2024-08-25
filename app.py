@@ -20,7 +20,7 @@ origins = [
 ]
 # templates = Jinja2Templates(directory="../ui/build")
 # Serve the static files from the 'dist' directory
-app.mount("/static", StaticFiles(directory="/f1_fantasy_ui/dist/",html=True))
+app.mount("/static", StaticFiles(directory="./f1_fantasy_ui/dist/",html=True))
 # @app.get("/")
 # async def serve_frontend():
 #     return FileResponse(os.path.join("dist", "index.html"))
