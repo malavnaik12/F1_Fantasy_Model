@@ -100,19 +100,19 @@ export default {
             this.postInputs();
         },
         getRaceLocs() {
-            axios.get('http://localhost:8000/api/gp_locs/')
+            axios.get('https://f1-fantasy-model-backend.onrender.com/api/gp_locs/')
             // axios.get('http://10.0.0.159:8000/api/gp_locs/')
             .then(response => {this.gp_locs = response.data.entity})
             .catch((err) => console.log(err));
         },
         getSessions() {
-            axios.get('http://localhost:8000/api/sessions/')
+            axios.get('https://f1-fantasy-model-backend.onrender.com/api/sessions/')
             // axios.get('http://10.0.0.159:8000/api/sessions/')
             .then(response => {this.sessions = response.data.entity})
             .catch((err) => console.log(err));
         },
         getConstructors() {
-            axios.get('http://localhost:8000/api/constructors/')
+            axios.get('https://f1-fantasy-model-backend.onrender.com/api/constructors/')
             // axios.get('http://10.0.0.159:8000/api/sessions/')
             .then(response => {this.constructors = response.data.entity})
             .catch((err) => console.log(err));
@@ -127,11 +127,11 @@ export default {
             this.driver2_pos = this.$refs.driver2_pos.value
             console.log(this.driver1_pos,this.driver2_pos)
         },
-        // axios.post('http://localhost:8000/api/selected_constructor/',
+        // axios.post('https://f1-fantasy-model-backend.onrender.com/api/selected_constructor/',
         // {constructor: this.constructor})
         // // .then(response => {this.returnedData = response.data});
         postInputs() {
-            axios.post('http://localhost:8000/api/submit/',
+            axios.post('https://f1-fantasy-model-backend.onrender.com/api/submit/',
             // axios.post('http://10.0.0.159:8000/api/submit',
             { 
                 raceLoc: this.gp_loc,
