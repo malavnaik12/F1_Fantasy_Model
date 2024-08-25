@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="customDropdown" >
+        <div >
             <label for="entity-dropdown">Select Race Weekend: </label>
             <select id="entity-dropdown" v-model="gp_loc">
                 <option v-for="entity in gp_locs" :key="entity" :value="entity">
@@ -9,7 +9,7 @@
             </select>
         </div>
         <p></p>
-        <div class="customDropdown">
+        <div >
             <label for="entity-dropdown">Select Race Weekend Session: </label>
             <select id="entity-dropdown" v-model="session">
                 <option v-for="entity in sessions" :key="entity" :value="entity">
@@ -18,31 +18,24 @@
             </select>
         </div>
         <p></p>
-        <div class="customDropdown">
+        <div >
             <label for="entity-dropdown">Select Constructor: </label>
             <select id="entity-dropdown" v-model="constructor">
                 <option v-for="entity in constructors" :key="entity" :value="entity">
                     {{ entity }}
                 </option>
             </select>
-            <!-- <button @click="submitConstructor" v-on:keyup.enter="submitConstructor" class="customDropdown">Next</button> -->
         </div>
         <p></p>
-        <div class="customDropdown" v-if="drivers_available">
-            <!-- <li>
-            </li> -->
-                <label>Input Position for {{ driver1 }}: </label>
-                <input type="number" ref="driver1_pos">
-                 <!-- v-on:keyup.enter="submitData"> -->
-                <p></p>
-                <label>Input Position for {{ driver2 }}: </label>
-                <input type="number" ref="driver2_pos">
-                 <!-- v-on:keyup.enter="submitData"> -->
-                <!-- <button @click="postDriverPos" v-on:keyup.enter="postDriverPos" class="customDropdown">Set Positions</button> -->
+        <div  v-if="drivers_available">
+            <label>Input Position for {{ driver1 }}: </label>
+            <input type="number" ref="driver1_pos">
+            <p></p>
+            <label>Input Position for {{ driver2 }}: </label>
+            <input type="number" ref="driver2_pos">
         </div>
         <p></p>
-        <!-- <input type="text" ref="userText" v-on:keyup.enter="submitData()"> -->
-        <button @click="submitData" v-on:keyup.enter="submitData" class="customDropdown">Next</button>
+        <button @click="submitData" v-on:keyup.enter="submitData" >Next</button>
         <p>Summary: {{ returnedData }}</p>
     </div>
 </template>
