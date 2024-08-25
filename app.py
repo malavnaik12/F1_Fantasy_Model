@@ -20,7 +20,6 @@ origins = [
 ]
 # templates = Jinja2Templates(directory="../ui/build")
 # Serve the static files from the 'dist' directory
-app.mount("/static", StaticFiles(directory="./f1_fantasy_ui/dist/",html=True))
 # @app.get("/")
 # async def serve_frontend():
 #     return FileResponse(os.path.join("dist", "index.html"))
@@ -92,6 +91,8 @@ def post_gp_dropdown(item: Item):
 @app.get("/{catchall:path}")
 async def serve_app(catchall: str):
     return FileResponse("f1_fantasy_ui/dist/index.html")
+
+app.mount("/static", StaticFiles(directory="./f1_fantasy_ui/dist/",html=True))
 
 if __name__ == '__main__':
     # print(team_parse.getDrivers(team='Redbull'))
