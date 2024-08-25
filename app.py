@@ -17,6 +17,7 @@ origins = [
     "http://0.0.0.0:8080",   # FastAPI server
     "http://localhost:8000",
     "https://f1-fantasy-model-backend.onrender.com",
+    "https://f1-fantasy-model.onrender.com",
 ]
 # templates = Jinja2Templates(directory="../ui/build")
 # Serve the static files from the 'dist' directory
