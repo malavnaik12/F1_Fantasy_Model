@@ -1,5 +1,4 @@
 import sys
-from os.path import dirname, abspath
 
 project_home = u'/home/mnaik/F1_Fantasy_Model'
 if project_home not in sys.path:
