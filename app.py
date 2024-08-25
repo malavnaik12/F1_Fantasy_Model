@@ -2,25 +2,27 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.templating import Jinja2Templates
 from src import team_parse
 from starlette.responses import FileResponse
 import os
+from fastapi.requests import Request
 
 app = FastAPI()
 
 # Enable CORS
 origins = [
     "http://localhost:8080",  # Vue.js dev server
-    "http://10.0.0.159:8000",
-    "http://10.0.0.159:8080",   # FastAPI server
+    "http://0.0.0.0:8000",
+    "http://0.0.0.0:8080",   # FastAPI server
     "http://localhost:8000",
 ]
-
+templates = Jinja2Templates(directory="../ui/build")
 # Serve the static files from the 'dist' directory
 app.mount("/static", StaticFiles(directory="./f1_fantasy_ui/dist/"), name="static")
-@app.get("/")
-async def serve_frontend():
-    return FileResponse(os.path.join("dist", "index.html"))
+# @app.get("/")
+# async def serve_frontend():
+#     return FileResponse(os.path.join("dist", "index.html"))
 
 app.add_middleware(
     CORSMiddleware,
@@ -78,6 +80,17 @@ def post_gp_dropdown(item: Item):
             inputs['driver2'] = drivers[1]
     print(f"{inputs}")
     return {"status": "success", "entity": inputs}
+
+# Defines a route handler for `/*` essentially.
+# NOTE: this needs to be the last route defined b/c it's a catch all route
+# @app.get("/{rest_of_path:path}")
+# async def vue_app(req: Request, rest_of_path: str):
+#     return templates.TemplateResponse('index.html', { 'request': req })
+
+# Route to serve React index.html (for client-side routing)
+@app.get("/{catchall:path}")
+async def serve_app(catchall: str):
+    return FileResponse("f1_fantasy_ui/dist/index.html")
 
 if __name__ == '__main__':
     # print(team_parse.getDrivers(team='Redbull'))
