@@ -1,7 +1,7 @@
 import sys
 from os.path import dirname, abspath
 
-project_home = u'/home/mnaik/F1-Fantasy-App'
+project_home = u'/home/mnaik/F1_Fantasy_Model'
 if project_home not in sys.path:
     sys.path = [project_home] + sys.path
 
