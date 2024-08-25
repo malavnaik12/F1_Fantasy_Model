@@ -147,12 +147,5 @@ export default {
 </script>
 
 <style scoped>
-  .customDropdown {
-    /* border: 1.5px dashed red;
-    background-color: rgb(244, 171, 171); */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    /* align-content: right; */
-    /* margin: 0;
-    position: relative */
-  }
+
 </style>
