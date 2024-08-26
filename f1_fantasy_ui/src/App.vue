@@ -19,7 +19,6 @@
 </template>
 
 <script>
-// import MainUI from './components/MainUI.vue';
 import MainF1UI from './components/MainF1UI.vue';
 
 export default {
