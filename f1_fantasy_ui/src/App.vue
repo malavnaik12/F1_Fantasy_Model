@@ -14,7 +14,7 @@
   </footer>
   <footer class="footer1">
     Fastapi-based backend implemeted in Python also hosted on Render.
-    <a href="https://f1-fantasy-model-backend.onrender.com/docs/" target="_blank" rel="noopener"> Link to FastAPI docs page</a>.
+    <a href="https://f1-fantasy-model-backend.onrender.com/docs" target="_blank" rel="noopener"> Link to FastAPI docs page</a>.
   </footer>
 </template>
 
