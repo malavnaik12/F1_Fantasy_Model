@@ -13,8 +13,8 @@
     Rest of the Content belongs to Malav Naik 2024
   </footer>
   <footer class="footer1">
-    Fastapi based backend implemeted in Python also hosted on
-    <a href="https://f1-fantasy-model-backend.onrender.com/" target="_blank" rel="noopener"> Render</a> .
+    Fastapi-based backend implemeted in Python also hosted on Render.
+    <a href="https://f1-fantasy-model-backend.onrender.com/docs/" target="_blank" rel="noopener"> Link to FastAPI docs page</a>.
   </footer>
 </template>
 
