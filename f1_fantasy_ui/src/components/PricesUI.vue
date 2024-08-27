@@ -1,6 +1,7 @@
 <template>
     <div>
         <div >
+            <h1>From Prices Tab File</h1>
             <label for="entity-dropdown">Select Race Weekend: </label>
             <select id="entity-dropdown" v-model="gp_loc">
                 <option v-for="entity in gp_locs" :key="entity" :value="entity">
@@ -43,7 +44,7 @@
 <script>
 import axios from 'axios';
 export default {
-    name: "MainF1UI",
+    name: "PricesUI",
     data() {
         return {
             gp_locs: [], // Array to store gp_locs from text file
