@@ -19,11 +19,11 @@
       <a href="https://www.formula1.com/" target="_blank" rel="noopener"> 2003-2024 Formula One World Championship Limited</a>
     </footer>
     <footer class="app-container">
-      Rest of the Content belongs to Malav Naik 2024
-    </footer>
-    <footer class="app-container">
       Fastapi-based backend implemeted in Python also hosted on Render.
       <a href="https://f1-fantasy-model-backend.onrender.com/docs" target="_blank" rel="noopener"> Link to FastAPI docs page</a>.
+    </footer>
+    <footer class="app-container">
+      Rest of the Content belongs to Malav Naik 2024
     </footer>
   </div>
 </template>
@@ -40,37 +40,41 @@ export default {
 .app-container {
   font-family: 'Titillium Web', sans-serif;
   margin: 0 auto;
-  padding: 5px; /* Softer padding */
-  max-width: 800px;
+  padding: 2.5px; /* Consistent padding */
+  max-width: 100%; /* Full width for mobile */
   text-align: center;
-  background-color: #ffffff; /* Soft light gray background */
+  background-color: #ffffff; /* Light gray background */
 }
 
 .nav-tabs {
   display: flex;
+  flex-direction: row;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   border-bottom: 2px solid #666; /* Softer dark gray bottom border */
+  flex-wrap: wrap; /* Allows tabs to wrap on smaller screens */
 }
 
 .tab {
   padding: 10px 20px;
-  margin: 0 5px;
+  margin: 5px; /* Adds margin for better spacing on mobile */
   text-decoration: none;
   color: #666; /* Soft dark gray text color */
   font-weight: bold;
-  border-radius: 5px 5px 0 0;
+  border-radius: 5px;
   background-color: #ddd; /* Light gray background */
   transition: background-color 0.3s, color 0.3s;
+  flex: 1; /* Ensures tabs are evenly spaced on mobile */
+  text-align: center; /* Center text in tabs */
 }
 
 .tab:hover {
-  background-color: #D12F2F; /* Softened red for hover state */
+  background-color: #D12F2F; /* Matte scarlet on hover */
   color: #fff; /* White text on hover */
 }
 
 .active-tab {
-  background-color: #D12F2F; /* Softer red for active tab */
+  background-color: #D12F2F; /* Matte scarlet for active tab */
   color: white;
   border-bottom: 2px solid #D12F2F; /* Match active tab border with background */
 }
@@ -82,5 +86,16 @@ export default {
   border-radius: 5px;
   min-height: 200px;
   color: #333; /* Softer dark gray text for content */
+}
+
+@media (max-width: 768px) {
+  .tab {
+    padding: 10px; /* Adjust padding for smaller screens */
+    font-size: 14px; /* Slightly smaller font on mobile */
+  }
+  
+  .tab-content {
+    padding: 15px; /* Adjust content padding for mobile */
+  }
 }
 </style>

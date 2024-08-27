@@ -1,7 +1,7 @@
 <template>
     <div>
         <div >
-            <h1>From Generate Team Tab File</h1>
+            <h4>From Generate Team Tab File</h4>
             <label for="entity-dropdown">Select Race Weekend: </label>
             <select id="entity-dropdown" v-model="gp_loc">
                 <option v-for="entity in gp_locs" :key="entity" :value="entity">

@@ -89,8 +89,8 @@ def post_gp_dropdown(item: Item):
 #     return templates.TemplateResponse('index.html', { 'request': req })
 
 # Route to serve React index.html (for client-side routing)
-@app.get("/{catchall:path}")
-async def serve_app(catchall: str):
+@app.get("/{full_path:path}")
+async def serve_app(full_path: str):
     return FileResponse("f1_fantasy_ui/dist/index.html")
 
 app.mount("/static", StaticFiles(directory="./f1_fantasy_ui/dist/",html=True))
