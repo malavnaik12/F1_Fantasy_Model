@@ -3,11 +3,12 @@ from typing import Optional
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-import team_parse, weekend_parse
+from team_parse import getTeams,getDrivers
+from weekend_parse import WeekendParser
 from starlette.responses import FileResponse
 
 app = FastAPI()
-weekend_info = weekend_parse.WeekendParser()
+weekend_info = WeekendParser()
 # Enable CORS
 origins = [
     "http://localhost:8080",  # Vue.js dev server
@@ -50,7 +51,7 @@ def send_session_types(item: Item):
 
 @app.get('/api/constructors/')
 def send_constructors():
-    return {'entity':team_parse.getTeams()}
+    return {'entity':getTeams()}
 
 @app.post('/api/submit/')
 def post_gp_dropdown(item: Item):
@@ -58,8 +59,8 @@ def post_gp_dropdown(item: Item):
     print(item)
     for entity in list(item):
         inputs[entity[0]] = entity[1]
-        if item.constructor in team_parse.getTeams():
-            drivers = team_parse.getDrivers(item.constructor)
+        if item.constructor in getTeams():
+            drivers = getDrivers(item.constructor)
             inputs['driver1'] = drivers[0]
             inputs['driver2'] = drivers[1]
     print(f"{inputs}")
