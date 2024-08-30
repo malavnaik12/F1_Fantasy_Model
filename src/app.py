@@ -3,7 +3,7 @@ from typing import Optional
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from . import team_parse, weekend_parse
+import team_parse, weekend_parse
 from starlette.responses import FileResponse
 
 app = FastAPI()
