@@ -121,7 +121,7 @@ export default {
             .catch((err) => console.log(err));
         },
         getSessions() {
-            axios.get('https://f1-fantasy-model-backend.onrender.com/api/sessions/',{
+            axios.post('https://f1-fantasy-model-backend.onrender.com/api/sessions/',{
             // axios.post('http://localhost:8000/api/sessions/',{
                 raceLoc: this.gp_loc
             })
