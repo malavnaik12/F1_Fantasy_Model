@@ -1,0 +1,16 @@
+Bahrain,Normal
+Saudi,Normal
+Australia,Normal
+Japan,Normal
+China,Sprint
+Miami,Sprint
+Imola,Normal
+Monaco,Normal
+Spain,Normal
+Canada,Normal
+Austria,Sprint
+Silverstone,Normal
+Hungary,Normal
+Belgium,Normal
+Netherlands,Normal
+Italy,Normal

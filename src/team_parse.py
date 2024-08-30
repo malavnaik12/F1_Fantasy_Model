@@ -1,9 +1,3 @@
-# class team_parser():
-#     """
-#     """
-#     def __init__(self) -> None:
-#         self.mainListParse()
-
 def _mainListParse():
     with open("./input_files/list_teams.txt","r+") as team_info:
         data = [line.split('\n')[0].split(',') for line in team_info.readlines()]
