@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import apiClient from '../axios';
 export default {
     name: "PositionsUI",
     data() {
@@ -115,14 +115,12 @@ export default {
             this.postInputs();
         },
         getRaceLocs() {
-            axios.get('https://f1-fantasy-model-backend.onrender.com/api/gp_locs/')
-            // axios.get('http://localhost:8000/api/gp_locs/')
+            apiClient.get('/api/gp_locs/')
             .then(response => {this.gp_locs = response.data.entity})
             .catch((err) => console.log(err));
         },
         getSessions() {
-            axios.post('https://f1-fantasy-model-backend.onrender.com/api/sessions/',{
-            // axios.post('http://localhost:8000/api/sessions/',{
+            apiClient.post('/api/sessions/',{
                 raceLoc: this.gp_loc
             })
             .then(response => {
@@ -131,8 +129,7 @@ export default {
             .catch((err) => console.log(err));
         },
         getConstructors() {
-            axios.get('https://f1-fantasy-model-backend.onrender.com/api/constructors/')
-            // axios.get('http://localhost:8000/api/constructors/')
+            apiClient.get('/api/constructors/')
             .then(response => {this.constructors = response.data.entity})
             .catch((err) => console.log(err));
         },
@@ -147,8 +144,7 @@ export default {
             // console.log(this.driver1_pos,this.driver2_pos)
         // },
         postInputs() {
-            axios.post('https://f1-fantasy-model-backend.onrender.com/api/submit/',
-            // axios.post('http://localhost:8000/api/submit/',
+            apiClient.post('/api/submit/',
             { 
                 raceLoc: this.gp_loc,
                 session: this.session,

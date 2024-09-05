@@ -23,7 +23,8 @@
       <a href="https://f1-fantasy-model-backend.onrender.com/docs" target="_blank" rel="noopener"> Link to FastAPI docs page</a>.
     </footer>
     <footer class="app-container">
-      Rest of the Content belongs to Malav Naik 2024
+      Rest of the Content belongs to Malav Naik 2024. Code hosted on
+      <a href="https://github.com/malavnaik12/F1_Fantasy_Model" target="_blank" rel="noopener"> GitHub</a>.
     </footer>
   </div>
 </template>
