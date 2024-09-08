@@ -1,0 +1,146 @@
+{
+  "Bahrain": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Saudi": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Australia": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Japan": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "China": {
+    "race_weekend_type": "Sprint",
+    "fp1_hist": [],
+    "sp_qual_hist": [],
+    "sp_race_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Miami": {
+    "race_weekend_type": "Sprint",
+    "fp1_hist": [],
+    "sp_qual_hist": [],
+    "sp_race_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Imola": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Monaco": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Spain": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Canada": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Austria": {
+    "race_weekend_type": "Sprint",
+    "fp1_hist": [],
+    "sp_qual_hist": [],
+    "sp_race_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Silverstone": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Hungary": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Belgium": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Netherlands": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  },
+  "Italy": {
+    "race_weekend_type": "Normal",
+    "fp1_hist": [],
+    "fp2_hist": [],
+    "fp3_hist": [],
+    "quali_hist": [],
+    "race_hist": [],
+    "prices": {}
+  }
+}

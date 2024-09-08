@@ -10,6 +10,9 @@ class WeekendParser():
         gp_info = [item.split(",") for item in self._parse_list("list_gp_info.txt")]
         self.gp_info_locs = [item[0] for item in gp_info]
         self.gp_type = [item[1] for item in gp_info]
+        # self.gp_type = {}
+        # for item in gp_info:
+        #     self.gp_type[item[0]] = item[1] 
         # print(gp_info_locs,gp_type)
         return self.gp_info_locs
 

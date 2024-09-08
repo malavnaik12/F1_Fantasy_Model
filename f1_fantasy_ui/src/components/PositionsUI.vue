@@ -10,7 +10,7 @@
             </select>
         </div>
         <p></p>
-        <div class="inputs">
+        <div v-if="gp_loc" class="inputs">
             <label for="override">Override Existing Data?</label>
             <input type="checkbox" id="override" v-model="data_override" @change="override" >
         </div>
@@ -46,9 +46,12 @@
         <div class="inputs">
             <button @click="submitData" v-on:keyup.enter="submitData" >Next</button>
             <p>Summary: {{ returnedData }}</p>
+            <div v-if="message" class="inputs">
+                <p>Message? {{ message }}</p>
+            </div>
         </div>
     </div>
-</keep-alive>
+    </keep-alive>
 </template>
 
 <script>
@@ -73,6 +76,7 @@ export default {
             substitute_driver_name: "",
             substitute_driver_pos: 0,
             returnedData: '',
+            message: ''
         };
     },
     mounted() {
@@ -110,9 +114,10 @@ export default {
                 if ((20 >= this.$refs.driver1_pos.value >= 1) && (20 >= this.$refs.driver2_pos.value >= 1)) {
                     this.driver1_pos = this.$refs.driver1_pos.value
                     this.driver2_pos = this.$refs.driver2_pos.value
+                    this.postDriver();
                 }
             }
-            this.postInputs();
+            this.postConstructor();
         },
         getRaceLocs() {
             apiClient.get('/api/gp_locs/')
@@ -143,8 +148,8 @@ export default {
         //     this.driver2_pos = this.$refs.driver2_pos.value
             // console.log(this.driver1_pos,this.driver2_pos)
         // },
-        postInputs() {
-            apiClient.post('/api/submit/',
+        postConstructor() {
+            apiClient.post('/api/drivers/',
             { 
                 raceLoc: this.gp_loc,
                 session: this.session,
@@ -160,6 +165,25 @@ export default {
                 this.driver1 = response.data.entity.driver1,
                 this.driver2 = response.data.entity.driver2,
                 this.checkDrivers();
+            });
+        },
+        postDriver() {
+            apiClient.post('/api/submit/',
+            { 
+                raceLoc: this.gp_loc,
+                session: this.session,
+                constructor: this.constructor,
+                driver1: this.driver1,
+                driver2: this.driver2,
+                driver1_pos: this.driver1_pos,
+                driver2_pos: this.driver2_pos,
+                substitute_driver: this.substitute_driver,
+                substitute_driver_name: this.substitute_driver_name,
+                substitute_driver_pos: this.substitute_driver_pos,
+            })
+            .then(response => {
+                this.returnedData = response.data,
+                this.message = response.data.entity;
             });
         }
     }

@@ -1,5 +1,2 @@
-race_weekend: ''
-name: ''
-  constructor: 0
-  driver1: 0
-  driver2: 0
+# The below attributes are available for a constructor or driver
+prices: {}
