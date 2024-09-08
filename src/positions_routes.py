@@ -45,4 +45,4 @@ def send_drivers(item: Item):
 
 @router.post('/submit/')
 def send_info_to_DBs(item: Item):
-    return {"status": "success", "entity": "Proceed"}
+    return {"status": "success", "entity": "Next steps: 1) Setup the temporary driver logic on frontend. 2) Setup backend code to send all info in this function to DBs"}
