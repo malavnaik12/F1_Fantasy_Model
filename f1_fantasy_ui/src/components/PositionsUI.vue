@@ -12,7 +12,7 @@
         <p></p>
         <div v-if="gp_loc" class="inputs">
             <label for="override">Override Existing Data?</label>
-            <input type="checkbox" id="override" v-model="data_override" @change="override" >
+            <input type="checkbox" id="override" v-model="data_override" @change="getSessions" >
         </div>
         <p></p>
         <div v-if="data_override" class="inputs">
@@ -35,12 +35,27 @@
         <p></p>
         <div  v-if="drivers_available" class="inputs">
             <label>Input Position for {{ driver1 }}: </label>
-            <input type="number" ref="driver1_pos">
+            <input type="number" id="driver1_pos" v-model="driver1_pos">
         </div>
         <p></p>
         <div  v-if="drivers_available" class="inputs">
             <label>Input Position for {{ driver2 }}: </label>
-            <input type="number" ref="driver2_pos">
+            <input type="number" id="driver2_pos" v-model="driver2_pos">
+        </div>
+        <p></p>
+        <div v-if="drivers_available" class="inputs">
+            <label for="temp_driver">Any Substitute Drivers?</label>
+            <input type="checkbox" id="temp_driver" v-model="substitute_driver" >
+        </div>
+        <p></p>
+        <div v-if="substitute_driver" class="inputs">
+            <label>Input Sub Driver Name: </label>
+            <input type="text" id="substitute_driver_name" v-model="substitute_driver_name">
+        </div>
+        <p></p>
+        <div v-if="substitute_driver" class="inputs">
+            <label>Input Position for Sub Driver: </label>
+            <input type="number" id="substitute_driver_pos" v-model="substitute_driver_pos">
         </div>
         <p></p>
         <div class="inputs">
@@ -81,39 +96,21 @@ export default {
     },
     mounted() {
         this.getRaceLocs();
-        // this.getSessions();
-        // this.getConstructors();
-        // this.checkDrivers();
         },
-    // watch: {
-    //     override_check(data_override){
-    //         if (data_override) {
-    //             this.getConstructors();
-    //         }
-    //     }
-    // },
-    //         driver1_pos(val){
-    //             if (val>20 && val<1) {
-    //                 this.driver1_pos = 20;
-    //             }
-    //         },
-    //         driver2_pos(val){
-    //             if (val>20 && val<1) {
-    //                 this.driver2_pos = 20;
-    //             }
-    //         }
-    //     },
     methods: {
-        override() {
-            // this.data_override = !this.data_override;
-            // this.getConstructors();
-            this.getSessions();
-        },
         submitData() {
-            if (this.drivers_available) {
-                if ((20 >= this.$refs.driver1_pos.value >= 1) && (20 >= this.$refs.driver2_pos.value >= 1)) {
-                    this.driver1_pos = this.$refs.driver1_pos.value
-                    this.driver2_pos = this.$refs.driver2_pos.value
+            if (this.drivers_available && !this.substitute_driver) {
+                if (20 < this.driver1_pos < 0) {
+                    this.driver1_pos = 0
+                } else if (20 < this.driver2_pos < 0) {
+                    this.driver2_pos = 0
+                } else {
+                    this.postDriver();
+                }
+            } else if (this.substitute_driver) {
+                if ((20 < this.substitute_driver_pos < 0)) {
+                    this.substitute_driver_pos = 0
+                } else {
                     this.postDriver();
                 }
             }
@@ -143,15 +140,11 @@ export default {
                 this.drivers_available = true;
             }
         },
-        // setPos() {
-        //     this.driver1_pos = this.$refs.driver1_pos.value
-        //     this.driver2_pos = this.$refs.driver2_pos.value
-            // console.log(this.driver1_pos,this.driver2_pos)
-        // },
         postConstructor() {
             apiClient.post('/api/drivers/',
             { 
                 raceLoc: this.gp_loc,
+                data_override: this.data_override,
                 session: this.session,
                 constructor: this.constructor,
                 driver1: this.driver1,
@@ -171,6 +164,7 @@ export default {
             apiClient.post('/api/submit/',
             { 
                 raceLoc: this.gp_loc,
+                data_override: this.data_override,
                 session: this.session,
                 constructor: this.constructor,
                 driver1: this.driver1,
