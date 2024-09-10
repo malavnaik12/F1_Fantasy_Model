@@ -3,8 +3,10 @@ from typing import Optional
 from pydantic import BaseModel
 from team_parse import getTeams, getDrivers
 from weekend_parse import WeekendParser
+from database_operations import InsertData
 
 weekend_info = WeekendParser()
+insert2db = InsertData()
 router = APIRouter()
 class Item(BaseModel):
     raceLoc: Optional[str] = None
@@ -45,4 +47,9 @@ def send_drivers(item: Item):
 
 @router.post('/submit/')
 def send_info_to_DBs(item: Item):
-    return {"status": "success", "entity": "Next steps: 1) Setup backend code to send all info in this function to DBs"}
+    inputs = {}
+    for entity in list(item):
+        inputs[entity[0]] = entity[1]
+    insert2db.init_race_weekend(race_loc=inputs['raceLoc'])
+    insert2db.post_race(item_dict=inputs)
+    return {"status": "success", "entity": "Move on to Prices Tab."}

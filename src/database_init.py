@@ -29,11 +29,11 @@ class InitializeRaceResults:
     def _create_weekend_schema(self,_schema, weekend_type):
         if weekend_type == 'Normal':
             for key in list(_schema.keys()):
-                if 'sp' in key.split('_'):
+                if 'Sprint' in key.split(' '):
                     _schema.pop(key)
         elif weekend_type == 'Sprint':
-            _schema.pop('fp2_hist')
-            _schema.pop('fp3_hist')
+            _schema.pop('Free Practice 2')
+            _schema.pop('Free Practice 3')
         for key in list(_schema.keys()):
             if key == 'race_weekend_type':
                 _schema[key] = weekend_type

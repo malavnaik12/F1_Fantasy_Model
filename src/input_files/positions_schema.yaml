@@ -1,9 +1,9 @@
 # The below attributes are available for a given race in race_location
 race_weekend_type: ''
-fp1_hist: []
-fp2_hist: []
-fp3_hist: []
-sp_qual_hist: []
-sp_race_hist: []
-quali_hist: []
-race_hist: []
+Free Practice 1: []
+Free Practice 2: []
+Free Practice 3: []
+Sprint Qualifying: []
+Sprint Race: []
+Qualifying: []
+Race: []

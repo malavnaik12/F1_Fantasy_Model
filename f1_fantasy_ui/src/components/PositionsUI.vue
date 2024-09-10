@@ -26,7 +26,7 @@
         <p></p>
         <div v-if="data_override" class="inputs">
             <label for="entity-dropdown">Select Constructor: </label>
-            <select id="entity-dropdown" v-model="constructor">
+            <select id="entity-dropdown" v-model="constructor" @change="postConstructor">
                 <option v-for="entity in constructors" :key="entity" :value="entity">
                     {{ entity }}
                 </option>
@@ -61,9 +61,9 @@
         <div class="inputs">
             <button @click="submitData" v-on:keyup.enter="submitData" >Next</button>
             <p>Summary: {{ returnedData }}</p>
-            <div v-if="message" class="inputs">
+            <!-- <div v-if="message" class="inputs">
                 <p>Message? {{ message }}</p>
-            </div>
+            </div> -->
         </div>
     </div>
     </keep-alive>
@@ -91,7 +91,7 @@ export default {
             substitute_driver_name: "",
             substitute_driver_pos: 0,
             returnedData: '',
-            message: ''
+            // message: ''
         };
     },
     mounted() {
@@ -132,7 +132,10 @@ export default {
         },
         getConstructors() {
             apiClient.get('/api/constructors/')
-            .then(response => {this.constructors = response.data.entity})
+            .then(response => {
+                this.constructors = response.data.entity;
+                // this.drivers_available = !this.drivers_available
+            })
             .catch((err) => console.log(err));
         },
         checkDrivers() {
@@ -153,8 +156,8 @@ export default {
                 driver2_pos: this.driver2_pos,
             })
             .then(response => {
-                this.returnedData = response.data,
-                this.constructor = response.data.entity.constructor;
+                // this.returnedData = response.data,
+                this.constructor = response.data.entity.constructor,
                 this.driver1 = response.data.entity.driver1,
                 this.driver2 = response.data.entity.driver2,
                 this.checkDrivers();
@@ -176,9 +179,21 @@ export default {
                 substitute_driver_pos: this.substitute_driver_pos,
             })
             .then(response => {
-                this.returnedData = response.data,
-                this.message = response.data.entity;
+                this.returnedData = response.data.entity;
+                this.clearFields();
+                // this.message = response.data.entity;
             });
+        },
+        clearFields(){
+            this.constructor=null
+            this.driver1="",
+            this.driver2="",
+            this.drivers_available=false,
+            this.driver1_pos=0,
+            this.driver2_pos=0,
+            this.substitute_driver=false,
+            this.substitute_driver_name="",
+            this.substitute_driver_pos=0;
         }
     }
 };
