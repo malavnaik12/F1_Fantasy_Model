@@ -52,4 +52,4 @@ def send_info_to_DBs(item: Item):
         inputs[entity[0]] = entity[1]
     insert2db.init_race_weekend(race_loc=inputs['raceLoc'])
     insert2db.post_race(item_dict=inputs)
-    return {"status": "success", "entity": "Need to build out the backend insertion code"}
+    return {"status": "success", "entity": "1) Need to build out the backend insertion code 2) Update readme how to merge to prod branch and push to prod as well."}
