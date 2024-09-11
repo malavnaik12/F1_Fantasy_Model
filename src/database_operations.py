@@ -16,10 +16,12 @@ class InsertData:
                 if len(self.data[race_loc][key]) == 0:
                     self.data[race_loc][key] = ['']*20
 
+    def get_session(self,item_dict):
+        return self.data[item_dict['raceLoc']][item_dict["session"]]
+
     def post_race(self,item_dict):
         d1 = "driver1"
         d2 = "driver2"
-        # print(item_dict)
         self._post_driver(item_dict=item_dict,driver=d1)
         self._post_driver(item_dict=item_dict,driver=d2)
         print(self.data[item_dict['raceLoc']])

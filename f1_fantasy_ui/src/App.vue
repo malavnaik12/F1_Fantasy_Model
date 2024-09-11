@@ -45,6 +45,7 @@ export default {
   max-width: 100%; /* Full width for mobile */
   text-align: center;
   background-color: #ffffff; /* Light gray background */
+  /* border-radius: 5px; */
 }
 
 .nav-tabs {
@@ -81,10 +82,13 @@ export default {
 }
 
 .tab-content {
-  padding: 20px;
+  padding: 25px;
   background-color: #ffffff; /* White background for content */
   border: 1px solid #ccc; /* Soft light gray border */
-  border-radius: 5px;
+  border-radius: 15px;
+  /* border-left: 12px solid #666; */
+  /* border: 2px solid #D12F2F;
+  grid-row: 1/2; */
   min-height: 200px;
   color: #333; /* Softer dark gray text for content */
 }

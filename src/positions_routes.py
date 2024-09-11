@@ -27,7 +27,6 @@ def send_gp_dropdown():
 
 @router.post('/sessions/')
 def send_session_types(item: Item):
-    print(item)
     return {'entity':weekend_info.sessions_parse(item.raceLoc)}
 
 @router.get('/constructors/')
@@ -45,6 +44,14 @@ def send_drivers(item: Item):
             inputs['driver2'] = drivers[1]
     return {"status": "success", "entity": inputs}
 
+@router.post('/session_info/')
+def get_session_info(item: Item):
+    inputs = {}
+    for entity in list(item):
+        inputs[entity[0]] = entity[1]
+    response = insert2db.get_session(inputs)
+    return {"status":"success","entity":response}
+
 @router.post('/submit/')
 def send_info_to_DBs(item: Item):
     inputs = {}
@@ -52,4 +59,4 @@ def send_info_to_DBs(item: Item):
         inputs[entity[0]] = entity[1]
     insert2db.init_race_weekend(race_loc=inputs['raceLoc'])
     insert2db.post_race(item_dict=inputs)
-    return {"status": "success", "entity": "1) Need to build out the backend insertion code 2) Update readme how to merge to prod branch and push to prod as well."}
+    return {"status": "success", "entity": "1) Need to build out the backend insertion code, where there is a reponse after 'submit' operation. 2) Update readme how to merge to prod branch and push to prod as well."}
