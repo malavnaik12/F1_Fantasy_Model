@@ -38,27 +38,27 @@
                 </select>
             </div>
             <p></p>
-            <div  v-if="drivers_available" class="inputs">
+            <div  v-if="data_override && drivers_available" class="inputs">
                 <label>Input Position for {{ driver1 }}: </label>
                 <input type="number" id="driver1_pos" v-model="driver1_pos">
             </div>
             <p></p>
-            <div  v-if="drivers_available" class="inputs">
+            <div  v-if="data_override && drivers_available" class="inputs">
                 <label>Input Position for {{ driver2 }}: </label>
                 <input type="number" id="driver2_pos" v-model="driver2_pos">
             </div>
             <p></p>
-            <div v-if="drivers_available" class="inputs">
+            <div v-if="data_override && drivers_available" class="inputs">
                 <label for="temp_driver">Any Substitute Drivers?</label>
                 <input type="checkbox" id="temp_driver" v-model="substitute_driver" >
             </div>
             <p></p>
-            <div v-if="substitute_driver" class="inputs">
+            <div v-if="data_override && substitute_driver" class="inputs">
                 <label>Input Sub Driver Name: </label>
                 <input type="text" id="substitute_driver_name" v-model="substitute_driver_name">
             </div>
             <p></p>
-            <div v-if="substitute_driver" class="inputs">
+            <div v-if="data_override && substitute_driver" class="inputs">
                 <label>Input Position for Sub Driver: </label>
                 <input type="number" id="substitute_driver_pos" v-model="substitute_driver_pos">
             </div>
@@ -68,9 +68,25 @@
                 <p>Summary: {{ message }}</p>
             </div>
         </div>
+
         <!-- <div class="line"></div> -->
+        
         <div class="right-content">
-            <p>Hello</p>
+            <p>Session Grid</p>
+            <div v-if="session" class="session_grid">
+                <div class="session_grid_right">
+                    <div v-for="n in session_info_1" :key="n" class="grid-item">
+                        <!-- Your grid item content here, for example: -->
+                        {{ n }}
+                    </div>
+                </div>
+                <div class="session_grid_left">
+                    <div v-for="n in session_info_2" :key="n" class="grid-item">
+                        <!-- Your grid item content here, for example: -->
+                        {{ n }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     </keep-alive>
@@ -98,7 +114,9 @@ export default {
             substitute_driver_name: "",
             substitute_driver_pos: 0,
             returnedData: '',
-            message: ''
+            message: '',
+            session_info_1: [],
+            session_info_2: [],
         };
     },
     watch: {
@@ -113,6 +131,11 @@ export default {
         this.getRaceLocs();
         },
     methods: {
+        populateSessionInfo(response) {
+            this.returnedData = response.data.entity
+            this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
+            this.session_info_2 = response.data.entity.filter((_, index) => index % 2 === 1);
+        },
         submitData() {
             if (this.drivers_available && !this.substitute_driver) {
                 if (20 < this.driver1_pos < 0) {
@@ -130,6 +153,7 @@ export default {
                 }
             }
             this.postConstructor();
+            this.getSessionInfo();
         },
         getRaceLocs() {
             apiClient.get('/api/gp_locs/')
@@ -149,7 +173,7 @@ export default {
                 raceLoc: this.gp_loc,
                 session: this.session,
             }).then(response => {
-                this.returnedData = response.data.entity;
+                this.populateSessionInfo(response);
             })
         },
         getConstructors() {
@@ -226,8 +250,8 @@ export default {
 <style scoped>
 .inputs {
     display: flex;
-    flex-direction: row;
     justify-content:left;
+    flex-direction: row;
     margin-bottom: 10px;
     flex-wrap: wrap;
     gap: 10px;
@@ -239,17 +263,49 @@ export default {
     gap: 20px;
     height: 100%;
 }
+.grid-item {
+    /* display: flex; */
+    /* justify-content: center; */
+    padding: 5px;
+    /* background-color: #f5f5f5;  */
+    /* border-top: 5px solid #0a0101; */
+    /* width: 50%; */
+}
+.grid-item:before {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* This will center the border. */
+    width: 50%; /* Change this to whatever width you want. */
+    padding-bottom: 5px; /* This creates some space between the element and the border. */
+    border-top: 5px solid black; 
+}
+.grid-item:before {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* This will center the border. */
+    width: 50%; /* Change this to whatever width you want. */
+    padding: 5px; /* This creates some space between the element and the border. */
+    border-left: 5px solid black; 
+    border-right: 5px solid black; 
+    left: 0px;
+    top: 25%;
+    position: relative;
+}
+.session_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(10, auto); /* 10 rows */
+    height: 100%;
+}
+.session_grid_right, .session_grid_left {
+    display: grid;
+    height: 100%;
+    /* margin: 10px; */
+}
 
-/* .left-content, .right-content {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    gap: 10px;
-    font-size: 11pt;
-    min-height: 200px;
-} */
+.session_grid_left {
+    padding: 10px;
+}
 
 .right-content {
     min-height: 200px; 

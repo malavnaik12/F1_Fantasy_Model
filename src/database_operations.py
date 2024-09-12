@@ -30,8 +30,10 @@ class InsertData:
     
     def _post_driver(self,item_dict,driver):
         try:
+            print(self.data[item_dict['raceLoc']][item_dict["session"]])
             get_existing_indx = self.data[item_dict['raceLoc']][item_dict["session"]].index(item_dict[f"{driver}"])
             self.data[item_dict['raceLoc']][item_dict["session"]].pop(get_existing_indx)
+            self.data[item_dict['raceLoc']][item_dict["session"]].append('')
         except ValueError:
             self.data[item_dict['raceLoc']][item_dict["session"]][item_dict[f"{driver}_pos"]-1] = item_dict[f"{driver}"]
         else:

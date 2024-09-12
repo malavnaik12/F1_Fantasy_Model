@@ -59,4 +59,4 @@ def send_info_to_DBs(item: Item):
         inputs[entity[0]] = entity[1]
     insert2db.init_race_weekend(race_loc=inputs['raceLoc'])
     insert2db.post_race(item_dict=inputs)
-    return {"status": "success", "entity": "1) Need to build out the backend insertion code, where there is a reponse after 'submit' operation. 2) Update readme how to merge to prod branch and push to prod as well."}
+    return {"status": "success", "entity": "1) Need to populate race_results.json with all race results. 2) Also add some timed effect that slowly changes positions of driver positions if the inputs change.  3) Update readme how to merge to prod branch and push to prod as well."}
