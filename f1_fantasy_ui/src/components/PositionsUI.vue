@@ -1,58 +1,99 @@
 <template>
     <keep-alive>
-    <div>
+    <div class="tab-content-grid">
+        <div class="left-content">
             <div class="inputs">
                 <label for="entity-dropdown">Select Race Weekend: </label>
-            <select id="entity-dropdown" v-model="gp_loc">
-                <option v-for="entity in gp_locs" :key="entity" :value="entity">
-                    {{ entity }}
-                </option>
-            </select>
+                <select id="entity-dropdown" v-model="gp_loc" @change="getSessions">
+                    <option v-for="entity in gp_locs" :key="entity" :value="entity">
+                        {{ entity }}
+                    </option>
+                </select>
+            </div>
+            <p></p>
+            <div v-if="gp_loc" class="inputs">
+                <label for="entity-dropdown">Select Session: </label>
+                <select id="entity-dropdown" v-model="session" @change="getSessionInfo">
+                    <option v-for="entity in sessions" :key="entity" :value="entity">
+                        {{ entity }}
+                    </option>
+                </select>
+            </div>
+            <p></p>
+            <div v-if="session && !data_override" class="inputs">
+                <p>Hello? {{ returnedData }}</p>
+            </div>
+            <p></p>
+            <div v-if="session" class="inputs">
+                <label for="override">Override Existing Data?</label>
+                <input type="checkbox" id="override" v-model="data_override" @change="postConstructor">
+            </div>
+            <p></p>
+            <div v-if="data_override" class="inputs">
+                <label for="entity-dropdown">Select Constructor: </label>
+                <select id="entity-dropdown" v-model="constructor" @change="postConstructor">
+                    <option v-for="entity in constructors" :key="entity" :value="entity">
+                        {{ entity }}
+                    </option>
+                </select>
+            </div>
+            <p></p>
+            <div  v-if="data_override && drivers_available" class="inputs">
+                <label>Input Position for {{ driver1 }}: </label>
+                <input type="number" id="driver1_pos" v-model="driver1_pos">
+            </div>
+            <p></p>
+            <div  v-if="data_override && drivers_available" class="inputs">
+                <label>Input Position for {{ driver2 }}: </label>
+                <input type="number" id="driver2_pos" v-model="driver2_pos">
+            </div>
+            <p></p>
+            <div v-if="data_override && drivers_available" class="inputs">
+                <label for="temp_driver">Any Substitute Drivers?</label>
+                <input type="checkbox" id="temp_driver" v-model="substitute_driver" >
+            </div>
+            <p></p>
+            <div v-if="data_override && substitute_driver" class="inputs">
+                <label>Input Sub Driver Name: </label>
+                <input type="text" id="substitute_driver_name" v-model="substitute_driver_name">
+            </div>
+            <p></p>
+            <div v-if="data_override && substitute_driver" class="inputs">
+                <label>Input Position for Sub Driver: </label>
+                <input type="number" id="substitute_driver_pos" v-model="substitute_driver_pos">
+            </div>
+            <p></p>
+            <div class="inputs">
+                <button class="button" @click="submitData" v-on:keyup.enter="submitData" >Next</button>
+                <p>Summary: {{ message }}</p>
+            </div>
         </div>
-        <p></p>
-        <div class="inputs">
-            <label for="override">Override Existing Data?</label>
-            <input type="checkbox" id="override" v-model="data_override" @change="override" >
-        </div>
-        <p></p>
-        <div v-if="data_override" class="inputs">
-            <label for="entity-dropdown">Select Session: </label>
-            <select id="entity-dropdown" v-model="session">
-                <option v-for="entity in sessions" :key="entity" :value="entity">
-                    {{ entity }}
-                </option>
-            </select>
-        </div>
-        <p></p>
-        <div v-if="data_override" class="inputs">
-            <label for="entity-dropdown">Select Constructor: </label>
-            <select id="entity-dropdown" v-model="constructor">
-                <option v-for="entity in constructors" :key="entity" :value="entity">
-                    {{ entity }}
-                </option>
-            </select>
-        </div>
-        <p></p>
-        <div  v-if="drivers_available" class="inputs">
-            <label>Input Position for {{ driver1 }}: </label>
-            <input type="number" ref="driver1_pos">
-        </div>
-        <p></p>
-        <div  v-if="drivers_available" class="inputs">
-            <label>Input Position for {{ driver2 }}: </label>
-            <input type="number" ref="driver2_pos">
-        </div>
-        <p></p>
-        <div class="inputs">
-            <button @click="submitData" v-on:keyup.enter="submitData" >Next</button>
-            <p>Summary: {{ returnedData }}</p>
+
+        <!-- <div class="line"></div> -->
+        
+        <div class="right-content">
+            <p>Session Grid</p>
+            <div v-if="session" class="session_grid">
+                <div class="session_grid_right">
+                    <div v-for="n in session_info_1" :key="n" class="grid-item">
+                        <!-- Your grid item content here, for example: -->
+                        {{ n }}
+                    </div>
+                </div>
+                <div class="session_grid_left">
+                    <div v-for="n in session_info_2" :key="n" class="grid-item">
+                        <!-- Your grid item content here, for example: -->
+                        {{ n }}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</keep-alive>
+    </keep-alive>
 </template>
 
 <script>
-import axios from 'axios';
+import apiClient from '../axios';
 export default {
     name: "PositionsUI",
     data() {
@@ -73,67 +114,74 @@ export default {
             substitute_driver_name: "",
             substitute_driver_pos: 0,
             returnedData: '',
+            message: '',
+            session_info_1: [],
+            session_info_2: [],
         };
+    },
+    watch: {
+        gp_loc(newVal,prevVal) {
+            console.log(newVal,prevVal);
+            if (newVal !== prevVal) {
+                this.clearFields();
+                }
+        },
     },
     mounted() {
         this.getRaceLocs();
-        // this.getSessions();
-        // this.getConstructors();
-        // this.checkDrivers();
         },
-    // watch: {
-    //     override_check(data_override){
-    //         if (data_override) {
-    //             this.getConstructors();
-    //         }
-    //     }
-    // },
-    //         driver1_pos(val){
-    //             if (val>20 && val<1) {
-    //                 this.driver1_pos = 20;
-    //             }
-    //         },
-    //         driver2_pos(val){
-    //             if (val>20 && val<1) {
-    //                 this.driver2_pos = 20;
-    //             }
-    //         }
-    //     },
     methods: {
-        override() {
-            // this.data_override = !this.data_override;
-            // this.getConstructors();
-            this.getSessions();
+        populateSessionInfo(response) {
+            this.returnedData = response.data.entity
+            this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
+            this.session_info_2 = response.data.entity.filter((_, index) => index % 2 === 1);
         },
         submitData() {
-            if (this.drivers_available) {
-                if ((20 >= this.$refs.driver1_pos.value >= 1) && (20 >= this.$refs.driver2_pos.value >= 1)) {
-                    this.driver1_pos = this.$refs.driver1_pos.value
-                    this.driver2_pos = this.$refs.driver2_pos.value
+            if (this.drivers_available && !this.substitute_driver) {
+                if (20 < this.driver1_pos < 0) {
+                    this.driver1_pos = 0
+                } else if (20 < this.driver2_pos < 0) {
+                    this.driver2_pos = 0
+                } else {
+                    this.postDriver();
+                }
+            } else if (this.substitute_driver) {
+                if ((20 < this.substitute_driver_pos < 0)) {
+                    this.substitute_driver_pos = 0
+                } else {
+                    this.postDriver();
                 }
             }
-            this.postInputs();
+            this.postConstructor();
+            this.getSessionInfo();
         },
         getRaceLocs() {
-            axios.get('https://f1-fantasy-model-backend.onrender.com/api/gp_locs/')
-            // axios.get('http://localhost:8000/api/gp_locs/')
-            .then(response => {this.gp_locs = response.data.entity})
-            .catch((err) => console.log(err));
+            apiClient.get('/api/gp_locs/')
+            .then(response => {
+                this.gp_locs = response.data.entity})
         },
         getSessions() {
-            axios.post('https://f1-fantasy-model-backend.onrender.com/api/sessions/',{
-            // axios.post('http://localhost:8000/api/sessions/',{
+            this.gp_loc_selected = true
+            apiClient.post('/api/sessions/',{
                 raceLoc: this.gp_loc
-            })
-            .then(response => {
+            }).then(response => {
                 this.sessions = response.data.entity,
                 this.getConstructors()})
-            .catch((err) => console.log(err));
+        },
+        getSessionInfo() {
+            apiClient.post('/api/session_info/',{
+                raceLoc: this.gp_loc,
+                session: this.session,
+            }).then(response => {
+                this.populateSessionInfo(response);
+            })
         },
         getConstructors() {
-            axios.get('https://f1-fantasy-model-backend.onrender.com/api/constructors/')
-            // axios.get('http://localhost:8000/api/constructors/')
-            .then(response => {this.constructors = response.data.entity})
+            apiClient.get('/api/constructors/')
+            .then(response => {
+                this.constructors = response.data.entity;
+                // this.drivers_available = !this.drivers_available
+            })
             .catch((err) => console.log(err));
         },
         checkDrivers() {
@@ -141,16 +189,11 @@ export default {
                 this.drivers_available = true;
             }
         },
-        // setPos() {
-        //     this.driver1_pos = this.$refs.driver1_pos.value
-        //     this.driver2_pos = this.$refs.driver2_pos.value
-            // console.log(this.driver1_pos,this.driver2_pos)
-        // },
-        postInputs() {
-            axios.post('https://f1-fantasy-model-backend.onrender.com/api/submit/',
-            // axios.post('http://localhost:8000/api/submit/',
+        postConstructor() {
+            apiClient.post('/api/drivers/',
             { 
                 raceLoc: this.gp_loc,
+                data_override: this.data_override,
                 session: this.session,
                 constructor: this.constructor,
                 driver1: this.driver1,
@@ -159,12 +202,46 @@ export default {
                 driver2_pos: this.driver2_pos,
             })
             .then(response => {
-                this.returnedData = response.data,
-                this.constructor = response.data.entity.constructor;
+                // this.returnedData = response.data,
+                this.constructor = response.data.entity.constructor,
                 this.driver1 = response.data.entity.driver1,
                 this.driver2 = response.data.entity.driver2,
                 this.checkDrivers();
             });
+        },
+        postDriver() {
+            apiClient.post('/api/submit/',
+            { 
+                raceLoc: this.gp_loc,
+                data_override: this.data_override,
+                session: this.session,
+                constructor: this.constructor,
+                driver1: this.driver1,
+                driver2: this.driver2,
+                driver1_pos: this.driver1_pos,
+                driver2_pos: this.driver2_pos,
+                substitute_driver: this.substitute_driver,
+                substitute_driver_name: this.substitute_driver_name,
+                substitute_driver_pos: this.substitute_driver_pos,
+            })
+            .then(response => {
+                this.message = response.data.entity;
+                // this.clearFields();
+                // this.message = response.data.entity;
+            });
+        },
+        clearFields() {
+            this.session='',
+            this.data_override=false,
+            this.constructor='',
+            this.driver1="",
+            this.driver2="",
+            this.drivers_available=false,
+            this.driver1_pos=0,
+            this.driver2_pos=0,
+            this.substitute_driver=false,
+            this.substitute_driver_name="",
+            this.substitute_driver_pos=0;
         }
     }
 };
@@ -173,21 +250,72 @@ export default {
 <style scoped>
 .inputs {
     display: flex;
-    flex-direction: row;
     justify-content:left;
+    flex-direction: row;
     margin-bottom: 10px;
     flex-wrap: wrap;
     gap: 10px;
     font-size: 11pt;
 }
-/* .inputs-drivers {
-    display:flex;
-    flex-direction: row;
-    place-content:left;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    gap: 10px;
-} */
-/* position: relative; */
-/* padding: 15px; */
+.tab-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates two equal-width columns */
+    gap: 20px;
+    height: 100%;
+}
+.grid-item {
+    /* display: flex; */
+    /* justify-content: center; */
+    padding: 5px;
+    /* background-color: #f5f5f5;  */
+    /* border-top: 5px solid #0a0101; */
+    /* width: 50%; */
+}
+.grid-item:before {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* This will center the border. */
+    width: 50%; /* Change this to whatever width you want. */
+    padding-bottom: 5px; /* This creates some space between the element and the border. */
+    border-top: 5px solid black; 
+}
+.grid-item:before {
+    content: ""; /* This is necessary for the pseudo element to work. */ 
+    display: block; /* This will put the pseudo element on its own line. */
+    margin: 0 auto; /* This will center the border. */
+    width: 50%; /* Change this to whatever width you want. */
+    padding: 5px; /* This creates some space between the element and the border. */
+    border-left: 5px solid black; 
+    border-right: 5px solid black; 
+    left: 0px;
+    top: 25%;
+    position: relative;
+}
+.session_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(10, auto); /* 10 rows */
+    height: 100%;
+}
+.session_grid_right, .session_grid_left {
+    display: grid;
+    height: 100%;
+    /* margin: 10px; */
+}
+
+.session_grid_left {
+    padding: 10px;
+}
+
+.right-content {
+    min-height: 200px; 
+    border-left: 2px dashed #D12F2F;
+    justify-content: center;
+}
+
+.button {
+    border-radius: 2px;
+    height: 20px;
+    width: 50px;
+}
 </style>

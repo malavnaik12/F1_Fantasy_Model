@@ -1,0 +1,302 @@
+{
+  "redbull": {
+    "Free Practice 1": [],
+    "Free Practice 2": [],
+    "Free Practice 3": [],
+    "Sprint Qualifying": [],
+    "Sprint Race": [],
+    "Qualifying": [],
+    "Race": [],
+    "prices": [],
+    "verstappen": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    },
+    "perez": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    }
+  },
+  "ferrari": {
+    "Free Practice 1": [],
+    "Free Practice 2": [],
+    "Free Practice 3": [],
+    "Sprint Qualifying": [],
+    "Sprint Race": [],
+    "Qualifying": [],
+    "Race": [],
+    "prices": [],
+    "leclerc": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    },
+    "sainz": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    }
+  },
+  "aston_martin": {
+    "Free Practice 1": [],
+    "Free Practice 2": [],
+    "Free Practice 3": [],
+    "Sprint Qualifying": [],
+    "Sprint Race": [],
+    "Qualifying": [],
+    "Race": [],
+    "prices": [],
+    "alonzo": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    },
+    "stroll": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    }
+  },
+  "mclaren": {
+    "Free Practice 1": [],
+    "Free Practice 2": [],
+    "Free Practice 3": [],
+    "Sprint Qualifying": [],
+    "Sprint Race": [],
+    "Qualifying": [],
+    "Race": [],
+    "prices": [],
+    "norris": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    },
+    "piastri": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    }
+  },
+  "alpine": {
+    "Free Practice 1": [],
+    "Free Practice 2": [],
+    "Free Practice 3": [],
+    "Sprint Qualifying": [],
+    "Sprint Race": [],
+    "Qualifying": [],
+    "Race": [],
+    "prices": [],
+    "ocon": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    },
+    "gasly": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    }
+  },
+  "mercedes": {
+    "Free Practice 1": [],
+    "Free Practice 2": [],
+    "Free Practice 3": [],
+    "Sprint Qualifying": [],
+    "Sprint Race": [],
+    "Qualifying": [],
+    "Race": [],
+    "prices": [],
+    "hamilton": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    },
+    "russell": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    }
+  },
+  "sauber": {
+    "Free Practice 1": [],
+    "Free Practice 2": [],
+    "Free Practice 3": [],
+    "Sprint Qualifying": [],
+    "Sprint Race": [],
+    "Qualifying": [],
+    "Race": [],
+    "prices": [],
+    "bottas": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    },
+    "zhou": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    }
+  },
+  "haas": {
+    "Free Practice 1": [],
+    "Free Practice 2": [],
+    "Free Practice 3": [],
+    "Sprint Qualifying": [],
+    "Sprint Race": [],
+    "Qualifying": [],
+    "Race": [],
+    "prices": [],
+    "hulkenburg": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    },
+    "magnussen": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    }
+  },
+  "williams": {
+    "Free Practice 1": [],
+    "Free Practice 2": [],
+    "Free Practice 3": [],
+    "Sprint Qualifying": [],
+    "Sprint Race": [],
+    "Qualifying": [],
+    "Race": [],
+    "prices": [],
+    "albon": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    },
+    "sargenat": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    }
+  },
+  "rb": {
+    "Free Practice 1": [],
+    "Free Practice 2": [],
+    "Free Practice 3": [],
+    "Sprint Qualifying": [],
+    "Sprint Race": [],
+    "Qualifying": [],
+    "Race": [],
+    "prices": [],
+    "riccardo": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    },
+    "tsunoda": {
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Sprint Qualifying": [],
+      "Sprint Race": [],
+      "Qualifying": [],
+      "Race": [],
+      "prices": {}
+    }
+  }
+}

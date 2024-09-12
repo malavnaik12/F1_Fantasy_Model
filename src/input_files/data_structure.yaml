@@ -1,0 +1,31 @@
+team_data:
+  redbull:
+    verstappen: {}
+    perez: {}
+  ferrari:
+    leclerc: {} 
+    sainz: {}
+  aston_martin:
+    alonzo: {}
+    stroll: {}
+  mclaren:
+    norris: {}
+    piastri: {}
+  alpine:
+    ocon: {}
+    gasly: {}
+  mercedes:
+    hamilton: {}
+    russell: {}
+  sauber:
+    bottas: {}
+    zhou: {}
+  haas:
+    hulkenburg: {}
+    magnussen: {}
+  williams:
+    albon: {}
+    sargenat: {}
+  rb:
+    riccardo: {}
+    tsunoda: {}
