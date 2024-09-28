@@ -74,7 +74,8 @@
         </div>
         
         <div class="right-content">
-            <p>Session Grid</p>
+            <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Results</p>
+            <!-- <p></p> -->
             <div v-if="session" class="session_grid">
                 <div class="session_grid_right">
                     <div v-for="n in session_info_1" :key="n" class="grid-item">
@@ -141,9 +142,7 @@ export default {
             } else {
                 this.returnedData = response.data.entity
                 this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
-                console.log("sess_info_1:",this.session_info_1)
                 this.session_info_2 = response.data.entity.filter((_, index) => index % 2 === 1);
-                console.log("sess_info_2:",this.session_info_2)
             }
         },
         submitData() {
@@ -179,6 +178,8 @@ export default {
                 this.getConstructors()})
         },
         getSessionInfo() {
+            this.session_info_1 = Array.apply(null,Array(10));
+            this.session_info_2 = Array.apply(null,Array(10));
             apiClient.post('/api/session_info/',{
                 year: this.year,
                 raceLoc: this.gp_loc,
@@ -285,13 +286,14 @@ export default {
 .tab-content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Creates two equal-width columns */
-    gap: 20px;
+    gap: 10px;
     height: 100%;
 }
 .grid-item {
     /* display: flex; */
     /* justify-content: center; */
-    padding: 15px;
+    padding: 5px;
+    color: black;
     /* background-color: #f5f5f5;  */
     /* border-top: 5px solid #0a0101; */
     /* width: 50%; */
@@ -303,8 +305,8 @@ export default {
     display: block; /* This will put the pseudo element on its own line. */
     margin: 0 auto; /* This will center the border. */
     width: 50%; /* Change this to whatever width you want. */
-    padding-bottom: 15px; /* This creates some space between the element and the border. */
-    border-top: 5px solid black; 
+    padding-bottom: 25px; /* This creates some space between the element and the border. */
+    border-top: 5px solid white; 
 }
 .grid-item:before {
     content: "";  
@@ -312,8 +314,8 @@ export default {
     margin: 0 auto; 
     width: 50%; 
     padding: 5px; 
-    border-left: 5px solid black; 
-    border-right: 5px solid black; 
+    border-left: 5px solid white; 
+    border-right: 5px solid white; 
     left: 0px;
     top: 25%;
     position: relative;
@@ -335,9 +337,13 @@ export default {
 }
 
 .right-content {
-    min-height: 200px; 
+    min-height: 250px; 
     border-left: 2px dashed #D12F2F;
     justify-content: center;
+    background-color: rgb(111, 110, 110);
+    border-radius: 20px;
+    color: black;
+    padding-bottom: 15px;
 }
 
 .button {
@@ -349,5 +355,8 @@ export default {
     border-radius: 2px;
     height: 40px;
     width: 60px;
+}
+.grid_title {
+    justify-content: center;
 }
 </style>

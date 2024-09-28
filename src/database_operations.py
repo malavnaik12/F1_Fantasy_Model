@@ -1,6 +1,6 @@
 import json
 from database_init import InitializeFiles
-import local_fastf1_connect
+import fastf1_connect
 from weekend_parse import WeekendParser
 import asyncio
 
@@ -8,6 +8,7 @@ init_wp = WeekendParser()
 
 class InsertData:
     def __init__(self):
+
         try:
             self.db_filename = "./database_files/race_results.json"
             with open(self.db_filename,"r") as db_file:
@@ -15,6 +16,9 @@ class InsertData:
         except FileNotFoundError:
             InitializeFiles(2024) # Need to make it so that this input is being supplied by front end
 
+    def save_to_db(self):
+        with open(self.db_filename,"w") as outfile:
+            json.dump(self.data,outfile,indent=2)
 
     def init_race_weekend(self,race_loc):
         for key in list(self.data[race_loc].keys()):
@@ -28,15 +32,12 @@ class InsertData:
             year = item_dict[f'year']
             race_indx = gp_info_locs.index(item_dict['raceLoc'])+1
             session = ''.join([item[0] for item in item_dict['session'].split(' ')])
-            print(year, race_indx, session)
-            session_info = asyncio.run(local_fastf1_connect.call_from_dp_ops(year,race_indx,session))
-            out = session_info.drivers 
-                # out currently a list of number but need to convert a list of numbers to driver names
-        else:
-            out = self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]]
-        print(out)
-        input()
-        return out
+            if session == 'SR':
+                session = 'S'
+            session_info = asyncio.run(fastf1_connect.call_from_dp_ops(year,race_indx,session))
+            self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]] = session_info
+            self.save_to_db()
+        return self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]]
 
     def post_race(self,item_dict):
         d1 = "driver1"
@@ -51,10 +52,6 @@ class InsertData:
         try:
             get_existing_indx = self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]].index(item_dict[f"{driver}"])
             self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]][get_existing_indx] = ''
-            # print(self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]])
-            # print(get_existing_indx)
-            # self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]].append('')
-            # self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]][item_dict[f"{driver}_pos"]-1] = item_dict[f"{driver}"]
         except ValueError:
             self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]][item_dict[f"{driver}_pos"]-1] = item_dict[f"{driver}"]
         else:
