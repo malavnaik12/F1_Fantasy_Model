@@ -9,6 +9,7 @@ weekend_info = WeekendParser()
 insert2db = InsertData()
 router = APIRouter()
 class Item(BaseModel):
+    year: Optional[int] = None
     raceLoc: Optional[str] = None
     session: Optional[str] = None
     constructor: Optional[str] = None
@@ -49,7 +50,11 @@ def get_session_info(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
-    response = insert2db.get_session(inputs)
+    try:
+        response = insert2db.get_session(inputs)
+    except ValueError:
+        response = False
+        print("No data found:",response)
     return {"status":"success","entity":response}
 
 @router.post('/submit/')
@@ -59,4 +64,5 @@ def send_info_to_DBs(item: Item):
         inputs[entity[0]] = entity[1]
     insert2db.init_race_weekend(race_loc=inputs['raceLoc'])
     insert2db.post_race(item_dict=inputs)
-    return {"status": "success", "entity": "1) Need to populate race_results.json with all race results. 2) Also add some timed effect that slowly changes positions of driver positions if the inputs change.  3) Update readme how to merge to prod branch and push to prod as well."}
+    return {"status": "success", "entity": "1) Need to populate race_results.json with all race results. 2) May need to rethink driver inputs. It's kind of cumbersome to go through each constructor manually."}
+            # 3) Also add some timed effect that slowly changes positions of driver positions if the inputs change.  4) Update readme how to merge to prod branch and push to prod as well."}

@@ -3,6 +3,11 @@
     <div class="tab-content-grid">
         <div class="left-content">
             <div class="inputs">
+                <label>F1 Season Year: </label>
+                <input type="number" id="driver1_pos" v-model="year">
+            </div>
+            <p></p>
+            <div class="inputs">
                 <label for="entity-dropdown">Select Race Weekend: </label>
                 <select id="entity-dropdown" v-model="gp_loc" @change="getSessions">
                     <option v-for="entity in gp_locs" :key="entity" :value="entity">
@@ -20,11 +25,7 @@
                 </select>
             </div>
             <p></p>
-            <div v-if="session && !data_override" class="inputs">
-                <p>Hello? {{ returnedData }}</p>
-            </div>
-            <p></p>
-            <div v-if="session" class="inputs">
+            <div v-if="session && data_not_available" class="inputs">
                 <label for="override">Override Existing Data?</label>
                 <input type="checkbox" id="override" v-model="data_override" @change="postConstructor">
             </div>
@@ -67,22 +68,23 @@
                 <button class="button" @click="submitData" v-on:keyup.enter="submitData" >Next</button>
                 <p>Summary: {{ message }}</p>
             </div>
+            <div v-if="gp_loc && session" class="inputs">
+                <button class="button-reload" @click="reloadSessionInfo" v-on:keyup.enter="reloadSessionInfo" >Reload Info</button>
+            </div>
         </div>
-
-        <!-- <div class="line"></div> -->
         
         <div class="right-content">
             <p>Session Grid</p>
             <div v-if="session" class="session_grid">
                 <div class="session_grid_right">
                     <div v-for="n in session_info_1" :key="n" class="grid-item">
-                        <!-- Your grid item content here, for example: -->
+                    <!-- <div v-for="n in 10" :key="n" class="grid-item"> -->
                         {{ n }}
                     </div>
+                    
                 </div>
                 <div class="session_grid_left">
                     <div v-for="n in session_info_2" :key="n" class="grid-item">
-                        <!-- Your grid item content here, for example: -->
                         {{ n }}
                     </div>
                 </div>
@@ -98,10 +100,12 @@ export default {
     name: "PositionsUI",
     data() {
         return {
+            year: 2024,
             gp_locs: [], // Array to store gp_locs from text file
             gp_loc: null, // The selected entity
             sessions: [],
             session: null,
+            data_not_available: false,
             data_override: false,
             constructors: [],
             constructor: null,
@@ -132,9 +136,15 @@ export default {
         },
     methods: {
         populateSessionInfo(response) {
-            this.returnedData = response.data.entity
-            this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
-            this.session_info_2 = response.data.entity.filter((_, index) => index % 2 === 1);
+            if (!response) {
+                this.data_not_available = true
+            } else {
+                this.returnedData = response.data.entity
+                this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
+                console.log("sess_info_1:",this.session_info_1)
+                this.session_info_2 = response.data.entity.filter((_, index) => index % 2 === 1);
+                console.log("sess_info_2:",this.session_info_2)
+            }
         },
         submitData() {
             if (this.drivers_available && !this.substitute_driver) {
@@ -170,6 +180,7 @@ export default {
         },
         getSessionInfo() {
             apiClient.post('/api/session_info/',{
+                year: this.year,
                 raceLoc: this.gp_loc,
                 session: this.session,
             }).then(response => {
@@ -242,6 +253,11 @@ export default {
             this.substitute_driver=false,
             this.substitute_driver_name="",
             this.substitute_driver_pos=0;
+        },
+        reloadSessionInfo() {
+            this.session_info_1 = [];
+            this.session_info_2 = [];
+            this.getSessionInfo()
         }
     }
 };
@@ -257,6 +273,15 @@ export default {
     gap: 10px;
     font-size: 11pt;
 }
+.reload {
+    display: flex;
+    justify-content:right;
+    flex-direction: row;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 11pt;
+}
 .tab-content-grid {
     display: grid;
     grid-template-columns: 1fr 1fr; /* Creates two equal-width columns */
@@ -266,25 +291,27 @@ export default {
 .grid-item {
     /* display: flex; */
     /* justify-content: center; */
-    padding: 5px;
+    padding: 15px;
     /* background-color: #f5f5f5;  */
     /* border-top: 5px solid #0a0101; */
     /* width: 50%; */
+    font-size: 10pt;
+
 }
 .grid-item:before {
     content: ""; /* This is necessary for the pseudo element to work. */ 
     display: block; /* This will put the pseudo element on its own line. */
     margin: 0 auto; /* This will center the border. */
     width: 50%; /* Change this to whatever width you want. */
-    padding-bottom: 5px; /* This creates some space between the element and the border. */
+    padding-bottom: 15px; /* This creates some space between the element and the border. */
     border-top: 5px solid black; 
 }
 .grid-item:before {
-    content: ""; /* This is necessary for the pseudo element to work. */ 
-    display: block; /* This will put the pseudo element on its own line. */
-    margin: 0 auto; /* This will center the border. */
-    width: 50%; /* Change this to whatever width you want. */
-    padding: 5px; /* This creates some space between the element and the border. */
+    content: "";  
+    display: block; 
+    margin: 0 auto; 
+    width: 50%; 
+    padding: 5px; 
     border-left: 5px solid black; 
     border-right: 5px solid black; 
     left: 0px;
@@ -317,5 +344,10 @@ export default {
     border-radius: 2px;
     height: 20px;
     width: 50px;
+}
+.button-reload {
+    border-radius: 2px;
+    height: 40px;
+    width: 60px;
 }
 </style>

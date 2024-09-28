@@ -2,9 +2,11 @@ import yaml
 import json
 import team_parse
 import weekend_parse
+import os
 
 class InitializeFiles:
-    def __init__(self) -> None:
+    def __init__(self, year: int) -> None:
+        os.makedirs("./database_files",exist_ok=True)
         InitializeRaceResults()
         InitializeMain()
 
@@ -16,6 +18,7 @@ class InitializeRaceResults:
     def __init__(self) -> None:
         self.init_WI = WeekendInfo()
         self.db_filename = "./database_files/race_results.json"
+        self.main_data_dict = {}
         try:
             # os.path.isfile("./database_files/database.json")
             with open(self.db_filename,"r") as db_file:
@@ -47,13 +50,15 @@ class InitializeRaceResults:
                 pos_schema = yaml.safe_load(pos_schema_file)
                 pos_schema.update(price_schema)
             info_dict[gp] = self._create_weekend_schema(pos_schema,self.init_WI.gp_type[indx])
+        self.main_data_dict["2024"] = info_dict
         with open(self.db_filename,"w") as outfile:
-            json.dump(info_dict,outfile,indent=2)
+            json.dump(self.main_data_dict,outfile,indent=2)
 
 class InitializeMain:
     def __init__(self) -> None:
         self.init_WI = WeekendInfo()
         self.db_filename = "./database_files/database_main.json"
+        self.main_data_dict = {}
         try:
             # os.path.isfile("./database_files/database.json")
             with open(self.db_filename,"r") as db_file:
@@ -80,9 +85,10 @@ class InitializeMain:
                     teams[team][attribute] = data_attrs[attribute]
             for driver in list(team_info[team].keys()):
                 teams[team][driver] = data_attrs
+        self.main_data_dict[f"2024"] = teams
         with open(self.db_filename,"w") as db_file:
-            json.dump(teams, db_file, indent=2)
+            json.dump(self.main_data_dict, db_file, indent=2)
 
 if __name__ == '__main__':
-    InitializeFiles()
+    InitializeFiles(2024) 
     # print("This file is not directly callable. It is called to create database.json within database.py.")
