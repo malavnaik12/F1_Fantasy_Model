@@ -2,6 +2,7 @@ import json
 from database_init import InitializeFiles
 import local_fastf1_connect
 from weekend_parse import WeekendParser
+import asyncio
 
 init_wp = WeekendParser()
 
@@ -22,17 +23,15 @@ class InsertData:
                     self.data[race_loc][key] = ['']*20
 
     def get_session(self,item_dict):
-        # print(item_dict['raceloc'])
-        # input()
         gp_info_locs = init_wp.gp_parse()
         if len(self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]]) == 0:
             year = item_dict[f'year']
-            race_indx = gp_info_locs.index(item_dict['raceLoc'])
+            race_indx = gp_info_locs.index(item_dict['raceLoc'])+1
             session = ''.join([item[0] for item in item_dict['session'].split(' ')])
             print(year, race_indx, session)
-            out = local_fastf1_connect.call_from_dp_ops(year,race_indx,item_dict['session'])
-            print(out.drivers)
-            input()
+            session_info = asyncio.run(local_fastf1_connect.call_from_dp_ops(year,race_indx,session))
+            out = session_info.drivers 
+                # out currently a list of number but need to convert a list of numbers to driver names
         else:
             out = self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]]
         print(out)

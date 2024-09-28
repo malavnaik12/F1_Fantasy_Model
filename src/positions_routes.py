@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from team_parse import getTeams, getDrivers
 from weekend_parse import WeekendParser
 from database_operations import InsertData
+import asyncio
 
 weekend_info = WeekendParser()
 insert2db = InsertData()
