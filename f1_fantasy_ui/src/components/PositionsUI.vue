@@ -25,7 +25,7 @@
                 </select>
             </div>
             <p></p>
-            <div v-if="session && data_not_available" class="inputs">
+            <div v-if="session && data_not_present" class="inputs">
                 <label for="override">Override Existing Data?</label>
                 <input type="checkbox" id="override" v-model="data_override" @change="postConstructor">
             </div>
@@ -73,13 +73,11 @@
             </div>
         </div>
         
-        <div class="right-content">
-            <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Results</p>
-            <!-- <p></p> -->
+        <div class="middle-content">
+            <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Driver Results</p>
             <div v-if="session" class="session_grid">
                 <div class="session_grid_right">
                     <div v-for="n in session_info_1" :key="n" class="grid-item">
-                    <!-- <div v-for="n in 10" :key="n" class="grid-item"> -->
                         {{ n }}
                     </div>
                     
@@ -90,6 +88,10 @@
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="right-content">
+            <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Constructor Results</p>
         </div>
     </div>
     </keep-alive>
@@ -106,7 +108,7 @@ export default {
             gp_loc: null, // The selected entity
             sessions: [],
             session: null,
-            data_not_available: false,
+            data_not_present: false,
             data_override: false,
             constructors: [],
             constructor: null,
@@ -138,7 +140,7 @@ export default {
     methods: {
         populateSessionInfo(response) {
             if (!response) {
-                this.data_not_available = true
+                this.data_not_present = true
             } else {
                 this.returnedData = response.data.entity
                 this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
@@ -170,7 +172,6 @@ export default {
                 this.gp_locs = response.data.entity})
         },
         getSessions() {
-            this.gp_loc_selected = true
             apiClient.post('/api/sessions/',{
                 raceLoc: this.gp_loc
             }).then(response => {
@@ -192,7 +193,6 @@ export default {
             apiClient.get('/api/constructors/')
             .then(response => {
                 this.constructors = response.data.entity;
-                // this.drivers_available = !this.drivers_available
             })
             .catch((err) => console.log(err));
         },
@@ -214,7 +214,6 @@ export default {
                 driver2_pos: this.driver2_pos,
             })
             .then(response => {
-                // this.returnedData = response.data,
                 this.constructor = response.data.entity.constructor,
                 this.driver1 = response.data.entity.driver1,
                 this.driver2 = response.data.entity.driver2,
@@ -238,8 +237,6 @@ export default {
             })
             .then(response => {
                 this.message = response.data.entity;
-                // this.clearFields();
-                // this.message = response.data.entity;
             });
         },
         clearFields() {
@@ -265,6 +262,12 @@ export default {
 </script>
 
 <style scoped>
+.tab-content-grid {
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    gap: 10px;
+    height: 100%;
+}
 .inputs {
     display: flex;
     justify-content:left;
@@ -274,39 +277,35 @@ export default {
     gap: 10px;
     font-size: 11pt;
 }
-.reload {
-    display: flex;
-    justify-content:right;
-    flex-direction: row;
-    margin-bottom: 10px;
-    flex-wrap: wrap;
-    gap: 10px;
-    font-size: 11pt;
+.button {
+    border-radius: 2px;
+    height: 20px;
+    width: 50px;
 }
-.tab-content-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Creates two equal-width columns */
-    gap: 10px;
-    height: 100%;
+.button-reload {
+    border-radius: 2px;
+    height: 40px;
+    width: 60px;
+}
+.left-content {
+    border-right: 2px dashed #D12F2F;
+}
+.right-content {
+    border-left: 2px dashed #D12F2F;
+}
+.middle-content {
+    min-height: 250px; 
+    justify-content: center;
+    background-color: rgb(111, 110, 110);
+    border-radius: 20px;
+    color: black;
+    padding-bottom: 15px;
 }
 .grid-item {
-    /* display: flex; */
-    /* justify-content: center; */
     padding: 5px;
     color: black;
-    /* background-color: #f5f5f5;  */
-    /* border-top: 5px solid #0a0101; */
-    /* width: 50%; */
     font-size: 10pt;
 
-}
-.grid-item:before {
-    content: ""; /* This is necessary for the pseudo element to work. */ 
-    display: block; /* This will put the pseudo element on its own line. */
-    margin: 0 auto; /* This will center the border. */
-    width: 50%; /* Change this to whatever width you want. */
-    padding-bottom: 25px; /* This creates some space between the element and the border. */
-    border-top: 5px solid white; 
 }
 .grid-item:before {
     content: "";  
@@ -314,6 +313,8 @@ export default {
     margin: 0 auto; 
     width: 50%; 
     padding: 5px; 
+    padding-bottom: 25px;
+    border-top: 5px solid white;
     border-left: 5px solid white; 
     border-right: 5px solid white; 
     left: 0px;
@@ -329,32 +330,9 @@ export default {
 .session_grid_right, .session_grid_left {
     display: grid;
     height: 100%;
-    /* margin: 10px; */
 }
-
 .session_grid_left {
     padding: 10px;
-}
-
-.right-content {
-    min-height: 250px; 
-    border-left: 2px dashed #D12F2F;
-    justify-content: center;
-    background-color: rgb(111, 110, 110);
-    border-radius: 20px;
-    color: black;
-    padding-bottom: 15px;
-}
-
-.button {
-    border-radius: 2px;
-    height: 20px;
-    width: 50px;
-}
-.button-reload {
-    border-radius: 2px;
-    height: 40px;
-    width: 60px;
 }
 .grid_title {
     justify-content: center;

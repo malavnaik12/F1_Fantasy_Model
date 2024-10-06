@@ -8,7 +8,6 @@ init_wp = WeekendParser()
 
 class InsertData:
     def __init__(self):
-
         try:
             self.db_filename = "./database_files/race_results.json"
             with open(self.db_filename,"r") as db_file:

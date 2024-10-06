@@ -1,54 +1,38 @@
 <template>
-    <div>
-        <div >
-            <h4>From Prices Tab File</h4>
-            <label for="entity-dropdown">Select Race Weekend: </label>
-            <select id="entity-dropdown" v-model="gp_loc">
-                <option v-for="entity in gp_locs" :key="entity" :value="entity">
-                    {{ entity }}
-                </option>
-            </select>
-        </div>
-        <p></p>
-        <div >
-            <label for="entity-dropdown">Select Race Weekend Session: </label>
-            <select id="entity-dropdown" v-model="session">
-                <option v-for="entity in sessions" :key="entity" :value="entity">
-                    {{ entity }}
-                </option>
-            </select>
-        </div>
-        <p></p>
-        <div >
-            <label for="entity-dropdown">Select Constructor: </label>
-            <select id="entity-dropdown" v-model="constructor">
-                <option v-for="entity in constructors" :key="entity" :value="entity">
-                    {{ entity }}
-                </option>
-            </select>
-        </div>
-        <p></p>
-        <div  v-if="drivers_available">
-            <label>Input Position for {{ driver1 }}: </label>
-            <input type="number" ref="driver1_pos">
+    <div class="tab-content-grid">
+        <div>
+            <div class="inputs">
+                <label>F1 Season Year: </label>
+                <input type="number" id="driver1_pos" v-model="year">
+            </div>
             <p></p>
-            <label>Input Position for {{ driver2 }}: </label>
-            <input type="number" ref="driver2_pos">
+            <div class="inputs">
+                <label for="entity-dropdown">Select Race Weekend: </label>
+                <select id="entity-dropdown" v-model="gp_loc" @change="getSessions">
+                    <option v-for="entity in gp_locs" :key="entity" :value="entity">
+                        {{ entity }}
+                    </option>
+                </select>
+            </div>
+            <p></p>
         </div>
-        <p></p>
-        <button @click="submitData" v-on:keyup.enter="submitData" >Next</button>
-        <p>Summary: {{ returnedData }}</p>
+
+        <div class="right-content">
+            <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Results</p>
+        </div>
     </div>
 </template>
 
 <script>
-import axios from 'axios';
+import apiClient from '../axios';
+import PositionsUI from './PositionsUI.vue';
 export default {
     name: "PricesUI",
     data() {
         return {
-            gp_locs: [], // Array to store gp_locs from text file
-            gp_loc: null, // The selected entity
+            year: 2024,
+            gp_locs: PositionsUI.gp_locs, // Array to store gp_locs from text file
+            gp_loc: PositionsUI.gp_loc, // The selected entity
             sessions: [],
             session: null,
             data_override: true,
@@ -69,20 +53,7 @@ export default {
         this.getRaceLocs();
         this.getSessions();
         this.getConstructors();
-        // this.checkDrivers();
         },
-    // watch: {
-    //         driver1_pos(val){
-    //             if (val>20 && val<1) {
-    //                 this.driver1_pos = 20;
-    //             }
-    //         },
-    //         driver2_pos(val){
-    //             if (val>20 && val<1) {
-    //                 this.driver2_pos = 20;
-    //             }
-    //         }
-    //     },
     methods: {
         submitData() {
             if (this.drivers_available) {
@@ -94,20 +65,19 @@ export default {
             this.postInputs();
         },
         getRaceLocs() {
-            axios.get('https://f1-fantasy-model-backend.onrender.com/api/gp_locs/')
-            // axios.get('http://10.0.0.159:8000/api/gp_locs/')
+            apiClient.get('/api/gp_locs/')
             .then(response => {this.gp_locs = response.data.entity})
             .catch((err) => console.log(err));
         },
         getSessions() {
-            axios.get('https://f1-fantasy-model-backend.onrender.com/api/sessions/')
-            // axios.get('http://10.0.0.159:8000/api/sessions/')
-            .then(response => {this.sessions = response.data.entity})
-            .catch((err) => console.log(err));
+            // apiClient.get('/api/sessions/')
+            // .then(response => {this.sessions = response.data.entity})
+            // .catch((err) => console.log(err));
+            // PositionsUI.getSessions()
+            PositionsUI.methods.getSessions();
         },
         getConstructors() {
-            axios.get('https://f1-fantasy-model-backend.onrender.com/api/constructors/')
-            // axios.get('http://10.0.0.159:8000/api/sessions/')
+            apiClient.get('/api/constructors/')
             .then(response => {this.constructors = response.data.entity})
             .catch((err) => console.log(err));
         },
@@ -121,12 +91,8 @@ export default {
             this.driver2_pos = this.$refs.driver2_pos.value
             console.log(this.driver1_pos,this.driver2_pos)
         },
-        // axios.post('https://f1-fantasy-model-backend.onrender.com/api/selected_constructor/',
-        // {constructor: this.constructor})
-        // // .then(response => {this.returnedData = response.data});
         postInputs() {
-            axios.post('https://f1-fantasy-model-backend.onrender.com/api/submit/',
-            // axios.post('http://10.0.0.159:8000/api/submit',
+            apiClient.post('/api/submit/',
             { 
                 raceLoc: this.gp_loc,
                 session: this.session,
@@ -148,5 +114,75 @@ export default {
 </script>
 
 <style scoped>
+.tab-content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    height: 100%;
+}
+.inputs {
+    display: flex;
+    justify-content:left;
+    flex-direction: row;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 11pt;
+}
+.button {
+    border-radius: 2px;
+    height: 20px;
+    width: 50px;
+}
+.button-reload {
+    border-radius: 2px;
+    height: 40px;
+    width: 60px;
+}
+.right-content {
+        min-height: 250px; 
+        border-left: 2px dashed #D12F2F;
+        border-right: 2px dashed #D12F2F;
+        justify-content: center;
+        background-color: rgb(111, 110, 110);
+        border-radius: 20px;
+        color: black;
+        padding-bottom: 15px;
+}
+.grid-item {
+    padding: 5px;
+    color: black;
+    font-size: 10pt;
 
+}
+.grid-item:before {
+    content: "";  
+    display: block; 
+    margin: 0 auto; 
+    width: 50%; 
+    padding: 5px; 
+    padding-bottom: 25px;
+    border-top: 5px solid white;
+    border-left: 5px solid white; 
+    border-right: 5px solid white; 
+    left: 0px;
+    top: 25%;
+    position: relative;
+}
+.session_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns */
+    grid-template-rows: repeat(10, auto); /* 10 rows */
+    height: 100%;
+}
+.session_grid_right, .session_grid_left {
+    display: grid;
+    height: 100%;
+}
+.session_grid_left {
+    padding: 10px;
+}
+.grid_title {
+    justify-content: center;
+}
 </style>
