@@ -1,4 +1,5 @@
 <template>
+    <keep-alive>
     <div class="tab-content-grid">
         <div>
             <div class="inputs">
@@ -15,24 +16,33 @@
                 </select>
             </div>
             <p></p>
+            <div v-if="gp_loc" class="inputs">
+                <label for="entity-dropdown">Select Session: </label>
+                <select id="entity-dropdown" v-model="session" @change="getSessionInfo">
+                    <option v-for="entity in sessions" :key="entity" :value="entity">
+                        {{ entity }}
+                    </option>
+                </select>
+            </div>
+            <p></p>
         </div>
 
         <div class="right-content">
             <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Results</p>
         </div>
     </div>
+    </keep-alive>
 </template>
 
 <script>
 import apiClient from '../axios';
-import PositionsUI from './PositionsUI.vue';
 export default {
     name: "PricesUI",
     data() {
         return {
             year: 2024,
-            gp_locs: PositionsUI.gp_locs, // Array to store gp_locs from text file
-            gp_loc: PositionsUI.gp_loc, // The selected entity
+            gp_locs: [], // Array to store gp_locs from text file
+            gp_loc: null, // The selected entity
             sessions: [],
             session: null,
             data_override: true,
@@ -51,8 +61,6 @@ export default {
     },
     mounted() {
         this.getRaceLocs();
-        this.getSessions();
-        this.getConstructors();
         },
     methods: {
         submitData() {
@@ -65,19 +73,32 @@ export default {
             this.postInputs();
         },
         getRaceLocs() {
-            apiClient.get('/api/gp_locs/')
+            apiClient.get('/prices/gp_locs/')
             .then(response => {this.gp_locs = response.data.entity})
             .catch((err) => console.log(err));
         },
         getSessions() {
-            // apiClient.get('/api/sessions/')
-            // .then(response => {this.sessions = response.data.entity})
-            // .catch((err) => console.log(err));
-            // PositionsUI.getSessions()
-            PositionsUI.methods.getSessions();
+            console.log(this.gp_loc)
+            apiClient.post('/prices/sessions/',{
+                raceLoc: this.gp_loc
+            }).then(response => {
+                this.sessions = response.data.entity})
+        },
+        getSessionInfo() {
+            this.session_info_1 = Array.apply(null,Array(10));
+            this.session_info_2 = Array.apply(null,Array(10));
+            console.log(this.year,this.raceLoc,this.session)
+            apiClient.post('/prices/session_info/',{
+                year: this.year,
+                raceLoc: this.gp_loc,
+                session: this.session,
+            }).then(response => {
+                // this.populateSessionInfo(response);
+                console.log(response)
+            })
         },
         getConstructors() {
-            apiClient.get('/api/constructors/')
+            apiClient.get('/prices/constructors/')
             .then(response => {this.constructors = response.data.entity})
             .catch((err) => console.log(err));
         },
@@ -92,7 +113,7 @@ export default {
             console.log(this.driver1_pos,this.driver2_pos)
         },
         postInputs() {
-            apiClient.post('/api/submit/',
+            apiClient.post('/prices/submit/',
             { 
                 raceLoc: this.gp_loc,
                 session: this.session,
@@ -116,7 +137,7 @@ export default {
 <style scoped>
 .tab-content-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 40% 40% 20%;
     gap: 10px;
     height: 100%;
 }

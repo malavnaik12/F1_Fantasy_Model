@@ -10,13 +10,8 @@ class InitializeFiles:
         InitializeRaceResults()
         InitializeMain()
 
-class WeekendInfo(weekend_parse.WeekendParser):
-    def __init__(self):
-        super().__init__()
-
 class InitializeRaceResults:
     def __init__(self) -> None:
-        self.init_WI = WeekendInfo()
         self.db_filename = "./database_files/race_results.json"
         self.main_data_dict = {}
         try:
@@ -43,20 +38,20 @@ class InitializeRaceResults:
         return _schema
 
     def init_db(self,info_dict):
+        gp_type = weekend_parse.gp_type_parse()
         with open("./input_files/prices_schema.yaml", "r") as price_schema_file:
             price_schema = yaml.safe_load(price_schema_file)
         for (indx, gp) in enumerate(list(info_dict.keys())):
             with open("./input_files/positions_schema.yaml", "r") as pos_schema_file:
                 pos_schema = yaml.safe_load(pos_schema_file)
                 pos_schema.update(price_schema)
-            info_dict[gp] = self._create_weekend_schema(pos_schema,self.init_WI.gp_type[indx])
+            info_dict[gp] = self._create_weekend_schema(pos_schema,gp_type[indx])
         self.main_data_dict["2024"] = info_dict
         with open(self.db_filename,"w") as outfile:
             json.dump(self.main_data_dict,outfile,indent=2)
 
 class InitializeMain:
     def __init__(self) -> None:
-        self.init_WI = WeekendInfo()
         self.db_filename = "./database_files/database_main.json"
         self.main_data_dict = {}
         try:
