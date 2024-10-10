@@ -1,7 +1,7 @@
 import json
 from database_init import InitializeFiles
 import fastf1_connect
-import weekend_parse
+from  weekend_parse import get_gp_info, gp_parse
 import asyncio
 
 class InsertData:
@@ -24,7 +24,7 @@ class InsertData:
                     self.data[race_loc][key] = ['']*20
 
     def get_session(self,item_dict):
-        gp_info_locs = weekend_parse.gp_parse()
+        gp_info_locs = gp_parse(get_gp_info())
         if len(self.data[f"{item_dict[f'year']}"][item_dict['raceLoc']][item_dict["session"]]) == 0:
             year = item_dict[f'year']
             race_indx = gp_info_locs.index(item_dict['raceLoc'])+1

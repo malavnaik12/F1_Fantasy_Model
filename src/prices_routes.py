@@ -2,7 +2,7 @@ from fastapi import APIRouter
 from typing import Optional
 from pydantic import BaseModel
 from team_parse import getTeams, getDrivers
-from weekend_parse import gp_parse,sessions_parse
+from weekend_parse import get_gp_info,gp_parse,sessions_parse
 from database_operations import InsertData
 
 # weekend_info = WeekendParser()
@@ -24,7 +24,7 @@ class Item(BaseModel):
 
 @prices_router.get('/gp_locs/')
 async def send_gp_dropdown():
-    gp_locs = gp_parse()
+    gp_locs = gp_parse(get_gp_info())
     return {'entity':gp_locs}
 
 @prices_router.post('/sessions/')
