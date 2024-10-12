@@ -25,10 +25,32 @@
                 </select>
             </div>
             <p></p>
+            <div v-if="!session_prices.includes(null)" class="inputs">
+                <button class="button" @click="submitData" v-on:keyup.enter="submitData" >Next</button>
+            </div>
         </div>
 
         <div class="right-content">
             <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Results</p>
+            <div v-if="session" class="session_grid">
+                <div class="session_grid_right">
+                    <div v-for="(driver, index) in session_info_1" :key="driver" class="grid-item">
+                        {{ driver }}
+                        <p></p>
+                        <label>Price:</label>
+                        <input class="price_input" type="number" v-model.number="session_prices[2*index]">
+                    </div>
+                    
+                </div>
+                <div class="session_grid_left">
+                    <div v-for="(driver, index) in session_info_2" :key="driver" class="grid-item">
+                        {{ driver }}
+                        <p></p>
+                        <label>Price: </label>
+                        <input class="price_input" type="number" v-model.number="session_prices[2*index+1]">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     </keep-alive>
@@ -57,6 +79,10 @@ export default {
             substitute_driver_name: "",
             substitute_driver_pos: 0,
             returnedData: '',
+            session_info_full: [],
+            session_info_1: [],
+            session_info_2: [],
+            session_prices: Array(20).fill(null),
         };
     },
     mounted() {
@@ -64,13 +90,15 @@ export default {
         },
     methods: {
         submitData() {
-            if (this.drivers_available) {
-                if ((20 >= this.$refs.driver1_pos.value >= 1) && (20 >= this.$refs.driver2_pos.value >= 1)) {
-                    this.driver1_pos = this.$refs.driver1_pos.value
-                    this.driver2_pos = this.$refs.driver2_pos.value
-                }
-            }
-            this.postInputs();
+            apiClient.post('/prices/prices_submit/',{
+                year: this.year,
+                raceLoc: this.gp_loc,
+                session: this.session,
+                drivers: this.session_info_full,
+                prices: this.session_prices
+            }).then(response => {
+                console.log(response);
+            })
         },
         getRaceLocs() {
             apiClient.get('/prices/gp_locs/')
@@ -93,9 +121,15 @@ export default {
                 raceLoc: this.gp_loc,
                 session: this.session,
             }).then(response => {
-                // this.populateSessionInfo(response);
-                console.log(response)
+                this.populateSessionInfo(response);
             })
+        },
+        populateSessionInfo(response) {
+            if (response) {
+                this.session_info_full = response.data.entity
+                this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
+                this.session_info_2 = response.data.entity.filter((_, index) => index % 2 === 1);
+            }
         },
         getConstructors() {
             apiClient.get('/prices/constructors/')
@@ -205,5 +239,20 @@ export default {
 }
 .grid_title {
     justify-content: center;
+}
+.price_input {
+    width: 50px;           /* Set the width */
+    /* height: 40px;           Set the height */
+    /* padding: 10px;          Add padding */
+    /* font-size: 12px;        Adjust font size */
+    border-radius: 5px;
+    /* border: 2px solid #ccc; /* Add border */
+    /* background-color: #f9f9f9;  Background color */
+    /* color: #333;            Text color */ 
+}
+
+.price_input:focus {
+    border-color: #007bff;  /* Change border color on focus */
+    outline: none;          /* Remove default outline */
 }
 </style>
