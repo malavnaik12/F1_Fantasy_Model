@@ -5,7 +5,7 @@ from team_parse import getTeams, getDrivers
 from weekend_parse import get_gp_info,gp_parse,sessions_parse
 from database_operations import InsertData
 
-insert2db = InsertData()
+db_ops = InsertData()
 prices_router = APIRouter()
 class Item(BaseModel):
     year: Optional[int] = None
@@ -38,21 +38,35 @@ async def get_session_info(item: Item):
     for entity in list(item):
         inputs[entity[0]] = entity[1]
     try:
-        response = insert2db.get_session(inputs)
+        prices_dict = db_ops.get_prices(inputs) 
+        # This return a dictionary of prices
+            # Need to figure out what to do with this and the positions below 
+        response = db_ops.get_session(inputs)
     except ValueError:
         response = False
         raise(f"No data found for {item}")
     return {"status":"success","entity":response}
+
+# @prices_router.post('/prices_pull')
+# async def get_info_from_db(item: Item):
+#     inputs = {}
+#     for entity in list(item):
+#         inputs[entity[0]] = entity[1]
+#     prices_dict = db_ops.get_prices(inputs) # This return a dictionary of prices
+#     positions = db_ops.get_session(inputs)
+#     print(positions)
 
 @prices_router.post('/prices_submit/')
 async def send_info_to_DBs(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
+    response = db_ops.post_prices(inputs)
     # try:
-    #     response = insert2db.get_session(inputs)
+    #     response = db_ops.get_session(inputs)
     # except ValueError:
     #     response = False
     #     raise(f"No data found for {item}")
-    print(inputs)
-    return {"status":"success","entity":inputs}
+    print(response)
+    response = "success"
+    return {"status":"success","entity":response}

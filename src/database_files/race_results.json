@@ -706,7 +706,28 @@
         "Magnussen",
         "Albon"
       ],
-      "prices": {}
+      "prices": {
+        "Norris": 1,
+        "Verstappen": 1,
+        "Piastri": 1,
+        "Russell": 1,
+        "Leclerc": 1,
+        "Hamilton": 1,
+        "Sainz": 1,
+        "Alonso": 5,
+        "Hulkenberg": 1,
+        "Perez": 1,
+        "Colapinto": 1,
+        "Tsunoda": 1,
+        "Ocon": 1,
+        "Stroll": 1,
+        "Zhou": 1,
+        "Bottas": 1,
+        "Gasly": 1,
+        "Ricciardo": 1,
+        "Magnussen": 1,
+        "Albon": 1
+      }
     }
   }
 }
