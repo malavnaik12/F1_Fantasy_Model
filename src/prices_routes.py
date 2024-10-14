@@ -37,11 +37,17 @@ async def get_session_info(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
+    # print(inputs)
+    # input()
     try:
-        prices_dict = db_ops.get_prices(inputs) 
-        # This return a dictionary of prices
-            # Need to figure out what to do with this and the positions below 
-        response = db_ops.get_session(inputs)
+        response = {}
+        positions_list = db_ops.get_session(inputs)
+        response['positions'] = positions_list
+        prices_dict = db_ops.get_prices(inputs)
+        if len(prices_dict) == 0:
+            response['prices'] = []
+        else:
+            response['prices'] = [prices_dict[f"{driver}"] for driver in positions_list]
     except ValueError:
         response = False
         raise(f"No data found for {item}")

@@ -31,7 +31,7 @@ class InsertData:
             session = ''.join([item[0] for item in item_dict['session'].split(' ')])
             if session == 'SR':
                 session = 'S'
-            session_info = asyncio.run(fastf1_connect.call_from_dp_ops(year,race_indx,session))
+            session_info = fastf1_connect.call_from_dp_ops(year,race_indx,session)
             self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]] = session_info
             self.save_to_db()
         return self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]
@@ -62,10 +62,8 @@ class InsertData:
             self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['prices'] = prices_dict
             self.save_to_db()
         return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['prices']
+    
     def get_prices(self,item_dict):
-        if len(self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['prices']) == 0:
-            return f"No prices found for the {item_dict[['year']]} {item_dict[['raceLoc']]} GP\nPlease enter the prices to the right."
-        else:
             return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['prices']
 
 

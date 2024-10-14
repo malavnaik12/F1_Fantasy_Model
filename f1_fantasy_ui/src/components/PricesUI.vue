@@ -67,23 +67,21 @@ export default {
             gp_loc: null, // The selected entity
             sessions: [],
             session: null,
-            data_override: true,
             constructors: [],
             constructor: null,
-            driver1: "",
-            driver2: "",
-            drivers_available: false,
-            driver1_pos: 0,
-            driver2_pos: 0,
-            substitute_driver: false,
-            substitute_driver_name: "",
-            substitute_driver_pos: 0,
-            returnedData: '',
             session_info_full: [],
             session_info_1: [],
             session_info_2: [],
             session_prices: Array(20).fill(null),
         };
+    },
+    watch: {
+        gp_loc(newVal,prevVal) {
+            console.log(newVal,prevVal);
+            if (newVal !== prevVal) {
+                this.session='';
+                }
+        },
     },
     mounted() {
         this.getRaceLocs();
@@ -115,20 +113,23 @@ export default {
         getSessionInfo() {
             this.session_info_1 = Array.apply(null,Array(10));
             this.session_info_2 = Array.apply(null,Array(10));
-            console.log(this.year,this.raceLoc,this.session)
+            console.log(this.year,this.gp_loc,this.session)
             apiClient.post('/prices/session_info/',{
                 year: this.year,
                 raceLoc: this.gp_loc,
                 session: this.session,
             }).then(response => {
+                console.log(response)
                 this.populateSessionInfo(response);
             })
         },
         populateSessionInfo(response) {
             if (response) {
-                this.session_info_full = response.data.entity
-                this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
-                this.session_info_2 = response.data.entity.filter((_, index) => index % 2 === 1);
+                if (response.data.entity.prices)
+                    this.session_prices = response.data.entity.prices
+                this.session_info_full = response.data.entity.positions
+                this.session_info_1 = this.session_info_full.filter((_, index) => index % 2 === 0);
+                this.session_info_2 = this.session_info_full.filter((_, index) => index % 2 === 1);
             }
         },
         getConstructors() {
