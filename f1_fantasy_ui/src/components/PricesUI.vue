@@ -1,7 +1,7 @@
 <template>
     <keep-alive>
     <div class="tab-content-grid">
-        <div>
+        <div class="left-content">
             <div class="inputs">
                 <label>F1 Season Year: </label>
                 <input type="number" id="driver1_pos" v-model="year">
@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div class="right-content">
+        <div class="middle-content">
             <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Results</p>
             <div v-if="session" class="session_grid">
                 <div class="session_grid_right">
@@ -51,6 +51,13 @@
                     </div>
                 </div>
             </div>
+            <div v-if="loading_info" class="spinner">
+                Loading...
+            </div>
+        </div>
+
+        <div class="right-content">
+            <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Constructor Results</p>
         </div>
     </div>
     </keep-alive>
@@ -73,6 +80,7 @@ export default {
             session_info_1: [],
             session_info_2: [],
             session_prices: Array(20).fill(null),
+            loading_info: false,
         };
     },
     watch: {
@@ -111,6 +119,7 @@ export default {
                 this.sessions = response.data.entity})
         },
         getSessionInfo() {
+            this.loading_info = true
             this.session_info_1 = Array.apply(null,Array(10));
             this.session_info_2 = Array.apply(null,Array(10));
             console.log(this.year,this.gp_loc,this.session)
@@ -121,7 +130,7 @@ export default {
             }).then(response => {
                 console.log(response)
                 this.populateSessionInfo(response);
-            })
+            }).finally(this.loading_info = false)
         },
         populateSessionInfo(response) {
             if (response) {
@@ -170,6 +179,12 @@ export default {
 </script>
 
 <style scoped>
+.spinner {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 10px;
+}
 .tab-content-grid {
     display: grid;
     grid-template-columns: 40% 40% 20%;
@@ -195,15 +210,19 @@ export default {
     height: 40px;
     width: 60px;
 }
+.left-content {
+    border-right: 2px dashed #D12F2F;
+}
 .right-content {
-        min-height: 250px; 
-        border-left: 2px dashed #D12F2F;
-        border-right: 2px dashed #D12F2F;
-        justify-content: center;
-        background-color: rgb(111, 110, 110);
-        border-radius: 20px;
-        color: black;
-        padding-bottom: 15px;
+    border-left: 2px dashed #D12F2F;
+}
+.middle-content {
+    min-height: 250px; 
+    justify-content: center;
+    background-color: rgb(111, 110, 110);
+    border-radius: 20px;
+    color: black;
+    padding-bottom: 15px;
 }
 .grid-item {
     padding: 5px;
