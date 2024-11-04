@@ -1,21 +1,21 @@
-Redbull,Max Verstappen,1
-Redbull,Sergio Perez,11
-Ferrari,Charles Leclerc,16
-Ferrari,Carlos Sainz,55
-Ferrari,Ollie Bearman,77
-Mercedes,Lewis Hamilton,44
-Mercedes,George Russell,63
-Mclaren,Lando Norris,4
-Mclaren,Oscar Piastri,81
-Aston-Martin,Fernando Alonzo,14
-Aston-Martin,Lance Stroll,18
-Alpine,Pierre Gasly,10
-Alpine,Esteban Ocon,31
-RB,Daniel Riccardo,3
-RB,Yuki Tsunoda,88
-Sauber,Valteri Bottas,77
-Sauber,Guanyu Zhou,24 
-Haas,Nico Hulkenberg,27
-Haas,Kevin Magnussen,20
-Williams,Alex Albon,23
-Williams,Logan Sargeant,2
+Redbull,Verstappen,1
+Redbull,Perez,11
+Ferrari,Leclerc,16
+Ferrari,Sainz,55
+Ferrari,Bearman,87
+Mercedes,Hamilton,44
+Mercedes,Russell,63
+Mclaren,Norris,4
+Mclaren,Piastri,81
+Aston-Martin,Alonzo,14
+Aston-Martin,Stroll,18
+Alpine,Gasly,10
+Alpine,Ocon,31
+RB,Riccardo,3
+RB,Tsunoda,88
+Sauber,Bottas,77
+Sauber,Zhou,24 
+Haas,Hulkenberg,27
+Haas,Magnussen,20
+Williams,Albon,23
+Williams,Sargeant,2

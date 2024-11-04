@@ -2,13 +2,14 @@ from fastapi import APIRouter
 from typing import Optional
 from pydantic import BaseModel
 from team_parse import getTeams, getDrivers
-from weekend_parse import WeekendParser
+from weekend_parse import get_gp_info,gp_parse,sessions_parse
 from database_operations import InsertData
 
-weekend_info = WeekendParser()
-insert2db = InsertData()
+# weekend_info = WeekendParser()
+db_ops = InsertData()
 router = APIRouter()
 class Item(BaseModel):
+    year: Optional[int] = None
     raceLoc: Optional[str] = None
     session: Optional[str] = None
     constructor: Optional[str] = None
@@ -22,19 +23,21 @@ class Item(BaseModel):
     substitute_driver_pos: Optional[int] = None
 
 @router.get('/gp_locs/')
-def send_gp_dropdown():
-    return {'entity':weekend_info.gp_parse()}
+async def send_gp_dropdown():
+    gp_locs = gp_parse(get_gp_info())
+    return {'entity':gp_locs}
 
 @router.post('/sessions/')
-def send_session_types(item: Item):
-    return {'entity':weekend_info.sessions_parse(item.raceLoc)}
+async def send_session_types(item: Item):
+    locs = sessions_parse(item.raceLoc)
+    return {'entity':locs}
 
 @router.get('/constructors/')
-def send_constructors():
+async def send_constructors():
     return {'entity':getTeams()}
 
 @router.post('/drivers/')
-def send_drivers(item: Item):
+async def send_drivers(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
@@ -45,18 +48,23 @@ def send_drivers(item: Item):
     return {"status": "success", "entity": inputs}
 
 @router.post('/session_info/')
-def get_session_info(item: Item):
+async def get_session_info(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
-    response = insert2db.get_session(inputs)
+    try:
+        response = db_ops.get_session(inputs)
+    except ValueError:
+        response = False
+        print("No data found:",response)
     return {"status":"success","entity":response}
 
 @router.post('/submit/')
-def send_info_to_DBs(item: Item):
+async def send_info_to_DBs(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
-    insert2db.init_race_weekend(race_loc=inputs['raceLoc'])
-    insert2db.post_race(item_dict=inputs)
-    return {"status": "success", "entity": "1) Need to populate race_results.json with all race results. 2) Also add some timed effect that slowly changes positions of driver positions if the inputs change.  3) Update readme how to merge to prod branch and push to prod as well."}
+    db_ops.init_race_weekend(race_loc=inputs['raceLoc'])
+    db_ops.post_race_positions(item_dict=inputs)
+    return {"status": "success", "entity": "1) Need to populate race_results.json with all race results. 2) May need to rethink driver inputs. It's kind of cumbersome to go through each constructor manually."}
+            # 3) Also add some timed effect that slowly changes positions of driver positions if the inputs change.  4) Update readme how to merge to prod branch and push to prod as well."}

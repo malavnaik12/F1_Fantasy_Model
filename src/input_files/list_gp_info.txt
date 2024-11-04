@@ -14,3 +14,5 @@ Hungary,Normal
 Belgium,Normal
 Netherlands,Normal
 Italy,Normal
+Azerbaijan,Normal
+Singapore,Normal
