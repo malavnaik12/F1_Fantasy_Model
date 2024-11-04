@@ -16,3 +16,6 @@ Netherlands,Normal
 Italy,Normal
 Azerbaijan,Normal
 Singapore,Normal
+US,Sprint
+Mexico,Normal
+Brazil,Sprint

@@ -25,15 +25,15 @@ class InsertData:
 
     def get_session(self,item_dict):
         gp_info_locs = gp_parse(get_gp_info())
-        if len(self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]) == 0:
-            year = item_dict['year']
-            race_indx = gp_info_locs.index(item_dict['raceLoc'])+1
-            session = ''.join([item[0] for item in item_dict['session'].split(' ')])
-            if session == 'SR':
-                session = 'S'
-            session_info = fastf1_connect.call_from_dp_ops(year,race_indx,session)
-            self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]] = session_info
-            self.save_to_db()
+        year = item_dict['year']
+        race_indx = gp_info_locs.index(item_dict['raceLoc'])+1
+        session = ''.join([item[0] for item in item_dict['session'].split(' ')])
+        if session == 'SR':
+            session = 'S'
+        # if len(self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]) == 0:
+        session_info = fastf1_connect.call_from_dp_ops(year,race_indx,session)
+        self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]] = session_info
+        self.save_to_db()
         return self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]
 
     def post_race_positions(self,item_dict):

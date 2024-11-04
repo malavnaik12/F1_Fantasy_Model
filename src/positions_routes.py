@@ -23,21 +23,21 @@ class Item(BaseModel):
     substitute_driver_pos: Optional[int] = None
 
 @router.get('/gp_locs/')
-async def send_gp_dropdown():
+def send_gp_dropdown():
     gp_locs = gp_parse(get_gp_info())
     return {'entity':gp_locs}
 
 @router.post('/sessions/')
-async def send_session_types(item: Item):
+def send_session_types(item: Item):
     locs = sessions_parse(item.raceLoc)
     return {'entity':locs}
 
 @router.get('/constructors/')
-async def send_constructors():
+def send_constructors():
     return {'entity':getTeams()}
 
 @router.post('/drivers/')
-async def send_drivers(item: Item):
+def send_drivers(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
@@ -48,7 +48,7 @@ async def send_drivers(item: Item):
     return {"status": "success", "entity": inputs}
 
 @router.post('/session_info/')
-async def get_session_info(item: Item):
+def get_session_info(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
@@ -57,10 +57,13 @@ async def get_session_info(item: Item):
     except ValueError:
         response = False
         print("No data found:",response)
+    # except KeyError:
+    #     db_ops.init_race_weekend(race_loc=inputs['raceLoc'])
+        # db_ops.get_session(inputs)
     return {"status":"success","entity":response}
 
 @router.post('/submit/')
-async def send_info_to_DBs(item: Item):
+def send_info_to_DBs(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]

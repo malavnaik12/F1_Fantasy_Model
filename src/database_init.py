@@ -1,7 +1,7 @@
 import yaml
 import json
 import team_parse
-import weekend_parse
+import weekend_parse as wp
 import os
 
 class InitializeFiles:
@@ -20,7 +20,7 @@ class InitializeRaceResults:
                 self.data = json.load(db_file)
         except FileNotFoundError:
             data = {}
-            for gp in self.init_WI.gp_parse():
+            for gp in wp.gp_parse(wp.get_gp_info()):
                 data[gp] = {}
             self.init_db(data)
 
@@ -38,7 +38,7 @@ class InitializeRaceResults:
         return _schema
 
     def init_db(self,info_dict):
-        gp_type = weekend_parse.gp_type_parse()
+        gp_type = wp.gp_type_parse(wp.get_gp_info())
         with open("./input_files/prices_schema.yaml", "r") as price_schema_file:
             price_schema = yaml.safe_load(price_schema_file)
         for (indx, gp) in enumerate(list(info_dict.keys())):
