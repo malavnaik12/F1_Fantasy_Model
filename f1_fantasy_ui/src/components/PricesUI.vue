@@ -146,34 +146,6 @@ export default {
             .then(response => {this.constructors = response.data.entity})
             .catch((err) => console.log(err));
         },
-        // checkDrivers() {
-        //     if ((this.driver1!=="") && (this.driver2!=="") && !this.drivers_available) {
-        //         this.drivers_available = true;
-        //     }
-        // },
-        // setPos() {
-        //     this.driver1_pos = this.$refs.driver1_pos.value
-        //     this.driver2_pos = this.$refs.driver2_pos.value
-        //     console.log(this.driver1_pos,this.driver2_pos)
-        // },
-        // postInputs() {
-        //     apiClient.post('/prices/submit/',
-        //     { 
-        //         raceLoc: this.gp_loc,
-        //         session: this.session,
-        //         constructor: this.constructor,
-        //         driver1: this.driver1,
-        //         driver2: this.driver2,
-        //         driver1_pos: this.driver1_pos,
-        //         driver2_pos: this.driver2_pos,
-        //     })
-        //     .then(response => {
-        //         this.returnedData = response.data,
-        //         this.driver1 = response.data.entity.driver1,
-        //         this.driver2 = response.data.entity.driver2,
-        //         this.checkDrivers();
-        //     });
-        // }
     }
 };
 </script>
