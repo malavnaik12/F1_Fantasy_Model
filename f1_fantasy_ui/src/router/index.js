@@ -5,7 +5,7 @@ import InputsUI from '../components/InputsUI.vue'
 import GenerateUI from '../components/GenerateUI.vue'
 
 const routes = [
-  { path: '/', name: 'Positions', component: PositionsUI},
+  { path: '/positions', name: 'Positions', component: PositionsUI},
   { path: '/prices', name: 'Prices', component: PricesUI},
   { path: '/inputs', name: 'Inputs', component: InputsUI},
   { path: '/generate', name: 'Generate', component: GenerateUI},

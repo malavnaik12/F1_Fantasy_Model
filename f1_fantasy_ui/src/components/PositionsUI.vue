@@ -167,12 +167,12 @@ export default {
             this.getSessionInfo();
         },
         getRaceLocs() {
-            apiClient.get('/api/gp_locs/')
+            apiClient.get('/positions/gp_locs/')
             .then(response => {
                 this.gp_locs = response.data.entity})
         },
         getSessions() {
-            apiClient.post('/api/sessions/',{
+            apiClient.post('/positions/sessions/',{
                 raceLoc: this.gp_loc
             }).then(response => {
                 this.sessions = response.data.entity,
@@ -181,7 +181,7 @@ export default {
         getSessionInfo() {
             this.session_info_1 = Array.apply(null,Array(10));
             this.session_info_2 = Array.apply(null,Array(10));
-            apiClient.post('/api/session_info/',{
+            apiClient.post('/positions/session_info/',{
                 year: this.year,
                 raceLoc: this.gp_loc,
                 session: this.session,
@@ -190,7 +190,7 @@ export default {
             })
         },
         getConstructors() {
-            apiClient.get('/api/constructors/')
+            apiClient.get('/positions/constructors/')
             .then(response => {
                 this.constructors = response.data.entity;
             })
@@ -202,7 +202,7 @@ export default {
             }
         },
         postConstructor() {
-            apiClient.post('/api/drivers/',
+            apiClient.post('/positions/drivers/',
             { 
                 raceLoc: this.gp_loc,
                 data_override: this.data_override,
@@ -221,7 +221,7 @@ export default {
             });
         },
         postDriver() {
-            apiClient.post('/api/submit/',
+            apiClient.post('/positions/submit/',
             { 
                 raceLoc: this.gp_loc,
                 data_override: this.data_override,
