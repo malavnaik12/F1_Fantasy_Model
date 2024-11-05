@@ -3,7 +3,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import FileResponse
 from positions_routes import router as pos_router
-from prices_routes import prices_router
+from prices_routes import router as prices_router
 
 app = FastAPI()
 # Enable CORS
