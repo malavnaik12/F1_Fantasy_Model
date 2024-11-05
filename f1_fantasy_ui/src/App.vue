@@ -5,7 +5,7 @@
     <h2>[Under Development]</h2>
   <div class="app-container">
     <nav class="nav-tabs">
-      <router-link to="/" class="tab" active-class="active-tab">Positions</router-link>
+      <router-link to="/positions" class="tab" active-class="active-tab">Positions</router-link>
       <router-link to="/prices" class="tab" active-class="active-tab">Prices</router-link>
       <router-link to="/inputs" class="tab" active-class="active-tab">Optimizer Inputs</router-link>
       <router-link to="/generate" class="tab" active-class="active-tab">Generate Team</router-link>

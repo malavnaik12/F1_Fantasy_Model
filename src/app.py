@@ -17,12 +17,12 @@ origins = [
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
-    allow_origins=["*"],
+    allow_origins=origins,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-app.include_router(pos_router, prefix="/api")
+app.include_router(pos_router, prefix="/positions")
 app.include_router(prices_router, prefix="/prices")
 
 # Route to serve React index.html (for client-side routing)
