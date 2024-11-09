@@ -16,7 +16,8 @@
                 </select>
             </div>
             <p></p>
-            <div v-if="gp_loc" class="inputs">
+            <div v-if="gp_loc" class="inputs"> 
+                <!-- && !data_override -->
                 <label for="entity-dropdown">Select Session: </label>
                 <select id="entity-dropdown" v-model="session" @change="getSessionInfo">
                     <option v-for="entity in sessions" :key="entity" :value="entity">
@@ -107,6 +108,7 @@ export default {
             gp_locs: [], // Array to store gp_locs from text file
             gp_loc: null, // The selected entity
             sessions: [],
+            practice_sessions: [],
             session: null,
             data_not_present: false,
             data_override: false,
@@ -141,6 +143,11 @@ export default {
         populateSessionInfo(response) {
             if (!response) {
                 this.data_not_present = true
+            } else if (this.practice_sessions.includes(this.session)) {
+                this.data_not_present = true
+                this.returnedData = response.data.entity
+                this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
+                this.session_info_2 = response.data.entity.filter((_, index) => index % 2 === 1);
             } else {
                 this.returnedData = response.data.entity
                 this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
@@ -163,8 +170,8 @@ export default {
                     this.postDriver();
                 }
             }
-            this.postConstructor();
-            this.getSessionInfo();
+            // this.postConstructor();
+            // this.getSessionInfo();
         },
         getRaceLocs() {
             apiClient.get('/positions/gp_locs/')
@@ -176,6 +183,7 @@ export default {
                 raceLoc: this.gp_loc
             }).then(response => {
                 this.sessions = response.data.entity,
+                this.practice_sessions = response.data.entity.slice(0,3);
                 this.getConstructors()})
         },
         getSessionInfo() {
@@ -188,6 +196,7 @@ export default {
             }).then(response => {
                 this.populateSessionInfo(response);
             })
+            // }
         },
         getConstructors() {
             apiClient.get('/positions/constructors/')
@@ -223,6 +232,7 @@ export default {
         postDriver() {
             apiClient.post('/positions/submit/',
             { 
+                year: this.year,
                 raceLoc: this.gp_loc,
                 data_override: this.data_override,
                 session: this.session,
@@ -236,7 +246,9 @@ export default {
                 substitute_driver_pos: this.substitute_driver_pos,
             })
             .then(response => {
-                this.message = response.data.entity;
+                // this.message = response.data.entity;
+                console.log(this.message),
+                this.populateSessionInfo(response)
             });
         },
         clearFields() {

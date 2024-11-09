@@ -17,7 +17,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       },
       "perez": {
         "Free Practice 1": [],
@@ -27,7 +27,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       }
     },
     "ferrari": {
@@ -47,7 +47,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       },
       "sainz": {
         "Free Practice 1": [],
@@ -57,7 +57,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       }
     },
     "aston_martin": {
@@ -77,7 +77,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       },
       "stroll": {
         "Free Practice 1": [],
@@ -87,7 +87,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       }
     },
     "mclaren": {
@@ -107,7 +107,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       },
       "piastri": {
         "Free Practice 1": [],
@@ -117,7 +117,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       }
     },
     "alpine": {
@@ -137,7 +137,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       },
       "gasly": {
         "Free Practice 1": [],
@@ -147,7 +147,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       }
     },
     "mercedes": {
@@ -167,7 +167,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       },
       "russell": {
         "Free Practice 1": [],
@@ -177,7 +177,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       }
     },
     "sauber": {
@@ -197,7 +197,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       },
       "zhou": {
         "Free Practice 1": [],
@@ -207,7 +207,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       }
     },
     "haas": {
@@ -227,7 +227,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       },
       "magnussen": {
         "Free Practice 1": [],
@@ -237,7 +237,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       }
     },
     "williams": {
@@ -257,7 +257,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       },
       "sargenat": {
         "Free Practice 1": [],
@@ -267,7 +267,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       }
     },
     "rb": {
@@ -287,7 +287,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       },
       "tsunoda": {
         "Free Practice 1": [],
@@ -297,7 +297,7 @@
         "Sprint Race": [],
         "Qualifying": [],
         "Race": [],
-        "prices": {}
+        "prices": []
       }
     }
   }

@@ -67,7 +67,9 @@ def send_info_to_DBs(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
-    db_ops.init_race_weekend(race_loc=inputs['raceLoc'])
-    db_ops.post_race_positions(item_dict=inputs)
-    return {"status": "success", "entity": "1) Need to populate race_results.json with all race results. 2) May need to rethink driver inputs. It's kind of cumbersome to go through each constructor manually."}
+    print(inputs)
+    response = db_ops.get_session(inputs)
+    # db_ops.init_race_weekend(race_loc=inputs['raceLoc'])
+    # db_ops.post_race_positions(item_dict=inputs)
+    return {"status": "success", "entity": response}
             # 3) Also add some timed effect that slowly changes positions of driver positions if the inputs change.  4) Update readme how to merge to prod branch and push to prod as well."}

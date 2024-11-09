@@ -1,13 +1,13 @@
 import yaml
 import json
-import team_parse
+# import team_parse
 import weekend_parse as wp
 import os
 
 class InitializeFiles:
     def __init__(self, year: int) -> None:
         os.makedirs("./database_files",exist_ok=True)
-        InitializeRaceResults()
+        # InitializeRaceResults()
         InitializeMain()
 
 class InitializeRaceResults:

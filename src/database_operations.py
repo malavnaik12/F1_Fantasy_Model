@@ -6,6 +6,7 @@ import asyncio
 
 class InsertData:
     def __init__(self):
+        self.manual_sessions = ["Free Practice 1","Free Practice 2","Free Practice 3"]
         try:
             self.db_filename = "./database_files/race_results.json"
             with open(self.db_filename,"r") as db_file:
@@ -24,14 +25,22 @@ class InsertData:
                     self.data[race_loc][key] = ['']*20
 
     def get_session(self,item_dict):
-        gp_info_locs = gp_parse(get_gp_info())
-        year = item_dict['year']
-        race_indx = gp_info_locs.index(item_dict['raceLoc'])+1
-        session = ''.join([item[0] for item in item_dict['session'].split(' ')])
-        if session == 'SR':
-            session = 'S'
-        # if len(self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]) == 0:
-        session_info = fastf1_connect.call_from_dp_ops(year,race_indx,session)
+        # Need logic in below if for substitute driver
+        if (item_dict['session'] in self.manual_sessions and item_dict['data_override']):
+            session_info = self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]
+            if len(session_info) == 0:
+                session_info = ['']*20
+            session_info[int(item_dict['driver1_pos'])-1] = item_dict['driver1']
+            session_info[int(item_dict['driver2_pos'])-1] = item_dict['driver2']
+        else:
+            gp_info_locs = gp_parse(get_gp_info())
+            year = item_dict['year']
+            race_indx = gp_info_locs.index(item_dict['raceLoc'])+1
+            session = ''.join([item[0] for item in item_dict['session'].split(' ')])
+            if session == 'SR':
+                session = 'S'
+            # if len(self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]) == 0:
+            session_info = fastf1_connect.call_from_dp_ops(year,race_indx,session)
         self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]] = session_info
         self.save_to_db()
         return self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]
