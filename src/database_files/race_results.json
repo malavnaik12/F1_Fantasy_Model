@@ -288,7 +288,7 @@
     "Brazil": {
       "race_weekend_type": "Sprint",
       "Free Practice 1": [
-        "Magnussen",
+        "Verstappen",
         "Gasly",
         "Perez",
         "Alonso",
@@ -309,10 +309,52 @@
         "Bottas",
         "Piastri"
       ],
-      "Sprint Qualifying": [],
+      "Sprint Qualifying": [
+        "Piastri",
+        "Norris",
+        "Leclerc",
+        "Verstappen",
+        "Sainz",
+        "Russell",
+        "Gasly",
+        "Lawson",
+        "Albon",
+        "Bearman",
+        "Hamilton",
+        "Hulkenberg",
+        "Perez",
+        "Colapinto",
+        "Bottas",
+        "Alonso",
+        "Ocon",
+        "Tsunoda",
+        "Stroll",
+        "Zhou"
+      ],
       "Sprint Race": [],
       "Qualifying": [],
-      "Race": [],
+      "Race": [
+        "Verstappen",
+        "Ocon",
+        "Gasly",
+        "Russell",
+        "Leclerc",
+        "Norris",
+        "Tsunoda",
+        "Piastri",
+        "Lawson",
+        "Hamilton",
+        "Perez",
+        "Bearman",
+        "Bottas",
+        "Alonso",
+        "Zhou",
+        "Sainz",
+        "Colapinto",
+        "Albon",
+        "Stroll",
+        "Hulkenberg"
+      ],
       "prices": {}
     }
   }

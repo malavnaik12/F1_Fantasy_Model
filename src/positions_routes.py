@@ -54,9 +54,12 @@ def get_session_info(item: Item):
         inputs[entity[0]] = entity[1]
     try:
         response = db_ops.get_session(inputs)
+        # input()
     except ValueError:
         response = False
         print("No data found:",response)
+    print("Here",response)
+    # input()
     # except KeyError:
     #     db_ops.init_race_weekend(race_loc=inputs['raceLoc'])
         # db_ops.get_session(inputs)

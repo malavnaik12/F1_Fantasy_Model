@@ -65,13 +65,13 @@
                 <input type="number" id="substitute_driver_pos" v-model="substitute_driver_pos">
             </div>
             <p></p>
-            <div class="inputs">
+            <div v-if="data_override && drivers_available" class="inputs">
                 <button class="button" @click="submitData" v-on:keyup.enter="submitData" >Next</button>
-                <p>Summary: {{ message }}</p>
+                <!-- <p>Summary: {{ message }}</p> -->
             </div>
-            <div v-if="gp_loc && session" class="inputs">
+            <!-- <div v-if="gp_loc && session" class="inputs">
                 <button class="button-reload" @click="reloadSessionInfo" v-on:keyup.enter="reloadSessionInfo" >Reload Info</button>
-            </div>
+            </div> -->
         </div>
         
         <div class="middle-content">
@@ -81,7 +81,6 @@
                     <div v-for="n in session_info_1" :key="n" class="grid-item">
                         {{ n }}
                     </div>
-                    
                 </div>
                 <div class="session_grid_left">
                     <div v-for="n in session_info_2" :key="n" class="grid-item">
@@ -92,8 +91,21 @@
         </div>
 
         <div class="right-content">
-            <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Constructor Results</p>
+            <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Constructor Avg. Position</p>
+            <div v-if="session" class="constructor_grid">
+                <div class="constructor_grid_right">
+                    <div v-for="team in constructors" :key="team" class="team-item">
+                        {{ team }}
+                    </div>
+                </div>
+                <div class="constructor_grid_left">
+                    <div v-for="(_,index) in 10" :key="index" class="team-item">
+                        <label>Combined Pos:</label>{{ constructors_pos[index] }}
+                    </div>
+                </div>
+            </div>
         </div>
+
     </div>
     </keep-alive>
 </template>
@@ -126,6 +138,7 @@ export default {
             message: '',
             session_info_1: [],
             session_info_2: [],
+            constructors_pos: [],
         };
     },
     watch: {
@@ -302,9 +315,6 @@ export default {
 .left-content {
     border-right: 2px dashed #D12F2F;
 }
-.right-content {
-    border-left: 2px dashed #D12F2F;
-}
 .middle-content {
     min-height: 250px; 
     justify-content: center;
@@ -317,7 +327,6 @@ export default {
     padding: 5px;
     color: black;
     font-size: 10pt;
-
 }
 .grid-item:before {
     content: "";  
@@ -345,6 +354,26 @@ export default {
 }
 .session_grid_left {
     padding: 10px;
+}
+.right-content {
+    border-left: 2px dashed #D12F2F;
+    justify-content: center;
+    /* display: grid; */
+}
+.constructor_grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(10, auto); 
+    height: 100%;
+}
+.constructor_grid_right, .constructor_grid_left {
+    display: grid;
+    height: 100%;
+}
+.team-item {
+    padding: 1px;
+    color: black;
+    font-size: 12pt;
 }
 .grid_title {
     justify-content: center;
