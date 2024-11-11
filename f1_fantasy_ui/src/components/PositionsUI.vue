@@ -78,13 +78,22 @@
             <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Driver Results</p>
             <div v-if="session" class="session_grid">
                 <div class="session_grid_right">
-                    <div v-for="n in session_info_1" :key="n" class="grid-item">
-                        {{ n }}
+                    <!-- <div v-for="num in 10" :key="num">
+                        P{{ num }}
+                    </div> -->
+                    <div v-for="(n,index) in session_info_1" :key="n" class="grid-item">
+                        P{{ 2*index+1 }}
+                        <div>
+                            {{ n }}
+                        </div>
                     </div>
                 </div>
                 <div class="session_grid_left">
-                    <div v-for="n in session_info_2" :key="n" class="grid-item">
-                        {{ n }}
+                    <div v-for="(n,index) in session_info_2" :key="n" class="grid-item">
+                        P{{ 2*index+2 }}
+                        <div>
+                            {{ n }}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -93,15 +102,8 @@
         <div class="right-content">
             <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Constructor Avg. Position</p>
             <div v-if="session" class="constructor_grid">
-                <div class="constructor_grid_right">
-                    <div v-for="team in constructors" :key="team" class="team-item">
-                        {{ team }}
-                    </div>
-                </div>
-                <div class="constructor_grid_left">
-                    <div v-for="(_,index) in 10" :key="index" class="team-item">
-                        <label>Combined Pos:</label>{{ constructors_pos[index] }}
-                    </div>
+                <div v-for="key in Object.keys(constructors_pos)" :key="key" class="team-item">
+                    {{ key }}: {{ constructors_pos[key] }}
                 </div>
             </div>
         </div>
@@ -143,7 +145,7 @@ export default {
     },
     watch: {
         gp_loc(newVal,prevVal) {
-            console.log(newVal,prevVal);
+            // console.log(newVal,prevVal);
             if (newVal !== prevVal) {
                 this.clearFields();
                 }
@@ -153,18 +155,20 @@ export default {
         this.getRaceLocs();
         },
     methods: {
-        populateSessionInfo(response) {
+        
+        populateDrivers(response) {
             if (!response) {
                 this.data_not_present = true
             } else if (this.practice_sessions.includes(this.session)) {
                 this.data_not_present = true
-                this.returnedData = response.data.entity
-                this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
-                this.session_info_2 = response.data.entity.filter((_, index) => index % 2 === 1);
+                this.returnedData = response.data.entity.drivers
+                this.session_info_1 = response.data.entity.drivers.filter((_, index) => index % 2 === 0);
+                this.session_info_2 = response.data.entity.drivers.filter((_, index) => index % 2 === 1);
+                this.populateConstructors(response.data.entity.constructors)
             } else {
-                this.returnedData = response.data.entity
-                this.session_info_1 = response.data.entity.filter((_, index) => index % 2 === 0);
-                this.session_info_2 = response.data.entity.filter((_, index) => index % 2 === 1);
+                this.returnedData = response.data.entity.drivers
+                this.session_info_1 = response.data.entity.drivers.filter((_, index) => index % 2 === 0);
+                this.session_info_2 = response.data.entity.drivers.filter((_, index) => index % 2 === 1);
             }
         },
         submitData() {
@@ -207,7 +211,10 @@ export default {
                 raceLoc: this.gp_loc,
                 session: this.session,
             }).then(response => {
-                this.populateSessionInfo(response);
+                // console.log(typeof(response.data.entity.constructors));
+                // console.log(response.data.entity.constructors);
+                this.constructors_pos = response.data.entity.constructors;
+                this.populateDrivers(response);
             })
             // }
         },
@@ -261,7 +268,7 @@ export default {
             .then(response => {
                 // this.message = response.data.entity;
                 console.log(this.message),
-                this.populateSessionInfo(response)
+                this.populateDrivers(response)
             });
         },
         clearFields() {
@@ -358,22 +365,28 @@ export default {
 .right-content {
     border-left: 2px dashed #D12F2F;
     justify-content: center;
-    /* display: grid; */
 }
 .constructor_grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: repeat(10, auto); 
-    height: 100%;
-}
-.constructor_grid_right, .constructor_grid_left {
-    display: grid;
+    text-align: center;
     height: 100%;
 }
 .team-item {
-    padding: 1px;
+    padding: 15px;
     color: black;
-    font-size: 12pt;
+    font-size: 10pt;
+}
+.team-item:before {
+    content: "";  
+    display: block; 
+    margin: 0 auto; 
+    width: 50%; 
+    padding-bottom: 25px;
+    border-top: 5px solid black;
+    border-left: 5px solid black; 
+    border-right: 5px solid black; 
+    left: 0px;
+    top: 25%;
+    position: relative;
 }
 .grid_title {
     justify-content: center;

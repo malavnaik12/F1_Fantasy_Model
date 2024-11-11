@@ -14,6 +14,18 @@ class InsertData:
         except FileNotFoundError:
             InitializeFiles(2024) # Need to make it so that this input is being supplied by front end
 
+    def _get_teams_info(self):
+        with open("./input_files/list_teams.txt","r+") as teams_file:
+            teams_list = teams_file.readlines()
+        self.teams = {}
+        prev_team = ''
+        for item in teams_list:
+            if prev_team != item.split(",")[0]:
+                self.teams[item.split(",")[0]] = {}
+                self.teams[item.split(",")[0]]['avg_pos'] = int()
+                prev_team = item.split(",")[0]
+            self.teams[item.split(",")[0]][item.split(",")[1]] = int()
+
     def save_to_db(self):
         with open(self.db_filename,"w") as outfile:
             json.dump(self.data,outfile,indent=2)
@@ -44,13 +56,24 @@ class InsertData:
         self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]] = session_info
         self.save_to_db()
         return self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]
+    
+    def get_session_constructors(self,drivers_results):
+        self._get_teams_info()
+        constructor_pos = {}
+        for team in list(self.teams.keys()):
+            for key in list(self.teams[team].keys()):
+                if key in drivers_results:
+                    self.teams[team][key] = drivers_results.index(key)+1
+                    self.teams[team]["avg_pos"] += 0.5*self.teams[team][key]
+            constructor_pos[team] = self.teams[team]['avg_pos']
+        return constructor_pos
 
     def post_race_positions(self,item_dict):
         d1 = "driver1"
         d2 = "driver2"
         self._post_driver(item_dict=item_dict,driver=d1)
         self._post_driver(item_dict=item_dict,driver=d2)
-        print(self.data[f"{item_dict['year']}"][item_dict['raceLoc']])
+        # print(self.data[f"{item_dict['year']}"][item_dict['raceLoc']])
         with open(self.db_filename,"w") as db_file:
             json.dump(self.data, db_file, indent=2)
     
@@ -79,4 +102,4 @@ class InsertData:
 
 if __name__ == "__main__":
     initClass = InsertData()
-    initClass.init_race_weekend('Bahrain')
+    # initClass.init_race_weekend('Bahrain')

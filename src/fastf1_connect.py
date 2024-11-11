@@ -10,7 +10,7 @@ def ordered_names(session_results):
     ordered_result = session_results.results.to_dict()['BroadcastName']
     ordered_names = []
     for key in list(ordered_result.keys()):
-        print((len(ordered_result[key])))
+        # print((len(ordered_result[key])))
         if ordered_result[key] == 'nan':
             continue
         else:

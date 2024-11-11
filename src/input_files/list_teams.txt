@@ -12,10 +12,13 @@ Aston-Martin,Stroll,18
 Alpine,Gasly,10
 Alpine,Ocon,31
 RB,Riccardo,3
-RB,Tsunoda,88
+RB,Tsunoda,22
+RB,Lawson,30
 Sauber,Bottas,77
 Sauber,Zhou,24 
 Haas,Hulkenberg,27
 Haas,Magnussen,20
+Haas,Bearman,50
 Williams,Albon,23
 Williams,Sargeant,2
+Williams,Colapinto,43

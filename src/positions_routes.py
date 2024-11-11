@@ -50,15 +50,16 @@ def send_drivers(item: Item):
 @router.post('/session_info/')
 def get_session_info(item: Item):
     inputs = {}
+    response = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
     try:
-        response = db_ops.get_session(inputs)
-        # input()
+        response['drivers'] = db_ops.get_session(inputs)
+        response['constructors'] = db_ops.get_session_constructors(response['drivers'])
     except ValueError:
         response = False
         print("No data found:",response)
-    print("Here",response)
+    # print("Here",response)
     # input()
     # except KeyError:
     #     db_ops.init_race_weekend(race_loc=inputs['raceLoc'])
