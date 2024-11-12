@@ -211,8 +211,6 @@ export default {
                 raceLoc: this.gp_loc,
                 session: this.session,
             }).then(response => {
-                // console.log(typeof(response.data.entity.constructors));
-                // console.log(response.data.entity.constructors);
                 this.constructors_pos = response.data.entity.constructors;
                 this.populateDrivers(response);
             })

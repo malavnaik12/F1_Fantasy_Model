@@ -7,8 +7,8 @@ import os
 class InitializeFiles:
     def __init__(self, year: int) -> None:
         os.makedirs("./database_files",exist_ok=True)
-        # InitializeRaceResults()
-        InitializeMain()
+        InitializeRaceResults()
+        # InitializeMain()
 
 class InitializeRaceResults:
     def __init__(self) -> None:
@@ -18,6 +18,10 @@ class InitializeRaceResults:
             # os.path.isfile("./database_files/database.json")
             with open(self.db_filename,"r") as db_file:
                 self.data = json.load(db_file)
+            # for race in list(self.data['2024'].keys()):
+            #     self.data['2024'][race]['Constructor'] = {}
+            # with open(self.db_filename,"w") as outfile:
+            #     json.dump(self.data,outfile,indent=2)
         except FileNotFoundError:
             data = {}
             for gp in wp.gp_parse(wp.get_gp_info()):
@@ -74,8 +78,8 @@ class InitializeMain:
         teams = {key: {} for key in list(team_info.keys())}
         for team in list(teams.keys()):
             for attribute in list(data_attrs.keys()):
-                if attribute == 'prices':
-                    teams[team][attribute] = []
+                if attribute == 'Constructor':
+                    teams[team][attribute] = str()
                 else:
                     teams[team][attribute] = data_attrs[attribute]
             for driver in list(team_info[team].keys()):

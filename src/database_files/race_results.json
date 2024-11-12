@@ -7,7 +7,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Saudi": {
       "race_weekend_type": "Normal",
@@ -16,7 +17,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Australia": {
       "race_weekend_type": "Normal",
@@ -25,7 +27,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Japan": {
       "race_weekend_type": "Normal",
@@ -34,7 +37,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "China": {
       "race_weekend_type": "Sprint",
@@ -43,7 +47,8 @@
       "Sprint Race": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Miami": {
       "race_weekend_type": "Sprint",
@@ -52,7 +57,8 @@
       "Sprint Race": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Imola": {
       "race_weekend_type": "Normal",
@@ -61,7 +67,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Monaco": {
       "race_weekend_type": "Normal",
@@ -70,7 +77,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Spain": {
       "race_weekend_type": "Normal",
@@ -79,7 +87,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Canada": {
       "race_weekend_type": "Normal",
@@ -88,7 +97,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Austria": {
       "race_weekend_type": "Sprint",
@@ -97,7 +107,8 @@
       "Sprint Race": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Silverstone": {
       "race_weekend_type": "Normal",
@@ -106,7 +117,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Hungary": {
       "race_weekend_type": "Normal",
@@ -115,7 +127,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Belgium": {
       "race_weekend_type": "Normal",
@@ -124,7 +137,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Netherlands": {
       "race_weekend_type": "Normal",
@@ -133,7 +147,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Italy": {
       "race_weekend_type": "Normal",
@@ -142,7 +157,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Azerbaijan": {
       "race_weekend_type": "Normal",
@@ -151,7 +167,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Singapore": {
       "race_weekend_type": "Normal",
@@ -160,7 +177,8 @@
       "Free Practice 3": [],
       "Qualifying": [],
       "Race": [],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "US": {
       "race_weekend_type": "Sprint",
@@ -232,6 +250,32 @@
         "Bottas": 1,
         "Hamilton": 1,
         "Zhou": 1
+      },
+      "Constructor": {
+        "Race": {
+          "Ferrari": 1.5,
+          "Mclaren": 4.5,
+          "Redbull": 5.0,
+          "Aston-Martin": 7.5,
+          "Haas": 9.5,
+          "RB": 11.5,
+          "Mercedes": 13.0,
+          "Williams": 13.0,
+          "Alpine": 15.0,
+          "Sauber": 18.0
+        },
+        "Qualifying": {
+          "Mclaren": 3.0,
+          "Ferrari": 3.5,
+          "Redbull": 6.0,
+          "Aston-Martin": 7.0,
+          "Alpine": 10.0,
+          "Haas": 10.5,
+          "Mercedes": 12.5,
+          "RB": 13.0,
+          "Williams": 16.5,
+          "Sauber": 19.0
+        }
       }
     },
     "Mexico": {
@@ -304,7 +348,8 @@
         "Albon",
         "Tsunoda"
       ],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     },
     "Brazil": {
       "race_weekend_type": "Sprint",
@@ -376,7 +421,8 @@
         "Stroll",
         "Hulkenberg"
       ],
-      "prices": {}
+      "prices": {},
+      "Constructor": {}
     }
   }
 }

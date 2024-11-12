@@ -57,7 +57,12 @@
         </div>
 
         <div class="right-content">
-            <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Constructor Results</p>
+            <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Constructor Avg. Position</p>
+            <div v-if="session" class="constructor_grid">
+                <div v-for="key in constructors" :key="key" class="team-item">
+                    {{ key }}: {{ constructors_prices[key] }}
+                </div>
+            </div>
         </div>
     </div>
     </keep-alive>
@@ -81,6 +86,7 @@ export default {
             session_info_2: [],
             session_prices: Array(20).fill(null),
             loading_info: false,
+            constructors_prices: Object.create({}),
         };
     },
     watch: {
@@ -101,7 +107,7 @@ export default {
                 raceLoc: this.gp_loc,
                 session: this.session,
                 drivers: this.session_info_full,
-                prices: this.session_prices
+                driver_prices: this.session_prices
             }).then(response => {
                 console.log(response);
             })
@@ -128,15 +134,15 @@ export default {
                 raceLoc: this.gp_loc,
                 session: this.session,
             }).then(response => {
-                console.log(response)
+                console.log(response.data.entity)
                 this.populateSessionInfo(response);
             }).finally(this.loading_info = false)
         },
         populateSessionInfo(response) {
             if (response) {
-                if (response.data.entity.prices)
-                    this.session_prices = response.data.entity.prices
-                this.session_info_full = response.data.entity.positions
+                if (response.data.entity.driver_prices)
+                    this.session_prices = response.data.entity.driver_prices
+                this.session_info_full = response.data.entity.driver_positions
                 this.session_info_1 = this.session_info_full.filter((_, index) => index % 2 === 0);
                 this.session_info_2 = this.session_info_full.filter((_, index) => index % 2 === 1);
             }
@@ -187,6 +193,29 @@ export default {
 }
 .right-content {
     border-left: 2px dashed #D12F2F;
+    justify-content: center;
+}
+.constructor_grid {
+    text-align: center;
+    height: 100%;
+}
+.team-item {
+    padding: 15px;
+    color: black;
+    font-size: 10pt;
+}
+.team-item:before {
+    content: "";  
+    display: block; 
+    margin: 0 auto; 
+    width: 50%; 
+    padding-bottom: 25px;
+    border-top: 5px solid black;
+    border-left: 5px solid black; 
+    border-right: 5px solid black; 
+    left: 0px;
+    top: 25%;
+    position: relative;
 }
 .middle-content {
     min-height: 250px; 

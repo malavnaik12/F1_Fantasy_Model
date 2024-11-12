@@ -37,17 +37,16 @@ async def get_session_info(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
-    # print(inputs)
-    # input()
     try:
         response = {}
-        positions_list = db_ops.get_session(inputs)
-        response['positions'] = positions_list
-        prices_dict = db_ops.get_prices(inputs)
-        if len(prices_dict) == 0:
-            response['prices'] = []
+        response['driver_positions'] = db_ops.get_session(inputs)
+        # constructors_list = db_ops.get_session_constructors(inputs,response['driver_positions'])
+        driver_prices_dict = db_ops.get_driver_prices(inputs)
+        response['constructor_prices'] = db_ops.get_constructor_prices(inputs)
+        if len(driver_prices_dict) == 0:
+            response['driver_prices'] = []
         else:
-            response['prices'] = [prices_dict[f"{driver}"] for driver in positions_list]
+            response['driver_prices'] = [driver_prices_dict[f"{driver}"] for driver in response['driver_positions']]
     except ValueError:
         response = False
         raise(f"No data found for {item}")
@@ -65,14 +64,18 @@ async def get_session_info(item: Item):
 @router.post('/prices_submit/')
 async def send_info_to_DBs(item: Item):
     inputs = {}
+    response = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
-    response = db_ops.post_prices(inputs)
+    print(inputs)
+    input()
+    response = db_ops.post_driver_prices(inputs)
+    db_ops.post_constructor_prices(inputs)
     # try:
     #     response = db_ops.get_session(inputs)
     # except ValueError:
     #     response = False
     #     raise(f"No data found for {item}")
-    print(response)
+    # print(response)
     response = "success"
     return {"status":"success","entity":response}

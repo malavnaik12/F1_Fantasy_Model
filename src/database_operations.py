@@ -57,7 +57,10 @@ class InsertData:
         self.save_to_db()
         return self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]
     
-    def get_session_constructors(self,drivers_results):
+    def sort_dict(unsorted_dict: dict):
+        return {k: v for k, v in sorted(unsorted_dict.items(), key=lambda item: item[1])}
+
+    def get_session_constructors(self,item_dict,drivers_results):
         self._get_teams_info()
         constructor_pos = {}
         for team in list(self.teams.keys()):
@@ -66,14 +69,15 @@ class InsertData:
                     self.teams[team][key] = drivers_results.index(key)+1
                     self.teams[team]["avg_pos"] += 0.5*self.teams[team][key]
             constructor_pos[team] = self.teams[team]['avg_pos']
-        return constructor_pos
+        self.data[f"{item_dict['year']}"][item_dict['raceLoc']]["Constructor"][item_dict['session']] = self.sort_dict(constructor_pos)
+        self.save_to_db()
+        return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]["Constructor"][item_dict['session']]
 
     def post_race_positions(self,item_dict):
         d1 = "driver1"
         d2 = "driver2"
         self._post_driver(item_dict=item_dict,driver=d1)
         self._post_driver(item_dict=item_dict,driver=d2)
-        # print(self.data[f"{item_dict['year']}"][item_dict['raceLoc']])
         with open(self.db_filename,"w") as db_file:
             json.dump(self.data, db_file, indent=2)
     
@@ -86,17 +90,29 @@ class InsertData:
         else:
             self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]][item_dict[f"{driver}_pos"]-1] = item_dict[f"{driver}"]
     
-    def post_prices(self,item_dict):
+    def post_driver_prices(self,item_dict):
         if len(self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['prices']) == 0:
             prices_dict = {}
-            for (driver, price) in zip(item_dict['drivers'],item_dict['prices']):
+            for (driver, price) in zip(item_dict['drivers'],item_dict['driver_prices']):
                 prices_dict[f"{driver}"] = price
             self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['prices'] = prices_dict
             self.save_to_db()
         return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['prices']
     
-    def get_prices(self,item_dict):
+    def get_driver_prices(self,item_dict):
             return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['prices']
+    
+    def post_constructor_prices(self,item_dict):
+        if len(self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices']) == 0:
+            # prices_dict = {}
+            # for team in list(item_dict['constructor_prices'].keys()):
+            #     prices_dict[f"{driver}"] = price
+            self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices'] = self.sort_dict(item_dict['constructor_prices'])
+            self.save_to_db()
+        return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices']
+    
+    def get_constructor_prices(self,item_dict):
+        return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices']
 
 
 
