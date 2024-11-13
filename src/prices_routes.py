@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from typing import Optional
 from pydantic import BaseModel
-from team_parse import getTeams, getDrivers
+from team_parse import getTeams
 from weekend_parse import get_gp_info,gp_parse,sessions_parse
 from database_operations import InsertData
 
@@ -12,8 +12,9 @@ class Item(BaseModel):
     raceLoc: Optional[str] = None
     session: Optional[str] = None
     drivers: Optional[list] = None
-    prices: Optional[list] = None
-    # constructor: Optional[str] = None
+    driver_prices: Optional[list] = None
+    constructors: Optional[list] = None
+    constructor_prices: Optional[list] = None
     # driver1: Optional[str] = None
     # driver2: Optional[str] = None
     # driver1_pos: Optional[int] = None
@@ -32,6 +33,10 @@ async def send_gp_dropdown():
 async def send_session_types(item: Item):
     return {'entity':sessions_parse(item.raceLoc)}
 
+@router.get('/constructors/')
+async def send_constructors():
+    return {'entity':getTeams()}
+
 @router.post('/session_info/')
 async def get_session_info(item: Item):
     inputs = {}
@@ -42,7 +47,9 @@ async def get_session_info(item: Item):
         response['driver_positions'] = db_ops.get_session(inputs)
         # constructors_list = db_ops.get_session_constructors(inputs,response['driver_positions'])
         driver_prices_dict = db_ops.get_driver_prices(inputs)
-        response['constructor_prices'] = db_ops.get_constructor_prices(inputs)
+        team_prices = db_ops.get_constructor_prices(inputs)
+        response['constructor_order'] = list(team_prices.keys())
+        response['constructor_prices'] = list(team_prices.values())
         if len(driver_prices_dict) == 0:
             response['driver_prices'] = []
         else:
@@ -52,23 +59,12 @@ async def get_session_info(item: Item):
         raise(f"No data found for {item}")
     return {"status":"success","entity":response}
 
-# @router.post('/prices_pull')
-# async def get_info_from_db(item: Item):
-#     inputs = {}
-#     for entity in list(item):
-#         inputs[entity[0]] = entity[1]
-#     prices_dict = db_ops.get_prices(inputs) # This return a dictionary of prices
-#     positions = db_ops.get_session(inputs)
-#     print(positions)
-
 @router.post('/prices_submit/')
 async def send_info_to_DBs(item: Item):
     inputs = {}
     response = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
-    print(inputs)
-    input()
     response = db_ops.post_driver_prices(inputs)
     db_ops.post_constructor_prices(inputs)
     # try:

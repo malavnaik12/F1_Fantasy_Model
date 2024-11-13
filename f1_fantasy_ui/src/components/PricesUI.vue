@@ -25,8 +25,11 @@
                 </select>
             </div>
             <p></p>
-            <div v-if="!session_prices.includes(null)" class="inputs">
+            <div v-if="!session_prices.includes(null) || !constructor_prices.includes(null)" class="inputs">
                 <button class="button" @click="submitData" v-on:keyup.enter="submitData" >Next</button>
+            </div>
+            <div v-if="loading_info" class="spinner">
+                Loading...
             </div>
         </div>
 
@@ -35,7 +38,10 @@
             <div v-if="session" class="session_grid">
                 <div class="session_grid_right">
                     <div v-for="(driver, index) in session_info_1" :key="driver" class="grid-item">
-                        {{ driver }}
+                        P{{ 2*index+1 }}
+                        <div>
+                            {{ driver }}
+                        </div>
                         <p></p>
                         <label>Price:</label>
                         <input class="price_input" type="number" v-model.number="session_prices[2*index]">
@@ -44,23 +50,26 @@
                 </div>
                 <div class="session_grid_left">
                     <div v-for="(driver, index) in session_info_2" :key="driver" class="grid-item">
-                        {{ driver }}
+                        P{{ 2*index+2 }}
+                        <div>
+                            {{ driver }}
+                        </div>
                         <p></p>
                         <label>Price: </label>
                         <input class="price_input" type="number" v-model.number="session_prices[2*index+1]">
                     </div>
                 </div>
             </div>
-            <div v-if="loading_info" class="spinner">
-                Loading...
-            </div>
         </div>
 
         <div class="right-content">
-            <p v-if="session" class="grid_title">{{ gp_loc }} GP {{ session }} Constructor Avg. Position</p>
+            <p v-if="session" class="grid_title">{{ gp_loc }} GP Race Week Constructor Price </p>
             <div v-if="session" class="constructor_grid">
-                <div v-for="key in constructors" :key="key" class="team-item">
-                    {{ key }}: {{ constructors_prices[key] }}
+                <div v-for="(key,index) in constructors" :key="key" class="team-item">
+                    {{ key }}
+                    <p></p>
+                    <label>Price: </label>
+                    <input class="price_input" type="number" v-model.number="constructor_prices[index]">
                 </div>
             </div>
         </div>
@@ -86,7 +95,7 @@ export default {
             session_info_2: [],
             session_prices: Array(20).fill(null),
             loading_info: false,
-            constructors_prices: Object.create({}),
+            constructor_prices: Array(10).fill(null),
         };
     },
     watch: {
@@ -94,20 +103,38 @@ export default {
             console.log(newVal,prevVal);
             if (newVal !== prevVal) {
                 this.session='';
+                this.session_prices=Array(20).fill(null);
+                this.constructor_prices=Array(10).fill(null);
                 }
         },
+        session(newVal,prevVal) {
+            console.log(newVal,prevVal);
+            if (newVal !== prevVal) {
+                this.session_prices=Array(20).fill(null);
+                this.constructor_prices=Array(10).fill(null);
+                }
+        }
     },
     mounted() {
         this.getRaceLocs();
         },
     methods: {
+        // createConstructorDict(teams,team_prices) {
+        //     const element = array[index];
+        //     for (let index = 0; index < teams.length; index++) {
+        //         console.log(teams[index],team_prices[index])
+        //     }
+        // },
         submitData() {
+            // this.createConstructorDict(this.constructors,this.constructor_prices)
             apiClient.post('/prices/prices_submit/',{
                 year: this.year,
                 raceLoc: this.gp_loc,
                 session: this.session,
                 drivers: this.session_info_full,
-                driver_prices: this.session_prices
+                driver_prices: this.session_prices,
+                constructors: this.constructors,
+                constructor_prices: this.constructor_prices
             }).then(response => {
                 console.log(response);
             })
@@ -115,10 +142,8 @@ export default {
         getRaceLocs() {
             apiClient.get('/prices/gp_locs/')
             .then(response => {this.gp_locs = response.data.entity})
-            .catch((err) => console.log(err));
         },
         getSessions() {
-            console.log(this.gp_loc)
             apiClient.post('/prices/sessions/',{
                 raceLoc: this.gp_loc
             }).then(response => {
@@ -128,13 +153,12 @@ export default {
             this.loading_info = true
             this.session_info_1 = Array.apply(null,Array(10));
             this.session_info_2 = Array.apply(null,Array(10));
-            console.log(this.year,this.gp_loc,this.session)
             apiClient.post('/prices/session_info/',{
                 year: this.year,
                 raceLoc: this.gp_loc,
                 session: this.session,
             }).then(response => {
-                console.log(response.data.entity)
+                console.log(response)
                 this.populateSessionInfo(response);
             }).finally(this.loading_info = false)
         },
@@ -145,12 +169,19 @@ export default {
                 this.session_info_full = response.data.entity.driver_positions
                 this.session_info_1 = this.session_info_full.filter((_, index) => index % 2 === 0);
                 this.session_info_2 = this.session_info_full.filter((_, index) => index % 2 === 1);
+                if (Object.keys(response.data.entity.constructor_prices).length !== 0) {
+                    this.constructors = response.data.entity.constructor_order
+                    this.constructor_prices = response.data.entity.constructor_prices
+                } else {
+                    this.getConstructors();
+                }
             }
         },
         getConstructors() {
             apiClient.get('/prices/constructors/')
-            .then(response => {this.constructors = response.data.entity})
-            .catch((err) => console.log(err));
+            .then(response => {
+                this.constructors = response.data.entity;
+            })
         },
     }
 };

@@ -57,7 +57,7 @@ class InsertData:
         self.save_to_db()
         return self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]
     
-    def sort_dict(unsorted_dict: dict):
+    def sort_dict(self,unsorted_dict: dict):
         return {k: v for k, v in sorted(unsorted_dict.items(), key=lambda item: item[1])}
 
     def get_session_constructors(self,item_dict,drivers_results):
@@ -103,16 +103,19 @@ class InsertData:
             return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['prices']
     
     def post_constructor_prices(self,item_dict):
-        if len(self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices']) == 0:
-            # prices_dict = {}
-            # for team in list(item_dict['constructor_prices'].keys()):
-            #     prices_dict[f"{driver}"] = price
-            self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices'] = self.sort_dict(item_dict['constructor_prices'])
-            self.save_to_db()
+        _temp = {}
+        for (team,price) in zip(item_dict['constructors'],item_dict['constructor_prices']):
+            _temp[team] = price
+        self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices'] = self.sort_dict(_temp)
+        self.save_to_db()
         return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices']
     
     def get_constructor_prices(self,item_dict):
-        return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices']
+        try:
+            result = self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices']
+        except KeyError:
+            result = {}
+        return result
 
 
 
