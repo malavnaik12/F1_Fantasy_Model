@@ -7,6 +7,7 @@
 <!-- Enter The Number of Current Race Week: Not needed-->
 <!-- Enter The Maximum Number of Drivers Allowed: 5 -->
 <!-- Enter The Maximum Number of Constructors Allowed: 2 -->
+<!-- Enter the Weekly Budget: 100 -->
 <template>
     <keep-alive>
         <div>
