@@ -119,14 +119,7 @@ export default {
         this.getRaceLocs();
         },
     methods: {
-        // createConstructorDict(teams,team_prices) {
-        //     const element = array[index];
-        //     for (let index = 0; index < teams.length; index++) {
-        //         console.log(teams[index],team_prices[index])
-        //     }
-        // },
         submitData() {
-            // this.createConstructorDict(this.constructors,this.constructor_prices)
             apiClient.post('/prices/prices_submit/',{
                 year: this.year,
                 raceLoc: this.gp_loc,

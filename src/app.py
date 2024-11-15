@@ -4,6 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import FileResponse
 from positions_routes import router as pos_router
 from prices_routes import router as prices_router
+from ga_inputs_routes import router as ga_inputs_router
 
 app = FastAPI()
 # Enable CORS
@@ -24,6 +25,8 @@ app.add_middleware(
 
 app.include_router(pos_router, prefix="/positions")
 app.include_router(prices_router, prefix="/prices")
+app.include_router(ga_inputs_router, prefix="/inputs")
+
 
 # Route to serve React index.html (for client-side routing)
 @app.get("/{full_path:path}")
