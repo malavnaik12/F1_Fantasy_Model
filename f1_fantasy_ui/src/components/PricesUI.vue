@@ -4,7 +4,7 @@
         <div class="left-content">
             <div class="inputs">
                 <label>F1 Season Year: </label>
-                <input type="number" id="driver1_pos" v-model="year">
+                <input type="number" id="season_year" v-model="year">
             </div>
             <p></p>
             <div class="inputs">
@@ -26,7 +26,7 @@
             </div>
             <p></p>
             <div v-if="!session_prices.includes(null) || !constructor_prices.includes(null)" class="inputs">
-                <button class="button" @click="submitData" v-on:keyup.enter="submitData" >Next</button>
+                <button class="button" @click="submitData" v-on:keyup.enter="submitData" >Submit Prices</button>
             </div>
             <div v-if="loading_info" class="spinner">
                 Loading...

@@ -1,32 +1,100 @@
-<!-- Enter Maximum number of Generations: 150 -->
-<!-- Enter Size of the Population Set: 50 -->
-<!-- Enter Crossover Probability: 0.8 -->
-<!-- Enter Mutation Rate:  0.9-->
-<!-- Enter Elitism Rate:  1-->
-<!-- Enter Tournament Size Proportion: 0.9-->
-<!-- Enter The Number of Current Race Week: Not needed-->
-<!-- Enter The Maximum Number of Drivers Allowed: 5 -->
-<!-- Enter The Maximum Number of Constructors Allowed: 2 -->
-<!-- Enter the Weekly Budget: 100 -->
+<!-- DONE: Enter the Weekly Budget: 100 -->
+<!-- DONE: Enter Maximum number of Generations: 150 -->
+<!-- DONE: Enter Size of the Population Set: 50 -->
+<!-- DONE: Enter Crossover Probability: 0.8 -->
+<!-- DONE: Enter Mutation Rate:  0.9-->
+<!-- DONE: Enter Elitism Rate:  1-->
+<!-- DONE: Enter Tournament Size Proportion: 0.9-->
+<!-- NOT NEEDED: Enter The Number of Current Race Week: -->
+<!-- DONE: Enter The Maximum Number of Drivers Allowed: 5 -->
+<!-- DONE: Enter The Maximum Number of Constructors Allowed: 2 -->
 <template>
     <keep-alive>
-        <div>
-            <div class="inputs">
-                <label>F1 Season Year: </label>
-                <input type="number" id="driver1_pos" v-model="year">
+        <div class="tab-content-grid">
+            <div class="left-content">
+                <p class="title">Optimizer Inputs</p>
+                <div class="inputs">
+                    <label>F1 Season Year: </label>
+                    <input type="number" class="text" v-model="year">
+                </div>
+                <p></p>
+                <div class="inputs">
+                    <label for="entity-dropdown">Select Race Weekend: </label>
+                    <select id="entity-dropdown" v-model="gp_loc">
+                    <!-- </select> @change="getSessions"> -->
+                        <option v-for="entity in gp_locs" :key="entity" :value="entity">
+                            {{ entity }}
+                        </option>
+                    </select>
+                </div>
+                <p></p>
+                <div v-if = "gp_loc" class="inputs">
+                    <label>Enter Available Weekly Budget (millions): </label>
+                    <input type="number" class="text" v-model="budget">
+                </div>
+                <p></p>
+                <div v-if = "gp_loc" class="inputs">
+                    <label>Enter Maximum Optimizer Evolutions: </label>
+                    <input type="number" class="text" v-model="max_gens">
+                </div>
+                <p></p>
+                <div v-if = "gp_loc" class="inputs">
+                    <label>Enter Maximum Population Set Size: </label>
+                    <input type="number" class="text" v-model="pop_set">
+                </div>
+                <p></p>
+                <div v-if = "gp_loc" class="inputs">
+                    <label>Enter Crossover Rate: </label>
+                    <input type="number" class="text" v-model="cross_rate">
+                </div>
+                <p></p>
+                <div v-if = "gp_loc" class="inputs">
+                    <label>Enter Mutation Rate: </label>
+                    <input type="number" class="text" v-model="mut_rate">
+                </div>
+                <p></p>
+                <div v-if = "gp_loc" class="inputs">
+                    <label>Enter Desired Number of Elites: </label>
+                    <input type="number" class="text" v-model="elite_count">
+                </div>
+                <p></p>
+                <div v-if = "gp_loc" class="inputs">
+                    <label>Enter Tournament Size: </label>
+                    <input type="number" class="text" v-model="tournament_size">
+                </div>
+                <p></p>
+                <div v-if = "gp_loc" class="inputs">
+                    <label>Enter Maximum Driver Count: </label>
+                    <input type="number" class="text" v-model="drivers_num">
+                </div>
+                <p></p>
+                <div v-if = "gp_loc" class="inputs">
+                    <label>Enter Maximum Constructor Count: </label>
+                    <input type="number" class="text" v-model="construtors_num">
+                </div>
+                <p></p>
+                <div v-if = "gp_loc" class="inputs">
+                    <button class="button" @click="submitData" v-on:keyup.enter="submitData" >Submit Inputs</button>
+                    <!-- <p>Summary: {{ returnedData }}</p> -->
+                </div>
             </div>
-            <p></p>
-            <div class="inputs">
-                <label for="entity-dropdown">Select Race Weekend: </label>
-                <select id="entity-dropdown" v-model="gp_loc" @change="getSessions">
-                    <option v-for="entity in gp_locs" :key="entity" :value="entity">
-                        {{ entity }}
-                    </option>
-                </select>
+
+            <div v-if="gp_loc">
+                <p class="title">Optimizer Inputs Information</p>
+                <div class="info">
+                    <p><span class="underline">Year:</span> Current Year of the F1 Season</p>
+                    <p><span class="underline">Race Weekend:</span> Location name in which the Race is taking place</p>
+                    <p><span class="underline">Available Budget:</span> </p>
+                    <p><span class="underline">Maximum Optimizer Evolutions:</span> </p>
+                    <p><span class="underline">Population Set:</span> </p>
+                    <p><span class="underline">Crossover Rate:</span> </p>
+                    <p><span class="underline">Mutation Rate:</span> </p>
+                    <p><span class="underline">Elitism Count:</span> </p>
+                    <p><span class="underline">Tournament Size:</span> </p>
+                    <p><span class="underline">Maximum Number of Drivers:</span> </p>
+                    <p><span class="underline">Maximum Number of Constructors:</span> </p>
+                </div>
             </div>
-            <p></p>
-            <button @click="submitData" v-on:keyup.enter="submitData" >Next</button>
-            <p>Summary: {{ returnedData }}</p>
         </div>
     </keep-alive>
 </template>
@@ -38,37 +106,23 @@ export default {
     data() {
         return {
             year: 2024,
-            gp_locs: [], // Array to store gp_locs from text file
-            gp_loc: null, // The selected entity
-            sessions: [],
-            session: null,
-            // constructors: [],
-            // constructor: null,
-            // session_info_full: [],
-            // session_info_1: [],
-            // session_info_2: [],
-            // session_prices: Array(20).fill(null),
-            // loading_info: false,
-            // constructor_prices: Array(10).fill(null),
+            gp_locs: [], 
+            gp_loc: null,
+            budget: 100,
+            max_gens: 150,
+            pop_set: 50,
+            cross_rate: 0.8,
+            mut_rate: 0.5,
+            elite_count: 1,
+            tournament_size: 40,
+            drivers_num: 5,
+            construtors_num: 2
         };
     },
-    watch: {
-        gp_loc(newVal,prevVal) {
-            console.log(newVal,prevVal);
-            // if (newVal !== prevVal) {
-            //     this.session='';
-            //     this.session_prices=Array(20).fill(null);
-            //     this.constructor_prices=Array(10).fill(null);
-            //     }
-        },
-        session(newVal,prevVal) {
-            console.log(newVal,prevVal);
-            // if (newVal !== prevVal) {
-            //     this.session_prices=Array(20).fill(null);
-            //     this.constructor_prices=Array(10).fill(null);
-            //     }
-        }
-    },
+    // watch: {
+    //     gp_loc(newVal,prevVal) {
+    //     },
+    // },
     mounted() {
         this.getRaceLocs();
     },
@@ -77,7 +131,7 @@ export default {
             apiClient.post('/inputs/prices_submit/',{
                 year: this.year,
                 raceLoc: this.gp_loc,
-                session: this.session,
+                // session: this.session,
                 // drivers: this.session_info_full,
                 // driver_prices: this.session_prices,
                 // constructors: this.constructors,
@@ -90,17 +144,33 @@ export default {
             apiClient.get('/inputs/gp_locs/')
             .then(response => {this.gp_locs = response.data.entity})
         },
-        getSessions() {
-            apiClient.post('/inputs/sessions/',{
-                raceLoc: this.gp_loc
-            }).then(response => {
-                this.sessions = response.data.entity})
-        },
     }
 };
 </script>
 
 <style scoped>
+.tab-content-grid {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    gap: 10px;
+    height: 100%;
+}
+.left-content {
+    border-right: 2px dashed #D12F2F;
+}
+.title {
+    justify-content: center;
+    padding-left: 2px;
+    font-size: 16pt;
+}
+.info {
+    text-align: left;
+    padding-left: 2px;
+    font-size: 12pt;
+}
+.underline {
+    text-decoration: underline;
+}
 .inputs {
     display: flex;
     justify-content:left;
@@ -109,5 +179,9 @@ export default {
     flex-wrap: wrap;
     gap: 10px;
     font-size: 11pt;
+}
+.text {
+    width: 50px;
+    justify-content: right;
 }
 </style>
