@@ -39,7 +39,7 @@
                 </div>
                 <p></p>
                 <div v-if = "gp_loc" class="inputs">
-                    <label>Enter Maximum Population Set Size: </label>
+                    <label>Enter Population Set Size: </label>
                     <input type="number" class="text" v-model="pop_set">
                 </div>
                 <p></p>
@@ -84,15 +84,15 @@
                 <div class="info">
                     <p><span class="underline">Year:</span> Current Year of the F1 Season</p>
                     <p><span class="underline">Race Weekend:</span> Location name in which the Race is taking place</p>
-                    <p><span class="underline">Available Budget:</span> </p>
-                    <p><span class="underline">Maximum Optimizer Evolutions:</span> </p>
-                    <p><span class="underline">Population Set:</span> </p>
-                    <p><span class="underline">Crossover Rate:</span> </p>
-                    <p><span class="underline">Mutation Rate:</span> </p>
-                    <p><span class="underline">Elitism Count:</span> </p>
-                    <p><span class="underline">Tournament Size:</span> </p>
-                    <p><span class="underline">Maximum Number of Drivers:</span> </p>
-                    <p><span class="underline">Maximum Number of Constructors:</span> </p>
+                    <p><span class="underline">Available Budget:</span> The budget available for the given week (in millions)</p>
+                    <p><span class="underline">Maximum Optimizer Evolutions:</span> The number of evolutions for which the optimizer will execute </p>
+                    <p><span class="underline">Population Set Size:</span> Number of candidate solutions in a Evolution</p>
+                    <p><span class="underline">Crossover Rate:</span> Probability of creating sub-canditates (childern) based on candidates (parents)</p>
+                    <p><span class="underline">Mutation Rate:</span> Probability of random changes in candidate solutions' attributes</p>
+                    <p><span class="underline">Elitism Count:</span> Number of top solutions directly passed to the next Evolution</p>
+                    <p><span class="underline">Tournament Size:</span> Number of candidates competing for selection during Crossover Operations</p>
+                    <p><span class="underline">Maximum Number of Drivers:</span> Maximum drivers allowed on a given F1 Fantasy Team</p>
+                    <p><span class="underline">Maximum Number of Constructors:</span> Maximum constructors allowed on a given F1 Fantasy Team</p>
                 </div>
             </div>
         </div>
@@ -128,16 +128,20 @@ export default {
     },
     methods: {
         submitData() {
-            apiClient.post('/inputs/prices_submit/',{
+            apiClient.post('/inputs/inputs_submit/',{
                 year: this.year,
                 raceLoc: this.gp_loc,
-                // session: this.session,
-                // drivers: this.session_info_full,
-                // driver_prices: this.session_prices,
-                // constructors: this.constructors,
-                // constructor_prices: this.constructor_prices
+                budget: this.budget,
+                max_gens: this.max_gens,
+                pop_set: this.pop_set,
+                crossover_rate: this.cross_rate,
+                mutation_rate: this.mut_rate,
+                elite_counts: this.elite_count,
+                tournament_size: this.tournament_size,
+                max_drivers_num: this.drivers_num,
+                max_constructors_num: this.construtors_num,
             }).then(response => {
-                console.log(response);
+                console.log(response.data);
             })
         },
         getRaceLocs() {
