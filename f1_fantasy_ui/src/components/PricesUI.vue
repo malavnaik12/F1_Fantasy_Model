@@ -202,16 +202,6 @@ export default {
     gap: 10px;
     font-size: 11pt;
 }
-.button {
-    border-radius: 2px;
-    height: 20px;
-    width: 50px;
-}
-.button-reload {
-    border-radius: 2px;
-    height: 40px;
-    width: 60px;
-}
 .left-content {
     border-right: 2px dashed #D12F2F;
 }

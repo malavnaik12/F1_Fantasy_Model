@@ -30,7 +30,6 @@ def inputs_submit(item: Item):
     for entity in list(item):
         inputs[entity[0]] = entity[1]
     response = inputs
-
     tournament_size_prop = inputs['tournament_size']/inputs['pop_size']
     to_yaml_file["weekly_budget"] = inputs["weekly_budget"]
     to_yaml_file["max_gens"] = inputs["max_gens"]

@@ -145,11 +145,15 @@ export default {
     },
     watch: {
         gp_loc(newVal,prevVal) {
-            // console.log(newVal,prevVal);
             if (newVal !== prevVal) {
                 this.clearFields();
                 }
         },
+        session(newVal,prevVal) {
+            if (newVal !== prevVal) {
+                this.constructors_pos = []
+            }
+        }
     },
     mounted() {
         this.getRaceLocs();
@@ -164,7 +168,7 @@ export default {
                 this.returnedData = response.data.entity.drivers
                 this.session_info_1 = response.data.entity.drivers.filter((_, index) => index % 2 === 0);
                 this.session_info_2 = response.data.entity.drivers.filter((_, index) => index % 2 === 1);
-                this.populateConstructors(response.data.entity.constructors)
+                // this.populateConstructors(response.data.entity.constructors)
             } else {
                 this.returnedData = response.data.entity.drivers
                 this.session_info_1 = response.data.entity.drivers.filter((_, index) => index % 2 === 0);
@@ -187,8 +191,6 @@ export default {
                     this.postDriver();
                 }
             }
-            // this.postConstructor();
-            // this.getSessionInfo();
         },
         getRaceLocs() {
             apiClient.get('/positions/gp_locs/')
@@ -281,11 +283,9 @@ export default {
             this.substitute_driver=false,
             this.substitute_driver_name="",
             this.substitute_driver_pos=0;
-        },
-        reloadSessionInfo() {
             this.session_info_1 = [];
             this.session_info_2 = [];
-            this.getSessionInfo()
+            this.constructors_pos = [];
         }
     }
 };
@@ -306,16 +306,6 @@ export default {
     flex-wrap: wrap;
     gap: 10px;
     font-size: 11pt;
-}
-.button {
-    border-radius: 2px;
-    height: 20px;
-    width: 50px;
-}
-.button-reload {
-    border-radius: 2px;
-    height: 40px;
-    width: 60px;
 }
 .left-content {
     border-right: 2px dashed #D12F2F;

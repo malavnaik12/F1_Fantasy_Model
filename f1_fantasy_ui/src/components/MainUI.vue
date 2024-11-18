@@ -1,5 +1,5 @@
 <template>
-<h1>Navigate to the Positions tab.</h1>
+<h1>Navigate to the Positions tab to get started!</h1>
 </template>
 
 <script>

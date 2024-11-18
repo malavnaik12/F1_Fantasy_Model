@@ -1,4 +1,4 @@
-def _mainListParse():
+def full_team_info():
     with open("./input_files/list_teams.txt","r+") as team_info:
         data = [line.split('\n')[0].split(',') for line in team_info.readlines()]
     info_dict = {}
@@ -10,7 +10,7 @@ def _mainListParse():
     return info_dict
 
 def getTeams():
-    return list(_mainListParse().keys())
+    return list(full_team_info().keys())
 
 def getDrivers(team: str):
-    return [driver_info['driver_name'] for driver_info in _mainListParse()[team]]
+    return [driver_info['driver_name'] for driver_info in full_team_info()[team]]

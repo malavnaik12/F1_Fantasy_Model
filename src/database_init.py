@@ -1,7 +1,7 @@
 import yaml
 import json
 # import team_parse
-import weekend_parse as wp
+from weekend_parse import gp_parse, gp_type_parse, get_gp_info
 import os
 
 class InitializeFiles:
@@ -18,13 +18,13 @@ class InitializeRaceResults:
             # os.path.isfile("./database_files/database.json")
             with open(self.db_filename,"r") as db_file:
                 self.data = json.load(db_file)
-            # for race in list(self.data['2024'].keys()):
-            #     self.data['2024'][race]['Constructor'] = {}
-            # with open(self.db_filename,"w") as outfile:
-            #     json.dump(self.data,outfile,indent=2)
+            for race in list(self.data['2024'].keys()):
+                self.data['2024'][race]['Constructor'] = {}
+            with open(self.db_filename,"w") as outfile:
+                json.dump(self.data,outfile,indent=2)
         except FileNotFoundError:
             data = {}
-            for gp in wp.gp_parse(wp.get_gp_info()):
+            for gp in gp_parse(get_gp_info()):
                 data[gp] = {}
             self.init_db(data)
 
@@ -42,7 +42,7 @@ class InitializeRaceResults:
         return _schema
 
     def init_db(self,info_dict):
-        gp_type = wp.gp_type_parse(wp.get_gp_info())
+        gp_type = gp_type_parse(get_gp_info())
         with open("./input_files/prices_schema.yaml", "r") as price_schema_file:
             price_schema = yaml.safe_load(price_schema_file)
         for (indx, gp) in enumerate(list(info_dict.keys())):
@@ -58,12 +58,23 @@ class InitializeMain:
     def __init__(self) -> None:
         self.db_filename = "./database_files/database_main.json"
         self.main_data_dict = {}
+        self.num_gp = gp_parse(get_gp_info())
+        self.gp_type = gp_type_parse(get_gp_info())
+        self.sprint_gp_count = self.gp_type.count('Sprint')
+        self.normal_gp_count = self.gp_type.count('Normal')
         try:
             # os.path.isfile("./database_files/database.json")
             with open(self.db_filename,"r") as db_file:
                 self.data = json.load(db_file)
         except FileNotFoundError:
             self.init_db()
+    def develop_attr(self,attr):
+        if attr == []:
+            init_attr = [None]*len(self.num_gp)
+        else:
+            init_attr = attr
+        return init_attr
+    
     def init_db(self):
         with open("./input_files/data_structure.yaml", "r") as file:
             inputs = yaml.safe_load(file)
@@ -81,7 +92,7 @@ class InitializeMain:
                 if attribute == 'Constructor':
                     teams[team][attribute] = str()
                 else:
-                    teams[team][attribute] = data_attrs[attribute]
+                    teams[team][attribute] = self.develop_attr(data_attrs[attribute])
             for driver in list(team_info[team].keys()):
                 teams[team][driver] = data_attrs
         self.main_data_dict[f"2024"] = teams

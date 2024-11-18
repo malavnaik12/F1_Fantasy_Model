@@ -5,9 +5,72 @@
       "Free Practice 1": [],
       "Free Practice 2": [],
       "Free Practice 3": [],
-      "Qualifying": [],
-      "Race": [],
-      "prices": {},
+      "Qualifying": [
+        "Verstappen",
+        "Leclerc",
+        "Russell",
+        "Sainz",
+        "Perez",
+        "Alonso",
+        "Norris",
+        "Piastri",
+        "Hamilton",
+        "Hulkenberg",
+        "Tsunoda",
+        "Stroll",
+        "Albon",
+        "Ricciardo",
+        "Magnussen",
+        "Bottas",
+        "Zhou",
+        "Sargeant",
+        "Ocon",
+        "Gasly"
+      ],
+      "Race": [
+        "Verstappen",
+        "Perez",
+        "Sainz",
+        "Leclerc",
+        "Russell",
+        "Norris",
+        "Hamilton",
+        "Piastri",
+        "Alonso",
+        "Stroll",
+        "Zhou",
+        "Magnussen",
+        "Ricciardo",
+        "Tsunoda",
+        "Albon",
+        "Hulkenberg",
+        "Ocon",
+        "Gasly",
+        "Bottas",
+        "Sargeant"
+      ],
+      "prices": {
+        "Verstappen": 1,
+        "Leclerc": 11,
+        "Russell": 2,
+        "Sainz": 12,
+        "Perez": 3,
+        "Alonso": 13,
+        "Norris": 4,
+        "Piastri": 14,
+        "Hamilton": 5,
+        "Hulkenberg": 15,
+        "Tsunoda": 6,
+        "Stroll": 16,
+        "Albon": 7,
+        "Ricciardo": 17,
+        "Magnussen": 8,
+        "Bottas": 18,
+        "Zhou": 9,
+        "Sargeant": 19,
+        "Ocon": 10,
+        "Gasly": 20
+      },
       "Constructor": {}
     },
     "Saudi": {
@@ -335,32 +398,7 @@
         "Hamilton": 1,
         "Zhou": 1
       },
-      "Constructor": {
-        "Race": {
-          "Ferrari": 1.5,
-          "Mclaren": 4.5,
-          "Redbull": 5.0,
-          "Aston-Martin": 7.5,
-          "Haas": 9.5,
-          "RB": 11.5,
-          "Mercedes": 13.0,
-          "Williams": 13.0,
-          "Alpine": 15.0,
-          "Sauber": 18.0
-        },
-        "Qualifying": {
-          "Mclaren": 3.0,
-          "Ferrari": 3.5,
-          "Redbull": 6.0,
-          "Aston-Martin": 7.0,
-          "Alpine": 10.0,
-          "Haas": 10.5,
-          "Mercedes": 12.5,
-          "RB": 13.0,
-          "Williams": 16.5,
-          "Sauber": 19.0
-        }
-      }
+      "Constructor": {}
     },
     "Mexico": {
       "race_weekend_type": "Normal",
@@ -454,20 +492,7 @@
         "Albon": 2,
         "Tsunoda": 1
       },
-      "Constructor": {
-        "prices": {
-          "Redbull": 1,
-          "RB": 1,
-          "Ferrari": 2,
-          "Aston-Martin": 2,
-          "Sauber": 2,
-          "Williams": 2,
-          "Mercedes": 3,
-          "Alpine": 3,
-          "Haas": 3,
-          "Mclaren": 12
-        }
-      }
+      "Constructor": {}
     },
     "Brazil": {
       "race_weekend_type": "Sprint",

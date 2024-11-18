@@ -20,7 +20,7 @@ class PreprocessGA:
         - db_data (dict): The main source of the drivers and constructors information
         - The inputs from the inputs.yaml (float or int) 
         """
-        with open("./src/input_files/inputs.yaml", "r") as file:
+        with open("./input_files/inputs.yaml", "r") as file:
             inputs = yaml.safe_load(file)
             self.budget = inputs["weekly_budget"]
             self.max_generations = inputs["max_gens"]
@@ -35,9 +35,8 @@ class PreprocessGA:
         # with open("./input_files/prices.yaml") as prices_file:
         #     prices = yaml.safe_load(prices_file)
         
-        with open("./src/database_files/database.json","r") as db:
+        with open("./database_files/race_results.json","r") as db:
             self.db_data = json.load(db)
-            db.close()
         
         # Initialization of variables used to store team attributes 
         self.best_team_attr = {}
@@ -50,6 +49,8 @@ class PreprocessGA:
         os.makedirs(f"./Plots/{self.ind_folder}/",exist_ok=True)
         os.makedirs("./ga_output_files/",exist_ok=True)
         os.makedirs(f"./ga_output_files/{self.ind_folder}/",exist_ok=True)
+        print(self.db_data)
+        input("@ end of Init")
     
     def get_db_info(self, db_data, constructors = [], drivers = {}):
         """

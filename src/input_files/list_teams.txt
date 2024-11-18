@@ -7,7 +7,7 @@ Mercedes,Hamilton,44
 Mercedes,Russell,63
 Mclaren,Norris,4
 Mclaren,Piastri,81
-Aston-Martin,Alonzo,14
+Aston-Martin,Alonso,14
 Aston-Martin,Stroll,18
 Alpine,Gasly,10
 Alpine,Ocon,31
