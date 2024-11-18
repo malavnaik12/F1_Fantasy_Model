@@ -131,15 +131,15 @@ export default {
             apiClient.post('/inputs/inputs_submit/',{
                 year: this.year,
                 raceLoc: this.gp_loc,
-                budget: this.budget,
+                weekly_budget: this.budget,
                 max_gens: this.max_gens,
-                pop_set: this.pop_set,
-                crossover_rate: this.cross_rate,
-                mutation_rate: this.mut_rate,
-                elite_counts: this.elite_count,
+                pop_size: this.pop_set,
+                crossover: this.cross_rate,
+                mutation: this.mut_rate,
+                elitism: this.elite_count,
                 tournament_size: this.tournament_size,
-                max_drivers_num: this.drivers_num,
-                max_constructors_num: this.construtors_num,
+                max_drivers: this.drivers_num,
+                max_constructors: this.construtors_num,
             }).then(response => {
                 console.log(response.data);
             })

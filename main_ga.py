@@ -20,8 +20,9 @@ class PreprocessGA:
         - db_data (dict): The main source of the drivers and constructors information
         - The inputs from the inputs.yaml (float or int) 
         """
-        with open("./input_files/inputs.yaml", "r") as file:
+        with open("./src/input_files/inputs.yaml", "r") as file:
             inputs = yaml.safe_load(file)
+            self.budget = inputs["weekly_budget"]
             self.max_generations = inputs["max_gens"]
             self.population_size = inputs["pop_size"]
             self.tournament_size_prop = inputs["tournament_size_prop"]
@@ -31,11 +32,10 @@ class PreprocessGA:
             self.max_drivers_num = inputs["max_drivers"]
             self.max_constructors_num = inputs["max_constructors"]
             
-        with open("./input_files/prices.yaml") as prices_file:
-            prices = yaml.safe_load(prices_file)
-            self.budget = prices["weekly_budget"]
+        # with open("./input_files/prices.yaml") as prices_file:
+        #     prices = yaml.safe_load(prices_file)
         
-        with open("./database_files/database.json","r") as db:
+        with open("./src/database_files/database.json","r") as db:
             self.db_data = json.load(db)
             db.close()
         

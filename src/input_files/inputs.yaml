@@ -1,9 +1,9 @@
-max_gens: 150
-pop_size: 50
 crossover: 0.8
-mutation: 1
 elitism: 1
-tournament_size_prop: 0.9
-race_week_num: 3
-max_drivers: 5
 max_constructors: 2
+max_drivers: 5
+max_gens: 150
+mutation: 0.5
+pop_size: 50
+tournament_size_prop: 0.8
+weekly_budget: 100.0
