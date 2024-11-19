@@ -1,31 +1,34 @@
-team_data:
-  redbull:
-    verstappen: {}
-    perez: {}
-  ferrari:
-    leclerc: {} 
-    sainz: {}
-  aston_martin:
-    alonzo: {}
-    stroll: {}
-  mclaren:
-    norris: {}
-    piastri: {}
-  alpine:
-    ocon: {}
-    gasly: {}
-  mercedes:
-    hamilton: {}
-    russell: {}
-  sauber:
-    bottas: {}
-    zhou: {}
-  haas:
-    hulkenburg: {}
-    magnussen: {}
-  williams:
-    albon: {}
-    sargenat: {}
-  rb:
-    riccardo: {}
-    tsunoda: {}
+Alpine:
+  Gasly: {}
+  Ocon: {}
+Aston-Martin:
+  Alonso: {}
+  Stroll: {}
+Ferrari:
+  Bearman: {}
+  Leclerc: {}
+  Sainz: {}
+Haas:
+  Bearman: {}
+  Hulkenberg: {}
+  Magnussen: {}
+Mclaren:
+  Norris: {}
+  Piastri: {}
+Mercedes:
+  Hamilton: {}
+  Russell: {}
+RB:
+  Lawson: {}
+  Riccardo: {}
+  Tsunoda: {}
+Redbull:
+  Perez: {}
+  Verstappen: {}
+Sauber:
+  Bottas: {}
+  Zhou: {}
+Williams:
+  Albon: {}
+  Colapinto: {}
+  Sargeant: {}

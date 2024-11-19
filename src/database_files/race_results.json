@@ -71,17 +71,133 @@
         "Ocon": 10,
         "Gasly": 20
       },
-      "Constructor": {}
+      "Constructor": {
+        "prices": {
+          "Redbull": 1,
+          "Ferrari": 2,
+          "Mercedes": 3,
+          "Mclaren": 4,
+          "Aston-Martin": 5,
+          "Alpine": 6,
+          "RB": 7,
+          "Sauber": 8,
+          "Haas": 9,
+          "Williams": 10
+        },
+        "Qualifying": {
+          "Redbull": 3.0,
+          "Ferrari": 3.0,
+          "RB": 5.5,
+          "Mercedes": 6.0,
+          "Mclaren": 7.5,
+          "Aston-Martin": 9.0,
+          "Haas": 12.5,
+          "Williams": 15.5,
+          "Sauber": 16.5,
+          "Alpine": 19.5
+        },
+        "Race": {
+          "Redbull": 1.5,
+          "Ferrari": 3.5,
+          "Mercedes": 6.0,
+          "Mclaren": 7.0,
+          "RB": 7.0,
+          "Aston-Martin": 9.5,
+          "Haas": 14.0,
+          "Sauber": 15.0,
+          "Alpine": 17.5,
+          "Williams": 17.5
+        }
+      }
     },
     "Saudi": {
       "race_weekend_type": "Normal",
       "Free Practice 1": [],
       "Free Practice 2": [],
       "Free Practice 3": [],
-      "Qualifying": [],
-      "Race": [],
+      "Qualifying": [
+        "Verstappen",
+        "Leclerc",
+        "Perez",
+        "Alonso",
+        "Piastri",
+        "Norris",
+        "Russell",
+        "Hamilton",
+        "Tsunoda",
+        "Stroll",
+        "Bearman",
+        "Albon",
+        "Magnussen",
+        "Ricciardo",
+        "Hulkenberg",
+        "Bottas",
+        "Ocon",
+        "Gasly",
+        "Sargeant",
+        "Zhou"
+      ],
+      "Race": [
+        "Verstappen",
+        "Perez",
+        "Leclerc",
+        "Piastri",
+        "Alonso",
+        "Russell",
+        "Bearman",
+        "Norris",
+        "Hamilton",
+        "Hulkenberg",
+        "Albon",
+        "Magnussen",
+        "Ocon",
+        "Sargeant",
+        "Tsunoda",
+        "Ricciardo",
+        "Bottas",
+        "Zhou",
+        "Stroll",
+        "Gasly"
+      ],
       "prices": {},
-      "Constructor": {}
+      "Constructor": {
+        "Qualifying": {
+          "Redbull": 2.0,
+          "RB": 4.5,
+          "Mclaren": 5.5,
+          "Ferrari": 6.5,
+          "Aston-Martin": 7.0,
+          "Mercedes": 7.5,
+          "Williams": 15.5,
+          "Alpine": 17.5,
+          "Sauber": 18.0,
+          "Haas": 19.5
+        },
+        "Race": {
+          "Redbull": 1.5,
+          "Ferrari": 5.0,
+          "Mclaren": 6.0,
+          "Mercedes": 7.5,
+          "RB": 7.5,
+          "Aston-Martin": 12.0,
+          "Williams": 12.5,
+          "Haas": 14.5,
+          "Alpine": 16.5,
+          "Sauber": 17.5
+        },
+        "prices": {
+          "Redbull": 1,
+          "Ferrari": 2,
+          "Sauber": 2,
+          "Mercedes": 3,
+          "Haas": 3,
+          "Mclaren": 4,
+          "Williams": 4,
+          "Aston-Martin": 5,
+          "Alpine": 6,
+          "RB": 12
+        }
+      }
     },
     "Australia": {
       "race_weekend_type": "Normal",

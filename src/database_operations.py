@@ -1,8 +1,8 @@
 import json
 from database_init import InitializeFiles
 import fastf1_connect
-from  weekend_parse import get_gp_info, gp_parse
-import asyncio
+from weekend_parse import get_gp_info, gp_parse
+from team_parse import getTeams
 
 class InsertData:
     def __init__(self):
@@ -51,7 +51,6 @@ class InsertData:
             session = ''.join([item[0] for item in item_dict['session'].split(' ')])
             if session == 'SR':
                 session = 'S'
-            # if len(self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]]) == 0:
             session_info = fastf1_connect.call_from_dp_ops(year,race_indx,session)
         self.data[f"{item_dict['year']}"][item_dict['raceLoc']][item_dict["session"]] = session_info
         self.save_to_db()
@@ -111,13 +110,13 @@ class InsertData:
         return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices']
     
     def get_constructor_prices(self,item_dict):
+        teams = getTeams()
         try:
-            result = self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices']
+            assert len(self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices']) > 0
         except KeyError:
-            result = {}
-        return result
-
-
+            self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices'] = {key: 0 for key in teams}
+        self.save_to_db()
+        return self.data[f"{item_dict['year']}"][item_dict['raceLoc']]['Constructor']['prices']
 
 if __name__ == "__main__":
     initClass = InsertData()

@@ -7,8 +7,8 @@ import os
 class InitializeFiles:
     def __init__(self, year: int) -> None:
         os.makedirs("./database_files",exist_ok=True)
-        InitializeRaceResults()
-        # InitializeMain()
+        # InitializeRaceResults()
+        InitializeMain()
 
 class InitializeRaceResults:
     def __init__(self) -> None:
@@ -68,16 +68,23 @@ class InitializeMain:
                 self.data = json.load(db_file)
         except FileNotFoundError:
             self.init_db()
-    def develop_attr(self,attr):
+
+    def develop_attr(self,attrs,curr_attr):
+        attr = attrs[curr_attr]
         if attr == []:
-            init_attr = [None]*len(self.num_gp)
+            if curr_attr in ['Free Practice 2','Free Practice 3']:
+                init_attr = [None]*self.normal_gp_count
+            elif curr_attr in ['Sprint Qualifying','Sprint Race']:
+                init_attr = [None]*self.sprint_gp_count
+            else:
+                init_attr = [None]*len(self.num_gp)
         else:
             init_attr = attr
         return init_attr
     
     def init_db(self):
         with open("./input_files/data_structure.yaml", "r") as file:
-            inputs = yaml.safe_load(file)
+            team_info = yaml.safe_load(file)
         with open("./input_files/positions_schema.yaml", "r") as pos_schema_file:
             pos_schema = yaml.safe_load(pos_schema_file)
             pos_schema.pop('race_weekend_type')
@@ -85,16 +92,20 @@ class InitializeMain:
             price_schema = yaml.safe_load(price_schema_file)
             pos_schema.update(price_schema)
         data_attrs = pos_schema
-        team_info = inputs["team_data"]
         teams = {key: {} for key in list(team_info.keys())}
         for team in list(teams.keys()):
             for attribute in list(data_attrs.keys()):
                 if attribute == 'Constructor':
-                    teams[team][attribute] = str()
+                        continue
                 else:
-                    teams[team][attribute] = self.develop_attr(data_attrs[attribute])
+                    teams[team][attribute] = self.develop_attr(data_attrs,attribute)
             for driver in list(team_info[team].keys()):
-                teams[team][driver] = data_attrs
+                teams[team][driver] = team_info[team][driver]
+                for attribute in list(data_attrs.keys()):
+                    if attribute == 'Constructor':
+                        continue
+                    else:
+                        teams[team][driver][attribute] = self.develop_attr(data_attrs,attribute)
         self.main_data_dict[f"2024"] = teams
         with open(self.db_filename,"w") as db_file:
             json.dump(self.main_data_dict, db_file, indent=2)

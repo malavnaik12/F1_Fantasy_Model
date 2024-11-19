@@ -45,7 +45,6 @@ async def get_session_info(item: Item):
     try:
         response = {}
         response['driver_positions'] = db_ops.get_session(inputs)
-        # constructors_list = db_ops.get_session_constructors(inputs,response['driver_positions'])
         driver_prices_dict = db_ops.get_driver_prices(inputs)
         team_prices = db_ops.get_constructor_prices(inputs)
         response['constructor_order'] = list(team_prices.keys())
