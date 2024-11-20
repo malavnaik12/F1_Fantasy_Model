@@ -59,9 +59,9 @@ class InitializeMain:
         self.db_filename = "./database_files/database_main.json"
         self.main_data_dict = {}
         self.num_gp = gp_parse(get_gp_info())
-        self.gp_type = gp_type_parse(get_gp_info())
-        self.sprint_gp_count = self.gp_type.count('Sprint')
-        self.normal_gp_count = self.gp_type.count('Normal')
+        # self.gp_type = gp_type_parse(get_gp_info())
+        # self.sprint_gp_count = self.gp_type.count('Sprint')
+        # self.normal_gp_count = self.gp_type.count('Normal')
         try:
             # os.path.isfile("./database_files/database.json")
             with open(self.db_filename,"r") as db_file:
@@ -72,12 +72,12 @@ class InitializeMain:
     def develop_attr(self,attrs,curr_attr):
         attr = attrs[curr_attr]
         if attr == []:
-            if curr_attr in ['Free Practice 2','Free Practice 3']:
-                init_attr = [None]*self.normal_gp_count
-            elif curr_attr in ['Sprint Qualifying','Sprint Race']:
-                init_attr = [None]*self.sprint_gp_count
-            else:
-                init_attr = [None]*len(self.num_gp)
+            # if curr_attr in ['Free Practice 2','Free Practice 3']:
+            #     init_attr = [None]*self.normal_gp_count
+            # elif curr_attr in ['Sprint Qualifying','Sprint Race']:
+            #     init_attr = [None]*self.sprint_gp_count
+            # else:
+            init_attr = [None]*len(self.num_gp)
         else:
             init_attr = attr
         return init_attr

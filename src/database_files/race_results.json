@@ -514,7 +514,20 @@
         "Hamilton": 1,
         "Zhou": 1
       },
-      "Constructor": {}
+      "Constructor": {
+        "Sprint Race": {
+          "Ferrari": 3.0,
+          "Redbull": 5.0,
+          "Mercedes": 5.5,
+          "Mclaren": 6.5,
+          "Haas": 7.5,
+          "RB": 13.5,
+          "Alpine": 14.5,
+          "Williams": 14.5,
+          "Aston-Martin": 15.5,
+          "Sauber": 19.5
+        }
+      }
     },
     "Mexico": {
       "race_weekend_type": "Normal",

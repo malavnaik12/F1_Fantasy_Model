@@ -35,7 +35,7 @@ class PreprocessGA:
         # with open("./input_files/prices.yaml") as prices_file:
         #     prices = yaml.safe_load(prices_file)
         
-        with open("./database_files/race_results.json","r") as db:
+        with open("./database_files/database_main.json","r") as db:
             self.db_data = json.load(db)
         
         # Initialization of variables used to store team attributes 
@@ -49,8 +49,6 @@ class PreprocessGA:
         os.makedirs(f"./Plots/{self.ind_folder}/",exist_ok=True)
         os.makedirs("./ga_output_files/",exist_ok=True)
         os.makedirs(f"./ga_output_files/{self.ind_folder}/",exist_ok=True)
-        print(self.db_data)
-        input("@ end of Init")
     
     def get_db_info(self, db_data, constructors = [], drivers = {}):
         """
