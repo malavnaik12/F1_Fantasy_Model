@@ -3,7 +3,7 @@ elitism: 1
 max_constructors: 2
 max_drivers: 5
 max_gens: 150
-mutation: 0.5
+mutation: 0.001
 pop_size: 50
 tournament_size_prop: 0.8
 weekly_budget: 100.0

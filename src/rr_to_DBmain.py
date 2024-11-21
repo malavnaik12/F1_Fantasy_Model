@@ -1,11 +1,6 @@
 import json
 from weekend_parse import gp_parse, get_gp_info, gp_type_parse
-from team_parse import full_team_info,getDrivers
-
-# self.num_gp = gp_parse(get_gp_info())
-# self.gp_type = gp_type_parse(get_gp_info())
-# self.sprint_gp_count = self.gp_type.count('Sprint')
-# self.normal_gp_count = self.gp_type.count('Normal')
+from team_parse import getDrivers
 
 class rr_to_DBmain:
     def __init__(self):
