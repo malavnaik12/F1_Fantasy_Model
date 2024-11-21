@@ -6,3 +6,4 @@ local_*.*
 node_modules
 mongo_data/
 local_*/
+.vscode/*
