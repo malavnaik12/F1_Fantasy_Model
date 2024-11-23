@@ -4,7 +4,7 @@
         <div class="left-content">
             <div class="inputs">
                 <label>F1 Season Year: </label>
-                <input type="number" id="season_year" v-model="year">
+                <input type="number" class="text" v-model="year">
             </div>
             <p></p>
             <div class="inputs">
@@ -276,18 +276,16 @@ export default {
     justify-content: center;
 }
 .price_input {
-    width: 50px;           /* Set the width */
-    /* height: 40px;           Set the height */
-    /* padding: 10px;          Add padding */
-    /* font-size: 12px;        Adjust font size */
+    width: 50px;
     border-radius: 5px;
-    /* border: 2px solid #ccc; /* Add border */
-    /* background-color: #f9f9f9;  Background color */
-    /* color: #333;            Text color */ 
 }
 
 .price_input:focus {
-    border-color: #007bff;  /* Change border color on focus */
-    outline: none;          /* Remove default outline */
+    border-color: #007bff; 
+    outline: none;          
+}
+.text {
+    width: 50px;
+    justify-content: right;
 }
 </style>

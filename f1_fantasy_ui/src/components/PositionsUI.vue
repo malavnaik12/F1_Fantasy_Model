@@ -4,7 +4,7 @@
         <div class="left-content">
             <div class="inputs">
                 <label>F1 Season Year: </label>
-                <input type="number" id="season_year" v-model="year">
+                <input type="number" class="text" v-model="year">
             </div>
             <p></p>
             <div class="inputs">
@@ -378,5 +378,9 @@ export default {
 }
 .grid_title {
     justify-content: center;
+}
+.text {
+    width: 50px;
+    justify-content: right;
 }
 </style>
