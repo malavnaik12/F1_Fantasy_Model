@@ -397,10 +397,44 @@
       "Free Practice 1": [],
       "Free Practice 2": [],
       "Free Practice 3": [],
-      "Qualifying": [],
+      "Qualifying": [
+        "Norris",
+        "Piastri",
+        "Russell",
+        "Leclerc",
+        "Sainz",
+        "Hamilton",
+        "Verstappen",
+        "Perez",
+        "Albon",
+        "Hulkenberg",
+        "Alonso",
+        "Ricciardo",
+        "Magnussen",
+        "Gasly",
+        "Ocon",
+        "Tsunoda",
+        "Stroll",
+        "Colapinto",
+        "Bottas",
+        "Zhou"
+      ],
       "Race": [],
       "prices": {},
-      "Constructor": {}
+      "Constructor": {
+        "Qualifying": {
+          "Mclaren": 1.5,
+          "Ferrari": 4.5,
+          "Mercedes": 4.5,
+          "Redbull": 7.5,
+          "RB": 8.0,
+          "Haas": 11.5,
+          "Williams": 13.5,
+          "Aston-Martin": 14.0,
+          "Alpine": 14.5,
+          "Sauber": 19.5
+        }
+      }
     },
     "Azerbaijan": {
       "race_weekend_type": "Normal",

@@ -18,16 +18,14 @@ class rr_to_DBmain:
                 self.dbmain_year[team][attr][race_info] = attr_items[team]
             else:
                 drivers = getDrivers(team)
-                print(race_info, team, drivers)
-                input()
                 for driver in drivers:
-                    if driver == "Piastri":
-                        print("Before: ", self.dbmain_year[team][driver][attr])
+                    # if driver == "Piastri":
+                    #     print("Before: ", self.dbmain_year[team][driver][attr])
+                    # if driver == "Piastri":
+                    #     print("After: ", self.dbmain_year[team][driver][attr])
                     self.dbmain_year[team][driver][attr][race_info] = (
                         attr_items.index(driver) + 1
                     )
-                    if driver == "Piastri":
-                        print("After: ", self.dbmain_year[team][driver][attr])
 
     def populate_prices(self, race_info, attr, attr_items, constructor_flag):
         for team in self.dbmain_year:
