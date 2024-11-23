@@ -91,7 +91,7 @@
         null,
         null,
         null,
-        null
+        12.0
       ],
       "Sprint Race": [
         null,
@@ -114,7 +114,7 @@
         null,
         14.5,
         null,
-        null
+        10.0
       ],
       "Qualifying": [
         19.5,
@@ -133,7 +133,7 @@
         null,
         null,
         null,
-        null,
+        19.5,
         null,
         null,
         null,
@@ -156,15 +156,16 @@
         null,
         null,
         null,
+        13.5,
         null,
         null,
         null,
-        null,
-        null
+        2.5
       ],
       "prices": {
         "Bahrain": 6,
-        "Saudi": 6
+        "Saudi": 6,
+        "Brazil": 21
       },
       "Gasly": {
         "Free Practice 1": [
@@ -280,7 +281,7 @@
           null,
           14,
           null,
-          null
+          7
         ],
         "Qualifying": [
           20,
@@ -299,7 +300,7 @@
           null,
           9,
           null,
-          null,
+          20,
           null,
           7,
           8,
@@ -322,7 +323,7 @@
           null,
           9,
           null,
-          null,
+          12,
           null,
           12,
           10,
@@ -331,7 +332,8 @@
         "prices": {
           "Bahrain": 20,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 1
         }
       },
       "Ocon": {
@@ -448,7 +450,7 @@
           null,
           15,
           null,
-          null
+          13
         ],
         "Qualifying": [
           19,
@@ -467,7 +469,7 @@
           null,
           16,
           null,
-          null,
+          19,
           null,
           13,
           19,
@@ -490,7 +492,7 @@
           null,
           15,
           null,
-          null,
+          15,
           null,
           18,
           13,
@@ -499,7 +501,8 @@
         "prices": {
           "Bahrain": 10,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 1
         }
       }
     },
@@ -594,7 +597,7 @@
         null,
         null,
         null,
-        null
+        17.5
       ],
       "Sprint Race": [
         null,
@@ -617,7 +620,7 @@
         null,
         15.5,
         null,
-        null
+        18.5
       ],
       "Qualifying": [
         9.0,
@@ -636,7 +639,7 @@
         null,
         null,
         null,
-        null,
+        11.0,
         null,
         null,
         null,
@@ -659,15 +662,16 @@
         null,
         null,
         null,
+        12.5,
         null,
         null,
         null,
-        null,
-        null
+        16.5
       ],
       "prices": {
         "Bahrain": 5,
-        "Saudi": 5
+        "Saudi": 5,
+        "Brazil": 24
       },
       "Alonso": {
         "Free Practice 1": [
@@ -783,7 +787,7 @@
           null,
           18,
           null,
-          null
+          18
         ],
         "Qualifying": [
           6,
@@ -802,7 +806,7 @@
           null,
           7,
           null,
-          null,
+          8,
           null,
           8,
           13,
@@ -825,7 +829,7 @@
           null,
           10,
           null,
-          null,
+          6,
           null,
           13,
           18,
@@ -834,7 +838,8 @@
         "prices": {
           "Bahrain": 13,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 25
         }
       },
       "Stroll": {
@@ -951,7 +956,7 @@
           null,
           13,
           null,
-          null
+          19
         ],
         "Qualifying": [
           12,
@@ -970,7 +975,7 @@
           null,
           8,
           null,
-          null,
+          14,
           null,
           14,
           14,
@@ -993,7 +998,7 @@
           null,
           13,
           null,
-          null,
+          19,
           null,
           15,
           11,
@@ -1002,7 +1007,8 @@
         "prices": {
           "Bahrain": 16,
           "US": 1,
-          "Mexico": 2
+          "Mexico": 2,
+          "Brazil": 2
         }
       }
     },
@@ -1097,7 +1103,7 @@
         null,
         null,
         null,
-        null
+        9.0
       ],
       "Sprint Race": [
         null,
@@ -1120,7 +1126,7 @@
         null,
         3.0,
         null,
-        null
+        11.0
       ],
       "Qualifying": [
         3.0,
@@ -1139,7 +1145,7 @@
         null,
         null,
         null,
-        null,
+        7.5,
         null,
         null,
         null,
@@ -1162,15 +1168,16 @@
         null,
         null,
         null,
+        15.0,
         null,
         null,
         null,
-        null,
-        null
+        16.5
       ],
       "prices": {
         "Bahrain": 2,
-        "Saudi": 2
+        "Saudi": 2,
+        "Brazil": 29
       },
       "Bearman": {
         "Free Practice 1": [
@@ -1286,7 +1293,7 @@
           null,
           null,
           null,
-          null
+          14
         ],
         "Qualifying": [
           null,
@@ -1305,7 +1312,7 @@
           null,
           null,
           null,
-          null,
+          11,
           null,
           null,
           null,
@@ -1328,13 +1335,15 @@
           null,
           null,
           null,
-          null,
+          10,
           null,
           null,
           null,
           12
         ],
-        "prices": {}
+        "prices": {
+          "Brazil": 4
+        }
       },
       "Leclerc": {
         "Free Practice 1": [
@@ -1450,7 +1459,7 @@
           null,
           4,
           null,
-          null
+          3
         ],
         "Qualifying": [
           2,
@@ -1469,7 +1478,7 @@
           null,
           6,
           null,
-          null,
+          1,
           null,
           4,
           4,
@@ -1492,7 +1501,7 @@
           null,
           3,
           null,
-          null,
+          2,
           null,
           1,
           3,
@@ -1501,7 +1510,8 @@
         "prices": {
           "Bahrain": 11,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 2
         }
       },
       "Sainz": {
@@ -1618,7 +1628,7 @@
           null,
           2,
           null,
-          null
+          5
         ],
         "Qualifying": [
           4,
@@ -1637,7 +1647,7 @@
           null,
           10,
           null,
-          null,
+          3,
           null,
           3,
           1,
@@ -1660,7 +1670,7 @@
           null,
           5,
           null,
-          null,
+          18,
           null,
           2,
           1,
@@ -1669,7 +1679,8 @@
         "prices": {
           "Bahrain": 12,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 3
         }
       }
     },
@@ -1764,7 +1775,7 @@
         null,
         null,
         null,
-        null
+        11.0
       ],
       "Sprint Race": [
         null,
@@ -1787,7 +1798,7 @@
         null,
         7.5,
         null,
-        null
+        17.0
       ],
       "Qualifying": [
         12.5,
@@ -1806,7 +1817,7 @@
         null,
         null,
         null,
-        null,
+        12.0,
         null,
         null,
         null,
@@ -1829,15 +1840,16 @@
         null,
         null,
         null,
+        10.5,
         null,
         null,
         null,
-        null,
-        null
+        16.0
       ],
       "prices": {
         "Bahrain": 9,
-        "Saudi": 3
+        "Saudi": 3,
+        "Brazil": 8
       },
       "Bearman": {
         "Free Practice 1": [
@@ -2001,7 +2013,9 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Brazil": 4
+        }
       },
       "Hulkenberg": {
         "Free Practice 1": [
@@ -2117,7 +2131,7 @@
           null,
           null,
           null,
-          null
+          20
         ],
         "Qualifying": [
           null,
@@ -2136,7 +2150,7 @@
           null,
           null,
           null,
-          null,
+          13,
           null,
           null,
           null,
@@ -2159,7 +2173,7 @@
           null,
           null,
           null,
-          null,
+          11,
           null,
           null,
           null,
@@ -2168,7 +2182,8 @@
         "prices": {
           "Bahrain": 15,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 2
         }
       },
       "Magnussen": {
@@ -2431,7 +2446,7 @@
         null,
         null,
         null,
-        null
+        1.5
       ],
       "Sprint Race": [
         null,
@@ -2454,7 +2469,7 @@
         null,
         6.5,
         null,
-        null
+        1.5
       ],
       "Qualifying": [
         7.5,
@@ -2473,7 +2488,7 @@
         null,
         null,
         null,
-        null,
+        9.0,
         null,
         null,
         null,
@@ -2496,15 +2511,16 @@
         null,
         null,
         null,
+        2.5,
         null,
         null,
         null,
-        null,
-        null
+        7.0
       ],
       "prices": {
         "Bahrain": 4,
-        "Saudi": 4
+        "Saudi": 4,
+        "Brazil": 27
       },
       "Norris": {
         "Free Practice 1": [
@@ -2671,7 +2687,8 @@
         "prices": {
           "Bahrain": 4,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 3
         }
       },
       "Piastri": {
@@ -2839,7 +2856,8 @@
         "prices": {
           "Bahrain": 14,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 4
         }
       }
     },
@@ -2934,7 +2952,7 @@
         null,
         null,
         null,
-        null
+        8.5
       ],
       "Sprint Race": [
         null,
@@ -2957,7 +2975,7 @@
         null,
         5.5,
         null,
-        null
+        8.5
       ],
       "Qualifying": [
         6.0,
@@ -2976,7 +2994,7 @@
         null,
         null,
         null,
-        null,
+        6.0,
         null,
         null,
         null,
@@ -2999,15 +3017,16 @@
         null,
         null,
         null,
+        6.0,
         null,
         null,
         null,
-        null,
-        null
+        7.0
       ],
       "prices": {
         "Bahrain": 3,
-        "Saudi": 3
+        "Saudi": 3,
+        "Brazil": 28
       },
       "Hamilton": {
         "Free Practice 1": [
@@ -3174,7 +3193,8 @@
         "prices": {
           "Bahrain": 5,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 21
         }
       },
       "Russell": {
@@ -3342,7 +3362,8 @@
         "prices": {
           "Bahrain": 2,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 2
         }
       }
     },
@@ -3437,7 +3458,7 @@
         null,
         null,
         null,
-        null
+        13.0
       ],
       "Sprint Race": [
         null,
@@ -3460,7 +3481,7 @@
         null,
         13.5,
         null,
-        null
+        12.0
       ],
       "Qualifying": [
         5.5,
@@ -3479,7 +3500,7 @@
         null,
         null,
         null,
-        null,
+        6.0,
         null,
         null,
         null,
@@ -3502,15 +3523,16 @@
         null,
         null,
         null,
+        10.0,
         null,
         null,
         null,
-        null,
-        null
+        8.0
       ],
       "prices": {
         "Bahrain": 7,
-        "Saudi": 12
+        "Saudi": 12,
+        "Brazil": 10
       },
       "Lawson": {
         "Free Practice 1": [
@@ -3676,7 +3698,8 @@
         ],
         "prices": {
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 23
         }
       },
       "Riccardo": {
@@ -4008,7 +4031,8 @@
         "prices": {
           "Bahrain": 6,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 3
         }
       }
     },
@@ -4103,7 +4127,7 @@
         null,
         null,
         null,
-        null
+        8.5
       ],
       "Sprint Race": [
         null,
@@ -4126,7 +4150,7 @@
         null,
         5.0,
         null,
-        null
+        6.0
       ],
       "Qualifying": [
         3.0,
@@ -4145,7 +4169,7 @@
         null,
         null,
         null,
-        null,
+        5.0,
         null,
         null,
         null,
@@ -4168,15 +4192,16 @@
         null,
         null,
         null,
+        11.0,
         null,
         null,
         null,
-        null,
-        null
+        6.0
       ],
       "prices": {
         "Bahrain": 1,
-        "Saudi": 1
+        "Saudi": 1,
+        "Brazil": 31
       },
       "Perez": {
         "Free Practice 1": [
@@ -4343,7 +4368,8 @@
         "prices": {
           "Bahrain": 3,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 22
         }
       },
       "Verstappen": {
@@ -4511,7 +4537,8 @@
         "prices": {
           "Bahrain": 1,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 25
         }
       }
     },
@@ -4606,7 +4633,7 @@
         null,
         null,
         null,
-        null
+        17.5
       ],
       "Sprint Race": [
         null,
@@ -4629,7 +4656,7 @@
         null,
         19.5,
         null,
-        null
+        16.5
       ],
       "Qualifying": [
         16.5,
@@ -4648,7 +4675,7 @@
         null,
         null,
         null,
-        null,
+        17.5,
         null,
         null,
         null,
@@ -4671,15 +4698,16 @@
         null,
         null,
         null,
+        15.0,
         null,
         null,
         null,
-        null,
-        null
+        14.0
       ],
       "prices": {
         "Bahrain": 8,
-        "Saudi": 2
+        "Saudi": 2,
+        "Brazil": 9
       },
       "Bottas": {
         "Free Practice 1": [
@@ -4846,7 +4874,8 @@
         "prices": {
           "Bahrain": 18,
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 21
         }
       },
       "Zhou": {
@@ -5014,7 +5043,8 @@
         "prices": {
           "Bahrain": 9,
           "US": 1,
-          "Mexico": 2
+          "Mexico": 2,
+          "Brazil": 3
         }
       }
     },
@@ -5109,7 +5139,7 @@
         null,
         null,
         null,
-        null
+        11.5
       ],
       "Sprint Race": [
         null,
@@ -5132,7 +5162,7 @@
         null,
         14.5,
         null,
-        null
+        11.0
       ],
       "Qualifying": [
         15.5,
@@ -5151,7 +5181,7 @@
         null,
         null,
         null,
-        null,
+        9.5,
         null,
         null,
         null,
@@ -5174,15 +5204,16 @@
         null,
         null,
         null,
+        7.5,
         null,
         null,
         null,
-        null,
-        null
+        17.5
       ],
       "prices": {
         "Bahrain": 10,
-        "Saudi": 4
+        "Saudi": 4,
+        "Brazil": 8
       },
       "Albon": {
         "Free Practice 1": [
@@ -5349,7 +5380,8 @@
         "prices": {
           "Bahrain": 7,
           "US": 1,
-          "Mexico": 2
+          "Mexico": 2,
+          "Brazil": 4
         }
       },
       "Colapinto": {
@@ -5516,7 +5548,8 @@
         ],
         "prices": {
           "US": 1,
-          "Mexico": 1
+          "Mexico": 1,
+          "Brazil": 4
         }
       },
       "Sargeant": {

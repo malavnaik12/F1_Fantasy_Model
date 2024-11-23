@@ -7,7 +7,7 @@ from team_parse import getDrivers, getTeams
 import matplotlib.pyplot as plt
 
 
-class PreprocessGA:
+class MainGA:
     def __init__(self):
         with open("./input_files/positions_schema.yaml", "r") as file:
             self.race_weekend_sessions = list(yaml.safe_load(file))
@@ -35,7 +35,7 @@ class PreprocessGA:
             self.tournament_size_prop = inputs["tournament_size_prop"]
             self.crossover_prob = inputs["crossover"]
             self.mutation_prob = inputs["mutation"]
-            self.elitism_prob = inputs["elitism"]
+            self.elitism = inputs["elitism"]
             self.max_drivers_num = inputs["max_drivers"]
             self.max_constructors_num = inputs["max_constructors"]
 
@@ -77,7 +77,7 @@ class PreprocessGA:
                 drivers[driver] = team
         return constructors, drivers
 
-    def initialize_population(self, pop_list, db_data, raceloc):
+    def initialize_population(self, pop_list, db_data, raceLoc):
         """
         Initialize a population of teams for the genetic algorithm.
 
@@ -98,23 +98,31 @@ class PreprocessGA:
             drivers_selected = []
             constructors_selected = []
             total_cost = 0
-
+            temp = []
             # randomly select 5 unique drivers
             while len(drivers_selected) < self.max_drivers_num:
                 driver = random.choice(list(self.driver_names.keys()))
                 if driver not in drivers_selected:
+                    drivers_selected.append(driver)
                     try:
-                        drivers_selected.append(driver)
-                        # print(driver,list(db_data[self.driver_names[driver]][driver]))
-                        # print(raceloc in list(db_data[self.driver_names[driver]][driver]["prices"].keys()))
-                        # input()
                         total_cost += np.nanmean(
                             db_data[self.driver_names[driver]][driver]["prices"][
-                                raceloc
+                                raceLoc
                             ]
                         )
                     except KeyError:
-                        continue
+                        drivers_selected.pop(drivers_selected.index(driver))
+                #         temp = [driver]
+                # while len(driver) < self.max_drivers_num:
+                #     temp_driver = random.choice(list(self.driver_names.keys()))
+                #     if temp_driver not in temp:
+                #         team["drivers"].append(driver)
+                #         temp.append(driver)
+                #         total_cost += np.nanmean(
+                #             db_data[self.driver_names[driver]][driver]["prices"][
+                #                 raceLoc
+                #             ]
+                #         )
             # randomly select 2 unique constructors
             while len(constructors_selected) < self.max_constructors_num:
                 constructor = random.choice(self.constructor_names)
@@ -122,7 +130,7 @@ class PreprocessGA:
                     try:
                         constructors_selected.append(constructor)
                         total_cost += np.nanmean(
-                            db_data[constructor]["prices"][raceloc]
+                            db_data[constructor]["prices"][raceLoc]
                         )
                     except KeyError:
                         continue
@@ -138,12 +146,27 @@ class PreprocessGA:
 
     def get_avg_attr_drivers(self, db_data, team_items, session, avg_val=0):
         for item in team_items:
+            # print(session, item)
             filtered_item_list = [
                 item
                 for item in db_data[self.driver_names[item]][item][session]
                 if item is not None
             ]
-            avg_val += np.nanmean(filtered_item_list)
+            # print(
+            #     len(
+            #         [
+            #             item
+            #             for item in db_data[self.driver_names[item]][item][session]
+            #             if item is not None
+            #         ]
+            #     )
+            # )
+            result = np.nanmean(filtered_item_list)
+            try:
+                int(result)
+            except ValueError:
+                result = 0
+            avg_val += result
         return avg_val
 
     def get_avg_attr_constructors(self, db_data, team_items, session, avg_val=0):
@@ -170,50 +193,17 @@ class PreprocessGA:
         constructor_score = 0
         for session in self.race_weekend_sessions:
             driver_score += self.get_avg_attr_drivers(db_data, team["drivers"], session)
+            # print(session, driver_score)
             constructor_score = self.get_avg_attr_constructors(
                 db_data, team["constructors"], session
             )
-        # driver_score += self.get_avg_attr_drivers(
-        #     db_data, team["drivers"], "Free Practice 2"
-        # )
-        # driver_score += self.get_avg_attr_drivers(
-        #     db_data, team["drivers"], "Free Practice 3"
-        # )
-        # driver_score += self.get_avg_attr_drivers(
-        #     db_data, team["drivers"], "Sprint Qualifying"
-        # )
-        # driver_score += self.get_avg_attr_drivers(
-        #     db_data, team["drivers"], "Sprint Race"
-        # )
-        # driver_score += self.get_avg_attr_drivers(
-        #     db_data, team["drivers"], "Qualifying"
-        # )
-        # driver_score += self.get_avg_attr_drivers(db_data, team["drivers"], "Race")
-
-        # constructor_score += self.get_avg_attr_constructors(
-        #     db_data, team["constructors"], "Free Practice 2"
-        # )
-        # constructor_score += self.get_avg_attr_constructors(
-        #     db_data, team["constructors"], "Free Practice 3"
-        # )
-        # constructor_score += self.get_avg_attr_constructors(
-        #     db_data, team["constructors"], "Sprint Qualifying"
-        # )
-        # constructor_score += self.get_avg_attr_constructors(
-        #     db_data, team["constructors"], "Sprint Race"
-        # )
-        # constructor_score += self.get_avg_attr_constructors(
-        #     db_data, team["constructors"], "Qualifying"
-        # )
-        # constructor_score += self.get_avg_attr_constructors(
-        #     db_data, team["constructors"], "Race"
-        # )
 
         # Calculate the fitness score using the specified formula
-        fitness_score = (
-            -1 * (driver_score / self.max_drivers_num)
-            + -1 * (constructor_score / self.max_constructors_num)
-        ) * team["total_cost"]
+        driver_part = driver_score / self.max_drivers_num
+        constructor_part = constructor_score / self.max_constructors_num
+        fitness_score = (driver_part + constructor_part) / team["total_cost"]
+        # print(driver_part, constructor_part, team["total_cost"])
+        # input()
         team["fitness_val"] = fitness_score
         return fitness_score
 
@@ -243,7 +233,33 @@ class PreprocessGA:
 
         return best_index  # Return the best individual from the tournament
 
-    def one_point_crossover(self, team1, team2, db_data, raceloc):
+    def get_crossed_team(self, team, db_data, raceLoc):
+        drivers = team[: self.max_drivers_num]
+        constructors = team[self.max_drivers_num :]
+        total_cost = 0
+        for driver in drivers:
+            try:
+                total_cost += np.nanmean(
+                    db_data[self.driver_names[driver]][driver]["prices"][raceLoc]
+                )
+            except KeyError:
+                drivers.pop(drivers.index(driver))
+                temp = [driver]
+                while len(driver) < self.max_drivers_num:
+                    temp_driver = random.choice(list(self.driver_names.keys()))
+                    if temp_driver not in temp:
+                        team["drivers"].append(driver)
+                        temp.append(driver)
+                        total_cost += np.nanmean(
+                            db_data[self.driver_names[driver]][driver]["prices"][
+                                raceLoc
+                            ]
+                        )
+        for team in constructors:
+            total_cost += np.nanmean(db_data[team]["prices"][raceLoc])
+        return total_cost
+
+    def one_point_crossover(self, team1, team2, db_data, raceLoc):
         """
         If invoked, create children teams based on the two parent teams supplied in function input.
         The goal here is to create two children teams that may better tend towards the desired team budget while also yielding better fitness than the parents.
@@ -267,22 +283,8 @@ class PreprocessGA:
         child1 = parent1[:split_index] + parent2[split_index:]
         child2 = parent2[:split_index] + parent1[split_index:]
 
-        # while False:
-        total_cost1 = 0
-        for driver in child1[: self.max_drivers_num]:
-            total_cost1 += np.nanmean(
-                db_data[self.driver_names[driver]][driver]["prices"][raceloc]
-            )
-        for team in child1[self.max_drivers_num :]:
-            total_cost1 += np.nanmean(db_data[team]["prices"][raceloc])
-
-        total_cost2 = 0
-        for driver in child2[: self.max_drivers_num]:
-            total_cost2 += np.nanmean(
-                db_data[self.driver_names[driver]][driver]["price"][raceloc]
-            )
-        for team in child2[self.max_drivers_num :]:
-            total_cost2 += np.nanmean(db_data[team]["price"][raceloc])
+        total_cost1 = self.get_crossed_team(child1, db_data, raceLoc)
+        total_cost2 = self.get_crossed_team(child2, db_data, raceLoc)
 
         if (total_cost1 or total_cost2) > self.budget:
             out_child1 = team1
@@ -315,7 +317,7 @@ class PreprocessGA:
             child = out_child2
         return child
 
-    def mutation(self, team, mut_rate, db_data, raceloc):
+    def mutation(self, team, mut_rate, db_data, raceLoc):
         """
         If invoked, mutate supplied team.
         The goal here is to randomly mutate the drivers or constructors and create a mutated team that has a better fitness value than the supplied team.
@@ -330,15 +332,18 @@ class PreprocessGA:
         """
 
         team_gen = False
-        temp = []
         old_team_fitness = team["fitness_val"]
         while team_gen == False:
             if random.random() < mut_rate:
                 if random.random() < mut_rate:
+                    temp = []
                     popped = team["drivers"].pop(random.randint(0, 4))
                     temp.append(popped)
-                    for driver in team["drivers"]:
-                        temp.append(driver)
+                    # for driver in team["drivers"]:
+                    #     temp.append(driver)
+                    # print(len(team["drivers"]), team["drivers"])
+                    # if len(team["drivers"]) == 4:
+                    #     input()
                     while len(team["drivers"]) < self.max_drivers_num:
                         driver = random.choice(list(self.driver_names.keys()))
                         if driver not in temp:
@@ -355,7 +360,7 @@ class PreprocessGA:
                         [
                             np.nanmean(
                                 db_data[self.driver_names[driver]][driver]["prices"][
-                                    raceloc
+                                    raceLoc
                                 ]
                             )
                             for driver in team["drivers"]
@@ -363,7 +368,7 @@ class PreprocessGA:
                     )
                     total_cost += sum(
                         [
-                            np.nanmean(db_data[team]["prices"][raceloc])
+                            np.nanmean(db_data[team]["prices"][raceLoc])
                             for team in team["constructors"]
                         ]
                     )
@@ -438,28 +443,28 @@ class PreprocessGA:
         The main function carrying out all Genetic Algorithm operations
 
         Args:
-            None
+            item: A dictionary containing Season year and Current Race Week location
 
         Returns:
-            None
+            The best team from the GA computations
         """
         self.initalize(item["year"])
-        best_team_file = open(f"./ga_output_files/best_team_per_gen.txt", "w")
-        final_summary_file = open(f"./ga_output_files/best_team.txt", "w")
+        # best_team_file = open(f"./ga_output_files/best_team_per_gen.txt", "w")
+        # final_summary_file = open(f"./ga_output_files/best_team.txt", "w")
         self.constructor_names, self.driver_names = self.get_db_info()
         best_fitness_val = []
         for generation in range(self.max_generations):
             population = []
-            if random.random() < self.elitism_prob * (
-                generation / self.max_generations
-            ):
+            if self.elitism > 0:
                 if generation > 0:
                     population.append(self.best_team_attr[generation - 1])
                     processing_indx = 1
+                else:
+                    processing_indx = 0
             else:
                 processing_indx = 0
             population = self.initialize_population(
-                population, db_data=self.db_data, raceloc=item["raceloc"]
+                population, db_data=self.db_data, raceLoc=item["raceLoc"]
             )
             before_fitnesses = [
                 self.fitness_function(individual, db_data=self.db_data)
@@ -479,7 +484,7 @@ class PreprocessGA:
                         team1=parent1,
                         team2=parent2,
                         db_data=self.db_data,
-                        raceloc=item["raceloc"],
+                        raceLoc=item["raceLoc"],
                     )
                 else:
                     child = population[i]
@@ -487,7 +492,7 @@ class PreprocessGA:
                     child,
                     self.mutation_prob / (generation + 100),
                     db_data=self.db_data,
-                    raceloc=item["raceloc"],
+                    raceLoc=item["raceLoc"],
                 )
                 processed_population.append(mutated_child)
             after_fitnesses = [
@@ -500,40 +505,40 @@ class PreprocessGA:
             self.max_team_attr[generation] = processed_population[
                 after_fitnesses.index(max(after_fitnesses))
             ]
+            # print(self.max_team_attr[generation])
             self.med_team_attr.append(np.nanmedian(after_fitnesses))
             self.best_team_attr[generation] = processed_population[
                 after_fitnesses.index(min(after_fitnesses))
             ]
             self.curr_gen_info(after_fitnesses, curr_gen=generation)
-            best_team_file.write(
-                f"""
-Generation: {generation+1}\n
-\tDrivers: {self.best_team_attr[generation]['drivers']}\n
-\tConstructors: {self.best_team_attr[generation]['constructors']}\n
-\tTeam Cost: {self.best_team_attr[generation]['total_cost']}\n
-\tFitness: {self.best_team_attr[generation]['fitness_val']}\n
-            """
-            )
+        #             best_team_file.write(
+        #                 f"""
+        # Generation: {generation+1}\n
+        # \tDrivers: {self.best_team_attr[generation]['drivers']}\n
+        # \tConstructors: {self.best_team_attr[generation]['constructors']}\n
+        # \tTeam Cost: {self.best_team_attr[generation]['total_cost']}\n
+        # \tFitness: {self.best_team_attr[generation]['fitness_val']}\n
+        #             """
+        #             )
 
-        best_overall_team_index = best_fitness_val.index(min(best_fitness_val))
-        final_summary_file.write(
-            f"""
-Generation: {best_overall_team_index+1}\n
-\tDrivers: {self.best_team_attr[best_overall_team_index]['drivers']}\n
-\tConstructors: {self.best_team_attr[best_overall_team_index]['constructors']}\n
-\tTeam Cost: {self.best_team_attr[best_overall_team_index]['total_cost']}\n
-\tFitness: {self.best_team_attr[best_overall_team_index]['fitness_val']}\n
-            """
-        )
-        final_summary_file.write(
-            f"""
-Generation: {generation+1}\n
-\tDrivers: {self.best_team_attr[generation]['drivers']}\n
-\tConstructors: {self.best_team_attr[generation]['constructors']}\n
-\tTeam Cost: {self.best_team_attr[generation]['total_cost']}\n
-\tFitness: {self.best_team_attr[generation]['fitness_val']}\n
-            """
-        )
+        #         final_summary_file.write(
+        #             f"""
+        # Generation: {best_overall_team_index+1}\n
+        # \tDrivers: {self.best_team_attr[best_overall_team_index]['drivers']}\n
+        # \tConstructors: {self.best_team_attr[best_overall_team_index]['constructors']}\n
+        # \tTeam Cost: {self.best_team_attr[best_overall_team_index]['total_cost']}\n
+        # \tFitness: {self.best_team_attr[best_overall_team_index]['fitness_val']}\n
+        #             """
+        #         )
+        #         final_summary_file.write(
+        #             f"""
+        # Generation: {generation+1}\n
+        # \tDrivers: {self.best_team_attr[generation]['drivers']}\n
+        # \tConstructors: {self.best_team_attr[generation]['constructors']}\n
+        # \tTeam Cost: {self.best_team_attr[generation]['total_cost']}\n
+        # \tFitness: {self.best_team_attr[generation]['fitness_val']}\n
+        #             """
+        #         )
 
         self.worst_fitness = [
             self.max_team_attr[gen]["fitness_val"] for gen in self.max_team_attr.keys()
@@ -543,10 +548,15 @@ Generation: {generation+1}\n
             for gen in self.best_team_attr.keys()
         ]
         self.plot_fitness()
-        final_summary_file.close()
-        best_team_file.close()
+        # final_summary_file.close()
+        # best_team_file.close()
+        return self.best_team_attr[best_fitness_val.index(min(best_fitness_val))]
 
 
 if __name__ == "__main__":
-    GA = PreprocessGA()
-    GA.genetic_algorithm(item={"year": 2024, "raceloc": "Bahrain"})
+    GA = MainGA()
+    print(GA.genetic_algorithm(item={"year": 2024, "raceLoc": "Brazil"}))
+    # Need to populate info for a recent race, run rr_to_dbmain conversion, and then run ga - Done
+    # Need to check if driver is still a driver
+    #   if so, then get most recent race they participated in and corresponding price
+    #   if not, then bump them from the team and update the team with a new driver

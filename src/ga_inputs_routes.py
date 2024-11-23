@@ -1,7 +1,7 @@
 from fastapi import APIRouter
 from typing import Optional
 from pydantic import BaseModel
-from weekend_parse import get_gp_info, gp_parse, sessions_parse
+from weekend_parse import get_gp_info, gp_parse
 import yaml
 
 router = APIRouter()

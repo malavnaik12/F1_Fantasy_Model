@@ -1,13 +1,3 @@
-<!-- DONE: Enter the Weekly Budget: 100 -->
-<!-- DONE: Enter Maximum number of Generations: 150 -->
-<!-- DONE: Enter Size of the Population Set: 50 -->
-<!-- DONE: Enter Crossover Probability: 0.8 -->
-<!-- DONE: Enter Mutation Rate:  0.9-->
-<!-- DONE: Enter Elitism Rate:  1-->
-<!-- DONE: Enter Tournament Size Proportion: 0.9-->
-<!-- NOT NEEDED: Enter The Number of Current Race Week: -->
-<!-- DONE: Enter The Maximum Number of Drivers Allowed: 5 -->
-<!-- DONE: Enter The Maximum Number of Constructors Allowed: 2 -->
 <template>
     <keep-alive>
         <div class="tab-content-grid">
