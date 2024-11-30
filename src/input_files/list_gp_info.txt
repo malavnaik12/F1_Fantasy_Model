@@ -19,3 +19,5 @@ Singapore,Normal
 US,Sprint
 Mexico,Normal
 Brazil,Sprint
+Las Vegas,Normal
+Qatar,Sprint
