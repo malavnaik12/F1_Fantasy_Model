@@ -1,5 +1,5 @@
 crossover: 0.8
-elitism: 0
+elitism: 1
 max_constructors: 2
 max_drivers: 5
 max_gens: 150
