@@ -112,18 +112,6 @@ class MainGA:
                         )
                     except KeyError:
                         drivers_selected.pop(drivers_selected.index(driver))
-                #         temp = [driver]
-                # while len(driver) < self.max_drivers_num:
-                #     temp_driver = random.choice(list(self.driver_names.keys()))
-                #     if temp_driver not in temp:
-                #         team["drivers"].append(driver)
-                #         temp.append(driver)
-                #         total_cost += np.nanmean(
-                #             db_data[self.driver_names[driver]][driver]["prices"][
-                #                 raceLoc
-                #             ]
-                #         )
-            # randomly select 2 unique constructors
             while len(constructors_selected) < self.max_constructors_num:
                 constructor = random.choice(self.constructor_names)
                 if constructor not in constructors_selected:
@@ -152,15 +140,6 @@ class MainGA:
                 for item in db_data[self.driver_names[item]][item][session]
                 if item is not None
             ]
-            # print(
-            #     len(
-            #         [
-            #             item
-            #             for item in db_data[self.driver_names[item]][item][session]
-            #             if item is not None
-            #         ]
-            #     )
-            # )
             result = np.nanmean(filtered_item_list)
             try:
                 int(result)
@@ -339,11 +318,6 @@ class MainGA:
                     temp = []
                     popped = team["drivers"].pop(random.randint(0, 4))
                     temp.append(popped)
-                    # for driver in team["drivers"]:
-                    #     temp.append(driver)
-                    # print(len(team["drivers"]), team["drivers"])
-                    # if len(team["drivers"]) == 4:
-                    #     input()
                     while len(team["drivers"]) < self.max_drivers_num:
                         driver = random.choice(list(self.driver_names.keys()))
                         if driver not in temp:
@@ -432,10 +406,20 @@ class MainGA:
             label="Best",
         )
         plt.legend()
-        plt.savefig(
-            f"./Plots/fitness_trends_{self.max_generations}g_{self.population_size}p.png"
-        )
+        fig_name = f"fitness_trends_{self.max_generations}g_{self.population_size}p.png"
+        plt.savefig(f"./Plots/{fig_name}")
         plt.close()
+        try:
+            os.rename(
+                f"./Plots/{fig_name}",
+                f"../f1_fantasy_ui/src/assets/ga_results.png",
+            )
+        except FileExistsError:
+            os.remove(f"../f1_fantasy_ui/src/assets/ga_results.png")
+            os.rename(
+                f"./Plots/{fig_name}",
+                f"../f1_fantasy_ui/src/assets/ga_results.png",
+            )
 
     # main genetic algorithm function
     def genetic_algorithm(self, item):
@@ -510,7 +494,7 @@ class MainGA:
             self.best_team_attr[generation] = processed_population[
                 after_fitnesses.index(min(after_fitnesses))
             ]
-            self.curr_gen_info(after_fitnesses, curr_gen=generation)
+            # self.curr_gen_info(after_fitnesses, curr_gen=generation)
         #             best_team_file.write(
         #                 f"""
         # Generation: {generation+1}\n
