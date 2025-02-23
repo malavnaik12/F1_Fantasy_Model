@@ -15,19 +15,20 @@ class rr_to_DBmain:
     def populate_positions(self, race_info, attr, attr_items, constructor_flag):
         for team in self.dbmain_year:
             if constructor_flag:
+                print(team, attr, race_info)
                 self.dbmain_year[team][attr][race_info] = attr_items[team]
             else:
                 drivers = getDrivers(team)
-                print(race_info, team, drivers)
-                input()
+                # print(race_info, team, drivers)
+                # input()
                 for driver in drivers:
-                    if driver == "Piastri":
-                        print("Before: ", self.dbmain_year[team][driver][attr])
+                    # if driver == "Piastri":
+                    # print("Before: ", self.dbmain_year[team][driver][attr])
                     self.dbmain_year[team][driver][attr][race_info] = (
                         attr_items.index(driver) + 1
                     )
-                    if driver == "Piastri":
-                        print("After: ", self.dbmain_year[team][driver][attr])
+                    # if driver == "Piastri":
+                    # print("After: ", self.dbmain_year[team][driver][attr])
 
     def populate_prices(self, race_info, attr, attr_items, constructor_flag):
         for team in self.dbmain_year:
@@ -74,7 +75,7 @@ class rr_to_DBmain:
                     )
                 else:
                     try:  # Need  better way to handle this try-except, it's causing issues with populating database_main.json
-                        print(get_race_num, race_data[race_attr])
+                        # print(get_race_num, race_data[race_attr])
                         assert len(race_data[race_attr]) > 0
                         self.populate_positions(
                             get_race_num, race_attr, race_data[race_attr], False

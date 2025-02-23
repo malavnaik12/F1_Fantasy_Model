@@ -195,21 +195,21 @@ export default {
     justify-content: right;
 }
 .spinner-container {
-    position: fixed;
+  /* position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 150px; /* Diameter of the circular path */
+  width: 150px; 
   height: 150px;
-  border: 10px dashed black; /* Optional: To visualize the circle */
-  border-radius: 50%; /* Makes it a perfect circle */
+  border: 20px solid black; 
+  border-radius: 50%;  */
 }
 
 .car-wrapper {
-    position: absolute;
-  top: 0; /* Start at the top of the circle */
+  position: fixed;
+  top: 50%; /* Start at the top of the circle */
   left: 50%; /* Center horizontally */
-  transform: translate(-70%, 0); /* Align horizontally */
+  transform: translate(-0%, 0); /* Align horizontally */
   transform-origin: center 100px; /* Pivot at the center of the circle */
   animation: spin 3s linear infinite;
 }

@@ -61,6 +61,7 @@ def get_session_info(item: Item):
     response = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
+    db_ops.__init__(inputs["year"])
     try:
         response["drivers"] = db_ops.get_session(inputs)
         response["constructors"] = db_ops.get_session_constructors(
@@ -83,7 +84,7 @@ def send_info_to_DBs(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
-    print(inputs)
+    # print(inputs)
     response = db_ops.get_session(inputs)
     # db_ops.init_race_weekend(race_loc=inputs['raceLoc'])
     # db_ops.post_race_positions(item_dict=inputs)
