@@ -229,6 +229,83 @@
       "Race": [],
       "Constructor": {},
       "prices": {}
+    },
+    "Abu Dhabi": {
+      "race_weekend_type": "Normal",
+      "Free Practice 1": [],
+      "Free Practice 2": [],
+      "Free Practice 3": [],
+      "Qualifying": [
+        "Norris",
+        "Piastri",
+        "Sainz",
+        "Hulkenberg",
+        "Verstappen",
+        "Gasly",
+        "Russell",
+        "Alonso",
+        "Bottas",
+        "Perez",
+        "Tsunoda",
+        "Lawson",
+        "Stroll",
+        "Leclerc",
+        "Magnussen",
+        "Albon",
+        "Zhou",
+        "Hamilton",
+        "Colapinto",
+        "Doohan"
+      ],
+      "Race": [
+        "Norris",
+        "Sainz",
+        "Leclerc",
+        "Hamilton",
+        "Russell",
+        "Verstappen",
+        "Gasly",
+        "Hulkenberg",
+        "Alonso",
+        "Piastri",
+        "Albon",
+        "Tsunoda",
+        "Zhou",
+        "Stroll",
+        "Doohan",
+        "Magnussen",
+        "Lawson",
+        "Bottas",
+        "Colapinto",
+        "Perez"
+      ],
+      "Constructor": {
+        "Race": {
+          "Ferrari": 2.5,
+          "Alpine": 3.5,
+          "Mercedes": 4.5,
+          "Mclaren": 5.5,
+          "Aston-Martin": 11.5,
+          "Haas": 12.0,
+          "Redbull": 13.0,
+          "RB": 14.5,
+          "Williams": 15.0,
+          "Sauber": 15.5
+        },
+        "Qualifying": {
+          "Mclaren": 1.5,
+          "Alpine": 3.0,
+          "Redbull": 7.5,
+          "Ferrari": 8.5,
+          "Haas": 9.5,
+          "Aston-Martin": 10.5,
+          "RB": 11.5,
+          "Mercedes": 12.5,
+          "Sauber": 13.0,
+          "Williams": 17.5
+        }
+      },
+      "prices": {}
     }
   }
 }
