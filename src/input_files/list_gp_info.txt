@@ -1,8 +1,8 @@
+Australia,Normal
+China,Sprint
+Japan,Normal
 Bahrain,Normal
 Saudi,Normal
-Australia,Normal
-Japan,Normal
-China,Sprint
 Miami,Sprint
 Imola,Normal
 Monaco,Normal
@@ -10,8 +10,8 @@ Spain,Normal
 Canada,Normal
 Austria,Sprint
 Silverstone,Normal
-Hungary,Normal
 Belgium,Normal
+Hungary,Normal
 Netherlands,Normal
 Italy,Normal
 Azerbaijan,Normal
@@ -19,3 +19,6 @@ Singapore,Normal
 US,Sprint
 Mexico,Normal
 Brazil,Sprint
+Las Vegas,Normal
+Qatar,Sprint
+Abu Dhabi,Normal

@@ -49,6 +49,7 @@ async def get_session_info(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
+    db_ops.__init__(inputs["year"])
     try:
         response = {}
         response["driver_positions"] = db_ops.get_session(inputs)

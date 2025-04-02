@@ -61,6 +61,7 @@ def get_session_info(item: Item):
     response = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
+    db_ops.__init__(inputs["year"])
     try:
         response["drivers"] = db_ops.get_session(inputs)
         response["constructors"] = db_ops.get_session_constructors(
@@ -70,11 +71,6 @@ def get_session_info(item: Item):
         response = False
         print("No data found:", response)
     rr_to_DBmain().main(item=inputs)
-    # print("Here",response)
-    # input()
-    # except KeyError:
-    #     db_ops.init_race_weekend(race_loc=inputs['raceLoc'])
-    # db_ops.get_session(inputs)
     return {"status": "success", "entity": response}
 
 
@@ -83,9 +79,7 @@ def send_info_to_DBs(item: Item):
     inputs = {}
     for entity in list(item):
         inputs[entity[0]] = entity[1]
-    print(inputs)
+    # print(inputs)
     response = db_ops.get_session(inputs)
-    # db_ops.init_race_weekend(race_loc=inputs['raceLoc'])
-    # db_ops.post_race_positions(item_dict=inputs)
     return {"status": "success", "entity": response}
     # 3) Also add some timed effect that slowly changes positions of driver positions if the inputs change.  4) Update readme how to merge to prod branch and push to prod as well."}
