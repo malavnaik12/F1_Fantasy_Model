@@ -433,7 +433,6 @@ class MainGA:
             The best team from the GA computations
         """
         self.initalize(item["year"])
-        # best_team_file = open(f"./ga_output_files/best_team_per_gen.txt", "w")
         # final_summary_file = open(f"./ga_output_files/best_team.txt", "w")
         self.constructor_names, self.driver_names = self.get_db_info()
         best_fitness_val = []
@@ -495,34 +494,6 @@ class MainGA:
                 after_fitnesses.index(min(after_fitnesses))
             ]
             # self.curr_gen_info(after_fitnesses, curr_gen=generation)
-        #             best_team_file.write(
-        #                 f"""
-        # Generation: {generation+1}\n
-        # \tDrivers: {self.best_team_attr[generation]['drivers']}\n
-        # \tConstructors: {self.best_team_attr[generation]['constructors']}\n
-        # \tTeam Cost: {self.best_team_attr[generation]['total_cost']}\n
-        # \tFitness: {self.best_team_attr[generation]['fitness_val']}\n
-        #             """
-        #             )
-
-        #         final_summary_file.write(
-        #             f"""
-        # Generation: {best_overall_team_index+1}\n
-        # \tDrivers: {self.best_team_attr[best_overall_team_index]['drivers']}\n
-        # \tConstructors: {self.best_team_attr[best_overall_team_index]['constructors']}\n
-        # \tTeam Cost: {self.best_team_attr[best_overall_team_index]['total_cost']}\n
-        # \tFitness: {self.best_team_attr[best_overall_team_index]['fitness_val']}\n
-        #             """
-        #         )
-        #         final_summary_file.write(
-        #             f"""
-        # Generation: {generation+1}\n
-        # \tDrivers: {self.best_team_attr[generation]['drivers']}\n
-        # \tConstructors: {self.best_team_attr[generation]['constructors']}\n
-        # \tTeam Cost: {self.best_team_attr[generation]['total_cost']}\n
-        # \tFitness: {self.best_team_attr[generation]['fitness_val']}\n
-        #             """
-        #         )
 
         self.worst_fitness = [
             self.max_team_attr[gen]["fitness_val"] for gen in self.max_team_attr.keys()
@@ -533,7 +504,14 @@ class MainGA:
         ]
         self.plot_fitness()
         # final_summary_file.close()
-        # best_team_file.close()
+        best_team_file = open(f"./ga_output_files/best_team_per_gen.txt", "w+")
+        out_string = f"Generation: {best_fitness_val.index(min(best_fitness_val))+1}\n"
+        out_string += f"\tDrivers: {self.best_team_attr[best_fitness_val.index(min(best_fitness_val))]['drivers']}\n"
+        out_string += f"\tConstructors: {self.best_team_attr[best_fitness_val.index(min(best_fitness_val))]['constructors']}\n"
+        out_string += f"\tTeam Cost: {self.best_team_attr[best_fitness_val.index(min(best_fitness_val))]['total_cost']}\n"
+        out_string += f"\tFitness: {self.best_team_attr[best_fitness_val.index(min(best_fitness_val))]['fitness_val']}\n"
+        best_team_file.write(out_string)
+        best_team_file.close()
         return self.best_team_attr[best_fitness_val.index(min(best_fitness_val))]
 
 

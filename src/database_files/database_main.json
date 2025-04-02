@@ -81,7 +81,7 @@
       ],
       "Sprint Qualifying": [
         null,
-        16.5,
+        null,
         null,
         null,
         null,
@@ -107,7 +107,7 @@
       ],
       "Sprint Race": [
         null,
-        16.5,
+        null,
         null,
         null,
         null,
@@ -132,11 +132,11 @@
         null
       ],
       "Qualifying": [
-        11.5,
-        17.0,
-        0,
         null,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -160,9 +160,9 @@
       "Race": [
         11.5,
         17.0,
-        0,
         null,
-        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -183,7 +183,10 @@
         null,
         null
       ],
-      "prices": {},
+      "prices": {
+        "Australia": 13,
+        "China": 8.9
+      },
       "Gasly": {
         "Free Practice 1": [
           null,
@@ -265,7 +268,7 @@
         ],
         "Sprint Qualifying": [
           null,
-          17,
+          null,
           null,
           null,
           null,
@@ -291,7 +294,7 @@
         ],
         "Sprint Race": [
           null,
-          17,
+          null,
           null,
           null,
           null,
@@ -316,8 +319,8 @@
           null
         ],
         "Qualifying": [
-          9,
-          16,
+          null,
+          null,
           null,
           null,
           null,
@@ -367,7 +370,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 11,
+          "China": 11.2
+        }
       },
       "Ocon": {
         "Free Practice 1": [
@@ -636,7 +642,7 @@
       ],
       "Sprint Qualifying": [
         null,
-        10.5,
+        null,
         null,
         null,
         null,
@@ -662,7 +668,7 @@
       ],
       "Sprint Race": [
         null,
-        10.5,
+        null,
         null,
         null,
         null,
@@ -687,11 +693,11 @@
         null
       ],
       "Qualifying": [
-        12.5,
-        13.5,
-        0,
         null,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -715,9 +721,9 @@
       "Race": [
         12.5,
         13.5,
-        0,
         null,
-        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -738,7 +744,10 @@
         null,
         null
       ],
-      "prices": {},
+      "prices": {
+        "Australia": 15,
+        "China": 7.9
+      },
       "Alonso": {
         "Free Practice 1": [
           null,
@@ -922,7 +931,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 13,
+          "China": 8.2
+        }
       },
       "Stroll": {
         "Free Practice 1": [
@@ -1107,7 +1119,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 7.5,
+          "China": 8.7
+        }
       }
     },
     "Ferrari": {
@@ -1191,7 +1206,7 @@
       ],
       "Sprint Qualifying": [
         null,
-        2.5,
+        null,
         null,
         null,
         null,
@@ -1217,7 +1232,7 @@
       ],
       "Sprint Race": [
         null,
-        2.5,
+        null,
         null,
         null,
         null,
@@ -1242,11 +1257,11 @@
         null
       ],
       "Qualifying": [
-        7.5,
-        5.5,
-        0,
         null,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -1270,9 +1285,9 @@
       "Race": [
         7.5,
         5.5,
-        0,
         null,
-        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -1293,7 +1308,10 @@
         null,
         null
       ],
-      "prices": {},
+      "prices": {
+        "Australia": 24,
+        "China": 27.4
+      },
       "Bearman": {
         "Free Practice 1": [
           null,
@@ -1662,7 +1680,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 20,
+          "China": 25.6
+        }
       },
       "Sainz": {
         "Free Practice 1": [
@@ -1931,7 +1952,7 @@
       ],
       "Sprint Qualifying": [
         null,
-        15.0,
+        null,
         null,
         null,
         null,
@@ -1957,7 +1978,7 @@
       ],
       "Sprint Race": [
         null,
-        15.0,
+        null,
         null,
         null,
         null,
@@ -1982,11 +2003,11 @@
         null
       ],
       "Qualifying": [
-        19.5,
-        14.0,
-        0,
         null,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -2010,9 +2031,9 @@
       "Race": [
         19.5,
         14.0,
-        0,
         null,
-        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -2033,7 +2054,10 @@
         null,
         null
       ],
-      "prices": {},
+      "prices": {
+        "Australia": 5,
+        "China": 7.6
+      },
       "Bearman": {
         "Free Practice 1": [
           null,
@@ -2217,7 +2241,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 5.5,
+          "China": 7.3
+        }
       },
       "Hulkenberg": {
         "Free Practice 1": [
@@ -2671,7 +2698,7 @@
       ],
       "Sprint Qualifying": [
         null,
-        4.5,
+        null,
         null,
         null,
         null,
@@ -2697,7 +2724,7 @@
       ],
       "Sprint Race": [
         null,
-        4.5,
+        null,
         null,
         null,
         null,
@@ -2722,11 +2749,11 @@
         null
       ],
       "Qualifying": [
-        1.5,
-        2.0,
-        0,
         null,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -2750,9 +2777,9 @@
       "Race": [
         1.5,
         2.0,
-        0,
         null,
-        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -2773,7 +2800,10 @@
         null,
         null
       ],
-      "prices": {},
+      "prices": {
+        "Australia": 30,
+        "China": 30.3
+      },
       "Norris": {
         "Free Practice 1": [
           null,
@@ -2957,7 +2987,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 29,
+          "China": 29.3
+        }
       },
       "Piastri": {
         "Free Practice 1": [
@@ -3142,7 +3175,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 22,
+          "China": 22.7
+        }
       }
     },
     "Mercedes": {
@@ -3226,7 +3262,7 @@
       ],
       "Sprint Qualifying": [
         null,
-        6.0,
+        null,
         null,
         null,
         null,
@@ -3252,7 +3288,7 @@
       ],
       "Sprint Race": [
         null,
-        6.0,
+        null,
         null,
         null,
         null,
@@ -3277,11 +3313,11 @@
         null
       ],
       "Qualifying": [
-        10.0,
-        5.0,
-        0,
         null,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -3305,9 +3341,9 @@
       "Race": [
         10.0,
         5.0,
-        0,
         null,
-        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -3328,7 +3364,10 @@
         null,
         null
       ],
-      "prices": {},
+      "prices": {
+        "Australia": 26,
+        "China": 23.3
+      },
       "Hamilton": {
         "Free Practice 1": [
           null,
@@ -3697,7 +3736,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 23,
+          "China": 21.1
+        }
       }
     },
     "RB": {
@@ -3781,7 +3823,7 @@
       ],
       "Sprint Qualifying": [
         null,
-        21.5,
+        null,
         null,
         null,
         null,
@@ -3807,7 +3849,7 @@
       ],
       "Sprint Race": [
         null,
-        21.0,
+        null,
         null,
         null,
         null,
@@ -3832,11 +3874,11 @@
         null
       ],
       "Qualifying": [
-        17.0,
-        18.0,
-        0,
         null,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -3860,9 +3902,9 @@
       "Race": [
         17.0,
         18.0,
-        0,
         null,
-        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -3883,7 +3925,10 @@
         null,
         null
       ],
-      "prices": {},
+      "prices": {
+        "Australia": 10,
+        "China": 7.4
+      },
       "Lawson": {
         "Free Practice 1": [
           null,
@@ -4067,7 +4112,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 14,
+          "China": 8.4
+        }
       },
       "Riccardo": {
         "Free Practice 1": [
@@ -4437,7 +4485,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 10,
+          "China": 16.8
+        }
       }
     },
     "Redbull": {
@@ -4521,7 +4572,7 @@
       ],
       "Sprint Qualifying": [
         null,
-        15.0,
+        null,
         null,
         null,
         null,
@@ -4547,7 +4598,7 @@
       ],
       "Sprint Race": [
         null,
-        14.5,
+        null,
         null,
         null,
         null,
@@ -4572,11 +4623,11 @@
         null
       ],
       "Qualifying": [
-        13.0,
-        16.5,
-        0,
         null,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -4600,9 +4651,9 @@
       "Race": [
         13.0,
         16.5,
-        0,
         null,
-        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -4623,7 +4674,10 @@
         null,
         null
       ],
-      "prices": {},
+      "prices": {
+        "Australia": 22,
+        "China": 25.1
+      },
       "Perez": {
         "Free Practice 1": [
           null,
@@ -4992,7 +5046,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 25,
+          "China": 28.7
+        }
       }
     },
     "Sauber": {
@@ -5076,7 +5133,7 @@
       ],
       "Sprint Qualifying": [
         null,
-        16.5,
+        null,
         null,
         null,
         null,
@@ -5102,7 +5159,7 @@
       ],
       "Sprint Race": [
         null,
-        17.0,
+        null,
         null,
         null,
         null,
@@ -5127,11 +5184,11 @@
         null
       ],
       "Qualifying": [
-        16.0,
-        15.5,
-        0,
         null,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -5155,9 +5212,9 @@
       "Race": [
         16.0,
         15.5,
-        0,
         null,
-        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -5178,7 +5235,10 @@
         null,
         null
       ],
-      "prices": {},
+      "prices": {
+        "Australia": 6,
+        "China": 5.6
+      },
       "Bottas": {
         "Free Practice 1": [
           null,
@@ -5631,7 +5691,7 @@
       ],
       "Sprint Qualifying": [
         null,
-        11.0,
+        null,
         null,
         null,
         null,
@@ -5657,7 +5717,7 @@
       ],
       "Sprint Race": [
         null,
-        11.0,
+        null,
         null,
         null,
         null,
@@ -5682,11 +5742,11 @@
         null
       ],
       "Qualifying": [
-        8.0,
-        12.5,
-        0,
         null,
-        0,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -5710,9 +5770,9 @@
       "Race": [
         8.0,
         12.5,
-        0,
         null,
-        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -5733,7 +5793,10 @@
         null,
         null
       ],
-      "prices": {},
+      "prices": {
+        "Australia": 8,
+        "China": 12.9
+      },
       "Albon": {
         "Free Practice 1": [
           null,
@@ -5917,7 +5980,10 @@
           null,
           null
         ],
-        "prices": {}
+        "prices": {
+          "Australia": 13,
+          "China": 12.6
+        }
       },
       "Colapinto": {
         "Free Practice 1": [

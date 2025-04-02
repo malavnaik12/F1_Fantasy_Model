@@ -1,0 +1,5 @@
+Generation: 58
+	Drivers: ['Alonso', 'Stroll', 'Bearman', 'Alonso', 'Lawson']
+	Constructors: ['Mclaren', 'Ferrari']
+	Team Cost: 98.5
+	Fitness: 0.04187817258883249
