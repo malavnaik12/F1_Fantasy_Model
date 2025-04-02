@@ -1,21 +1,33 @@
-import json
-from weekend_parse import gp_parse, get_gp_info, gp_type_parse
-from team_parse import getDrivers
 import sys
+import json
+from team_parse import getDrivers
+from weekend_parse import gp_parse, get_gp_info, gp_type_parse
 
 
 class rr_to_DBmain:
     def __init__(self):
-        with open("./database_files/race_results.json", "r+") as rr_f:
-            self.rr = json.load(rr_f)
-        with open("./database_files/database_main.json", "r+") as db_main_f:
-            self.db_main = json.load(db_main_f)
         self.gp_locs = gp_parse(get_gp_info())
+        # with open("./database_files/race_results.json", "r+") as rr_f:
+        #     self.rr = json.load(rr_f)
+        # with open("./database_files/database_main.json", "r+") as db_main_f:
+        #     self.db_main = json.load(db_main_f)
+
+    def _load_json(self, fpath=""):
+        with open(fpath, "r+") as db_main_f:
+            return json.load(db_main_f)
 
     def populate_positions(self, race_info, attr, attr_items, constructor_flag):
         for team in self.dbmain_year:
             if constructor_flag:
+                # try:
+                #     print(len(self.dbmain_year[team][attr]) + 1, race_info)
+                #     input()
+                #     assert len(self.dbmain_year[team][attr]) + 1 == race_info
+                #     # self.dbmain_year[team][attr][race_info] = attr_items[team]
+                # except AssertionError:
+                #     self.dbmain_year[team][attr].append(None)
                 self.dbmain_year[team][attr][race_info] = attr_items[team]
+                # input()
             else:
                 drivers = getDrivers(team)
                 # print(race_info, team, drivers)
@@ -45,10 +57,18 @@ class rr_to_DBmain:
 
     def main(self, item):
         year = item["year"]
-        self.dbmain_year = self.db_main[str(year)]
+        rr = self._load_json(fpath="./database_files/race_results.json")
+        try:
+            db_main = self._load_json(fpath="./database_files/database_main.json")
+        except FileNotFoundError:
+            db_main = {}
+        # print("in rr_to_DBmain:", list(db_main.keys()))
+        # input()
+        self.dbmain_year = db_main[str(year)]
+        # self.dbmain_year = {}
         for race_loc in self.gp_locs:
             get_race_num = self.gp_locs.index(race_loc)
-            race_data = self.rr[str(year)][race_loc]
+            race_data = rr[str(year)][race_loc]
             for race_attr in list(race_data.keys()):
                 if race_attr == "race_weekend_type":
                     continue
@@ -81,9 +101,11 @@ class rr_to_DBmain:
                         )
                     except:
                         continue
-            self.db_main[str(year)] = self.dbmain_year
-            with open("./database_files/database_main.json", "w+") as db_file:
-                json.dump(self.db_main, db_file, indent=2)
+            # print(self.dbmain_year)
+            # input("Above line is producing empty dictionaries")
+        db_main[str(year)] = self.dbmain_year
+        with open("./database_files/database_main.json", "w+") as db_file:
+            json.dump(db_main, db_file, indent=2)
 
 
 if __name__ == "__main__":
