@@ -1,7 +1,7 @@
-import json
-from weekend_parse import gp_parse, get_gp_info, gp_type_parse
-from team_parse import getDrivers
 import sys
+import json
+from team_parse import getDrivers
+from weekend_parse import gp_parse, get_gp_info, gp_type_parse
 
 
 class rr_to_DBmain:
@@ -95,11 +95,11 @@ class rr_to_DBmain:
                         )
                     except:
                         continue
-            print(self.dbmain_year)
-            input("Above line is producing empty dictionaries")
-            db_main[str(year)] = self.dbmain_year
-            with open("./database_files/database_main.json", "w+") as db_file:
-                json.dump(db_main, db_file, indent=2)
+            # print(self.dbmain_year)
+            # input("Above line is producing empty dictionaries")
+        db_main[str(year)] = self.dbmain_year
+        with open("./database_files/database_main.json", "w+") as db_file:
+            json.dump(db_main, db_file, indent=2)
 
 
 if __name__ == "__main__":

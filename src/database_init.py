@@ -7,16 +7,13 @@ from weekend_parse import gp_parse, gp_type_parse, get_gp_info
 class InitializeFiles:
     def __init__(self, year: int) -> None:
         os.makedirs("./database_files", exist_ok=True)
-        # print("init_RR")
         InitializeRaceResults(year)
-        # print("init_Main")
         InitializeMain(year)
 
 
 class InitializeRaceResults:
     def __init__(self, year: int) -> None:
         self.db_filename = "./database_files/race_results.json"
-        # self.main_data_dict = {}
         try:
             # os.path.isfile("./database_files/database.json")
             data = self._load_json(fpath=self.db_filename)
@@ -45,13 +42,15 @@ class InitializeRaceResults:
         return _schema
 
     def init_db(self, year):
+
         try:
             data = self._load_json(fpath=self.db_filename)
+            info_dict = data
         except FileNotFoundError:
             data = {}
+            info_dict = {}
             for gp in gp_parse(get_gp_info()):
-                data[gp] = {}
-        info_dict = data
+                info_dict[gp] = {}
         gp_type = gp_type_parse(get_gp_info())
         with open("./input_files/prices_schema.yaml", "r") as price_schema_file:
             price_schema = yaml.safe_load(price_schema_file)
@@ -60,9 +59,7 @@ class InitializeRaceResults:
                 pos_schema = yaml.safe_load(pos_schema_file)
                 pos_schema.update(price_schema)
             info_dict[gp] = self._create_weekend_schema(pos_schema, gp_type[indx])
-        # self.main_data_dict[f"{year}"] = info_dict
         data[f"{year}"] = info_dict
-        # print(list(self.main_data_dict.keys()))
         with open(self.db_filename, "w") as outfile:
             json.dump(data, outfile, indent=2)
 

@@ -8,18 +8,18 @@ from weekend_parse import get_gp_info, gp_parse
 class InsertData:
     def __init__(self, year=None):
         self.manual_sessions = ["Free Practice 1", "Free Practice 2", "Free Practice 3"]
+        self.db_filename = "./database_files/race_results.json"
         if year != None:
             try:
-                self.db_filename = "./database_files/race_results.json"
-                data = self._load_json(fpath=self.db_filename)
-                # print(str(year), list(data.keys()))
-                # print(str(year) not in list(data.keys()))
-                if str(year) not in list(data.keys()):
+                rr = self._load_json(fpath=self.db_filename)
+                db_main = self._load_json(fpath="./database_files/database_main.json")
+                if (str(year) not in list(rr.keys())) or (
+                    str(year) not in list(db_main.keys())
+                ):
                     raise AssertionError()
             except (FileNotFoundError, AssertionError) as e:
-                # print("Here")
                 InitializeFiles(int(year))
-                # input()
+                # input("out")
 
     def _load_json(self, fpath=""):
         with open(fpath, "r") as db_file:
@@ -80,7 +80,6 @@ class InsertData:
                 if key in drivers_results:
                     self.teams[team][key] = drivers_results.index(key) + 1
                     self.teams[team]["avg_pos"] += 0.5 * self.teams[team][key]
-            print(self.teams[team])
             constructor_pos[team] = self.teams[team]["avg_pos"]
         data[f"{item_dict['year']}"][item_dict["raceLoc"]]["Constructor"][
             item_dict["session"]
