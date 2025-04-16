@@ -1,123 +1,78 @@
-# F1 Fantasy Model
-<!-- <a name="readme-top"></a> -->
-<!-- PROJECT LOGO 
-<br />
-<div align="center">
-  <a href="https://github.com/github_username/repo_name">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
-  </a>
-<h3 align="center">project_title</h3>
-  <p align="center">
-    project_description
-    <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
-    <br />
-    <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
-  </p>
-</div>
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
-
-
-<!-- TABLE OF CONTENTS -->
+# F1 Fantasy Team Builder
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <li><a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#how-its-made">How It's Made</a></li>
-      </ul>
-    </li>
-    <li><a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#user-instuctions">User Instructions</a></li>
-      </ul>
-    </li>
+    <li><a href="#about-the-project">About The Project</a></li>
+    <li><a href="#overall-tech-stack">Tech Stack</a></li>
+    <li><a href="#getting-started">App Usage</a></li>
     <li><a href="#genetic-algorithm-details">GA Details</a></li>
-    <li><a href="#future-improvements">Future Improvements</a>
-      <ul>
-        <li><a href="#roadmap">Roadmap</a></li>
-      </ul>
-    </li>
-    <li><a href="#developers-notes">Developer's Notes</a></li>
+    <li><a href="#feature-notes">App Notes</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact-info">Contact</a></li>
   </ol>
 </details>
 
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> --> 
-
 
 ## About the Project
-The following repository deploys a Genetic Algorithm (GA) to develop a F1 Fantasy Team optimized for maximum performance within a given budget amount. The team are developmed using F1 driver and constructors prices, along with the weekly budget constraints, given on the F1 Fanstasy [website](https://fantasy.formula1.com/en/create-team).
+The following repository uses a Genetic Algorithm (GA) to create a F1 Fantasy Team optimized for maximum performance within a given budget. 
 
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+The team are developmed using F1 driver and constructors prices, along with the weekly budget constraints, given on the F1 Fanstasy [website](https://fantasy.formula1.com/en/create-team).
 
-### How It's Made:
+The prices for each driver and constructor are static at the start of the season and dynamically evolve as the season goes on depending on their respective performance. Similarly, a budget of 100 million is set out at the season and the amount grows and contracts as the season progresses depending on performance.
 
-**Tech used:** Python
+### Overall Tech Stack
+The tech stack is as follows:
 
-- To-be-updated
+`[Insert pic here]`
 
-<!--Here's where you can go to town on how you actually built this thing. Write as much as you can here, it's totally fine if it's not too much just make sure you write *something*. If you don't have too much experience on your resume working on the front end that's totally fine. This is where you can really show off your passion and make up for that ten fold.-->
+- Python
+  - All scripts to handle:
+    - FastAPI routes to and from frontend
+    - Processing frontend inputs
+    - Populating frontend with default, queryed, or computed items
+    - Using [FastF1](https://github.com/theOehrly/Fast-F1) to access F1 session results
+    - Files to interface with "database"
 
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+- FastAPI
+  - Handles the routes between the backend and frontend for the UI pages outlined in the Vue section 
 
+- Vue
+  - Frontend pages of interest
+    - Main page: Nothing too exciting, just tells the user to navigate to the Positions tab
+    - Positions: Uses FastF1 to populate the positions of drivers for user-specified race weekend
+    - Prices: User inputs for driver and constructor prices for a given user-specified race weekened
+    - Optimizer Inputs: Parameters used in GA execution to create the optimal team, more details provided in the <a href="#genetic-algorithm-details">GA Details</a> Section
+    - Generate Team: The optimal team generation process is initiated here and the team is displayed
+
+- Render
+  - Used for hosting the repository
+    - [Frontend](https://f1-fantasy-model.onrender.com/): The application UI
+    - [Backend](https://f1-fantasy-model-backend.onrender.com/docs): Here, the FastAPI routes can be visualized and tinkered with
+
+- Note that a database service isn't listed here. I started making this app before I understood what a database was or how a database was used so I implemented a local .json file based "database".
+  - I **am** planning on a SQLite integration for this app but I'm busy working on other side-projects at the moment. :)
 
 ## Getting Started
-### User Instuctions
-- To-be-updated 
-
-UI Usage \
-Automatically get data and run GA - Work in Progress
-
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
+`[Insert pic here]`
+- UI Usage
 
 ## Genetic Algorithm Details
-- To-be-updated
+`[Insert pic here]`
+- Elitism
+- Mutation 
+  - Varying rate
+- Crossover 
+  - Tournament selection for parents
 
-Elitism \
-Mutation - Varying rate \
-Crossover - Tournament selection for parents
+## Feature Notes
+1) Currently, I haven't incorported anything to account for the various perks on the F1 Fantasy Game.
+2) I haven't integrated a database solution with the project. My plan (that is currently on pause) is to deploy a SQLite integration onto AWS so that I can learn AWS but I have gotten to this yet.
 
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
-
-## Future Improvements
-- To-be-updated
-
-Different types of Optimization Algorithms
-Novely Search for GA
-
-See the [open issues](https://github.com/malavnaik12/F1_Fantasy_Model/issues) for a full list of proposed features (and known issues).
-
-### Roadmap
-- To-be-updated
-
-
-
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
-
-## Developer's Notes
-Thank you for visting my GA-powered F1 Fantasy team development repository. My goal with this repository is use different optimization techniques for the unique challenges exhibited in developing the best F1 fantasy team on every race-week basis. 
-
-I am also using this repository as a testbed to work on tuning my coding methods and exploring new ways of incoporating features that may be used in creating fantasy teams, such as recommending Wild Card, Mega Driver or Turbo Driver, and any other features that are available for competitors.
-
-
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
-
-<!-- LICENSE -->
 ## License
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 ## Contact Info
 Malav Naik \
 Email: malavnaik12@gmail.com \
 To learn more about myself and other projects I have contributed to, visit my [website.](https://sites.google.com/view/malavnaik) :)
-
-<!-- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
