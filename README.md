@@ -65,13 +65,15 @@ flowchart TD
   C --> D[Calulate Fitness Score];
   D -- For Ind. in Pop. Set --> E{Perform Crossover?};
   E -- Yes --> F[Select 2 Parent Teams via Tournament Selection];
-  F --> G[Perform Crossover to create New Teams from Parents];
+  F --> G[Perform Crossover to create New Team from Parents];
   E -- No --> H[Keep Original Team];
+  G --> I[Perform Mutation];
   H --> I[Perform Mutation];
   I --> J{New team better than old team?};
   J -- Yes --> K[Keep New Team];
   J -- No --> L[Keep Old Team];
   L --> M[Save the best team and move to next generation]
+  M --> B;
 
   
 ```
