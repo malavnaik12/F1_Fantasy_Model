@@ -72,9 +72,12 @@ flowchart TD
   I --> J{New team better than old team?};
   J -- Yes --> K[Keep New Team];
   J -- No --> L[Keep Old Team];
+  K --> M[Save the best team and move to next generation]
   L --> M[Save the best team and move to next generation]
-  M --> B;
-
+  M --> N{Final Generation?};
+  N -- Yes --> O[Optimal Team Metrics to UI];
+  N -- No --> B;
+  
   
 ```
 - Elitism
