@@ -60,7 +60,19 @@ The tech stack is as follows:
 `[Insert pic here]`
 ```mermaid
 flowchart TD
-  A[GA Inputs from UI] --> B{Hello?};
+  A[GA Inputs from UI] --> B[Pull Driver & Constructor Data from database.json];
+  B -- For each generation --> C[Initialize Population: Teams of 5 Drivers and 2 Constructors];
+  C --> D[Calulate Fitness Score];
+  D -- For Ind. in Pop. Set --> E{Perform Crossover?};
+  E -- Yes --> F[Select 2 Parent Teams via Tournament Selection];
+  F --> G[Perform Crossover to create New Teams from Parents];
+  E -- No --> H[Keep Original Team];
+  H --> I[Perform Mutation];
+  I --> J{New team better than old team?};
+  J -- Yes --> K[Keep New Team];
+  J -- No --> L[Keep Old Team];
+  L --> M[Save the best team and move to next generation]
+
   
 ```
 - Elitism
