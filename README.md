@@ -58,6 +58,11 @@ The tech stack is as follows:
 
 ## Genetic Algorithm Details
 `[Insert pic here]`
+```mermaid
+flowchart TD
+  A[GA Inputs from UI] --> B{Hello?};
+  
+```
 - Elitism
 - Mutation 
   - Varying rate
