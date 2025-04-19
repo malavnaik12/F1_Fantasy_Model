@@ -6,7 +6,7 @@
     <li><a href="#overall-tech-stack">Tech Stack</a></li>
     <li><a href="#getting-started">App Usage</a></li>
     <li><a href="#genetic-algorithm-details">GA Details</a></li>
-    <li><a href="#feature-notes">App Notes</a></li>
+    <li><a href="#notes-for-future-evelopment">App Notes</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact-info">Contact</a></li>
   </ol>
@@ -54,41 +54,49 @@ The tech stack is as follows:
 
 ## Getting Started
 `[Insert pic here]`
+
+The UI above is hosted [here](https://f1-fantasy-model.onrender.com/)
 - UI Usage
 
 ## Genetic Algorithm Details
-`[Insert pic here]`
+![ga_image](readme_images/ga_image.png)
 ```mermaid
 flowchart TD
   A[GA Inputs from UI] --> B[Pull Driver & Constructor Data from database.json];
   B -- For each generation --> C[Initialize Population: Teams of 5 Drivers and 2 Constructors];
   C --> D[Calulate Fitness Score];
-  D -- For Ind. in Pop. Set --> E{Perform Crossover?};
-  E -- Yes --> F[Select 2 Parent Teams via Tournament Selection];
-  F --> G[Perform Crossover to create New Team from Parents];
-  E -- No --> H[Keep Original Team];
-  G --> I[Perform Mutation];
-  H --> I[Perform Mutation];
-  I --> J{New team better than old team?};
-  J -- Yes --> K[Keep New Team];
-  J -- No --> L[Keep Old Team];
-  K --> M[Save the best team and move to next generation]
-  L --> M[Save the best team and move to next generation]
-  M --> N{Final Generation?};
-  N -- Yes --> O[Optimal Team Metrics to UI];
-  N -- No --> B;
-  
-  
+  D --> E[Evolve Population Individuals];
+  E --> F{Final Generation?};
+  F -- Yes --> G[Optimal Team Metrics to UI];
+  F -- No --> B;
 ```
-- Elitism
-- Mutation 
-  - Varying rate
-- Crossover 
-  - Tournament selection for parents
 
-## Feature Notes
-1) Currently, I haven't incorported anything to account for the various perks on the F1 Fantasy Game.
-2) I haven't integrated a database solution with the project. My plan (that is currently on pause) is to deploy a SQLite integration onto AWS so that I can learn AWS but I have gotten to this yet.
+Intra-Generation iteration employs the following mechanisms, and the following chart outlines what goes on within each generation
+- Elitism: For Generation > 1, keep the team with the best fitness within population set 
+- Crossover: Select 2 parent teams and create 2 corresponding child teams and keep the best child team if it is better than both parents, keep best parent team otherwise
+  - Tournament selection used to select the parent teams for Crossover
+- Mutation: If invoked, mutate the team until a team with better fitness value is created
+```mermaid
+flowchart TD
+  A[For Ind. in Pop. Set] --> B{Perform Crossover?};
+  B -- Yes --> C[Select 2 Parent Teams];
+  C --> D[Create New Team from Parents];
+  B -- No --> E[Keep Original Team];
+  D --> F[Perform Mutation];
+  E --> F[Perform Mutation];
+  F --> G{New team better than old team?};
+  G -- Yes --> H[Keep New Team];
+  G -- No --> I[Keep Old Team];
+  H --> J[Save best team]
+  I --> J[Save best team]
+  J --> K[Move to next generation]
+```
+
+## Notes for Future Development
+1) Future version will include a way to account for the various perks in the F1 Fantasy Game (see Picking a Team section [here](https://fantasy.formula1.com/en/faqs))
+2) I am actively working on a SQLite-based integration and a deployment on AWS, both things I wasnt to learn!
+3) I am also learning and working on unit tests, to make the app a bit more fault-tolerant.
+4) I am learning about setting up microservices, and will have a way for user to create accounts and generate optimal teams for their own inputs!
 
 ## License
 Distributed under the MIT License. See `LICENSE.txt` for more information.
