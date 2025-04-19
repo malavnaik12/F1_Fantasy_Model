@@ -55,8 +55,9 @@ The tech stack is as follows:
 ## Getting Started
 `[Insert pic here]`
 
-The UI above is hosted [here](https://f1-fantasy-model.onrender.com/)
-- UI Usage
+The gif shows at a high-level how the user can interact with the UI, above UI is hosted [here](https://f1-fantasy-model.onrender.com/).
+- The highest degree of user interaction will be on the Prices page
+  - Here, the user will have to input the prices of drivers and constructors for the given week based on the F1 Fantasy Game website
 
 ## Genetic Algorithm Details
 ![ga_image](readme_images/ga_image.png)
@@ -74,7 +75,7 @@ flowchart TD
 Intra-Generation iteration employs the following mechanisms, and the following chart outlines what goes on within each generation
 - Elitism: For Generation > 1, keep the team with the best fitness within population set 
 - Crossover: Select 2 parent teams and create 2 corresponding child teams and keep the best child team if it is better than both parents, keep best parent team otherwise
-  - Tournament selection used to select the parent teams for Crossover
+  - [Tournament Selection](https://www.baeldung.com/cs/ga-tournament-selection) used to select the parent teams for Crossover
 - Mutation: If invoked, mutate the team until a team with better fitness value is created
 ```mermaid
 flowchart TD
@@ -84,12 +85,14 @@ flowchart TD
   B -- No --> E[Keep Original Team];
   D --> F[Perform Mutation];
   E --> F[Perform Mutation];
-  F --> G{New team better than old team?};
+  F --> G{New team > old team?};
   G -- Yes --> H[Keep New Team];
   G -- No --> I[Keep Old Team];
-  H --> J[Save best team]
-  I --> J[Save best team]
-  J --> K[Move to next generation]
+  H --> J[Save team];
+  I --> J[Save team];
+  J --> K{End of Pop. Set?};
+  K -- No --> A;
+  K -- Yes --> L[On to Next Generation];
 ```
 
 ## Notes for Future Development
