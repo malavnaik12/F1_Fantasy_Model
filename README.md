@@ -3,8 +3,8 @@
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#about-the-project">About The Project</a></li>
-    <li><a href="#overall-tech-stack">Tech Stack</a></li>
     <li><a href="#getting-started">App Usage</a></li>
+    <li><a href="#overall-tech-stack">Tech Stack</a></li>
     <li><a href="#genetic-algorithm-details">GA Details</a></li>
     <li><a href="#notes-for-future-evelopment">App Notes</a></li>
     <li><a href="#license">License</a></li>
@@ -16,12 +16,18 @@
 ## About the Project
 The following repository uses a Genetic Algorithm (GA) to create a F1 Fantasy Team optimized for maximum performance within a given budget. 
 
-The team are developmed using F1 driver and constructors prices, along with the weekly budget constraints, given on the F1 Fanstasy [website](https://fantasy.formula1.com/en/create-team).
+The teams are developed using F1 driver and constructors prices, along with the weekly budget constraints, given on the F1 Fanstasy [website](https://fantasy.formula1.com/en/create-team).
 
 The prices for each driver and constructor are static at the start of the season and dynamically evolve as the season goes on depending on their respective performance. Similarly, a budget of 100 million is set out at the season and the amount grows and contracts as the season progresses depending on performance.
 
-### Overall Tech Stack
-The tech stack is as follows:
+## Getting Started
+`[Insert pic here]`
+
+The gif shows at a high-level how the user can interact with the UI, above UI is hosted [here](https://f1-fantasy-model.onrender.com/).
+- The highest degree of user interaction will be on the Prices page
+  - Here, the user will have to input the prices of drivers and constructors for the given week based on the F1 Fantasy Game website
+
+## Overall Tech Stack
 ![tech_stack_image](readme_images/tech_stack_image.png)
 
 - Python
@@ -51,14 +57,7 @@ The tech stack is as follows:
 - Note that a database service isn't listed here. I started making this app before I understood what a database was or how a database was used so I implemented a local .json file based "database".
   - I **am** planning on a SQLite integration for this app but I'm busy working on other side-projects at the moment. :)
 
-## Getting Started
-`[Insert pic here]`
-
-The gif shows at a high-level how the user can interact with the UI, above UI is hosted [here](https://f1-fantasy-model.onrender.com/).
-- The highest degree of user interaction will be on the Prices page
-  - Here, the user will have to input the prices of drivers and constructors for the given week based on the F1 Fantasy Game website
-
-## Genetic Algorithm Details
+## Optimizer Details
 ![ga_image](readme_images/ga_image.png)
 ```mermaid
 flowchart TD
