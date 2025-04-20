@@ -22,8 +22,7 @@ The prices for each driver and constructor are static at the start of the season
 
 ### Overall Tech Stack
 The tech stack is as follows:
-
-`[Insert pic here]`
+![tech_stack_image](readme_images/tech_stack_image.png)
 
 - Python
   - All scripts to handle:
